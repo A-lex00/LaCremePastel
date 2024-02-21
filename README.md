@@ -21,13 +21,6 @@ La Creme Pastèl è la soluzione ideale per gestire in modo efficiente un forno.
 
 Per utilizzare La Creme Pastèl, accedi al tuo account utilizzando il nome utente e la password forniti. Una volta effettuato l'accesso, sarai indirizzato alla tua homepage personale dove potrai svolgere le attività specifiche associate al tuo ruolo. Oppure potrai registrarti attraverso l'apposito form.
 
-## Contributi
-
-Se desideri contribuire a La Creme Pastèl, sei il benvenuto! Per contribuire, segui questi passaggi:
-
-1. Fai una fork di questo repository.
-2. Apporta le tue modifiche sul tuo fork.
-3. Invia una pull request con una descrizione dettagliata delle modifiche apportate e del motivo per cui dovrebbero essere incluse.
 
 ## Stato del Progetto
 
