@@ -53,7 +53,7 @@ public class SimpleOrderQuery {
     }
 
     public static void updatePendingOrder(Connection conn, int orderId, int accepted) throws SQLException{
-        String sql = "UPDATE Orders SET pending = 0, accepted = ? WHERE id = ?";
+        String sql = "UPDATE Orders SET pending = 0, accepted = ? WHERE id = ? AND pending = 1";
         try(PreparedStatement ps = conn.prepareStatement(sql)){
             ps.setInt(1,accepted);
             ps.setInt(2,orderId);

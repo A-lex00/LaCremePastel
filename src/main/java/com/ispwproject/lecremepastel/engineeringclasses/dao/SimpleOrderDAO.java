@@ -92,7 +92,8 @@ public class SimpleOrderDAO{
 
     public void updatePendingOrder(int orderId, boolean accepted){
         try{
-            SimpleOrderQuery.updatePendingOrder(Connector.getConnection(), orderId, accepted);
+            int acc = accepted ? 1 : 0;
+            SimpleOrderQuery.updatePendingOrder(Connector.getConnection(), orderId, acc);
         }catch(SQLException e){
             e.fillInStackTrace();
         }

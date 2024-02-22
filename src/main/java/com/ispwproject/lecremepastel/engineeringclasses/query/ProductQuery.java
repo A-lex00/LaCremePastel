@@ -16,10 +16,9 @@ public class ProductQuery {
         }
     }
 
-    public static ResultSet selectAllProducts(Connection conn, String username) throws SQLException{
-        String sql = "SELECT * FROM Product WHERE user = ?";
+    public static ResultSet selectAllProducts(Connection conn) throws SQLException{
+        String sql = "SELECT * FROM Product";
         try(PreparedStatement ps = conn.prepareStatement(sql)){
-            ps.setString(1,username);
             return ps.executeQuery();
         }
     }

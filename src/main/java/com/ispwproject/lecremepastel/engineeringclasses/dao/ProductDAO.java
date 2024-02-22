@@ -22,24 +22,25 @@ public class ProductDAO {
                 return new Product(pid, name, category, price, path, username);
             }
         }catch(SQLException e){
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         return null;
     }
 
-    public List<Product> getAllProducts(String username){
+    public List<Product> getAllProducts(){
         ArrayList<Product> list = new ArrayList<>();
-        try(ResultSet rs = ProductQuery.selectAllProducts(Connector.getConnection(), username)){
+        try(ResultSet rs = ProductQuery.selectAllProducts(Connector.getConnection())){
             while(rs.next()) {
                 int pid = rs.getInt("id");
                 String name = rs.getString("name");
                 String category = rs.getString("category");
                 String path = rs.getString("pathPrev");
                 double price = rs.getDouble("price");
+                String username = rs.getString("user");
                 list.add(new Product(pid, name, category, price, path, username));
             }
         }catch(SQLException e){
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         return list;
     }
@@ -76,7 +77,7 @@ public class ProductDAO {
             );
             return true;
         }catch(SQLException e){
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         return false;
     }
