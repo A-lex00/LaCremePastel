@@ -14,8 +14,8 @@ public class OrderLineDAO {
         try{
             OrderLineQuery.insertOrderLine(Connector.getConnection(),ol.getOrderId(),ol.getProductId(),ol.getAmount());
             return true;
-        }catch(SQLException ex){
-            ex.printStackTrace();
+        }catch(SQLException e){
+            e.fillInStackTrace();
         }
         return false;
     }
@@ -33,8 +33,8 @@ public class OrderLineDAO {
                 orderLineBean.setUnitPrice(0);
                 orderList.add(orderLineBean);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.fillInStackTrace();
         }
         return orderList;
     }
@@ -43,8 +43,8 @@ public class OrderLineDAO {
         try {
             OrderLineQuery.updateOrderLine(Connector.getConnection(), ol.getOrderId(), ol.getProductId(), ol.getAmount());
             return true;
-        }catch(SQLException ex){
-            ex.printStackTrace();
+        }catch(SQLException e){
+            e.fillInStackTrace();
         }
         return false;
     }
@@ -54,7 +54,7 @@ public class OrderLineDAO {
             OrderLineQuery.deleteOrderLine(Connector.getConnection(), ol.getOrderId(), ol.getProductId());
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         return false;
     }
