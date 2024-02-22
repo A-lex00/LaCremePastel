@@ -1,58 +1,83 @@
 package com.ispwproject.lecremepastel.engineeringclasses.bean;
 
-import com.ispwproject.lecremepastel.model.Product;
-import com.ispwproject.lecremepastel.model.SimpleOrder;
-
+import java.util.List;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public class SimpleOrderBean {
-    private final ArrayList<SimpleOrder> orderList;
+    private int id;
+    private String customer;
+    private final ArrayList<OrderLineBean> productList;
+    private boolean pending;
+    private boolean accepted;
+    private boolean done;
 
-    public SimpleOrderBean(){
-        orderList = new ArrayList<>();
+    public SimpleOrderBean(boolean pending, boolean accepted, boolean done){
+        this(-1,"",pending,accepted,done);
     }
-    Boolean completed=false;
-    public void sortOrder(ArrayList<Product> orderList){
-        ArrayList<Product> salatoProductionList = null;
-        ArrayList<Product>dolceProductionList=null;
-        for(Product product : orderList){
-                switch (product.getCategory()){
-                    case "Salato":
-                        salatoProductionList.add(product);
-                        break;
-                    case "Dolce":
-                        dolceProductionList.add(product);
-                        break;
-                    // Altre tipologie di prodotto
-                    default:
-                        // Gestione per tipologia di prodotto non definita
-                        System.out.println("Tipologia di prodotto non gestita");
-                        break;
-                }
+
+    public SimpleOrderBean(int id, String customer, boolean pending, boolean accepted, boolean done) throws InvalidParameterException {
+        this.id = id;
+        this.customer = customer;
+        this.pending = pending;
+        this.accepted = accepted;
+        this.done = done;
+        this.productList = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        if(customer != null){
+            this.customer = customer;
         }
     }
 
-
-    public void addOrder(SimpleOrder so){
-        orderList.add(so);
+    public List<OrderLineBean> getProductList() {
+        return productList;
     }
 
-    public SimpleOrder getOrder(int index){
-        return orderList.get(index);
-    }
-
-    public SimpleOrder delOrder(int id){
-        for(int i=0;i<orderList.size();i++){
-            SimpleOrder so = orderList.get(i);
-            if(so.getId() == id){
-                return orderList.remove(i);
-            }
+    public void addOrderLine(OrderLineBean orderLineBean){
+        if(orderLineBean != null){
+            productList.add(orderLineBean);
         }
-        return null;
     }
 
-    public int size(){
-        return orderList.size();
+    public void delOrderLine(OrderLineBean orderLineBean){
+        productList.remove(orderLineBean);
+    }
+
+    public boolean isPending() {
+        return pending;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }
-

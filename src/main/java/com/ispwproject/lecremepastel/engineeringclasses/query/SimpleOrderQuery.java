@@ -39,10 +39,15 @@ public class SimpleOrderQuery {
         }
     }
 
-    public static ResultSet selectAllOrders(Connection conn, int orderType) throws SQLException{
-        String sql = "SELECT id,customer,pending,accepted,done FROM Orders WHERE orderType = ?";
-        try(PreparedStatement ps = conn.prepareStatement(sql)){
-            ps.setInt(1,orderType);
+    public static ResultSet selectAllOrders(Connection conn, int orderType, boolean onlyPending) throws SQLException {
+        String sql;
+        if (onlyPending) {
+            sql = "SELECT id,customer,pending,accepted,done FROM Orders WHERE orderType = ? AND pending = 1";
+        } else {
+            sql = "SELECT id,customer,pending,accepted,done FROM Orders WHERE orderType = ?";
+        }
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, orderType);
             return ps.executeQuery();
         }
     }

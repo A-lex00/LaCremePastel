@@ -3,11 +3,10 @@ package com.ispwproject.lecremepastel.controller.GUIController;
 
 import java.util.ArrayList;
 
-import com.ispwproject.lecremepastel.engineeringclasses.bean.SimpleOrderBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 import com.ispwproject.lecremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lecremepastel.model.OrderLine;
-import com.ispwproject.lecremepastel.model.OrderList;
+import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePendingOrderList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,16 +19,11 @@ import javafx.stage.Stage;
 
 public class GUIControllerManagerOrder implements Observer{
 
-    private OrderList observableOrderList;
-    private SimpleOrderBean simpleOrderBean;
+    private ObservablePendingOrderList observablePendingOrderList;
 
     public GUIControllerManagerOrder(){
-        observableOrderList = new OrderList();
-        observableOrderList.attachObserver(this);
-    }
-
-    public void importOrdeBean(SimpleOrderBean userOrdenBean){
-        this.simpleOrderBean =userOrdenBean;
+        //observableOrderList = new ObservableOrderList();
+        //observableOrderList.attachObserver(this);
     }
 
     @FXML

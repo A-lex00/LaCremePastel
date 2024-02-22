@@ -68,9 +68,9 @@ public class SimpleOrderDAO{
         return list;
     }
 
-    public List<SimpleOrder> getAllOrders() {
+    public List<SimpleOrder> getAllOrders(boolean onlyPending) {
         ArrayList<SimpleOrder> list = new ArrayList<>();
-        try(ResultSet rs = SimpleOrderQuery.selectAllOrders(Connector.getConnection(),ORDERTYPE)){
+        try(ResultSet rs = SimpleOrderQuery.selectAllOrders(Connector.getConnection(),ORDERTYPE,onlyPending)){
             while(rs.next()) {
                 int orderId = rs.getInt("id");
                 boolean pending = rs.getBoolean("pending");

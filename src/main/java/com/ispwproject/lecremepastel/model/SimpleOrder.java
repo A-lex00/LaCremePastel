@@ -2,6 +2,7 @@ package com.ispwproject.lecremepastel.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SimpleOrder{
     private int id;
@@ -104,5 +105,18 @@ public class SimpleOrder{
             sb.append(", productList= empty}");
         }
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SimpleOrder that = (SimpleOrder) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
