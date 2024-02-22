@@ -51,4 +51,13 @@ public class SimpleOrderQuery {
             return ps.executeQuery();
         }
     }
+
+    public static void updatePendingOrder(Connection conn, int orderId, int accepted) throws SQLException{
+        String sql = "UPDATE Orders SET pending = 0, accepted = ? WHERE id = ?";
+        try(PreparedStatement ps = conn.prepareStatement(sql)){
+            ps.setInt(1,accepted);
+            ps.setInt(2,orderId);
+            ps.executeUpdate();
+        }
+    }
 }

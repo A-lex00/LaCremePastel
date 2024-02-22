@@ -32,7 +32,7 @@ public class MakeOrderController {
 
         //Creating new Order in persistence
         //TODO: Is it better to return a SimpleOrder instance?
-        simpleOrderDAO.createSimpleOrder(so);
+        so = simpleOrderDAO.createSimpleOrder(so);
         return so.getId();
     }
 

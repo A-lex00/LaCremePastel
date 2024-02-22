@@ -4,15 +4,21 @@ import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParam
 
 public class ProductBean {
 
+    private int id;
     private String productName;
     private String category;
     private double price;
 
-    public ProductBean(String productName, String category, double price) throws IncorrectParametersException{
-        boolean isProductNameValid = productName != null && !productName.isBlank();
-        boolean isCategoryValid = category != null && !category.isBlank();
+    public ProductBean() throws  IncorrectParametersException{
+        this(-1,"","",0);
+    }
+
+    public ProductBean(int id, String productName, String category, double price) throws IncorrectParametersException{
+        boolean isProductNameValid = productName != null;
+        boolean isCategoryValid = category != null;
 
         if(isProductNameValid && isCategoryValid && price > 0){
+            this.id = id;
             this.productName = productName;
             this.category = category;
             this.price = price;
