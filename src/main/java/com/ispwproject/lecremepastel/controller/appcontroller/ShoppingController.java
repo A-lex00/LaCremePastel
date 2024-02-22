@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class ShoppingController {
 
-    public void setShoppingCart(OrderLineBean orderLineBean){
+   /* public void setShoppingCart(OrderLineBean orderLineBean){
         try {
-            OrderLine orderLine=new OrderLine(orderLineBean.ge);
+            OrderLine orderLine=new OrderLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -17,4 +17,5 @@ public class ShoppingController {
         }
     }
     }
+    */
 }
