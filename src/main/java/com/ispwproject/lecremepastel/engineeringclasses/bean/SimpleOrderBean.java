@@ -44,6 +44,22 @@ public class SimpleOrderBean {
         }
     }
 
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public boolean isPending() {
+        return pending;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
+
     public List<OrderLineBean> getProductList() {
         return productList;
     }
