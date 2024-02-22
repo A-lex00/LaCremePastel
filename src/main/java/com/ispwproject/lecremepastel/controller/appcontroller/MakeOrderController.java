@@ -12,6 +12,8 @@ import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePend
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lecremepastel.model.OrderLine;
 import com.ispwproject.lecremepastel.model.SimpleOrder;
+import com.ispwproject.lecremepastel.other.NoticeManager;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -51,5 +53,9 @@ public class MakeOrderController{
         //Update with new Pending Order
         ObservablePendingOrderList orderList = ObservablePendingOrderList.getInstance();
         orderList.addSimpleOrder(simpleOrder);
+
+        //Generate Notice for director user
+        NoticeManager noticeManager = new NoticeManager();
+        noticeManager.createdOrderNotice(simpleOrderBean.getCustomer());
     }
 }

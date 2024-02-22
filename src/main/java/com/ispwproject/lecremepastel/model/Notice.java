@@ -1,13 +1,18 @@
 package com.ispwproject.lecremepastel.model;
 
+import java.util.Objects;
+
 public class Notice {
 
     private int id;
     private String subject;
     private String content;
-    private Boolean read;
+    private boolean read;
 
-    public Notice(int id, String subject, String content, Boolean read){
+    public Notice(String subject, String content, boolean read){
+        this(-1,subject,content,read);
+    }
+    public Notice(int id, String subject, String content, boolean read){
         this.id = id;
         this.subject = subject;
         this.content = content;
@@ -37,20 +42,25 @@ public class Notice {
         this.content = content;
     }
 
-    public Boolean isRead() {
+    public boolean isRead() {
         return read;
     }
 
-    public void setRead(Boolean read) {
+    public void setRead(boolean read) {
         this.read = read;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof Notice n){
-            return this.subject.equals(n.subject) && this.content.equals(n.subject) && this.read == n.read;
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notice notice = (Notice) o;
+        return id == notice.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

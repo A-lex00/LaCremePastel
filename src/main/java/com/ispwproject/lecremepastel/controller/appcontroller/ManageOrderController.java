@@ -6,6 +6,7 @@ import com.ispwproject.lecremepastel.engineeringclasses.exception.InvalidSession
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePendingOrderList;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lecremepastel.model.SimpleOrder;
+import com.ispwproject.lecremepastel.other.NoticeManager;
 
 import java.security.InvalidParameterException;
 
@@ -26,6 +27,14 @@ public class ManageOrderController {
                 simpleOrder.setId(simpleOrderBean.getId());
                 ObservablePendingOrderList orderList = ObservablePendingOrderList.getInstance();
                 orderList.removeSimpleOrder(simpleOrder);
+
+                //Write a new Notice for the User target
+                NoticeManager noticeManager = new NoticeManager();
+                noticeManager.finalizedOrderNotice(
+                        simpleOrderBean.getId(),
+                        simpleOrderBean.getCustomer(),
+                        simpleOrderBean.isAccepted()
+                );
             }else{
                 throw new InvalidParameterException("ManageOrderController::finalizeOrder: No order Specified!");
             }

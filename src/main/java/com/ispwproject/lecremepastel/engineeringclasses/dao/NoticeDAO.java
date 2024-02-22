@@ -18,8 +18,8 @@ public class NoticeDAO {
                 Boolean read = rs.getBoolean("isRead");
                 return new Notice(id, subject, content, read);
             }
-        }catch (SQLException ex){
-            ex.printStackTrace();
+        }catch (SQLException e){
+            e.fillInStackTrace();
         }
         return null;
     }
@@ -35,7 +35,7 @@ public class NoticeDAO {
                 list.add(new Notice(id,content,subject,read));
             }
         }catch (SQLException ex){
-            ex.printStackTrace();
+            ex.fillInStackTrace();
         }
         return list;
     }
@@ -45,7 +45,7 @@ public class NoticeDAO {
             NoticeQuery.deleteUserNotice(Connector.getConnection(),noticeId);
             return true;
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.fillInStackTrace();
         }
         return false;
     }
@@ -55,7 +55,7 @@ public class NoticeDAO {
             NoticeQuery.deleteAllUserNotice(Connector.getConnection(),username);
             return true;
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.fillInStackTrace();
         }
         return false;
     }
@@ -65,7 +65,7 @@ public class NoticeDAO {
             NoticeQuery.insertUserNotice(Connector.getConnection(),n.getSubject(),n.getContent(),username);
             return true;
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.fillInStackTrace();
         }
         return false;
     }
@@ -75,7 +75,18 @@ public class NoticeDAO {
             NoticeQuery.markAsRead(Connector.getConnection(),noticeId);
             return true;
         }catch(SQLException ex){
-            ex.printStackTrace();
+            ex.fillInStackTrace();
+        }
+        return false;
+    }
+
+    public boolean directorNotice(Notice n){
+        try{
+            NoticeQuery.insertDirectorNotice(Connector.getConnection(), n.getSubject(), n.getContent());
+            return true;
+        }catch(SQLException e){
+            e.fillInStackTrace();
+            System.err.println(e.getMessage());
         }
         return false;
     }

@@ -22,7 +22,9 @@ public class SessionBean {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        if(username != null){
+            this.username = username;
+        }
     }
 
     public String getHashedPasswd(){
