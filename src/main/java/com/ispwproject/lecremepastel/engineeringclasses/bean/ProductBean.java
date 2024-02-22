@@ -56,4 +56,12 @@ public class ProductBean {
             this.price = price;
         }
     }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        if(id>0){
+           this.id=id;
+        }
+    }
 }

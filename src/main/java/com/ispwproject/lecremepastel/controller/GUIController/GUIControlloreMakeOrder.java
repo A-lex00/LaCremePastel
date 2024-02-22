@@ -4,6 +4,7 @@ import com.ispwproject.lecremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
+import com.ispwproject.lecremepastel.model.OrderLine;
 import com.ispwproject.lecremepastel.model.Product;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,10 +17,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class GUIControlloreMakeOrder {
     private ObservableList currentOrder;
-    private ProductBean productBean=new ProductBean();
-    private ObservableList orderList;
+    private ObservableList productList;
+    private ObservableList idProductList;
     private SessionBean sessionBean;
     @FXML
     private ComboBox productBox=new ComboBox<>();
@@ -28,9 +31,12 @@ public class GUIControlloreMakeOrder {
 
     public void inizialize(SessionBean importedSessionBean) throws IncorrectParametersException {
         this.sessionBean=importedSessionBean;
-        ProductBean productBean=new ProductBean();
-        orderList.add(productBean.getA);
-        productBox.setItems(orderList);
+        List<ProductBean> allProductList = null;
+        for(ProductBean product: allProductList) {
+            productList.add(product.getProductName());
+            idProductList.add(product.getId());
+        }
+        productBox.setItems(productList);
     }
     @FXML
     public void showShoppingCart(ActionEvent showCartEvent) {
@@ -49,8 +55,9 @@ public class GUIControlloreMakeOrder {
     @FXML
     public void addCart(ActionEvent addEvent){
         currentOrder.add(productBox.getValue());
-        orderLineBean.set
-    quantityField.getText();
-    }
+        int quantity= Integer.parseInt(quantityField.getText());
 
+        OrderLineBean orderLineBean= new OrderLineBean();
+
+    }
 }

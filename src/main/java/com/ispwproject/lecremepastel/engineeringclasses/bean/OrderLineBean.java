@@ -7,17 +7,20 @@ public class OrderLineBean {
     private int orderId;
     private int productId;
     private int amount;
+    private int unitPrice;
 
     public OrderLineBean(){
         orderId = -1;
         productId = -1;
-        amount = -1;
+        amount = 0;
+        unitPrice=0;
     }
 
-    public OrderLineBean(int orderId, int productId, int amount){
+    public OrderLineBean(int orderId, int productId, int amount, int unitPrice){
         this.orderId = orderId;
         this.productId = productId;
         this.amount = amount;
+        this.unitPrice=unitPrice;
     }
 
     public int getOrderId() {
