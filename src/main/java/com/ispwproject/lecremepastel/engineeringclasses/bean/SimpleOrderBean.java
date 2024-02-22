@@ -8,20 +8,17 @@ public class SimpleOrderBean {
     private int id;
     private String customer;
     private final ArrayList<OrderLineBean> productList;
-    private boolean pending;
-    private boolean accepted;
-    private boolean done;
 
-    public SimpleOrderBean(boolean pending, boolean accepted, boolean done){
-        this(-1,"",pending,accepted,done);
+    public SimpleOrderBean(){
+        this(-1,"");
     }
 
-    public SimpleOrderBean(int id, String customer, boolean pending, boolean accepted, boolean done) throws InvalidParameterException {
+    public SimpleOrderBean(int id, String customer) throws InvalidParameterException {
+        if(customer == null) {
+            throw new InvalidParameterException();
+        }
         this.id = id;
         this.customer = customer;
-        this.pending = pending;
-        this.accepted = accepted;
-        this.done = done;
         this.productList = new ArrayList<>();
     }
 
@@ -55,29 +52,5 @@ public class SimpleOrderBean {
 
     public void delOrderLine(OrderLineBean orderLineBean){
         productList.remove(orderLineBean);
-    }
-
-    public boolean isPending() {
-        return pending;
-    }
-
-    public void setPending(boolean pending) {
-        this.pending = pending;
-    }
-
-    public boolean isAccepted() {
-        return accepted;
-    }
-
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
     }
 }
