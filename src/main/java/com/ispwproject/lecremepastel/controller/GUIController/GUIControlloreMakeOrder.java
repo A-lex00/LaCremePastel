@@ -1,6 +1,7 @@
 package com.ispwproject.lecremepastel.controller.GUIController;
 
 import com.ispwproject.lecremepastel.controller.appcontroller.ManageProductController;
+import com.ispwproject.lecremepastel.engineeringclasses.bean.CartBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
@@ -35,6 +36,8 @@ public class GUIControlloreMakeOrder {
         Node n = (Node) showCartEvent.getSource();
         Stage shoppingStage = (Stage) n.getScene().getWindow();
         try {
+            CartBean cartBean=new CartBean();
+            cartBean.setOrder(currentCart);
             Parent root= FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
             shoppingStage.setScene(new Scene(root, 629, 481));
             shoppingStage.setTitle("La Creme Pastel");
@@ -43,7 +46,7 @@ public class GUIControlloreMakeOrder {
         }
     }
     @FXML
-    public void loadProduct(ActionEvent backEvent) throws IncorrectParametersException {
+    public void loadProduct() throws IncorrectParametersException {
         ManageProductController productController=new ManageProductController();
         List<ProductBean> allProductList=productController.loadProducts();
         ObservableList<String> productNames=FXCollections.observableArrayList();
@@ -53,7 +56,7 @@ public class GUIControlloreMakeOrder {
         }      productBox.setItems(productNames);
     }
     @FXML
-    public void addCart(ActionEvent addEvent) throws IncorrectParametersException {
+    public OrderLineBean addCart() throws IncorrectParametersException {
 
         ManageProductController productController = new ManageProductController();
         List<ProductBean> allProductList = productController.loadProducts();
@@ -70,7 +73,8 @@ public class GUIControlloreMakeOrder {
             }
             currentCart.setAmount(Integer.parseInt(quantityField.getText()));
             System.out.println(currentCart + "currentCart");
+            return currentCart;
         }
     @FXML
-    public void goBack(ActionEvent backEvent){}
+    public void goBack(){}
 }

@@ -15,6 +15,9 @@ public class GUIControllerShoppingCart {
     private ListView orderView=new ListView<>();
     private SessionBean sessionBean;
 
+    public void getOrder(){
+
+    }
     @FXML
     public void confirmOrder(ActionEvent confirmEvent){}
 
