@@ -19,6 +19,8 @@ public class UserBean {
             this.email = email;
             this.role = role;
             this.billingAddress = billingAddress;
+        }else{
+            throw new IncorrectParametersException("UserBean: Invalid parameters!");
         }
     }
 

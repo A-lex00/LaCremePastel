@@ -1,7 +1,7 @@
 package com.ispwproject.lecremepastel.controller.CLIController;
 
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
-import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.CLIStrings;
 
 public class LogoutSection implements CLSection{
     @Override
@@ -11,7 +11,7 @@ public class LogoutSection implements CLSection{
         //Logout
         SessionManager.getInstance().delSession(clContext.getSessionID());
         clContext.clearSessionID();
-        System.out.println(CLIMessages.LOGOUT);
+        System.out.println(CLIStrings.LOGOUT);
 
         //No next state: Call stack reset
     }

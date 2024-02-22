@@ -3,7 +3,6 @@ package com.ispwproject.lecremepastel.controller.CLIController;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
-import com.ispwproject.lecremepastel.other.CLIMessages;
 
 public class HomeRedirectSection implements CLSection{
 

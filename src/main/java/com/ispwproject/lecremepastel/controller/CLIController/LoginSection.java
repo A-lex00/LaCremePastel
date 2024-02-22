@@ -4,7 +4,7 @@ import com.ispwproject.lecremepastel.controller.appcontroller.LoginController;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.CLIStrings;
 import java.util.Scanner;
 
 public class LoginSection implements CLSection{
@@ -22,15 +22,15 @@ public class LoginSection implements CLSection{
 
         do {
             if (persistence.equals(MARIADB)) {
-                System.out.print(CLIMessages.LOGIN_SQL_AUTH);
+                System.out.print(CLIStrings.LOGIN_SQL_AUTH);
             } else if (persistence.equals(JSON)) {
-                System.out.println(CLIMessages.LOGIN_JSON_AUTH);
+                System.out.println(CLIStrings.LOGIN_JSON_AUTH);
             } else {
                 System.err.println("LoginSection: Invalid persistence configuration value");
                 System.exit(1);
             }
             String authString = scanner.nextLine();
-            System.out.print(CLIMessages.LOGIN_PASSWD);
+            System.out.print(CLIStrings.LOGIN_PASSWD);
             String passwd = scanner.nextLine();
 
             //Processing Login
@@ -39,15 +39,15 @@ public class LoginSection implements CLSection{
                 LoginController loginController = new LoginController();
                 String sessionID = loginController.login(loginBean);
                 if(sessionID != null){
-                    System.out.println(CLIMessages.LOGIN_SUCCESSFUL);
+                    System.out.println(CLIStrings.LOGIN_SUCCESSFUL);
                     clContext.setSessionID(sessionID);
                     next = new HomeRedirectSection();
                 }else{
-                    System.out.println(CLIMessages.LOGIN_FAILED);
+                    System.out.println(CLIStrings.LOGIN_FAILED);
                     next = new StartSection();
                 }
             } catch (IncorrectParametersException e) {
-                System.out.println(CLIMessages.EMPTY_INPUT);
+                System.out.println(CLIStrings.EMPTY_INPUT);
             }
         }while(next == null);
         next.doAction(clContext);

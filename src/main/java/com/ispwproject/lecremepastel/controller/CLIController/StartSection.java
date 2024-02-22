@@ -1,6 +1,6 @@
 package com.ispwproject.lecremepastel.controller.CLIController;
 
-import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.CLIStrings;
 
 import java.util.Scanner;
 
@@ -16,10 +16,10 @@ public class StartSection implements CLSection{
         while(true){
             clContext.setSection(this);
             if(printMessage){
-                System.out.println(CLIMessages.START_SECTION);
+                System.out.println(CLIStrings.START_SECTION);
                 printMessage = false;
             }
-            System.out.print(CLIMessages.PROMPT);
+            System.out.print(CLIStrings.PROMPT);
             String line = scanner.nextLine();
             try {
                 choose = Integer.parseInt(line);
@@ -38,7 +38,7 @@ public class StartSection implements CLSection{
                 case 0:
                     return;
                 default:
-                    System.out.println(CLIMessages.INVALID_INT);
+                    System.out.println(CLIStrings.INVALID_INT);
                     next = null;
             }
             if(next != null){

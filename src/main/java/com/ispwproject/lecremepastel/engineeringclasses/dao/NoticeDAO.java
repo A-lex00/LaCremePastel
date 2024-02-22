@@ -32,7 +32,7 @@ public class NoticeDAO {
                 String content = rs.getString("content");
                 String subject = rs.getString("subject");
                 Boolean read = rs.getBoolean("isRead");
-                list.add(new Notice(id,content,subject,read));
+                list.add(new Notice(id,subject,content,read));
             }
         }catch (SQLException ex){
             ex.fillInStackTrace();

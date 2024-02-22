@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class EmailUtils {
 
-    private final String REGEX = "^(.*)@(\\S*)$";
+    private static final String REGEX = "^(.*)@(\\S*)$";
 
     public boolean checkEmail(String email){
         if(email != null){

@@ -1,10 +1,12 @@
 package com.ispwproject.lecremepastel.controller.appcontroller;
 
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SimpleOrderBean;
+import com.ispwproject.lecremepastel.engineeringclasses.dao.NoticeDAO;
 import com.ispwproject.lecremepastel.engineeringclasses.dao.SimpleOrderDAO;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePendingOrderList;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
+import com.ispwproject.lecremepastel.model.Notice;
 import com.ispwproject.lecremepastel.model.SimpleOrder;
 import com.ispwproject.lecremepastel.other.NoticeGenerator;
 
@@ -30,11 +32,12 @@ public class ManageOrderController {
 
                 //Write a new Notice for the User target
                 NoticeGenerator noticeGenerator = new NoticeGenerator();
-                noticeGenerator.finalizedOrderNotice(
+                Notice n = noticeGenerator.finalizedOrderNotice(
                         simpleOrderBean.getId(),
-                        simpleOrderBean.getCustomer(),
                         simpleOrderBean.isAccepted()
                 );
+                NoticeDAO noticeDAO = new NoticeDAO();
+                noticeDAO.saveNotice(n,simpleOrderBean.getCustomer());
             }else{
                 throw new InvalidParameterException("ManageOrderController::finalizeOrder: No order Specified!");
             }

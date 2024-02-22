@@ -2,9 +2,16 @@ package com.ispwproject.lecremepastel.controller;
 
 import com.ispwproject.lecremepastel.controller.CLIController.CLContext;
 import com.ispwproject.lecremepastel.controller.CLIController.StartSection;
+import com.ispwproject.lecremepastel.controller.appcontroller.HelpController;
+import com.ispwproject.lecremepastel.controller.appcontroller.LoginController;
+import com.ispwproject.lecremepastel.controller.appcontroller.ManageUserInfoController;
+import com.ispwproject.lecremepastel.engineeringclasses.bean.LoginBean;
+import com.ispwproject.lecremepastel.engineeringclasses.bean.NoticeBean;
+import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
+import com.ispwproject.lecremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
-import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.CLIStrings;
 import com.ispwproject.lecremepastel.other.NoticeGenerator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +21,21 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidSessionException, IncorrectParametersException {
         String enableGUI = Configurations.getInstance().getProperty("GUI");
 
         //Test area
-        NoticeGenerator noticeGenerator = new NoticeGenerator();
-        System.out.println(SessionManager.getInstance().getSession(null));
-
+        LoginController loginController = new LoginController();
+        String sid = loginController.login(new LoginBean(
+                "tinoC",
+                "1234"
+        ));
+        HelpController helpController = new HelpController();
+        helpController.requestHelp(sid,new NoticeBean(
+                "Non funziona nulla",
+                "Aggiustate pls"
+        ));
+        System.exit(0);
         //End Test area
 
         if(enableGUI.equals("yes")) {
@@ -36,7 +51,7 @@ public class Main extends Application {
         StartSection startSection = new StartSection();
         startSection.doAction(cli);
 
-        System.out.println(CLIMessages.BYE_MESSAGE);
+        System.out.println(CLIStrings.BYE_MESSAGE);
         System.exit(0);
     }
 

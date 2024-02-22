@@ -1,6 +1,6 @@
 package com.ispwproject.lecremepastel.controller.CLIController;
 
-import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.CLIStrings;
 
 import java.util.Scanner;
 
@@ -12,13 +12,13 @@ public class WorkerHomeSection implements CLSection{
         CLSection next = null;
         int choose;
 
-        System.out.println(CLIMessages.HOME_SECTION_WORKER);
+        System.out.println(CLIStrings.HOME_SECTION_WORKER);
         do{
-            System.out.print(CLIMessages.PROMPT);
+            System.out.print(CLIStrings.PROMPT);
             try{
                 choose = Integer.parseInt(scanner.nextLine());
             }catch (NumberFormatException e){
-                System.out.println(CLIMessages.INVALID_INT);
+                System.out.println(CLIStrings.INVALID_INT);
                 choose = -1;
             }
             switch(choose){
@@ -30,7 +30,7 @@ public class WorkerHomeSection implements CLSection{
                     next = new LogoutSection();
                     break;
                 default:
-                    System.out.println(CLIMessages.INVALID_INT);
+                    System.out.println(CLIStrings.INVALID_INT);
             }
         }while(next == null);
         next.doAction(clContext);

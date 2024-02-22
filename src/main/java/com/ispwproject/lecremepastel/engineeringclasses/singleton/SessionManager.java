@@ -37,11 +37,15 @@ public class SessionManager {
 
     public String addSession(Session session) {
         String uuid = UUID.randomUUID().toString();
-        activeUsers.put(uuid,session);
+        synchronized (this){
+            activeUsers.put(uuid,session);
+        }
         return uuid;
     }
 
     public void delSession(String sid){
-        activeUsers.remove(sid);
+        synchronized (this){
+            activeUsers.remove(sid);
+        }
     }
 }
