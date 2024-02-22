@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-public class GUIControllerCustomerList {
+public class GUIControllerShoppingCart {
 
     private SessionBean sessionBean;
     public void importSession(SessionBean importedSessionBean){
@@ -14,7 +14,9 @@ public class GUIControllerCustomerList {
     }
 
     @FXML
-    private void goBack(ActionEvent backEvent){
+    public void confirmOrder(ActionEvent confirmEvent){}
+    @FXML
+    public void goBack(ActionEvent backEvent){
         Node node = (Node) backEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
     }

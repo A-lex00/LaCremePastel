@@ -3,9 +3,16 @@ package com.ispwproject.lecremepastel.controller.GUIController;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
+import com.ispwproject.lecremepastel.other.PopupManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 public class GUIControllerCustomerPage {
     @FXML
@@ -19,26 +26,34 @@ public class GUIControllerCustomerPage {
     }
     @FXML
     void composeOrder(ActionEvent composeOrderEvent) {
-        System.out.println("PROVA");
+        Node n = (Node) composeOrderEvent.getSource();
+        Stage stage = (Stage) n.getScene().getWindow();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/makeOrder.fxml"));
+            stage.setScene(new Scene(root, 629, 481));
+            stage.setTitle("La Creme Pastel");
+            stage.show();
+        }catch(Exception e){
+            e.getMessage();
+        }
     }
 
     @FXML
     void reviewOrder(ActionEvent reviewOrderEvent) {
-        System.out.println("BElla pe Te");
+        System.out.println("ordine rivisto");
     }
 
     @FXML
     void orderHistory(ActionEvent historyEvent) {
-        System.out.println("Prova");
+        System.out.println("storico ordini");
     }
     @FXML
     void  giveBack(ActionEvent backEvent){
-      System.out.println("AA");
+      System.out.println("Reso segnalato");
 
     }
     @FXML
     void requestHelp(ActionEvent helpEvent){
-        System.out.println("Hai richiesto aiuto!");
     }
     @FXML
     void showNotice(ActionEvent noticeEvent){

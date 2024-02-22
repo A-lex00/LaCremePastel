@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 public class MakeOrderController {
 
+
     /**
      *
      * @param sid A String representing the User Session ID
@@ -20,7 +21,7 @@ public class MakeOrderController {
      * @throws SQLException If a database error occurs
      * @throws InvalidSessionException If Session ID is not found by SessionManager
      */
-    public int createSimpleOrder(String sid) throws SQLException, InvalidSessionException, IncorrectParametersException {
+  public int createSimpleOrder(String sid) throws SQLException, InvalidSessionException, IncorrectParametersException {
         //Init variables
         SessionBean sessionBean = SessionManager.getInstance().getSession(sid);
         if(sessionBean == null){
@@ -40,7 +41,6 @@ public class MakeOrderController {
     public void newSpecialOrder(){
         throw new UnsupportedOperationException();
     }
-
     //TODO: I think that this method is dangeorus
     public int deleteOrder(){
         throw new UnsupportedOperationException();
@@ -65,5 +65,4 @@ public class MakeOrderController {
         OrderLineDAO orderLineDAO = new OrderLineDAO();
         return orderLineDAO.deleteOrderLine(orderLineBean);
     }
-
 }
