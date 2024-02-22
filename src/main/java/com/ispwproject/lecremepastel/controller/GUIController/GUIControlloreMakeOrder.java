@@ -43,13 +43,11 @@ public class GUIControlloreMakeOrder {
     }
     @FXML
     public void showShoppingCart(ActionEvent showCartEvent) {
-        GUIControllerShoppingCart controllerShoppingCart=new GUIControllerShoppingCart();
         Node n = (Node) showCartEvent.getSource();
         Stage shoppingStage = (Stage) n.getScene().getWindow();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/shoppingCart.fxml"));
-            loader.setController(controllerShoppingCart);
-            Parent root = loader.load();
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/shoppingCart.fxml"));
+            Parent root=  FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
             shoppingStage.setScene(new Scene(root, 629, 481));
             shoppingStage.setTitle("La Creme Pastel");
             shoppingStage.show();
@@ -76,7 +74,6 @@ public class GUIControlloreMakeOrder {
             if (product.getProductName().equals(productBox.getValue())) ;
             {
                 selectedProductId = product.getId();
-                break;
             }
         }
         if (selectedProductId != -1) {

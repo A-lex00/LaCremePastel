@@ -59,7 +59,15 @@ public class GUIControllerRegistrationPage{
         boolean customerUser = customerDot.isSelected();
         boolean directorUser = directorDot.isSelected();
         boolean workerUser = workerDot.isSelected();
-
+        if(customerUser || workerUser){
+            extraField.setVisible(true);
+            if(workerUser){
+                extraField.setPromptText("Inserisci il tuo ruolo ");
+            }
+            else{
+                extraField.setPromptText("Inserisci il tuo indirizzo");
+            }
+        }
     }
 
     public void confirm(ActionEvent confirmEvent) {

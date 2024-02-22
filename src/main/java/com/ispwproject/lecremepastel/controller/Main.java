@@ -23,21 +23,6 @@ public class Main extends Application {
 
     public static void main(String[] args) throws InvalidSessionException, IncorrectParametersException {
         String enableGUI = Configurations.getInstance().getProperty("GUI");
-
-        //Test area
-        LoginController loginController = new LoginController();
-        String sid = loginController.login(new LoginBean(
-                "tinoC",
-                "1234"
-        ));
-        HelpController helpController = new HelpController();
-        helpController.requestHelp(sid,new NoticeBean(
-                "Non funziona nulla",
-                "Aggiustate pls"
-        ));
-        System.exit(0);
-        //End Test area
-
         if(enableGUI.equals("yes")) {
             launch(args);
         }else if(enableGUI.equals("no")){
