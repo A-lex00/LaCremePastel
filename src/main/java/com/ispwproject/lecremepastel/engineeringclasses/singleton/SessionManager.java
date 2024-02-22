@@ -19,6 +19,7 @@ public class SessionManager {
     }
 
     public SessionBean getSession(String sid){
+
         Session s = activeUsers.get(sid);
         if(s != null){
             try{
@@ -28,7 +29,7 @@ public class SessionManager {
                         s.getUserType()
                 );
             }catch (IncorrectParametersException e){
-                e.printStackTrace();
+                e.fillInStackTrace();
             }
         }
         return null;

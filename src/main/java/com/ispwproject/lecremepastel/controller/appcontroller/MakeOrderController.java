@@ -3,6 +3,7 @@ package com.ispwproject.lecremepastel.controller.appcontroller;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SimpleOrderBean;
+import com.ispwproject.lecremepastel.engineeringclasses.dao.NoticeDAO;
 import com.ispwproject.lecremepastel.engineeringclasses.dao.OrderLineDAO;
 import com.ispwproject.lecremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lecremepastel.engineeringclasses.dao.SimpleOrderDAO;
@@ -10,9 +11,10 @@ import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParam
 import com.ispwproject.lecremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePendingOrderList;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
+import com.ispwproject.lecremepastel.model.Notice;
 import com.ispwproject.lecremepastel.model.OrderLine;
 import com.ispwproject.lecremepastel.model.SimpleOrder;
-import com.ispwproject.lecremepastel.other.NoticeManager;
+import com.ispwproject.lecremepastel.other.NoticeGenerator;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,9 +22,6 @@ import java.sql.SQLException;
 public class MakeOrderController{
     public void createSimpleOrder(String sid, SimpleOrderBean simpleOrderBean) throws IncorrectParametersException, InvalidSessionException, SQLException, IOException, ClassNotFoundException {
         //Various checks
-        if(sid == null) {
-            throw new InvalidSessionException("MakeOrderController:createSimpleOrder: Invalid Session ID!");
-        }
         SessionBean sessionBean = SessionManager.getInstance().getSession(sid);
         if(sessionBean == null) {
             throw new InvalidSessionException("MakeOrderController:createSimpleOrder: Invalid Session ID!");
@@ -55,7 +54,9 @@ public class MakeOrderController{
         orderList.addSimpleOrder(simpleOrder);
 
         //Generate Notice for director user
-        NoticeManager noticeManager = new NoticeManager();
-        noticeManager.createdOrderNotice(simpleOrderBean.getCustomer());
+        NoticeDAO noticeDAO = new NoticeDAO();
+        NoticeGenerator noticeGenerator = new NoticeGenerator();
+        Notice notice = noticeGenerator.createdOrderNotice(simpleOrderBean.getCustomer(),"");
+        noticeDAO.directorNotice(notice);
     }
 }

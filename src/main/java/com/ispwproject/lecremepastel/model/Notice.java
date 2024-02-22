@@ -9,8 +9,8 @@ public class Notice {
     private String content;
     private boolean read;
 
-    public Notice(String subject, String content, boolean read){
-        this(-1,subject,content,read);
+    public Notice(){
+        this(-1,null,null,false);
     }
     public Notice(int id, String subject, String content, boolean read){
         this.id = id;

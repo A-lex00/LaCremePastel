@@ -10,10 +10,10 @@ public class NoticeBean {
     private String content;
     private boolean read;
 
-    public NoticeBean(int id, String subject, String content, boolean read) throws IncorrectParametersException{
+    public NoticeBean(int id, String subject, String content) throws IncorrectParametersException{
         if(subject != null && content != null){
             this.subject = subject;
-            this.read = read;
+            this.read = false;
             this.content = content;
             this.id = id;
         }else{

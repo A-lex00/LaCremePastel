@@ -6,7 +6,7 @@ import com.ispwproject.lecremepastel.engineeringclasses.exception.InvalidSession
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.ObservablePendingOrderList;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lecremepastel.model.SimpleOrder;
-import com.ispwproject.lecremepastel.other.NoticeManager;
+import com.ispwproject.lecremepastel.other.NoticeGenerator;
 
 import java.security.InvalidParameterException;
 
@@ -17,7 +17,7 @@ public class ManageOrderController {
      * @param simpleOrderBean Is necessary only the Order ID set
      */
     public void finalizeOrder(String sid, SimpleOrderBean simpleOrderBean) throws InvalidSessionException, InvalidParameterException{
-        if(sid != null && SessionManager.getInstance().getSession(sid) != null){
+        if(SessionManager.getInstance().getSession(sid) != null){
             if(simpleOrderBean != null){
                 SimpleOrderDAO simpleOrderDAO = new SimpleOrderDAO();
                 simpleOrderDAO.updatePendingOrder(simpleOrderBean.getId(), simpleOrderBean.isAccepted());
@@ -29,8 +29,8 @@ public class ManageOrderController {
                 orderList.removeSimpleOrder(simpleOrder);
 
                 //Write a new Notice for the User target
-                NoticeManager noticeManager = new NoticeManager();
-                noticeManager.finalizedOrderNotice(
+                NoticeGenerator noticeGenerator = new NoticeGenerator();
+                noticeGenerator.finalizedOrderNotice(
                         simpleOrderBean.getId(),
                         simpleOrderBean.getCustomer(),
                         simpleOrderBean.isAccepted()

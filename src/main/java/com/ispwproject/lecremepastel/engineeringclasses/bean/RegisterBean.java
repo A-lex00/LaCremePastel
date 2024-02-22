@@ -1,6 +1,8 @@
 package com.ispwproject.lecremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
+import com.ispwproject.lecremepastel.other.EmailUtils;
+
 import java.util.regex.Pattern;
 
 public class RegisterBean {
@@ -36,7 +38,8 @@ public class RegisterBean {
             boolean customer
 
     ) throws IncorrectParametersException {
-        boolean isEmailValid = checkEmail(email);
+        EmailUtils emailUtils = new EmailUtils();
+        boolean isEmailValid = emailUtils.checkEmail(email);
         boolean isUsernameValid = username != null && !username.isBlank();
         boolean isFirstnameValid = firstname != null && !firstname.isBlank();
         boolean isSurnameValid = surname != null && !surname.isBlank();
@@ -66,21 +69,14 @@ public class RegisterBean {
             throw new IncorrectParametersException("Invalid User Parameters");
         }
     }
-    private boolean checkEmail(String email){
-        //Check Email format
-        if(email != null){
-            String regexPattern = "^(.+)@(\\S+)$";
-            return Pattern.compile(regexPattern).matcher(email).matches();
-        }
-        return false;
-    }
 
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
-        if(this.checkEmail(email)){
+        EmailUtils emailUtils = new EmailUtils();
+        if(emailUtils.checkEmail(email)){
             this.email = email;
         }
     }

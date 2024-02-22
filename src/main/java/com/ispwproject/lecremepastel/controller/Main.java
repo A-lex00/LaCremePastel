@@ -2,10 +2,10 @@ package com.ispwproject.lecremepastel.controller;
 
 import com.ispwproject.lecremepastel.controller.CLIController.CLContext;
 import com.ispwproject.lecremepastel.controller.CLIController.StartSection;
-import com.ispwproject.lecremepastel.controller.appcontroller.ManageOrderController;
-import com.ispwproject.lecremepastel.engineeringclasses.bean.SimpleOrderBean;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.Configurations;
+import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lecremepastel.other.CLIMessages;
+import com.ispwproject.lecremepastel.other.NoticeGenerator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +18,9 @@ public class Main extends Application {
         String enableGUI = Configurations.getInstance().getProperty("GUI");
 
         //Test area
+        NoticeGenerator noticeGenerator = new NoticeGenerator();
+        System.out.println(SessionManager.getInstance().getSession(null));
+
         //End Test area
 
         if(enableGUI.equals("yes")) {
