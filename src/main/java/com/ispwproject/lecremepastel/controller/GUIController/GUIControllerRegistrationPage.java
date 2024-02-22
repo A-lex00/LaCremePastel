@@ -59,6 +59,9 @@ public class GUIControllerRegistrationPage{
         boolean customerUser = customerDot.isSelected();
         boolean directorUser = directorDot.isSelected();
         boolean workerUser = workerDot.isSelected();
+        if(directorUser){
+            extraField.setVisible(false);
+        }
         if(customerUser || workerUser){
             extraField.setVisible(true);
             if(workerUser){
@@ -77,6 +80,7 @@ public class GUIControllerRegistrationPage{
             boolean customerUser = customerDot.isSelected();
             boolean directorUser = directorDot.isSelected();
             boolean workerUser = workerDot.isSelected();
+
 
             String extraInfo = extraField.getText();
             String firstname = firstnameField.getText();
