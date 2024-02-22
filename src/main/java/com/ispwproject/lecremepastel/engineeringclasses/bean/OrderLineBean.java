@@ -71,4 +71,11 @@ public class OrderLineBean {
     public int hashCode() {
         return Objects.hash(orderId);
     }
+
+    @Override
+    public String toString() {
+        return "Codice Prodotto :" + productId +
+                ", Quantità :" + amount +
+                ", Prezzo unitario :" + unitPrice;
+    }
 }

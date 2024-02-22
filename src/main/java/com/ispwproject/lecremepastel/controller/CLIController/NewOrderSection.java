@@ -15,7 +15,7 @@ public class NewOrderSection implements CLSection{
     @Override
     public void doAction(CLContext clContext) {
         clContext.setSection(this);
-        CLSection next = null;
+        CLSection next;
         Scanner scanner = new Scanner(System.in);
         SimpleOrderBean simpleOrderBean = new SimpleOrderBean();
         ManageProductController manageProductController = new ManageProductController();
@@ -96,13 +96,13 @@ public class NewOrderSection implements CLSection{
                 tot += o.getTotalPrice();
             }
         }
-        System.out.println("Totale Ordine: "+tot+" €\n");
+        System.out.printf("Totale Ordine: %.2f€%n",tot);
     }
 
     private int selectProduct(Scanner scanner, List<ProductBean> productList){
         int index;
         ProductBean dummy;
-        System.out.println(CLIStrings.CHOOSE_PRODUCT);
+        System.out.print(CLIStrings.CHOOSE_PRODUCT);
         try{
             int pid = Integer.parseInt(scanner.nextLine());
             dummy = new ProductBean();
@@ -117,7 +117,7 @@ public class NewOrderSection implements CLSection{
     private int getAmount(Scanner scanner){
         int amount;
         do{
-            System.out.println(CLIStrings.PRODUCT_AMOUNT);
+            System.out.print(CLIStrings.PRODUCT_AMOUNT);
             try {
                 amount = Integer.parseInt(scanner.nextLine());
             }catch(NumberFormatException e){
@@ -143,14 +143,11 @@ public class NewOrderSection implements CLSection{
             orderLineBean.setUnitPrice(selected.getPrice());
 
             simpleOrderBean.addOrderLine(orderLineBean);
-
-            System.out.println(CLIStrings.PRODUCT_AMOUNT);
-
         }
     }
 
     private void remProduct(Scanner scanner, SimpleOrderBean simpleOrderBean){
-        System.out.println(CLIStrings.CHOOSE_PRODUCT);
+        System.out.print(CLIStrings.CHOOSE_PRODUCT);
         int pid;
         try{
             pid = Integer.parseInt(scanner.nextLine());
