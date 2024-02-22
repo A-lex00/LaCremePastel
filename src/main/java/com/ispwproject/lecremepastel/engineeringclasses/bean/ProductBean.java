@@ -17,13 +17,13 @@ public class ProductBean {
         boolean isProductNameValid = productName != null;
         boolean isCategoryValid = category != null;
 
-        if(isProductNameValid && isCategoryValid && price > 0){
+        if(isProductNameValid && isCategoryValid && price >= 0){
             this.id = id;
             this.productName = productName;
             this.category = category;
             this.price = price;
         }else{
-            throw new IncorrectParametersException("ProductBean: Invalid Paameters!");
+            throw new IncorrectParametersException("ProductBean: Invalid Parameters!");
         }
     }
 

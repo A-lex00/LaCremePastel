@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -21,15 +22,20 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <ComboBox fx:id="productBox" layoutX="67.0" layoutY="184.0" prefWidth="150.0" />
-      <TextField fx:id="quantityField" layoutX="232.0" layoutY="184.0" prefHeight="26.0" prefWidth="122.0" text="immettere quantità" />
+      <ComboBox fx:id="productBox" layoutX="67.0" layoutY="184.0" prefWidth="150.0" style="-fx-background-color: e1680f;" />
+      <TextField fx:id="quantityField" layoutX="232.0" layoutY="184.0" prefHeight="26.0" prefWidth="122.0" promptText="immettere quantità" />
       <Text layoutX="87.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona Prodotti">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
       <Button layoutX="368.0" layoutY="184.0" mnemonicParsing="false" onAction="#addCart" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Aggiungi al carrello" />
-      <Button layoutX="105.0" layoutY="407.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Torna indietro" />
-      <Button layoutX="303.0" layoutY="407.0" mnemonicParsing="false" onAction="#showShoppingCart" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Mostra carrello" />
+      <HBox layoutX="94.0" layoutY="363.0" prefHeight="34.0" prefWidth="385.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Indietro" />
+            <Button mnemonicParsing="false" onAction="#loadProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Carica Prodotti" />
+            <Button mnemonicParsing="false" onAction="#showShoppingCart" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Mostra carrello" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
