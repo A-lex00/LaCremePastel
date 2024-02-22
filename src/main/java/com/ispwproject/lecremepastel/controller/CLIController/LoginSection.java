@@ -47,7 +47,7 @@ public class LoginSection implements CLSection{
                     next = new StartSection();
                 }
             } catch (IncorrectParametersException e) {
-                System.out.println(CLIStrings.EMPTY_INPUT);
+                System.out.println(CLIStrings.EMPTY_CREDENTIALS);
             }
         }while(next == null);
         next.doAction(clContext);

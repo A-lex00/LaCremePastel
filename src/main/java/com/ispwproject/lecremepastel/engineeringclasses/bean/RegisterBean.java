@@ -1,18 +1,15 @@
 package com.ispwproject.lecremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
+import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectUserSetupException;
 import com.ispwproject.lecremepastel.other.EmailUtils;
-
-import java.util.regex.Pattern;
 
 public class RegisterBean {
     private String email;
-    private String cnfEmail;
     private String username;
     private String firstname;
     private String surname;
     private String password;
-    private String cnfPass;
     private String cfPiva;
     private boolean worker;
     private boolean director;
@@ -22,43 +19,30 @@ public class RegisterBean {
     private int userType;
 
     public RegisterBean(
-
             String email,
-            String cnfEmail,
             String username,
-            String firstname,
-            String surname,
             String password,
-            String cnfPass,
-            String cfPiva,
-            String role,
-            String billingAddress,
             boolean worker,
             boolean director,
             boolean customer
 
-    ) throws IncorrectParametersException {
+    ) throws IncorrectParametersException, IncorrectUserSetupException {
         EmailUtils emailUtils = new EmailUtils();
         boolean isEmailValid = emailUtils.checkEmail(email);
         boolean isUsernameValid = username != null && !username.isBlank();
-        boolean isFirstnameValid = firstname != null && !firstname.isBlank();
-        boolean isSurnameValid = surname != null && !surname.isBlank();
-        boolean isPasswdValid = password != null && cnfPass != null && !password.isBlank() && !cnfPass.isBlank();
+        boolean isPasswdValid = password != null && !password.isBlank();
         boolean isUserSelected = (worker || customer || director);
 
-        if(isEmailValid && isUsernameValid && isFirstnameValid && isSurnameValid && isPasswdValid && isUserSelected){
+        if(isEmailValid && isUsernameValid && isPasswdValid && isUserSelected){
             this.email = email;
-            this.cnfEmail=cnfEmail;
             this.username = username;
-            this.firstname = firstname;
-            this.surname = surname;
+            this.firstname = "";
+            this.surname = "";
             this.password = password;
+            this.cfPiva= "";
 
-            this.cnfPass=cnfPass;
-            this.cfPiva= cfPiva;
-
-            this.role =role;
-            this.billingAddress =billingAddress;
+            this.role = "";
+            this.billingAddress = "";
 
             this.worker = worker;
             this.customer = customer;
@@ -173,41 +157,15 @@ public class RegisterBean {
         return userType;
     }
 
-    public void setUserType(){
-        if(worker){
+    public void setUserType() throws IncorrectUserSetupException{
+        if(worker && !customer && !director){
             userType = 3;
-        }else if(customer){
+        }else if(!worker && customer && !director){
             userType = 2;
-        }else{
+        }else if(!worker && !customer && director){
             userType = 1;
-        }
-    }
-
-    public String getCnfEmail() {
-        return cnfEmail;
-    }
-
-    public void setCnfEmail(String cnfEmail) {
-        if(cnfEmail != null){
-            this.cnfEmail = cnfEmail;
-        }
-    }
-
-    public String getCnfPass() {
-        return cnfPass;
-    }
-
-    public void setCnfPass(String cnfPass) {
-        if(cnfPass != null){
-            this.cnfPass = cnfPass;
-        }
-    }
-
-    public void checkAll() throws IncorrectParametersException{
-        if(!email.equals(cnfEmail)){
-            throw new IncorrectParametersException("Email not matching");
-        }else if(!password.equals(cnfPass)){
-            throw new IncorrectParametersException("Password not matching");
+        }else{
+            throw new IncorrectUserSetupException("Invalid User Setup");
         }
     }
 }

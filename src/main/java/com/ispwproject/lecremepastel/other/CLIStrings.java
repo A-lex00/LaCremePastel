@@ -56,6 +56,7 @@ public class CLIStrings {
     public static final String USERNAME_PROMPT = "Inserire il Nome Utente che si vuole utilizzare > ";
     public static final String EMAIL_PROMPT = "Inserire l'indirizzo Email > ";
     public static final String PASSWD_PROMPT = "Inserire la Password > ";
+    public static final String CF_PIVA_PROMPT = "Inserire Codice Fiscale o P.IVA > ";
     public static final String ROLE_PROMPT = "Inserire la propria Specializzazione > ";
     public static final String BILLING_ADDRESS_PROMPT = "Inserire l'Indirizzo di Fatturazione > ";
     public static final String CONFIRM_DATA = "I dati inseriti sono corretti? [s/N] > ";
@@ -70,6 +71,7 @@ public class CLIStrings {
 
 
     //*********** ERROR MESSAGES **************//
-    public static final String EMPTY_INPUT = "Non sono ammesse credenziali vuote!";
+    public static final String EMPTY_CREDENTIALS = "Non sono ammesse credenziali vuote!";
+    public static final String EMPTY_INPUT = "Non sono ammessi campi vuoti!";
     public static final String INVALID_INT = "Inserire un numero valido!";
 }

@@ -67,10 +67,12 @@ public class GUIControllerRegistrationPage{
             else{
                 extraField.setPromptText("Inserisci il tuo indirizzo");
             }
+        }else if(directorUser){
+            extraField.setVisible(false);
         }
     }
 
-    public void confirm(ActionEvent confirmEvent) {
+    public void confirm() {
         try {
             boolean customerUser = customerDot.isSelected();
             boolean directorUser = directorDot.isSelected();
@@ -86,15 +88,24 @@ public class GUIControllerRegistrationPage{
             String cnfEmail = cnfEmailField.getText();
             String cfPiva = cfPivaField.getText();
 
-            String billingAddress = null;
-            String role = null;
+            if(!email.equals(cnfEmail)){
+                throw new IncorrectParametersException("Email do not match!");
+            }
+            if(!password.equals(cnfPass)){
+                throw new IncorrectParametersException("Password do not match!");
+            }
+
+            RegisterBean rBean = new RegisterBean(email, username, password, workerUser, directorUser, customerUser);
+            rBean.setFirstname(firstname);
+            rBean.setSurname(surname);
+            rBean.setCfPiva(cfPiva);
             if (customerUser) {
-                billingAddress = extraInfo;
+                rBean.setBillingAddress(extraInfo);
             }
             if (workerUser) {
-                role = extraInfo;
+                rBean.setRole(extraInfo);
             }
-            RegisterBean rBean = new RegisterBean(email, cnfEmail, username, firstname, surname, password, cnfPass, cfPiva, role, billingAddress, workerUser, directorUser, customerUser);
+
             this.registerBean = rBean;
             LoginController loginController = new LoginController();
             System.out.println(rBean);
@@ -105,9 +116,9 @@ public class GUIControllerRegistrationPage{
             }
         } catch (IncorrectParametersException le) {
             System.err.println("Errore nel passaggio nel Bean");
-            le.printStackTrace();
+            le.fillInStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
     }
 
@@ -121,7 +132,7 @@ public class GUIControllerRegistrationPage{
             stage.show();
         } catch (Exception le) {
             System.err.println("Errore nel backHome!");
-            le.printStackTrace();
+            le.fillInStackTrace();
         }
     }
 }
