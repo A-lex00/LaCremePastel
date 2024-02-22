@@ -30,24 +30,12 @@ public class GUIControlloreMakeOrder {
     private TextField quantityField=new TextField();
     private OrderLineBean currentCart=new OrderLineBean();
 
-
-    public void inizialize(SessionBean importedSessionBean) throws IncorrectParametersException {
-        this.sessionBean=importedSessionBean;
-        ManageProductController productController=new ManageProductController();
-        List<ProductBean> allProductList=productController.loadProducts();
-        ObservableList<String> productNames=FXCollections.observableArrayList();
-        for(ProductBean product: allProductList) {
-            System.out.println(product.getProductName());
-            productNames.add(product.getProductName());
-    }      productBox.setItems(productNames);
-    }
     @FXML
     public void showShoppingCart(ActionEvent showCartEvent) {
         Node n = (Node) showCartEvent.getSource();
         Stage shoppingStage = (Stage) n.getScene().getWindow();
         try {
-            FXMLLoader loader= new FXMLLoader(getClass().getResource("/shoppingCart.fxml"));
-            Parent root=  FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
+            Parent root= FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
             shoppingStage.setScene(new Scene(root, 629, 481));
             shoppingStage.setTitle("La Creme Pastel");
             shoppingStage.show();
@@ -76,12 +64,13 @@ public class GUIControlloreMakeOrder {
                 selectedProductId = product.getId();
             }
         }
-        if (selectedProductId != -1) {
-            currentCart.setOrderId(selectedProductId);
+
+            if (selectedProductId != -1) {
+                currentCart.setOrderId(selectedProductId);
+            }
+            currentCart.setAmount(Integer.parseInt(quantityField.getText()));
+            System.out.println(currentCart + "currentCart");
         }
-        currentCart.setAmount(Integer.parseInt(quantityField.getText()));
-        System.out.println(currentCart+ "currentCart");
-    }
     @FXML
     public void goBack(ActionEvent backEvent){}
 }

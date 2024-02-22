@@ -1,5 +1,6 @@
 package com.ispwproject.lecremepastel.controller.GUIController;
 
+import com.ispwproject.lecremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,13 +14,14 @@ public class GUIControllerShoppingCart {
     @FXML
     private ListView orderView=new ListView<>();
     private SessionBean sessionBean;
-    public void inizialize(SessionBean importedSessionBean, ObservableList currentOrder){
-        this.sessionBean=importedSessionBean;
-        orderView.setItems(currentOrder);
-    }
 
     @FXML
     public void confirmOrder(ActionEvent confirmEvent){}
+
+    @FXML
+    public void loadCart(ActionEvent loadEvent){
+
+    }
     @FXML
     public void goBack(ActionEvent backEvent){
         Node node = (Node) backEvent.getSource();
