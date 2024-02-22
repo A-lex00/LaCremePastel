@@ -1,5 +1,6 @@
 package com.ispwproject.lecremepastel.controller.GUIController;
 
+import com.ispwproject.lecremepastel.controller.appcontroller.MakeOrderController;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 import com.ispwproject.lecremepastel.engineeringclasses.singleton.SessionManager;
@@ -29,6 +30,9 @@ public class GUIControllerCustomerPage {
         Node n = (Node) composeOrderEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         try{
+            GUIControlloreMakeOrder controller=new GUIControlloreMakeOrder();
+            controller.inizialize(sessionBean);
+
             Parent root = FXMLLoader.load(getClass().getResource("/makeOrder.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
