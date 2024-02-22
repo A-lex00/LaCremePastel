@@ -13,6 +13,10 @@ public class SimpleOrder{
     private boolean done;
 
 
+    public SimpleOrder(){
+        this(-1,"",true,false,false);
+    }
+
     public SimpleOrder(String customer, boolean pending, boolean accepted, boolean done){
         this(-1,customer,pending,accepted,done);
     }
