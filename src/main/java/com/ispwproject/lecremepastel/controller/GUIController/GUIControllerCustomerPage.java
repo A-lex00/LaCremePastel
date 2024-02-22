@@ -30,9 +30,11 @@ public class GUIControllerCustomerPage {
         Node n = (Node) composeOrderEvent.getSource();
         Stage stage = (Stage) n.getScene().getWindow();
         try{
-            GUIControlloreMakeOrder controller=new GUIControlloreMakeOrder();
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/makeOrder.fxml"));
+            GUIControlloreMakeOrder controller=loader.getController();
             controller.inizialize(sessionBean);
-            Parent root = FXMLLoader.load(getClass().getResource("/makeOrder.fxml"));
+            Parent root=loader.getRoot();
+          //  Parent root = FXMLLoader.load(getClass().getResource("/makeOrder.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();

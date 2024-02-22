@@ -1,6 +1,7 @@
 package com.ispwproject.lecremepastel.controller.GUIController;
 
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lecremepastel.other.NoticeGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,6 +22,7 @@ public class GUIControllerHelp {
     private TextArea messageArea;
     @FXML
     private Button inviaSegnalazione;
+    private String text;
 
     @FXML
     public void setWelcomeLabel(){
@@ -31,7 +33,7 @@ public class GUIControllerHelp {
     @FXML
     public void getText(ActionEvent event){
         try{
-            String text=messageArea.getText();
+            this.text=messageArea.getText();
         }catch(Exception e){
             System.err.println("Impossibile ricevere il testo!");
         }
@@ -46,7 +48,6 @@ public class GUIControllerHelp {
             Stage poupopStage=new Stage();
             poupopStage.initModality(Modality.APPLICATION_MODAL);   //blocca l'interazione con la finestra principale fino alla chiusura del poupop
             poupopStage.initOwner(stage);
-
             poupopStage.setScene(scene);
             poupopStage.showAndWait(); //mostra il poupop e aspetta la chiusura prima di procedere con il codice successivo
             System.out.println("Segnalazione inviata correttamente");

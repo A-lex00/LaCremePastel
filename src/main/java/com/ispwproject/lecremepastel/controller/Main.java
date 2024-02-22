@@ -14,10 +14,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         String enableGUI = Configurations.getInstance().getProperty("GUI");
-
         //Test area
         //End Test area
-
         if(enableGUI.equals("yes")) {
             launch(args);
         }else if(enableGUI.equals("no")){

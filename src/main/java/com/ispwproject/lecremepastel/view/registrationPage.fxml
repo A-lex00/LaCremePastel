@@ -37,12 +37,13 @@
             <Button fx:id="confermButton" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: e1680f;" text="Conferma" />
          </children>
       </HBox>
-      <HBox layoutX="118.0" layoutY="299.0" spacing="20.0">
+      <HBox layoutX="151.0" layoutY="337.0" spacing="20.0">
          <children>
             <RadioButton fx:id="customerDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Cliente" />
             <RadioButton fx:id="directorDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Direttore" />
             <RadioButton fx:id="workerDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Lavoratore" />
          </children>
       </HBox>
+      <TextField fx:id="extraField" layoutX="107.0" layoutY="291.0" visible="false" />
    </children>
 </AnchorPane>
