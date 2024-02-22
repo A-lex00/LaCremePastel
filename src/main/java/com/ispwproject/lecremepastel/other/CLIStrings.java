@@ -59,9 +59,25 @@ public class CLIStrings {
     public static final String CF_PIVA_PROMPT = "Inserire Codice Fiscale o P.IVA > ";
     public static final String ROLE_PROMPT = "Inserire la propria Specializzazione > ";
     public static final String BILLING_ADDRESS_PROMPT = "Inserire l'Indirizzo di Fatturazione > ";
-    public static final String CONFIRM_DATA = "I dati inseriti sono corretti? [s/N] > ";
     public static final String REGISTRATION_FAILED = "Registrazione Fallita!";
     public static final String REGISTRATION_SUCCESS = "Registrazione Completata!";
+
+
+    //*********** NEW ORDER SECTION **************//
+    public static final String NEW_ORDER_MENU = """
+            Selezionare una delle seguenti opzioni:
+            1 > Aggiungi un Prodotto al Carrello
+            2 > Rimuovi un Prodotto dal Carrello
+            3 > Stampa Lista Prodotti
+            4 > Conferma Ordine
+            5 > Cancella Ordine""";
+    public static final String PRODUCT_LIST = "Prodotti disponibili:";
+    public static final String CHOOSE_PRODUCT = "Inserire il codice del prodotto > ";
+    public static final String PRODUCT_AMOUNT = "Inserire la quantità desiderata > ";
+    public static final String RECAP_ORDER = "Riepilogo ordine:";
+    public static final String ORDER_CONFIRMED = "Ordine confermato!";
+    public static final String ORDER_CANCELED = "Ordine annullato!";
+
 
     //*********** MISCELLANEOUS **************//
     public static final String BYE_MESSAGE = "Chiusura...";
@@ -74,4 +90,7 @@ public class CLIStrings {
     public static final String EMPTY_CREDENTIALS = "Non sono ammesse credenziali vuote!";
     public static final String EMPTY_INPUT = "Non sono ammessi campi vuoti!";
     public static final String INVALID_INT = "Inserire un numero valido!";
+    public static final String INVALID_PRODUCT_ID = "Prodotto inesistente!";
+    public static final String MAKE_ORDER_ERROR = "Errore in aggiunta dell'ordine, annullamento operazione!";
+    public static final String INVALID_SESSION = "Attenzione, sessione non valida, redirect a schermata principale!";
 }

@@ -7,7 +7,7 @@ public class OrderLineBean {
     private int orderId;
     private int productId;
     private int amount;
-    private int unitPrice;
+    private double unitPrice;
 
     public OrderLineBean(){
         orderId = -1;
@@ -16,7 +16,7 @@ public class OrderLineBean {
         unitPrice=0;
     }
 
-    public OrderLineBean(int orderId, int productId, int amount, int unitPrice){
+    public OrderLineBean(int orderId, int productId, int amount, double unitPrice){
         this.orderId = orderId;
         this.productId = productId;
         this.amount = amount;
@@ -47,12 +47,16 @@ public class OrderLineBean {
         this.amount = amount;
     }
 
-    public int getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public double getTotalPrice(){
+        return amount*unitPrice;
     }
 
     @Override

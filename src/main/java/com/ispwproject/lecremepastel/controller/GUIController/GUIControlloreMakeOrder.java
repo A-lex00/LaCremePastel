@@ -37,7 +37,7 @@ public class GUIControlloreMakeOrder {
         Stage shoppingStage = (Stage) n.getScene().getWindow();
         try {
             CartBean cartBean=new CartBean();
-            cartBean.setOrder(currentCart);
+            //cartBean.setOrder(currentCart);
             Parent root= FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
             shoppingStage.setScene(new Scene(root, 629, 481));
             shoppingStage.setTitle("La Creme Pastel");
@@ -46,7 +46,7 @@ public class GUIControlloreMakeOrder {
         }
     }
     @FXML
-    public void loadProduct() throws IncorrectParametersException {
+    public void loadProduct(){
         ManageProductController productController=new ManageProductController();
         List<ProductBean> allProductList=productController.loadProducts();
         ObservableList<String> productNames=FXCollections.observableArrayList();
@@ -56,7 +56,7 @@ public class GUIControlloreMakeOrder {
         }      productBox.setItems(productNames);
     }
     @FXML
-    public OrderLineBean addCart() throws IncorrectParametersException {
+    public OrderLineBean addCart() {
 
         ManageProductController productController = new ManageProductController();
         List<ProductBean> allProductList = productController.loadProducts();

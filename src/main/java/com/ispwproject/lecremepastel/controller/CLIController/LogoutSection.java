@@ -7,12 +7,13 @@ public class LogoutSection implements CLSection{
     @Override
     public void doAction(CLContext clContext) {
         clContext.setSection(this);
+        //CLSection next = new StartSection();
 
         //Logout
         SessionManager.getInstance().delSession(clContext.getSessionID());
         clContext.clearSessionID();
         System.out.println(CLIStrings.LOGOUT);
 
-        //No next state: Call stack reset
+        //next.doAction(clContext);
     }
 }

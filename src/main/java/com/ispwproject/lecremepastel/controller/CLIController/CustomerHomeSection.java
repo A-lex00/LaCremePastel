@@ -14,6 +14,7 @@ public class CustomerHomeSection implements CLSection{
 
         System.out.println(CLIStrings.HOME_SECTION_CUSTOMER);
         do{
+            clContext.setSection(this);
             System.out.print(CLIStrings.PROMPT);
             try{
                 choose = Integer.parseInt(scanner.nextLine());
@@ -23,10 +24,11 @@ public class CustomerHomeSection implements CLSection{
             }
             switch(choose){
                 case 1:
-                    //TODO: New Order
+                    //New Order
+                    next = new NewOrderSection();
                     break;
                 case 2:
-                    //TODO: Manage Orders
+                    //Manage Orders
                     break;
                 case 3:
                     //New Return request

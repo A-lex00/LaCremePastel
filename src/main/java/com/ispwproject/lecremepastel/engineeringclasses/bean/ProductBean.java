@@ -2,6 +2,8 @@ package com.ispwproject.lecremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 
+import java.util.Objects;
+
 public class ProductBean {
 
     private int id;
@@ -9,8 +11,11 @@ public class ProductBean {
     private String category;
     private double price;
 
-    public ProductBean() throws  IncorrectParametersException{
-        this(-1,"","",0);
+    public ProductBean() {
+        this.id = -1;
+        this.productName = "";
+        this.category = "";
+        this.price = 0;
     }
 
     public ProductBean(int id, String productName, String category, double price) throws IncorrectParametersException{
@@ -63,5 +68,26 @@ public class ProductBean {
         if(id>0){
            this.id=id;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductBean that = (ProductBean) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Codice prodotto :'" + id + '\'' +
+                ", Nome prodotto :'" + productName + '\'' +
+                ", Categoria :'" + category + '\'' +
+                ", Prezzo :" + price + "€";
     }
 }

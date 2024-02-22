@@ -10,20 +10,24 @@ import java.util.List;
 
 public class ManageProductController {
 
-    public List<ProductBean> loadProducts() throws IncorrectParametersException {
+    public List<ProductBean> loadProducts(){
         ArrayList<ProductBean> productBeanList = new ArrayList<>();
 
         //Load all products available in database
         ProductDAO productDAO = new ProductDAO();
         List<Product> productList = productDAO.getAllProducts();
         for(Product p : productList){
-            System.out.println(p);
-            productBeanList.add(new ProductBean(
-                    p.getId(),
-                    p.getProductName(),
-                    p.getCategory(),
-                    p.getPrice()
-            ));
+            try{
+                productBeanList.add(new ProductBean(
+                        p.getId(),
+                        p.getProductName(),
+                        p.getCategory(),
+                        p.getPrice()
+                ));
+            }catch(IncorrectParametersException e){
+                e.fillInStackTrace();
+                System.err.println("Error loading product: "+p.getId());
+            }
         }
 
         return productBeanList;
