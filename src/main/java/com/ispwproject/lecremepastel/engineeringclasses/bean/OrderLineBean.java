@@ -47,6 +47,14 @@ public class OrderLineBean {
         this.amount = amount;
     }
 
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

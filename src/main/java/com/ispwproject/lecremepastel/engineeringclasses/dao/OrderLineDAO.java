@@ -26,7 +26,12 @@ public class OrderLineDAO {
             while(rs.next()){
                 int pid = rs.getInt("product");
                 int amount = rs.getInt("amount");
-                orderList.add(new OrderLineBean(orderId,pid,amount));
+                OrderLineBean orderLineBean = new OrderLineBean();
+                orderLineBean.setOrderId(orderId);
+                orderLineBean.setProductId(pid);
+                orderLineBean.setAmount(amount);
+                orderLineBean.setUnitPrice(0);
+                orderList.add(orderLineBean);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
