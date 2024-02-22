@@ -1,11 +1,13 @@
 package com.ispwproject.lecremepastel.controller.GUIController;
 
+import com.ispwproject.lecremepastel.controller.appcontroller.ManageProductController;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lecremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lecremepastel.engineeringclasses.exception.IncorrectParametersException;
 import com.ispwproject.lecremepastel.model.OrderLine;
 import com.ispwproject.lecremepastel.model.Product;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,33 +19,37 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.Collection;
 import java.util.List;
 
 public class GUIControlloreMakeOrder {
-    private ObservableList currentOrder;
-    private ObservableList productList;
-    private ObservableList idProductList;
     private SessionBean sessionBean;
     @FXML
-    private ComboBox productBox=new ComboBox<>();
+    private ComboBox<String> productBox=new ComboBox<>();
     @FXML
     private TextField quantityField=new TextField();
+    private OrderLineBean currentCart=new OrderLineBean();
+
 
     public void inizialize(SessionBean importedSessionBean) throws IncorrectParametersException {
         this.sessionBean=importedSessionBean;
-        List<ProductBean> allProductList = null;
+        ManageProductController productController=new ManageProductController();
+        List<ProductBean> allProductList=productController.loadProducts();
+        ObservableList<String> productNames=FXCollections.observableArrayList();
         for(ProductBean product: allProductList) {
-            productList.add(product.getProductName());
-            idProductList.add(product.getId());
-        }
-        productBox.setItems(productList);
+            System.out.println(product.getProductName());
+            productNames.add(product.getProductName());
+    }      productBox.setItems(productNames);
     }
     @FXML
     public void showShoppingCart(ActionEvent showCartEvent) {
+        GUIControllerShoppingCart controllerShoppingCart=new GUIControllerShoppingCart();
         Node n = (Node) showCartEvent.getSource();
         Stage shoppingStage = (Stage) n.getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/shoppingCart.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/shoppingCart.fxml"));
+            loader.setController(controllerShoppingCart);
+            Parent root = loader.load();
             shoppingStage.setScene(new Scene(root, 629, 481));
             shoppingStage.setTitle("La Creme Pastel");
             shoppingStage.show();
@@ -51,13 +57,34 @@ public class GUIControlloreMakeOrder {
         }
     }
     @FXML
-    public void goBack(ActionEvent backEvent){}
-    @FXML
-    public void addCart(ActionEvent addEvent){
-        currentOrder.add(productBox.getValue());
-        int quantity= Integer.parseInt(quantityField.getText());
-
-        OrderLineBean orderLineBean= new OrderLineBean();
-
+    public void loadProduct(ActionEvent backEvent) throws IncorrectParametersException {
+        ManageProductController productController=new ManageProductController();
+        List<ProductBean> allProductList=productController.loadProducts();
+        ObservableList<String> productNames=FXCollections.observableArrayList();
+        for(ProductBean product: allProductList) {
+            System.out.println(product.getProductName());
+            productNames.add(product.getProductName());
+        }      productBox.setItems(productNames);
     }
+    @FXML
+    public void addCart(ActionEvent addEvent) throws IncorrectParametersException {
+
+        ManageProductController productController = new ManageProductController();
+        List<ProductBean> allProductList = productController.loadProducts();
+        int selectedProductId = -1;
+        for (ProductBean product : allProductList) {
+            if (product.getProductName().equals(productBox.getValue())) ;
+            {
+                selectedProductId = product.getId();
+                break;
+            }
+        }
+        if (selectedProductId != -1) {
+            currentCart.setOrderId(selectedProductId);
+        }
+        currentCart.setAmount(Integer.parseInt(quantityField.getText()));
+        System.out.println(currentCart+ "currentCart");
+    }
+    @FXML
+    public void goBack(ActionEvent backEvent){}
 }

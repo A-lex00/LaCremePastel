@@ -32,13 +32,12 @@ public class GUIControllerCustomerPage {
         try{
             GUIControlloreMakeOrder controller=new GUIControlloreMakeOrder();
             controller.inizialize(sessionBean);
-
             Parent root = FXMLLoader.load(getClass().getResource("/makeOrder.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();
         }catch(Exception e){
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 

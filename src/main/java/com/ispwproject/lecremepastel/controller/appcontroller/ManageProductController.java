@@ -17,6 +17,7 @@ public class ManageProductController {
         ProductDAO productDAO = new ProductDAO();
         List<Product> productList = productDAO.getAllProducts();
         for(Product p : productList){
+            System.out.println(p);
             productBeanList.add(new ProductBean(
                     p.getId(),
                     p.getProductName(),
