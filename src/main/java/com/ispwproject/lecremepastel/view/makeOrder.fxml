@@ -33,7 +33,6 @@
       <HBox layoutX="94.0" layoutY="363.0" prefHeight="34.0" prefWidth="385.0" spacing="20.0">
          <children>
             <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Indietro" />
-            <Button mnemonicParsing="false" onAction="#loadProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Carica Prodotti" />
             <Button mnemonicParsing="false" onAction="#showShoppingCart" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Mostra carrello" />
          </children>
       </HBox>

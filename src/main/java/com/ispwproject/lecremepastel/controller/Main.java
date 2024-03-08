@@ -18,7 +18,7 @@ public class Main extends Application {
         //End Test area
         if(enableGUI.equals("yes")) {
             launch(args);
-        }else if(enableGUI.equals("no")){
+        }else{
             startCLI();
         }
     }
