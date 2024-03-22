@@ -1,15 +1,13 @@
 package com.ispwproject.lecremepastel.other;
 
-import java.util.regex.Pattern;
+import org.apache.commons.validator.routines.EmailValidator;
 
 public class EmailUtils {
 
-    private static final String REGEX = "^(.*)@(\\S*)$";
-
     public boolean checkEmail(String email){
-        if(email != null){
-            return Pattern.compile(REGEX).matcher(email).matches();
-        }
-        return false;
+        EmailValidator emailValidator = EmailValidator.getInstance();
+        return emailValidator.isValid(email);
     }
+
+
 }

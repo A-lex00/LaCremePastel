@@ -5,7 +5,7 @@ public class CLContext {
     private String sessionID;
 
     public CLContext(){
-        section = null;
+        section = new StartSection();
         sessionID = null;
     }
 

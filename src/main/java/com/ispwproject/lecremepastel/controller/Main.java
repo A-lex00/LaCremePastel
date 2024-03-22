@@ -26,9 +26,6 @@ public class Main extends Application {
     public static void startCLI(){
         CLContext cli = new CLContext();
 
-        StartSection startSection = new StartSection();
-        startSection.doAction(cli);
-
         System.out.println(CLIStrings.BYE_MESSAGE);
         System.exit(0);
     }

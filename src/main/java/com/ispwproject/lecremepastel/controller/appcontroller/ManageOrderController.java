@@ -16,7 +16,7 @@ public class ManageOrderController {
 
     /**
      * This method sets the order identified by Order ID as accepted or rejected if still pending
-     * @param simpleOrderBean Is necessary only the Order ID set
+     * @param simpleOrderBean Is necessary only the Order ID
      */
     public void finalizeOrder(String sid, SimpleOrderBean simpleOrderBean) throws InvalidSessionException, InvalidParameterException{
         if(SessionManager.getInstance().getSession(sid) != null){

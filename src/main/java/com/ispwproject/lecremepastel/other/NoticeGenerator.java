@@ -1,7 +1,6 @@
 package com.ispwproject.lecremepastel.other;
 
 import com.ispwproject.lecremepastel.model.Notice;
-import com.ispwproject.lecremepastel.other.NoticeStrings;
 public class NoticeGenerator {
 
 
