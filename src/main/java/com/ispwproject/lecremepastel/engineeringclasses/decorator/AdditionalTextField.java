@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
 public class AdditionalTextField extends com.ispwproject.le_creme_pastel.engineeringclasses.decorator.RegistrationPageDecorator {
-    public AdditionalTextField(RegistrationPage registrationPage){
+    public AdditionalTextField(com.ispwproject.le_creme_pastel.engineeringclasses.decorator.RegistrationPage registrationPage){
         super(registrationPage);
     }
 
@@ -32,6 +32,5 @@ public class AdditionalTextField extends com.ispwproject.le_creme_pastel.enginee
         additionalTextField.setId("extraField");
         return null;
     }
-
 }
 */
