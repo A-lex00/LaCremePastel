@@ -1,14 +1,8 @@
 
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-q
-Asrc/main/java/com/ispwproject/lacremepastel/HelloApplication.java,9/e/9e47f1999337f71fa2cf8294b2740a673b6321fa
-p
-@src/main/java/com/ispwproject/lacremepastel/HelloController.java,3/c/3c813df42a0bd7868c0121474295380df8359485
 N
 src/main/java/module-info.java,1/c/1c89a5491fbfda3fb050196d6a239f20200296e7
-p
-@src/main/java/com/ispwproject/lacremepastel/controller/app/dummy,f/e/fe29a3674b032914fe9856fbd3ec0b52e981caba
 p
 @src/main/java/com/ispwproject/lacremepastel/controller/cli/dummy,0/e/0e1e8c4de578c385127b01f179b67417a3bd8331
 p
@@ -25,13 +19,23 @@ Lsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/dummy,a
 Msrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/observer/dummy,7/8/78a037ca5463a302d00c19e5eeb2ad424c0b4c3f
 ~
 Nsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/singleton/dummy,8/9/891212c3df067ee9823ff7287079e80fdde1104e
-
-Osrc/main/java/com/ispwproject/lacremepastel/controller/app/HelloController.java,3/a/3ab06f934591ee7cbeab9aaed1f0bbca5d9c86e8
-m
-=src/main/java/com/ispwproject/lacremepastel/controller/p.java,d/a/da8800dca59ca54d3da7ffb92cb3fb8a0a4afd97
 g
 7src/main/java/com/ispwproject/lacremepastel/other/dummy,7/4/74dd5d05d4a33467045ed0e579523c5a6691dae4
 ~
 Nsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/dummy,e/d/ed4179904b5b340a6c7c7d751539041d6aa05c3a
 E
 src/config.properties,2/9/29886c5d5439009c9b5707381692a3ec0d7810c9
+n
+>src/main/java/com/ispwproject/lacremepastel/model/Product.java,0/6/06831a73be5cdca03b31720ea6fec79ec8838705
+k
+;src/main/java/com/ispwproject/lacremepastel/model/User.java,5/3/531b7349cf6d2364c064572e147b63d0679892f4
+m
+=src/main/java/com/ispwproject/lacremepastel/model/Notice.java,7/4/743f00ab218924f8a10bf92c0063da309f65e9c4
+t
+Dsrc/main/java/com/ispwproject/lacremepastel/controller/app/Main.java,b/6/b6e4f7a8aaa2b49a461f4271771566adbb37bcbe
+o
+?src/main/java/com/ispwproject/lacremepastel/model/Director.java,b/d/bd092668406b2b3eeddb892157a2a2af84b8a556
+o
+?src/main/java/com/ispwproject/lacremepastel/model/Customer.java,4/8/48467396210df00fac966a7cf19ced1ae648be3f
+m
+=src/main/java/com/ispwproject/lacremepastel/model/Worker.java,b/a/ba128e91a1de690c91c0751efd286af5300fe57b
