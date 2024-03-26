@@ -2,6 +2,8 @@ package com.ispwproject.lacremepastel.model;
 
 import java.util.ArrayList;
 
+
+//Ale spiegami la classe ti prego XD
 public class Order {
     private ArrayList<Product> cart;
     private int idOrder;

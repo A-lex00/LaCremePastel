@@ -1,4 +1,4 @@
-package com.ispwproject.lacremepastel.controller.app;
+package com.ispwproject.lacremepastel.controller;
 
 public class Main {
 
