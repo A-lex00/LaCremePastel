@@ -15,11 +15,11 @@
 
   <dependencies>
 
-    <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
     <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20240303</version>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>3.3.2</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -28,7 +28,6 @@
       <artifactId>gson</artifactId>
       <version>2.10.1</version>
     </dependency>
-
 
     <dependency>
       <groupId>org.openjfx</groupId>
