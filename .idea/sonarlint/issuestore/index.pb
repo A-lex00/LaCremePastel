@@ -11,12 +11,8 @@ l
 <src/main/java/com/ispwproject/lacremepastel/model/Order.java,3/a/3a563e2105a10244b51a15beb0e4dc6dafa0773d
 y
 Isrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/bean/dummy,3/4/3488b9ca6ac2c63886e14dc58789e759326899eb
-x
-Hsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/dummy,7/b/7bf173b574035f0858a1ea76fc033265e2c409c3
 }
 Msrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/observer/dummy,7/8/78a037ca5463a302d00c19e5eeb2ad424c0b4c3f
-~
-Nsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/dummy,e/d/ed4179904b5b340a6c7c7d751539041d6aa05c3a
 E
 src/config.properties,2/9/29886c5d5439009c9b5707381692a3ec0d7810c9
 n
@@ -41,8 +37,6 @@ Ysrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/NoticeFa
 Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/singleton/Connector.java,5/c/5c848af3bddba781f047a5b4e9012785fb886944
 Œ
 \src/main/java/com/ispwproject/lacremepastel/engineeringclasses/singleton/Configurations.java,7/3/731584dcebb144e94e34664bc6705bdf480b343b
-Œ
-\src/main/java/com/ispwproject/lacremepastel/engineeringclasses/singleton/SessionManager.java,e/9/e9f8330471131e2c643d82424696815fe77c0430
 ƒ
 Ssrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/DirectorDAO.java,9/0/90382132ae337ea9e6fdbe8d146fbb2bf0708018
 
@@ -65,8 +59,6 @@ p
 Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/DirectorDbDAO.java,3/2/3234dab00726144c1b1c9ffa15c54aa76b175529
 †
 Vsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/WorkerDbDAO.java,f/1/f1d3945729769530abdf96983468d747b9ae610b
-†
-Vsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/CustomerDAO.java,c/3/c3e4b5b07a89f7d4033d12ffaec28d9fb24b4028
 ˆ
 Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/CustomerDbDAO.java,a/b/ab21de4d0ff013f4ccf005cdd38f8c1cf37ee58d
 Œ
@@ -75,3 +67,13 @@ Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/CustomerD
 Osrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/UserDAO.java,9/6/9615ee57210acceb3067b6bbf6f625d990f82644
 Š
 Zsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/WorkerJsonDAO.java,4/a/4a4dd36138f73939a21f13079ab2cef2995971f2
+Œ
+\src/main/java/com/ispwproject/lacremepastel/engineeringclasses/singleton/SessionManager.java,e/9/e9f8330471131e2c643d82424696815fe77c0430
+n
+>src/main/java/com/ispwproject/lacremepastel/model/Session.java,d/a/da00f10f88bd463d527044ccb88af08df10b66eb
+˜
+hsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/UserAlreadyLoggedException.java,0/c/0cb373c5a771d1b30b3a3d6b07fa5a6277f942f2
+–
+fsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/SessionNotFoundException.java,1/6/164d774d7cd904f90053895ee295ebd7db1b6dab
+‘
+asrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/UuidAlreadyExistent.java,4/e/4eb669760526b5bc31debcd7b061d3068adb93f4
