@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="481.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lecremepastel.controller.GUIController.GUIControllerDirectorFirstPage">
+   <children>
+      <ImageView fitHeight="481.0" fitWidth="629.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#viewCustomerList" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Lista clienti" />
+      <Button layoutX="217.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrder" prefHeight="33.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione ordini" />
+      <Button layoutX="217.0" layoutY="243.0" mnemonicParsing="false" onAction="#manageProduct" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione prodotti" />
+      <Button layoutX="218.0" layoutY="287.0" minHeight="0.0" mnemonicParsing="false" onAction="#manageWorkers" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione dipendenti" />
+      <Label layoutX="173.0" layoutY="45.0" prefHeight="18.0" prefWidth="267.0" text="stringa di benvenuto!" />
+      <Hyperlink layoutX="189.0" layoutY="421.0" onAction="#requestHelp" text="Hai bisogno di aiuto? Clicca Qui!" visited="true" />
+   </children>
+</AnchorPane>

@@ -3,15 +3,21 @@ package com.ispwproject.lacremepastel.model;
 import java.util.ArrayList;
 
 
-//Ale spiegami la classe ti prego XD
 public class Order {
-    private ArrayList<Product> cart;
+    private ArrayList<OrderLine> order;
+    private boolean isCompleted=false;
+    private boolean isPending=true;
     private int idOrder;
+    private String customerName;
 
-    public void addOrder(Product product){
-        cart.add(product);
+    public void setCompleted(int id){
+        this.isCompleted=true;
     }
-    public ArrayList<Product> getOrder(int idOrder){
-        return cart;
+    public void leavePending(int id){
+        this.isPending=false;
     }
+   public void setCustomerName(String customer){
+        this.customerName=customer;
+   }
+
 }
