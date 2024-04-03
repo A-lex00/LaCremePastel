@@ -1,5 +1,7 @@
 package com.ispwproject.lacremepastel.model;
 
+import com.ispwproject.lacremepastel.other.SupportedUserTypes;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -8,19 +10,18 @@ public class Session {
 
     private String uuid;
     private String username;
-    private int usertype;
+    private SupportedUserTypes usertype;
     private Date expire;
     private static final int TIMESPAN = 2;
 
-    public Session(String uuid, String username, int usertype){
+    public Session(String uuid, String username, SupportedUserTypes usertype){
         this.uuid = uuid;
         this.username = username;
         this.usertype = usertype;
-
         expire = setExpire(new Date(),TIMESPAN);
     }
 
-    public Session(String username, int usertype){
+    public Session(String username, SupportedUserTypes usertype){
         this(generateUUID(),username,usertype);
     }
 
@@ -40,11 +41,11 @@ public class Session {
         this.username = username;
     }
 
-    public int getUsertype() {
+    public SupportedUserTypes getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(int usertype) {
+    public void setUsertype(SupportedUserTypes usertype) {
         this.usertype = usertype;
     }
 

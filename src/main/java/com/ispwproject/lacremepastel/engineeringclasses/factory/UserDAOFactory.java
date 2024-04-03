@@ -20,7 +20,7 @@ public abstract class UserDAOFactory {
             switch (SupportedPersistenceTypes.valueOf(persistence)){
                 case MARIADB -> instance = new UserDbFactory();
                 case JSON -> instance = new UserJsonFactory();
-                default -> throw new IllegalStateException("Unsupported Persistence Type: " + persistence);
+                default -> throw new IllegalStateException("UserDAOFactory: Unsupported Persistence Type: " + persistence);
             }
         }
         return instance;
