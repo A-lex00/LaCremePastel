@@ -7,5 +7,6 @@ module com.ispwproject.lacremepastel {
     requires org.apache.commons.validator;
 
     opens com.ispwproject.lacremepastel.model to com.google.gson;
-
+    opens com.ispwproject.lacremepastel.controller to javafx.fxml;
+    exports com.ispwproject.lacremepastel.controller;
 }
