@@ -1,7 +1,6 @@
 package com.ispwproject.lacremepastel.controller;
 
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

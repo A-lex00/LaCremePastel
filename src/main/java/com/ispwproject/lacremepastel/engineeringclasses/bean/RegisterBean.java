@@ -1,8 +1,6 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.other.SupportedRoleTypes;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import org.apache.commons.validator.routines.EmailValidator;
 
 public class RegisterBean {
@@ -14,8 +12,8 @@ public class RegisterBean {
     private String lastname;
     private String email;
     private String billingAddress;
-    private SupportedRoleTypes role;
-    private SupportedUserTypes userType;
+    private String role;
+    private String userType;
 
     public RegisterBean(String username, String cfPiva, String passwd, String firstname, String lastname, String email, String userType) throws InvalidParameterException {
         if(isUsernameValid(username) &&
@@ -31,11 +29,6 @@ public class RegisterBean {
             this.firstname = firstname;
             this.lastname = lastname;
             this.email = email;
-            try {
-                this.userType = SupportedUserTypes.valueOf(userType);
-            }catch (IllegalArgumentException e){
-                throw new InvalidParameterException("Unknown User Type");
-            }
         }else{
             throw new InvalidParameterException("Invalid Parameters");
         }
@@ -111,20 +104,24 @@ public class RegisterBean {
         }
     }
 
-    public SupportedRoleTypes getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(SupportedRoleTypes role) {
-        this.role = role;
+    public void setRole(String role) {
+        if(role != null && !role.isBlank()) {
+            this.role = role;
+        }
     }
 
-    public SupportedUserTypes getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(SupportedUserTypes userType) {
-        this.userType = userType;
+    public void setUserType(String userType) {
+        if(userType != null && !userType.isBlank()) {
+            this.userType = userType;
+        }
     }
 
     private boolean isUsernameValid(String username){

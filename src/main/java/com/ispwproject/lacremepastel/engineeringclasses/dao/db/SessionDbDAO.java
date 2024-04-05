@@ -1,7 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao.db;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
-import com.ispwproject.lacremepastel.engineeringclasses.query.Connector;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.engineeringclasses.query.SessionQuery;
 import com.ispwproject.lacremepastel.model.Login;
 import com.ispwproject.lacremepastel.model.Session;

@@ -105,3 +105,13 @@ N
 src/main/java/module-info.java,1/c/1c89a5491fbfda3fb050196d6a239f20200296e7
 o
 ?src/main/java/com/ispwproject/lacremepastel/model/Register.java,0/e/0e0a57bfaa393661a003e53645eeba544c0d73d2
+
+Osrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/UserDAO.java,9/6/9615ee57210acceb3067b6bbf6f625d990f82644
+Œ
+\src/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/DirectorJsonDAO.java,1/1/1179df794c21716e8d7c8deda47a45f58a8974ad
+„
+Tsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/UserDbDAO.java,6/d/6d524c097de8fd6a457567726e36f828fcdf8ce6
+ˆ
+Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/UserJsonDAO.java,5/d/5d0237a3bef15e025f1e36e1d357a1cbb35f770d
+ƒ
+Ssrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/UserQuery.java,f/8/f8d23ee07dd4cd2220c351adeee8e72357b85f8c
