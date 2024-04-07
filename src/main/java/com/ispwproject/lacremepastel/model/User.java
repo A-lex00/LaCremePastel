@@ -3,7 +3,8 @@ package com.ispwproject.lacremepastel.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class User {
+public class User {
+
     protected String username;
     protected String firstname;
     protected String lastname;

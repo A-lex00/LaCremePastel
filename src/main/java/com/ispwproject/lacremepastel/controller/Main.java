@@ -19,7 +19,7 @@ public class Main extends Application {
             int count = Integer.parseInt(Configurations.getInstance().getProperty("COUNT"));
             try {
                 for (; count > 0; count--) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("view/firstPage.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/firstPage.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     primaryStage.setScene(scene);

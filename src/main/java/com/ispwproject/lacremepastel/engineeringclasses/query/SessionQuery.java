@@ -10,6 +10,7 @@ public class SessionQuery {
     private SessionQuery(){
 
     }
+
     public static ResultSet authUser(Connection conn, String authString) throws SQLException {
         String query = "SELECT username, password, usertype FROM User WHERE (username = ? OR email = ?)";
         try(PreparedStatement ps = conn.prepareStatement(query)){

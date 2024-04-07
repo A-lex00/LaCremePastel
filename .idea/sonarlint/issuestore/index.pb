@@ -95,8 +95,6 @@ Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/SessionDb
 ^src/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/SessionJsonFactory.java,b/e/bef32d3d917928dfe296c9d73e387bd811b68483
 †
 Vsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/SessionQuery.java,d/9/d9393937d4c90ca25563613591ff652f20f50906
-ƒ
-Ssrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/Connector.java,e/3/e3c49cded3831346f454ea6d7cf379a23a44e11f
 …
 Usrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/bean/RegisterBean.java,6/4/64725eb9191839a51ce4f17af1ae23947f2edb9e
 y
@@ -115,3 +113,5 @@ Tsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/UserDbDAO
 Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/UserJsonDAO.java,5/d/5d0237a3bef15e025f1e36e1d357a1cbb35f770d
 ƒ
 Ssrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/UserQuery.java,f/8/f8d23ee07dd4cd2220c351adeee8e72357b85f8c
+†
+Vsrc/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerFirstPage.java,9/f/9fffc1152502c3dec55672606f17fad2db38669c
