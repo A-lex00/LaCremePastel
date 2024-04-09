@@ -13,7 +13,7 @@
    <children>
       <ImageView id="sfondoGenerale" fitHeight="481.0" fitWidth="629.0" layoutY="7.0">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <TextField layoutX="109.0" layoutY="117.0" prefHeight="26.0" prefWidth="225.0" promptText="Inserisci l'ID prodotto da cercare" />
@@ -25,7 +25,10 @@
       <TextField layoutX="109.0" layoutY="172.0" promptText="ID prodotto" />
       <TextField layoutX="109.0" layoutY="265.0" promptText="prezzo" />
       <TextField layoutX="109.0" layoutY="215.0" promptText="categoria" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="285.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="285.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
+         </image></ImageView>
       <HBox layoutX="93.0" layoutY="382.0" prefHeight="37.0" prefWidth="430.0" spacing="30.0">
          <children>
             <Button lineSpacing="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: e1680f;" text="indietro" />

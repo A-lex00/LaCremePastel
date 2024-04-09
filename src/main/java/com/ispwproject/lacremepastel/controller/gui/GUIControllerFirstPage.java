@@ -31,12 +31,9 @@ public class GUIControllerFirstPage {
             Node node=(Node) registrationEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
 
-
         try {
-            FXMLLoader loader= new FXMLLoader();
-            Parent root = loader.load(getClass().getResource("/registrationPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/registrationPage.fxml"));
             stage.setScene(new Scene(root, 629, 481));
-
             stage.setTitle("La Creme Pastel");
             stage.show();
         } catch (Exception e) {

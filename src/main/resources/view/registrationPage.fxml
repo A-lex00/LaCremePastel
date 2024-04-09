@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="481.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lecremepastel.controller.GUIController.GUIControllerRegistrationPage">
+<AnchorPane prefHeight="481.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerRegistrationPage">
    <children>
       <ImageView fitHeight="496.0" fitWidth="629.0" layoutX="-1.0" layoutY="-13.0">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <Text layoutX="53.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione La Crème Pastel" textAlignment="CENTER">
@@ -23,7 +23,7 @@
             <Font size="33.0" />
          </font>
       </Text>
-      <TextField fx:id="firstnameField" layoutX="107.0" layoutY="124.0" promptText="Inserisci il tuo nome" />
+      <TextField fx:id="firstNameField" layoutX="107.0" layoutY="124.0" promptText="Inserisci il tuo nome" />
       <TextField fx:id="surnameField" layoutX="286.0" layoutY="124.0" promptText="Inserisci il tuo cognome" />
       <TextField fx:id="usernameField" layoutX="107.0" layoutY="164.0" promptText="inserisci il tuo username" />
       <TextField fx:id="cfPivaField" layoutX="286.0" layoutY="164.0" promptText="inserisci il CF/P.IVA" />
@@ -33,15 +33,15 @@
       <PasswordField fx:id="cnfPasswordField" layoutX="285.0" layoutY="250.0" promptText="Conferma la tua password" />
       <HBox alignment="CENTER" layoutX="143.2" layoutY="396.0" prefHeight="66.0" prefWidth="251.0" spacing="30.0" AnchorPane.leftAnchor="143.2" AnchorPane.rightAnchor="223.2">
          <children>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#back" style="-fx-background-color: e1680f;" text="Indietro" />
-            <Button fx:id="confermButton" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: e1680f;" text="Conferma" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" style="-fx-background-color: e1680f;" text="Indietro" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: e1680f;" text="Conferma" />
          </children>
       </HBox>
-      <HBox layoutX="151.0" layoutY="337.0" spacing="20.0">
+      <HBox layoutX="151.0" layoutY="337.0" onDragEntered="#addExtraField" spacing="20.0">
          <children>
-            <RadioButton fx:id="customerDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Cliente" />
-            <RadioButton fx:id="directorDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Direttore" />
-            <RadioButton fx:id="workerDot" mnemonicParsing="false" onAction="#checkRole" onInputMethodTextChanged="#checkRole" onMouseClicked="#checkRole" text="Lavoratore" />
+            <RadioButton fx:id="customerDot" mnemonicParsing="false" onInputMethodTextChanged="#addExtraField" onMouseClicked="#addExtraField" text="Cliente" />
+            <RadioButton fx:id="directorDot" mnemonicParsing="false" onInputMethodTextChanged="#addExtraField" onMouseClicked="#addExtraField" text="Direttore" />
+            <RadioButton fx:id="workerDot" mnemonicParsing="false" onInputMethodTextChanged="#addExtraField" onMouseClicked="#addExtraField" text="Lavoratore" />
          </children>
       </HBox>
       <TextField fx:id="extraField" layoutX="107.0" layoutY="291.0" visible="false" />
