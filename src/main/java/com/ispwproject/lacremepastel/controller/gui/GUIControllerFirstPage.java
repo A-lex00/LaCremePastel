@@ -16,7 +16,7 @@ public class GUIControllerFirstPage {
         Stage stage = (Stage) n.getScene().getWindow();
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/loginPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/loginPage.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();
@@ -32,7 +32,7 @@ public class GUIControllerFirstPage {
             Stage stage=(Stage) node.getScene().getWindow();
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/registrationPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/registrationPage.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();

@@ -1,6 +1,8 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.other.PoupopManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,68 +46,76 @@ public class GUIControllerRegistrationPage {
     @FXML
     private RadioButton workerDot;
     @FXML
-    private ToggleGroup roleGroup=new ToggleGroup();
-    private boolean worker,director,customer;
+    private ToggleGroup roleGroup = new ToggleGroup();
+    private boolean worker, director, customer;
+
     @FXML
     void back(ActionEvent backEvent) {
-        Node node=(Node) backEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/firstPage.fxml"));
+        Node node = (Node) backEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();
-         }catch(Exception e){
-            System.err.println("Errore nel go back!");
+        } catch (Exception e) {
+            System.err.println("Errore nel tornare indietro!");
             e.printStackTrace();
         }
     }
+
     @FXML
-     void addExtraField(){
+    void addExtraField() {
         customerDot.setToggleGroup(roleGroup);
         directorDot.setToggleGroup(roleGroup);
         workerDot.setToggleGroup(roleGroup);
-        customer=customerDot.isSelected();
-        worker=workerDot.isSelected();
-        director=directorDot.isSelected();
+        customer = customerDot.isSelected();
+        worker = workerDot.isSelected();
+        director = directorDot.isSelected();
 
-        if(director || worker ){
-            if(director){
+        if (director || worker) {
+            if (director) {
                 extraField.setPromptText("Inserisci la tassazione");
             }
-            if(worker){
+            if (worker) {
                 extraField.setPromptText("Inserisci il tuo ruolo");
             }
             extraField.setVisible(true);
-        }
-        else{
+        } else {
             extraField.setVisible(false);
         }
     }
+
     @FXML
-    public void confirm(ActionEvent confirmButton){
+    public void confirm(ActionEvent confirmButton) {
         String ruolo;
-        String name= firstNameField.getText();
-        String surname=surnameField.getText();
-        String username=usernameField.getText();
-        String email= emailField.getText();
-        String cnfEmail=cnfEmailField.getText();
-        String password=passwordField.getText();
-        String cnfPassword=cnfPasswordField.getText();
-        String cfPiva=cfPivaField.getText();
-        String extraInfo=extraField.getText();
-        if( worker=workerDot.isSelected()){
-            ruolo="WORKER";
-            RegisterBean registerBean=new RegisterBean(username,cfPiva,password,name,surname,email,ruolo);
+        String name = firstNameField.getText();
+        String surname = surnameField.getText();
+        String username = usernameField.getText();
+        String email = emailField.getText();
+        String cnfEmail = cnfEmailField.getText();
+        String password = passwordField.getText();
+        String cnfPassword = cnfPasswordField.getText();
+        String cfPiva = cfPivaField.getText();
+        String extraInfo = extraField.getText();
+        try {
+            if (worker = workerDot.isSelected()) {
+                ruolo = "WORKER";
+                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+            }
+            if (customer = customerDot.isSelected()) {
+                ruolo = "CUSTOMER";
+                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+            }
+            if (director = directorDot.isSelected()) {
+                ruolo = "DIRECTOR";
+                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+            }
+            System.out.println("Registrazione effettuata!");
+        } catch (InvalidParameterException invalidParameterException) {
+            System.out.println("Errore nell'inserimento dei parametri!");
+            PoupopManager poupopManager=new PoupopManager();
+
         }
-        if(customer=customerDot.isSelected()){
-            ruolo="CUSTOMER";
-            RegisterBean registerBean=new RegisterBean(username,cfPiva,password,name,surname,email,ruolo);
-        }
-        if(director=directorDot.isSelected()){
-            ruolo="DIRECTOR";
-            RegisterBean registerBean=new RegisterBean(username,cfPiva,password,name,surname,email,ruolo);
-        }
-        System.out.println("Registrazione effettuata!");
     }
 }
