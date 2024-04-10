@@ -1,7 +1,9 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,11 +42,26 @@ public class GUIControllerLoginPage {
         }
     }
     @FXML
-    public void mainPage(ActionEvent event){
+    public void mainPage(ActionEvent mainPageEvent){
         String username= authField.getText();
         String password=passField.getText();
         try{
             LoginBean loginBean=new LoginBean(username,password);
+            LoginController loginController=new LoginController();
+            loginController.login(loginBean);
+            Node node=(Node) mainPageEvent.getSource();
+            Stage stage=(Stage) node.getScene().getWindow();
+            try{
+                stage.setTitle("La Creme Pastel");
+                Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
+                stage.setScene(new Scene(root, 629, 481));
+                stage.show();
+            }catch(Exception e){
+                System.err.println("Errore nel go back!");
+                e.printStackTrace();
+
+            }
+
         }catch(InvalidParameterException parameterException){
             System.err.println("Errore nell'accesso: Dati errati!");
             System.err.println(parameterException);

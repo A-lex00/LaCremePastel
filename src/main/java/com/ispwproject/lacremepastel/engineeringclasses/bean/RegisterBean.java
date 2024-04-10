@@ -35,7 +35,6 @@ public class RegisterBean {
     }
 
 
-
     public String getUsername() {
         return username;
     }

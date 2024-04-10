@@ -1,5 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.other.PoupopManager;
@@ -88,7 +89,7 @@ public class GUIControllerRegistrationPage {
 
     @FXML
     public void confirm(ActionEvent confirmButton) {
-        String ruolo;
+        String ruolo=null;
         String name = firstNameField.getText();
         String surname = surnameField.getText();
         String username = usernameField.getText();
@@ -97,25 +98,34 @@ public class GUIControllerRegistrationPage {
         String password = passwordField.getText();
         String cnfPassword = cnfPasswordField.getText();
         String cfPiva = cfPivaField.getText();
-        String extraInfo = extraField.getText();
+        String extraInfo = null;
         try {
-            if (worker = workerDot.isSelected()) {
+            if (workerDot.isSelected()) {
                 ruolo = "WORKER";
-                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+                extraInfo=extraField.getText();
             }
-            if (customer = customerDot.isSelected()) {
-                ruolo = "CUSTOMER";
-                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+            else if (customerDot.isSelected()) {
+                ruolo="CUSTOMER";
+            }else if(directorDot.isSelected()){
+                ruolo="DIRECTOR";
+                extraInfo=extraField.getText();
             }
-            if (director = directorDot.isSelected()) {
-                ruolo = "DIRECTOR";
+            if(ruolo != null){
+                    RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+                    LoginController loginController=new LoginController();
+                    loginController.register(registerBean);
+                }
                 RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
-            }
-            System.out.println("Registrazione effettuata!");
-        } catch (InvalidParameterException invalidParameterException) {
-            System.out.println("Errore nell'inserimento dei parametri!");
-            PoupopManager poupopManager=new PoupopManager();
-
+                if(workerDot.isSelected()){
+                    registerBean.setRole(extraInfo);
+                }
+                if(directorDot.isSelected()){
+                    registerBean.setBillingAddress(extraInfo);
+                }
+                LoginController loginController=new LoginController();
+                loginController.register(registerBean);
+        }catch(InvalidParameterException invalidParameterException){
+            System.err.println("Errore nell'inserimento dei parametri");
         }
     }
 }
