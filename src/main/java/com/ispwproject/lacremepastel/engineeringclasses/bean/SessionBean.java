@@ -16,6 +16,12 @@ public class SessionBean {
             throw new InvalidParameterException("Invalid SId");
         }
     }
+    public String getRole(){
+        return role;
+    }
+    public String getUsername(){
+        return username;
+    }
     public void setRole(String role){
         this.role=role;
     }

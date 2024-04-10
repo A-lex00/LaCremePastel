@@ -56,13 +56,14 @@ public class GUIControllerLoginPage {
             Stage stage=(Stage) node.getScene().getWindow();
             try{
                 Parent root=null;
-                if(roleLoggedUser.equals("DIRECTOR")){
+
+                if(sessionBean.getRole().equals("DIRECTOR")){
                     FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
                 }
-                if(roleLoggedUser.equals("CUSTOMER")){
+                if(sessionBean.getRole().equals("CUSTOMER")){
                     FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
                 }
-                if(roleLoggedUser.equals("WORKER")){
+                if(sessionBean.getRole().equals("WORKER")){
                     FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
                 }
                 stage.setScene(new Scene(root, 629, 481));
