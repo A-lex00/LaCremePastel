@@ -2,8 +2,10 @@ package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
+import com.ispwproject.lacremepastel.model.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,13 +50,23 @@ public class GUIControllerLoginPage {
         try{
             LoginBean loginBean=new LoginBean(username,password);
             LoginController loginController=new LoginController();
-            loginController.login(loginBean);
+            SessionBean sessionBean=loginController.login(loginBean);
+
             Node node=(Node) mainPageEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try{
-                stage.setTitle("La Creme Pastel");
-                Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
+                Parent root=null;
+                if(roleLoggedUser.equals("DIRECTOR")){
+                    FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
+                }
+                if(roleLoggedUser.equals("CUSTOMER")){
+                    FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
+                }
+                if(roleLoggedUser.equals("WORKER")){
+                    FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
+                }
                 stage.setScene(new Scene(root, 629, 481));
+                stage.setTitle("La Creme Pastel");
                 stage.show();
             }catch(Exception e){
                 System.err.println("Errore nel go back!");

@@ -12,6 +12,8 @@ public class SessionManager {
 
     private static SessionManager instance = null;
     private HashMap<String, Session> loggedUsers;
+    private String username;
+    private String role;
 
     private SessionManager(){
         loggedUsers = new HashMap<>();
@@ -26,6 +28,8 @@ public class SessionManager {
 
     public void addSession(Session session) throws UserAlreadyLoggedException, UuidAlreadyExistent {
         if(session != null){
+            this.username= String.valueOf(loggedUsers.get(session));
+            this.role=String.valueOf(loggedUsers.get(session));
             if(!loggedUsers.containsKey(session.getUuid())){
                 loggedUsers.put(session.getUuid(),session);
             }else{
@@ -38,6 +42,18 @@ public class SessionManager {
                 }
             }
         }
+    }
+    public String getUsername(String uuid) {
+        if(loggedUsers.containsKey(uuid)) {
+            return loggedUsers.get(uuid).getUsername();
+        }
+        return null;
+    }
+    public String getRole(String uuid) {
+        if(loggedUsers.containsKey(uuid)) {
+            return loggedUsers.get(uuid).getRole();
+        }
+        return null;
     }
 
     public Session delSession(String uuid) throws SessionNotFoundException{
