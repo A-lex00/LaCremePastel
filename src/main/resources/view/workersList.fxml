@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="533.0" fitWidth="614.0" layoutX="1.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <Text layoutX="120.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LISTA  LAVORATORI">

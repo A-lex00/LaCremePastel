@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <Text layoutX="87.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPONI ORDINE">

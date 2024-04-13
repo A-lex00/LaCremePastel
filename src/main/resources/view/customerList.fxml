@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <HBox layoutX="179.0" layoutY="362.0" prefHeight="31.0" prefWidth="298.0" spacing="60.0" />

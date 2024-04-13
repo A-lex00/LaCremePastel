@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="481.0" fitWidth="732.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <Button layoutX="198.0" layoutY="189.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: e1680f;" text="Richiesta lista produzione" />

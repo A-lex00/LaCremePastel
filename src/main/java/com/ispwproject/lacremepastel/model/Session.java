@@ -10,6 +10,7 @@ public class Session {
 
     private String uuid;
     private String username;
+    private String role;
     private SupportedUserTypes usertype;
     private Date expire;
     private static final int TIMESPAN = 2;
@@ -32,7 +33,12 @@ public class Session {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
-
+    public String getRole(){
+        return role;
+    }
+    public void setRole(String role) {
+        this.role=role;
+    }
     public String getUsername() {
         return username;
     }

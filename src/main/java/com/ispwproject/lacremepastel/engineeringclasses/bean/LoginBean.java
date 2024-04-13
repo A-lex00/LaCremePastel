@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
 public class LoginBean {
@@ -12,6 +13,7 @@ public class LoginBean {
         if(isAuthStringValid(authString) && isPasswdValid(passwd)){
             this.authString = authString;
             this.passwd = passwd;
+
         }else{
             throw new InvalidParameterException("Invalid parameters");
         }

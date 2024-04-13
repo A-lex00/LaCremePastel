@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="481.0" fitWidth="629.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@resources/interfaces_material/sfondoRegistrazione.jpg" />
+            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
       <Button layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#viewCustomerList" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Lista clienti" />

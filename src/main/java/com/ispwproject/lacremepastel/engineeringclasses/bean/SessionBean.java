@@ -1,10 +1,13 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 
 public class SessionBean {
 
     private String sid;
+    private String role;
+    private String username;
 
     public SessionBean(String sid){
         if(isSidValid(sid)){
@@ -13,7 +16,15 @@ public class SessionBean {
             throw new InvalidParameterException("Invalid SId");
         }
     }
-
+    public String getRole(){
+        return role;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public void setRole(String role){
+        this.role=role;
+    }
     public String getSid() {
         return sid;
     }
