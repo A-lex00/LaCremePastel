@@ -119,3 +119,7 @@ Usrc/main/java/com/ispwproject/lacremepastel/controller/cli/utils/CLIStateMachin
 Vsrc/main/java/com/ispwproject/lacremepastel/controller/cli/CLIControllerFirstPage.java,f/f/ff149b5f98588d22487db6456d5d9ee0f5ec908d
 Å
 Qsrc/main/java/com/ispwproject/lacremepastel/controller/cli/other/CLIMessages.java,f/c/fc6a4ebadf175f884188912fbbf93da80858ee61
+à
+Xsrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/CLIStateMachine.java,4/1/41d3509996e8550c7f6f760fd6b496efe2007662
+Ö
+Usrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/StateMachine.java,e/7/e7fa94035de9e5a9f4d01d3b2d9860e466ddbe13

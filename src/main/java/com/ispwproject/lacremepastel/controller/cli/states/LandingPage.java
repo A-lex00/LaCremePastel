@@ -1,6 +1,6 @@
 package com.ispwproject.lacremepastel.controller.cli.states;
 
-import com.ispwproject.lacremepastel.controller.cli.utils.StateMachine;
+import com.ispwproject.lacremepastel.controller.cli.machines.StateMachine;
 
 public class LandingPage extends AbstractState{
     @Override
