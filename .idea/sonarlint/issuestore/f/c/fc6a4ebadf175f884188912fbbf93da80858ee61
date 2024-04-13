@@ -1,0 +1,11 @@
+
+›
+java:S1104"SMake welcome a static final constant or non-public and provide accessors if needed.(ì—ïÁıÿÿÿÿ8¿ÈÄë1J$c05e784e-fd60-480a-9578-31268921a774
+Ÿ
+java:S1104"WMake landingMenu a static final constant or non-public and provide accessors if needed.(€´Å­úÿÿÿÿ8ª„ÊÄë1J$940f73d5-c6cd-482e-871a-32e1ac2b2940
+u
+java:S1444"-Make this "public static welcome" field final(ì—ïÁıÿÿÿÿ8¿ÈÄë1J$ec429c2a-dfcc-426c-9124-cfc5285ddaa1
+y
+java:S1444"1Make this "public static landingMenu" field final(€´Å­úÿÿÿÿ8ª„ÊÄë1J$2be96e33-b31f-4691-969c-6c0b490407c9
+‚
+java:S1118":Add a private constructor to hide the implicit public one.(¸¦µõûÿÿÿÿ8¥¿ÈÄë1J$4bfe655f-b762-4b4f-b71c-a6844a109ee0

@@ -1,5 +1,6 @@
 package com.ispwproject.lacremepastel.controller;
 
+import com.ispwproject.lacremepastel.controller.cli.CLIControllerFirstPage;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,7 @@ public class Main extends Application {
     }
 
         public static void startCLI(){
-            System.out.println("CliPartita");
+            CLIControllerFirstPage cliControllerFirstPage = new CLIControllerFirstPage();
+            
         }
     }

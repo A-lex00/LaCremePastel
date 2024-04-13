@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import org.apache.commons.validator.routines.EmailValidator;
 
 public class RegisterBean {
@@ -29,6 +30,7 @@ public class RegisterBean {
             this.firstname = firstname;
             this.lastname = lastname;
             this.email = email;
+            this.userType = userType;
         }else{
             throw new InvalidParameterException("Invalid Parameters");
         }

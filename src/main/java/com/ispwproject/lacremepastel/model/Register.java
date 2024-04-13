@@ -3,8 +3,6 @@ package com.ispwproject.lacremepastel.model;
 import com.ispwproject.lacremepastel.other.SupportedRoleTypes;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
-import java.util.logging.Logger;
-
 public class Register {
 
     private String username;
@@ -17,18 +15,14 @@ public class Register {
     private SupportedRoleTypes role;
     private SupportedUserTypes userType;
 
-    public Register(String username, String cfPiva, String passwd, String firstname, String lastname, String email, String userType) {
+    public Register(String username, String cfPiva, String passwd, String firstname, String lastname, String email, SupportedUserTypes userType){
         this.username = username;
         this.cfPiva = cfPiva;
         this.passwd = passwd;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        try {
-            this.userType = SupportedUserTypes.valueOf(userType);
-        }catch (IllegalArgumentException e){
-            Logger.getLogger(Register.class.getName()).severe("Unsupported User Type: " + userType);
-        }
+        this.userType = userType;
     }
 
     public String getUsername() {

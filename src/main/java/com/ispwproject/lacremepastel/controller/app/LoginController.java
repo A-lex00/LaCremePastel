@@ -4,11 +4,15 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.dao.UserDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.SessionDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.UserDAOFactory;
 import com.ispwproject.lacremepastel.model.Login;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.model.Session;
+import com.ispwproject.lacremepastel.other.SupportedUserTypes;
+
+import java.util.logging.Logger;
 
 public class LoginController {
 
@@ -30,16 +34,26 @@ public class LoginController {
 
     public boolean register(RegisterBean registerBean){
         if(registerBean != null){
-            Register register = new Register(
-                    registerBean.getUsername(),
-                    registerBean.getCfPiva(),
-                    registerBean.getPasswd(),
-                    registerBean.getFirstname(),
-                    registerBean.getLastname(),
-                    registerBean.getEmail(),
-                    registerBean.getUserType()
-            );
+            Register register = null;
+            try {
+                register = new Register(
+                        registerBean.getUsername(),
+                        registerBean.getCfPiva(),
+                        registerBean.getPasswd(),
+                        registerBean.getFirstname(),
+                        registerBean.getLastname(),
+                        registerBean.getEmail(),
+                        SupportedUserTypes.valueOf(registerBean.getUserType())
+                );
+            }catch (IllegalArgumentException e){
+                Logger.getLogger(LoginController.class.getName()).severe("Unsupported User Type: "+registerBean.getUserType());
+                return false;
+            }
 
+            UserDAOFactory userDAOFactory = UserDAOFactory.getInstance();
+            UserDAO userDAO = userDAOFactory.getFactory(register.getUserType());
+            userDAO.userRegister(register);
+            return true;
         }
         return false;
     }
