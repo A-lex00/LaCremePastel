@@ -52,6 +52,11 @@ public class GUIControllerLoginPage {
             LoginController loginController=new LoginController();
             SessionBean sessionBean=loginController.login(loginBean);
 
+            if (sessionBean == null) {
+                // Mostra un messaggio di errore all'utente
+                System.err.println("Errore nell'accesso: Dati errati");
+                return;
+            }
             Node node=(Node) mainPageEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try{

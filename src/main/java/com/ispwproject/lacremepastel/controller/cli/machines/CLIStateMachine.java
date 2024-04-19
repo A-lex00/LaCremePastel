@@ -5,6 +5,8 @@ import com.ispwproject.lacremepastel.controller.cli.states.LoginPage;
 import com.ispwproject.lacremepastel.controller.cli.states.RegisterPage;
 import com.ispwproject.lacremepastel.controller.cli.other.Events;
 
+import java.util.List;
+
 public class CLIStateMachine implements StateMachine {
 
     private AbstractState currentState;
@@ -29,3 +31,5 @@ public class CLIStateMachine implements StateMachine {
         }
     }
 }
+
+

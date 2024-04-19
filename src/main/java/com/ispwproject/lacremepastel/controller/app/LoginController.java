@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 public class LoginController {
 
-    public SessionBean login(LoginBean loginBean)  {
+    public SessionBean login(LoginBean loginBean) {
         SessionBean ret = null;
         if(loginBean != null){
             Login login = new Login(
@@ -30,9 +30,7 @@ public class LoginController {
             Session session = sessionDAO.userLogin(login);
             try {
                 SessionManager.getInstance().addSession(session);
-            } catch (UserAlreadyLoggedException e) {
-                throw new RuntimeException(e);
-            } catch (UuidAlreadyExistent e) {
+            } catch (UserAlreadyLoggedException | UuidAlreadyExistent e) {
                 throw new RuntimeException(e);
             }
             if(session != null){
@@ -54,6 +52,7 @@ public class LoginController {
                         registerBean.getLastname(),
                         registerBean.getEmail(),
                         SupportedUserTypes.valueOf(registerBean.getUserType())
+                        //chiamata a DAO
                 );
             }catch (IllegalArgumentException e){
                 Logger.getLogger(LoginController.class.getName()).severe("Unsupported User Type: "+registerBean.getUserType());

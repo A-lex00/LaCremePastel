@@ -124,8 +124,10 @@ public class GUIControllerRegistrationPage {
                 }
                 LoginController loginController=new LoginController();
                 loginController.register(registerBean);
+                System.out.println("Registrazione completata: Benvenuto!");
         }catch(InvalidParameterException invalidParameterException){
             System.err.println("Errore nell'inserimento dei parametri");
+            System.err.println(invalidParameterException.getMessage());
         }
     }
 }
