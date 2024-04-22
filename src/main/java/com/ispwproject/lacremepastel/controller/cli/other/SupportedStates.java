@@ -1,5 +1,5 @@
 package com.ispwproject.lacremepastel.controller.cli.other;
 
-public enum Events {
-    LOGIN, REGISTER
+public enum SupportedStates {
+    INITIAL,LOGIN,REGISTER
 }

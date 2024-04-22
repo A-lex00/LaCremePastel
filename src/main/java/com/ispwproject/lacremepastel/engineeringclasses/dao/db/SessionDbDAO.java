@@ -21,7 +21,7 @@ public class SessionDbDAO implements SessionDAO {
                 if(rs.next() && (BCrypt.checkpw(login.getPasswd(),rs.getString("password")))){
                     //Correct Passwd
                     ret = new Session(
-                        rs.getString("user"),
+                        rs.getString("username"),
                         SupportedUserTypes.valueOf(rs.getString("usertype"))
                     );
                 }

@@ -5,6 +5,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.UserDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.SessionDAOFactory;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
 
 public class LoginController {
 
-    public SessionBean login(LoginBean loginBean)  {
+    public SessionBean login(LoginBean loginBean) throws UuidAlreadyExistent, UserAlreadyLoggedException {
         SessionBean ret = null;
         if(loginBean != null){
             Login login = new Login(
@@ -28,13 +29,7 @@ public class LoginController {
             );
             SessionDAO sessionDAO = SessionDAOFactory.getInstance().createSessionDAO();
             Session session = sessionDAO.userLogin(login);
-            try {
-                SessionManager.getInstance().addSession(session);
-            } catch (UserAlreadyLoggedException e) {
-                throw new RuntimeException(e);
-            } catch (UuidAlreadyExistent e) {
-                throw new RuntimeException(e);
-            }
+            SessionManager.getInstance().addSession(session);
             if(session != null){
                 ret = new SessionBean(session.getUuid());
             }
@@ -42,7 +37,7 @@ public class LoginController {
         return ret;
     }
 
-    public boolean register(RegisterBean registerBean){
+    public boolean register(RegisterBean registerBean) throws UserAlreadyExistentException {
         if(registerBean != null){
             Register register = null;
             try {

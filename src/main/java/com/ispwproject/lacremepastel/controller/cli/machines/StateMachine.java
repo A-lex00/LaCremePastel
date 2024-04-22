@@ -1,9 +1,13 @@
 package com.ispwproject.lacremepastel.controller.cli.machines;
 
-import com.ispwproject.lacremepastel.controller.cli.other.Events;
+import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
 
-public interface StateMachine {
-    void transition(Events e);
-    void doAction(AbstractState newState);
+public abstract class StateMachine {
+
+    protected abstract void transition(SupportedStates e);
+
+    protected abstract void doAction(AbstractState newState);
+
+
 }

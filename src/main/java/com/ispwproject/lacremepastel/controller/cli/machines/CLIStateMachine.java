@@ -1,17 +1,16 @@
 package com.ispwproject.lacremepastel.controller.cli.machines;
 
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
-import com.ispwproject.lacremepastel.controller.cli.states.LoginPage;
-import com.ispwproject.lacremepastel.controller.cli.states.RegisterPage;
-import com.ispwproject.lacremepastel.controller.cli.other.Events;
+import com.ispwproject.lacremepastel.controller.cli.states.LoginState;
+import com.ispwproject.lacremepastel.controller.cli.states.RegisterState;
+import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
 
-public class CLIStateMachine implements StateMachine {
+public class CLIStateMachine extends StateMachine {
 
     private AbstractState currentState;
 
     public CLIStateMachine() {
         this.currentState = AbstractState.getInitialState();
-        this.currentState.entry(this);
     }
 
     @Override
@@ -22,10 +21,7 @@ public class CLIStateMachine implements StateMachine {
     }
 
     @Override
-    public void transition(Events e) {
-        switch (e){
-            case LOGIN -> this.doAction(new LoginPage());
-            case REGISTER -> this.doAction(new RegisterPage());
-        }
+    public void transition(SupportedStates e) {
     }
+
 }
