@@ -3,6 +3,7 @@ package com.ispwproject.lacremepastel.controller.gui;
 import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.other.PoupopManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -113,8 +114,12 @@ public class GUIControllerRegistrationPage {
             if(ruolo != null){
                     RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
                     LoginController loginController=new LoginController();
-                    loginController.register(registerBean);
-                }
+                    try {
+                        loginController.register(registerBean);
+                    } catch (UserAlreadyExistentException e) {
+                        //Inserire qui la chiamata al banner
+                    }
+            }
                 RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
                 if(workerDot.isSelected()){
                     registerBean.setRole(extraInfo);
@@ -123,9 +128,15 @@ public class GUIControllerRegistrationPage {
                     registerBean.setBillingAddress(extraInfo);
                 }
                 LoginController loginController=new LoginController();
-                loginController.register(registerBean);
+                try {
+                    loginController.register(registerBean);
+                } catch (UserAlreadyExistentException e) {
+                    //Inserire qui la chiamata a banner
+                }
+            System.out.println("Registrazione completata: Benvenuto!");
         }catch(InvalidParameterException invalidParameterException){
             System.err.println("Errore nell'inserimento dei parametri");
+            System.err.println(invalidParameterException.getMessage());
         }
     }
 }

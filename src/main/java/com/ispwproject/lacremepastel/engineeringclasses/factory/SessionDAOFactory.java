@@ -15,7 +15,7 @@ public abstract class SessionDAOFactory {
             String persistence = Configurations.getInstance().getProperty("PERSISTENCE_TYPE");
             switch (SupportedPersistenceTypes.valueOf(persistence)){
                 case MARIADB -> instance = new SessionDbFactory();
-                case JSON -> instance = new SessionJsonFactory();
+               // case JSON -> instance = new SessionJsonFactory();
                 default -> throw new IllegalStateException("SessionDAOFactory: Unsupported Persistence Type: " + persistence);
             }
         }

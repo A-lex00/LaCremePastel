@@ -137,3 +137,7 @@ Tsrc/main/java/com/ispwproject/lacremepastel/controller/cli/states/RegisterState
 jsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/UserAlreadyExistentException.java,9/f/9f04427a6d102bc4d81aa9df17a2c8ebe1157685
 ç
 ]src/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerRegistrationPage.java,2/b/2bfb87ee99bfe8db26f55d7d432b7072d0faf2f4
+Ü
+Vsrc/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerLoginPage.java,b/e/be66319b361da844b60e8369ed87ee9225619375
+{
+Ksrc/main/java/com/ispwproject/lacremepastel/controller/app/ManageOrder.java,1/b/1bf1ad3a7a8960af697c316552ae7945dd23da4a

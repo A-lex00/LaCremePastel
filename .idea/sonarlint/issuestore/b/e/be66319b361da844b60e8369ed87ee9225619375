@@ -1,0 +1,12 @@
+
+}
+java:S1141A"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8 ÅÇ²ğ1J$49daded4-134e-4400-b5f3-125c2e62b27c
+
+java:S1128"rRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException'.(íøà8¶…Š³ğ1
+³
+java:S1128"kRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent'.(¡×ğÜÿÿÿÿÿ8ù±Î²ğ1J$8acb4665-fb8c-48ed-ac8b-bcc85a647b71
+©
+java:S1128	"fRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager'.(áÌ¸ù8¿îÍ²ğ1J$a17223bd-e944-4ad3-94d8-2d4d04aabb99
+
+java:S1128
+"HRemove this unused import 'com.ispwproject.lacremepastel.model.Session'.(­»Êùüÿÿÿÿ8ÀîÍ²ğ1J$07b87df7-07b6-4a08-ac82-a47a856cc494

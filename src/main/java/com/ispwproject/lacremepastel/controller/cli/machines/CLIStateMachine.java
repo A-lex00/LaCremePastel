@@ -1,8 +1,6 @@
 package com.ispwproject.lacremepastel.controller.cli.machines;
 
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
-import com.ispwproject.lacremepastel.controller.cli.states.LoginState;
-import com.ispwproject.lacremepastel.controller.cli.states.RegisterState;
 import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
 
 public class CLIStateMachine extends StateMachine {

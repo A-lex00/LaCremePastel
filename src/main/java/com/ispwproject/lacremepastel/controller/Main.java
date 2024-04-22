@@ -8,6 +8,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExi
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lacremepastel.model.Login;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,11 @@ public class Main extends Application {
                     "tinoC",
                     "1234"
             ));
+            loginController.login(new LoginBean(
+                    "tinoC",
+                    "1234"
+            ));
+            for()
         }catch (UserAlreadyLoggedException e){
             System.out.println("IP rebound for user");
         }catch (Exception e){

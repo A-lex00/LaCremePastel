@@ -1,27 +1,31 @@
 
-[
-java:S16593"EDeclare "director" and all following declarations on a separate line.(÷„éŠ
-m
-java:S14503"WRemove the "customer" field and declare it as a local variable in the relevant methods.(÷„éŠ
-m
-java:S14503"WRemove the "director" field and declare it as a local variable in the relevant methods.(÷„éŠ
-k
-java:S14503"URemove the "worker" field and declare it as a local variable in the relevant methods.(÷„éŠ
-Z
-java:S1854c"?Remove this useless assignment to local variable "cnfPassword".(ºƒ ùùÿÿÿÿ
+W
+java:S1141u"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8©¥Å²ð1
+X
+java:S1141ƒ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ª¥Å²ð1
+b
+java:S16594"EDeclare "director" and all following declarations on a separate line.(÷„éŠ8÷¥Å²ð1
+t
+java:S14504"WRemove the "customer" field and declare it as a local variable in the relevant methods.(÷„éŠ8ø¥Å²ð1
+t
+java:S14504"WRemove the "director" field and declare it as a local variable in the relevant methods.(÷„éŠ8ø¥Å²ð1
+r
+java:S14504"URemove the "worker" field and declare it as a local variable in the relevant methods.(÷„éŠ8ù¥Å²ð1
+a
+java:S1854d"?Remove this useless assignment to local variable "cnfPassword".(ºƒ ùùÿÿÿÿ8ˆ¦Å²ð1
+Y
+java:S1854b"<Remove this useless assignment to local variable "cnfEmail".(¢Í×ô8ˆ¦Å²ð1
+J
+java:S1481b"-Remove this unused "cnfEmail" local variable.(¢Í×ô8Š¦Å²ð1
 R
-java:S1854a"<Remove this useless assignment to local variable "cnfEmail".(¢Í×ô
-C
-java:S1481a"-Remove this unused "cnfEmail" local variable.(¢Í×ô
-K
-java:S1481c"0Remove this unused "cnfPassword" local variable.(ºƒ ùùÿÿÿÿ
-d
-java:S1128"NRemove this unused import 'com.ispwproject.lacremepastel.other.PoupopManager'.(¿áïÎ
-H
-java:S1128"-Remove this unused import 'org.w3c.dom.Text'.(¶Äè‹þÿÿÿÿ
-U
-java:S1128":Remove this unused import 'org.w3c.dom.events.MouseEvent'.(öˆÇ±úÿÿÿÿ
-K
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ
-B
-java:S10683",Remove this unused "customer" private field.(÷„éŠ
+java:S1481d"0Remove this unused "cnfPassword" local variable.(ºƒ ùùÿÿÿÿ8‹¦Å²ð1
+k
+java:S1128"NRemove this unused import 'com.ispwproject.lacremepastel.other.PoupopManager'.(¿áïÎ8¦Å²ð1
+O
+java:S1128"-Remove this unused import 'org.w3c.dom.Text'.(¶Äè‹þÿÿÿÿ8‘¦Å²ð1
+\
+java:S1128":Remove this unused import 'org.w3c.dom.events.MouseEvent'.(öˆÇ±úÿÿÿÿ8‘¦Å²ð1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8‘¦Å²ð1
+I
+java:S10684",Remove this unused "customer" private field.(÷„éŠ8’¦Å²ð1

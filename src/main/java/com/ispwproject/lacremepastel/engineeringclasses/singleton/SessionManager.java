@@ -26,20 +26,12 @@ public class SessionManager {
         return instance;
     }
 
-    public void addSession(Session session) throws UserAlreadyLoggedException, UuidAlreadyExistent {
+    public void addSession(Session session){
         if(session != null){
             this.username= String.valueOf(loggedUsers.get(session));
             this.role=String.valueOf(loggedUsers.get(session));
             if(!loggedUsers.containsKey(session.getUuid())){
                 loggedUsers.put(session.getUuid(),session);
-            }else{
-                Session tmp = loggedUsers.get(session.getUuid());
-                if(session.getUsername().equals(tmp.getUsername())){
-                    throw new UserAlreadyLoggedException("User "+session.getUsername()+" already logged in");
-                }else{
-                    //è possibile che si generino 2 uuid uguali?
-                    throw new UuidAlreadyExistent("Uuid "+tmp.getUuid()+" already online!");
-                }
             }
         }
     }

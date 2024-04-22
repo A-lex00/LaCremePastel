@@ -4,6 +4,8 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lacremepastel.model.Session;
 import javafx.event.ActionEvent;
@@ -50,8 +52,14 @@ public class GUIControllerLoginPage {
         try{
             LoginBean loginBean=new LoginBean(username,password);
             LoginController loginController=new LoginController();
-            SessionBean sessionBean=loginController.login(loginBean);
+            SessionBean sessionBean = null;
+            sessionBean = loginController.login(loginBean);
 
+            if (sessionBean == null) {
+                // Mostra un messaggio di errore all'utente
+                System.err.println("Errore nell'accesso: Dati errati");
+                return;
+            }
             Node node=(Node) mainPageEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try{

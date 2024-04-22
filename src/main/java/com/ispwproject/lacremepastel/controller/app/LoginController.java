@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public class LoginController {
 
-    public SessionBean login(LoginBean loginBean) throws UuidAlreadyExistent, UserAlreadyLoggedException {
+    public SessionBean login(LoginBean loginBean){
         SessionBean ret = null;
         if(loginBean != null){
             Login login = new Login(
