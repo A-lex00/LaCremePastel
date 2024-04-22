@@ -20,40 +20,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args){
-        //launch(args);
-
-        LoginController loginController = new LoginController();
-
-        try {
-            loginController.register(new RegisterBean(
-                    "Test",
-                    "12345678910",
-                    "Password",
-                    "FirstName",
-                    "LastName",
-                    "email@email.it",
-                    "DIRECTOR"
-            ));
-        }catch (UserAlreadyExistentException e){
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            loginController.login(new LoginBean(
-                    "tinoC",
-                    "1234"
-            ));
-            loginController.login(new LoginBean(
-                    "tinoC",
-                    "1234"
-            ));
-            for()
-        }catch (UserAlreadyLoggedException e){
-            System.out.println("IP rebound for user");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
+        launch(args);
     }
 
     @Override

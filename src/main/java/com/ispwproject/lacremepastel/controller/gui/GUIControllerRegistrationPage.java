@@ -112,13 +112,13 @@ public class GUIControllerRegistrationPage {
                 extraInfo=extraField.getText();
             }
             if(ruolo != null){
-                    RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
-                    LoginController loginController=new LoginController();
-                    try {
-                        loginController.register(registerBean);
-                    } catch (UserAlreadyExistentException e) {
-                        //Inserire qui la chiamata al banner
-                    }
+                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+                LoginController loginController=new LoginController();
+                try {
+                    loginController.register(registerBean);
+                } catch (UserAlreadyExistentException e) {
+                    //Inserire qui la chiamata al banner
+                }
             }
                 RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
                 if(workerDot.isSelected()){

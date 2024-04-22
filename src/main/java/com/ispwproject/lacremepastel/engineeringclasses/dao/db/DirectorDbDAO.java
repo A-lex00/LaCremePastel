@@ -6,6 +6,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.query.UserQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -18,7 +19,7 @@ public class DirectorDbDAO implements DirectorDAO{
                 UserQuery.addUser(
                         Connector.getConnection(),
                         register.getUsername(),
-                        register.getPasswd(),
+                        BCrypt.hashpw(register.getPasswd(),BCrypt.gensalt()),
                         register.getFirstname(),
                         register.getLastname(),
                         register.getEmail(),
