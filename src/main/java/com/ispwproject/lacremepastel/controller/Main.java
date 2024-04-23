@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;

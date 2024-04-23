@@ -1,17 +1,17 @@
 
-W
-java:S4973"<Strings and Boxed types should be compared using "equals()".(ì¼²ÿÿÿÿÿ
-c
-java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(„“É
-\
-java:S1854 "ARemove this useless assignment to local variable "noticeFactory".(ªõàöÿÿÿÿÿ
-2
-java:S1116"Remove this empty statement.(…ªÄ
-M
-java:S1481 "2Remove this unused "noticeFactory" local variable.(ªõàöÿÿÿÿÿ
-u
-java:S1128"ZRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.dao.OrderDAO'.(Ù†íôşÿÿÿÿ
-\
-java:S1128"FRemove this unused import 'com.ispwproject.lacremepastel.model.Order'.(ïì—
-S
-java:S1128"=Remove this unused import 'java.util.PropertyResourceBundle'.(ä÷¶¾
+}
+java:S4973"<Strings and Boxed types should be compared using "equals()".(ì¼²ÿÿÿÿÿJ$15a1055f-8c59-44b7-9f37-15e75b324a6a
+‰
+java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(„“ÉJ$6e75f4b9-f307-4d8e-b0c6-7e5dcd8c35a8
+‚
+java:S1854#"ARemove this useless assignment to local variable "noticeFactory".(ªõàöÿÿÿÿÿJ$67ec1329-43c0-4a32-8960-b60a460455e9
+X
+java:S1116"Remove this empty statement.(…ªÄJ$d0aa72ed-ae7f-4021-8bf4-00c7bcbc477e
+s
+java:S1481#"2Remove this unused "noticeFactory" local variable.(ªõàöÿÿÿÿÿJ$c99c8e83-c742-4b1b-a2d1-126f76afe0b0
+›
+java:S1128"ZRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.dao.OrderDAO'.(Ù†íôşÿÿÿÿJ$776322c8-3cca-4bb5-b2ea-31274dfac367
+‚
+java:S1128"FRemove this unused import 'com.ispwproject.lacremepastel.model.Order'.(ïì—J$2bafd0a4-fed7-4b55-85b3-0e871ae07dc6
+y
+java:S1128"=Remove this unused import 'java.util.PropertyResourceBundle'.(ä÷¶¾J$7d56170a-ab2f-478f-9a89-d5d32251e556

@@ -1,21 +1,24 @@
 
 Ä
-java:S11861"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(§İãÒ8÷¾Œ³ğ1J$e296a321-60e2-46fb-a9b4-db8195900911
-¡
-java:S1128"YRemove this unused import 'com.ispwproject.lacremepastel.controller.app.LoginController'.(çöÔÿÿÿÿÿ8ş–¢³ğ1J$e24edcca-6f62-4f18-a817-56a9807c1f6e
-Ÿ
-java:S1128"\Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean'.(’Æğä8ş–¢³ğ1J$f8001e85-a646-4edd-bd51-9268544550b8
+java:S11862"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(§İãÒ8ÕÓğ1J$739973b5-f8f8-4138-9684-9246457b1a24
+{
+java:S1128"YRemove this unused import 'com.ispwproject.lacremepastel.controller.app.LoginController'.(çöÔÿÿÿÿÿ8ËÂàÓğ1
+y
+java:S1128"\Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean'.(’Æğä8ÌÂàÓğ1
 ¢
-java:S1128"_Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean'.(ışÍÄ8ş–¢³ğ1J$b27d5e79-02ca-4a99-9689-03ab581265cd
-¦
-java:S1128"^Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean'.(ó’™£úÿÿÿÿ8ş–¢³ğ1J$d96ca6b1-24ee-4117-8fcd-052a579c3771
-¼
-java:S1128"tRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException'.(‘ü¡øÿÿÿÿ8ÿ–¢³ğ1J$c6329ec0-4f17-435d-aa6b-48f83c982a0d
-µ
-java:S1128"rRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException'.(íøà8›¿Œ³ğ1J$21a875bb-a237-4fe5-864d-a239030ed944
+java:S1128"_Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean'.(ışÍÄ8ëËÕÓğ1J$f9b88f67-2d0b-4d25-b083-099b3065d944
+€
+java:S1128"^Remove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean'.(ó’™£úÿÿÿÿ8ÌÂàÓğ1
 ³
-java:S1128	"kRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent'.(¡×ğÜÿÿÿÿÿ8›¿Œ³ğ1J$44b841dd-21ae-4ec3-9c69-946780f0e7f6
+java:S1128"qRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException'.(ûìŸt8ìËÕÓğ1J$ff399320-08cd-4ca6-926a-b2620810ce0b
+¼
+java:S1128"tRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException'.(‘ü¡øÿÿÿÿ8ìËÕÓğ1J$999710e4-5994-4cc9-b69a-c83e913ca46c
+µ
+java:S1128	"rRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException'.(íøà8íËÕÓğ1J$7f277ad9-a7db-42f8-923e-c297219cc64e
+³
+java:S1128
+"kRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent'.(¡×ğÜÿÿÿÿÿ8íËÕÓğ1J$365ea6f4-0f64-44ed-80af-437c1c7589a5
 ©
-java:S1128"fRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager'.(áÌ¸ù8œ¿Œ³ğ1J$27fa4cde-d68d-4620-9709-b80743f865bb
+java:S1128"fRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager'.(áÌ¸ù8îËÕÓğ1J$6907ee55-2f2f-4a57-96aa-0f797c8f2d7d
 
-java:S1128"FRemove this unused import 'com.ispwproject.lacremepastel.model.Login'.(–êÑãıÿÿÿÿ8œ¿Œ³ğ1J$1e8f70e1-a956-44e2-9c9f-8df9b2129ac5
+java:S1128"FRemove this unused import 'com.ispwproject.lacremepastel.model.Login'.(–êÑãıÿÿÿÿ8îËÕÓğ1J$ac8b2b11-d754-41c9-86c9-ab0e69f258f8

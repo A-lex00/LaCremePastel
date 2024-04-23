@@ -14,7 +14,8 @@ import java.util.PropertyResourceBundle;
 public class ManageOrder {
     public void finalizeOrder(OrderBean orderBean){
         
-        //non mi convince
+        // non mi convince
+        // Esiste la classe Configurations apposta per non farti leggere il file ogni volta.
         String value=null;
         Properties prop=new Properties();
         try{
@@ -25,10 +26,12 @@ public class ManageOrder {
         }catch(IOException ex){
             ex.printStackTrace();;
         }
+        //Per questa situazione qui, esiste la DAOFactory apposta, così te ne devi sbattere il cazzo del tipo
         if(value=="MARIADB") {
             OrderDbDAO orderDbDAO=new OrderDbDAO();
             orderDbDAO.saveOrder(orderBean);
         }
+        //Qui ho lanciato l'idea di una factory, ma credo sia meglio chiamare la classe "NoticeGenerator" come era prima.
         NoticeFactory noticeFactory=new NoticeFactory();
     }
 }

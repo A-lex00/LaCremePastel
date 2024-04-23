@@ -3,8 +3,6 @@
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 l
 <src/main/java/com/ispwproject/lacremepastel/model/Order.java,3/a/3a563e2105a10244b51a15beb0e4dc6dafa0773d
-}
-Msrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/observer/dummy,7/8/78a037ca5463a302d00c19e5eeb2ad424c0b4c3f
 E
 src/config.properties,2/9/29886c5d5439009c9b5707381692a3ec0d7810c9
 n
@@ -127,8 +125,6 @@ Zsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/WorkerJ
 Usrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/db/OrderDbDAO.java,b/4/b4e94e1cc34d8700f082ed3824fb2c81aadf0651
 €
 Psrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/OrderDAO.java,5/2/5215ef8b3380b1a0dd82b2142be7631de2f7ec4d
-{
-Ksrc/main/java/com/ispwproject/lacremepastel/controller/cli/other/Event.java,f/e/fe480173f1e26e5f947a542c6190ed5f89f41139
 
 Qsrc/main/java/com/ispwproject/lacremepastel/controller/cli/states/LoginState.java,1/8/18d1bc83d8897e873e30783ce3bc9c54fa1ed839
 „
@@ -141,3 +137,9 @@ jsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/exception/UserAl
 Vsrc/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerLoginPage.java,b/e/be66319b361da844b60e8369ed87ee9225619375
 {
 Ksrc/main/java/com/ispwproject/lacremepastel/controller/app/ManageOrder.java,1/b/1bf1ad3a7a8960af697c316552ae7945dd23da4a
+‡
+Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/DirectorQuery.java,e/1/e1cad04533f7a3000a1092e1b073a347b0795235
+‡
+Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/CustomerQuery.java,d/1/d1ce94c41b2b548fca232af6d3bae2b5a92779cc
+…
+Usrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/WorkerQuery.java,0/d/0dd30c5df28ad008e2371de79bcc8ab6bbc78350

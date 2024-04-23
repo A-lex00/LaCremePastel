@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/DirectorQuery.java" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;@negative&quot;:&quot;1&quot;   }  } }}" />
+    <file url="PROJECT" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;83b2f98c-36f6-458f-8e5a-e53e68bc0993&quot;    }   }  } }}" />
+  </component>
+</project>

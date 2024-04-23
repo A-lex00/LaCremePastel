@@ -5,15 +5,15 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.UserDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.SessionDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.UserDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lacremepastel.model.Login;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.model.Session;
+import com.ispwproject.lacremepastel.other.SupportedRoleTypes;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
 import java.util.logging.Logger;
@@ -37,7 +37,7 @@ public class LoginController {
         return ret;
     }
 
-    public boolean register(RegisterBean registerBean) throws UserAlreadyExistentException {
+    public boolean register(RegisterBean registerBean) throws UserAlreadyExistentException, InvalidParameterException {
         if(registerBean != null){
             Register register = null;
             try {
@@ -50,8 +50,19 @@ public class LoginController {
                         registerBean.getEmail(),
                         SupportedUserTypes.valueOf(registerBean.getUserType())
                 );
+                if(register.getUserType() == SupportedUserTypes.CUSTOMER){
+                    //Cliente
+                    register.setBillingAddress(registerBean.getBillingAddress());
+                }else{
+                    //Lavoratore
+                    register.setRole(SupportedRoleTypes.valueOf(registerBean.getRole()));
+                }
             }catch (IllegalArgumentException e){
-                Logger.getLogger(LoginController.class.getName()).severe("Unsupported User Type: "+registerBean.getUserType());
+                if(register.getUserType() == null) {
+                    Logger.getLogger(LoginController.class.getName()).severe("Unsupported User Type: " + registerBean.getUserType());
+                }else if(register.getRole() == null){
+                    Logger.getLogger(LoginController.class.getName()).severe("Unsupported Role: " + registerBean.getRole());
+                }
                 return false;
             }
 

@@ -1,6 +1,3 @@
 
-µ
-java:S1128	"rRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException'.(íøà8„Å„³ğ1J$e7685715-4827-49a1-9775-79c4af1a9c3a
-³
-java:S1128
-"kRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent'.(¡×ğÜÿÿÿÿÿ8…Å„³ğ1J$6c9e8f5b-2163-4e78-b615-6b4611790cbc
+c
+java:S2259="FA "NullPointerException" could be thrown; "register" is nullable here.(¶éÿ8ÕûÅÓğ1

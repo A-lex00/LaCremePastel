@@ -23,6 +23,8 @@ public class Register {
         this.lastname = lastname;
         this.email = email;
         this.userType = userType;
+        this.billingAddress = null;
+        this.role = null;
     }
 
     public String getUsername() {
