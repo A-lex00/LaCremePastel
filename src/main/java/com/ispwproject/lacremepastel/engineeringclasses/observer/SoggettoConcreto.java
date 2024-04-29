@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class SoggettoConcreto extends Soggetto {
     public SoggettoConcreto() {
+        super(new Vector<Observer>());
         observerList = new ArrayList<>();
         stato = false;        //stato iniziale
     }

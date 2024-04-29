@@ -31,6 +31,7 @@ public class LoginController {
             Session session = sessionDAO.userLogin(login);
             SessionManager.getInstance().addSession(session);
             if(session != null){
+                // fare setRole!
                 ret = new SessionBean(session.getUuid());
             }
         }
