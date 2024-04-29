@@ -1,3 +1,4 @@
+/*
 package com.ispwproject.lacremepastel.engineeringclasses.observer;
 
 import java.util.ArrayList;
@@ -15,3 +16,4 @@ public class SoggettoConcreto extends Soggetto {
         return stato;
     }
 }
+*/

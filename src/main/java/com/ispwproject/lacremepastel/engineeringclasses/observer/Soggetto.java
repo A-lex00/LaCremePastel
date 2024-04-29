@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-//rivedere!
+/*
 
 public abstract class Soggetto implements  Runnable {
     protected boolean stato;    //se settato a true, abbiamo una nuova notizia da leggere altrimenti niente da leggere!
@@ -60,7 +60,7 @@ public abstract class Soggetto implements  Runnable {
         }
     }
 
-         */
+
     @Override
     public void run(){
     this.isAlive=true;
@@ -75,3 +75,4 @@ public abstract class Soggetto implements  Runnable {
     public abstract boolean getStato();
 
 
+*/

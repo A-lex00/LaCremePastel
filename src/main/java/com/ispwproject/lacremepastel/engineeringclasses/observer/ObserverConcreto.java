@@ -1,3 +1,5 @@
+
+/*
 package com.ispwproject.lacremepastel.engineeringclasses.observer;
 
 public class ObserverConcreto extends Observer {
@@ -19,3 +21,4 @@ public class ObserverConcreto extends Observer {
     }
 
 }
+*/
