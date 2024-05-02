@@ -5,6 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
+.idea/sonarlint
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
@@ -36,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### config file ###
+src/config.properties

@@ -66,13 +66,13 @@ public class GUIControllerLoginPage {
                 Parent root=null;
 
                 if(sessionBean.getRole().equals("DIRECTOR")){
-                    FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
                 }
                 if(sessionBean.getRole().equals("CUSTOMER")){
-                    FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
                 }
                 if(sessionBean.getRole().equals("WORKER")){
-                    FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
                 }
                 stage.setScene(new Scene(root, 629, 481));
                 stage.setTitle("La Creme Pastel");

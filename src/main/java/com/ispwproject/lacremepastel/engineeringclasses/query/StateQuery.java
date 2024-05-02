@@ -18,4 +18,12 @@ public class StateQuery {
         }
     }
 
+    public static ResultSet loadLinks(Connection conn, String stateName) throws SQLException {
+        String query = "SELECT StateLink.callee FROM StateLink JOIN State ON StateLink.caller = State.id WHERE State.name = ?";
+        try(PreparedStatement ps = conn.prepareStatement(query)){
+            ps.setString(1, stateName);
+            return ps.executeQuery();
+        }
+    }
+
 }

@@ -29,10 +29,11 @@ public class LoginController {
             );
             SessionDAO sessionDAO = SessionDAOFactory.getInstance().createSessionDAO();
             Session session = sessionDAO.userLogin(login);
-            SessionManager.getInstance().addSession(session);
             if(session != null){
-                // fare setRole!
-                ret = new SessionBean(session.getUuid());
+                SessionManager.getInstance().addSession(session);
+                ret = new SessionBean(session.getUuid(), session.getUsertype().toString());
+                ret.setUsername(session.getUsername());
+
             }
         }
         return ret;

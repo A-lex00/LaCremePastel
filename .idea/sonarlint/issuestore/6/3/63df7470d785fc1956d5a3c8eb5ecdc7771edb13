@@ -1,3 +1,10 @@
 
-…
-java:S2094"BRemove this empty class, write its code or make it an "interface".(«±Å8Á¢Äİç1J$4cf125b8-e347-448c-9e3a-5da87513bca6
+M
+java:S1172
+"0Remove this unused method parameter "orderBean".( ›ßÁ8İäºùğ1
+|
+java:S1128"ZRemove this unused import 'com.ispwproject.lacremepastel.engineeringclasses.dao.OrderDAO'.(Ù†íôşÿÿÿÿ8èäºùğ1
+l
+java:S1128"JRemove this unused import 'com.ispwproject.lacremepastel.model.OrderLine'.(™™‹–üÿÿÿÿ8éäºùğ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8êäºùğ1

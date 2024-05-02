@@ -5,8 +5,8 @@ import com.ispwproject.lacremepastel.controller.cli.machines.StateMachine;
 import java.util.List;
 
 public class InitialState extends AbstractState{
-    protected InitialState(List<AbstractState> availableStates) {
-        super(availableStates);
+    public InitialState() {
+        super();
     }
 
     @Override

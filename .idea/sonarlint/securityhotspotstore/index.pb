@@ -93,8 +93,6 @@ o
 ?src/main/java/com/ispwproject/lacremepastel/model/Register.java,0/e/0e0a57bfaa393661a003e53645eeba544c0d73d2
 
 Osrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/UserDAO.java,9/6/9615ee57210acceb3067b6bbf6f625d990f82644
-ƒ
-Ssrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/UserQuery.java,f/8/f8d23ee07dd4cd2220c351adeee8e72357b85f8c
 †
 Vsrc/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerFirstPage.java,9/f/9fffc1152502c3dec55672606f17fad2db38669c
 „
@@ -143,3 +141,12 @@ Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/DirectorQu
 Wsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/CustomerQuery.java,d/1/d1ce94c41b2b548fca232af6d3bae2b5a92779cc
 …
 Usrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/query/WorkerQuery.java,0/d/0dd30c5df28ad008e2371de79bcc8ab6bbc78350
+ˆ
+Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/StateFactory.java,5/b/5bf1a1c8821f16b519319d06f8363059acad2089
+‹
+[src/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/JsonFileReader.java,9/0/901daf4d1c5233f5b17733ae5c9d2e9972a20af9
+‹
+[src/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/json/JsonFileWriter.java,8/1/81f8dd5d51133b90c32412370cc3908df65838ba
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302

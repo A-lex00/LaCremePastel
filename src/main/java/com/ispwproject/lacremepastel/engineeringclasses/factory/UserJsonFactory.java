@@ -1,4 +1,4 @@
-/*package com.ispwproject.lacremepastel.engineeringclasses.factory;
+package com.ispwproject.lacremepastel.engineeringclasses.factory;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.CustomerDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.DirectorDAO;
@@ -30,4 +30,3 @@ public class UserJsonFactory extends UserDAOFactory{
         return new WorkerJsonDAO();
     }
 }
-*/
