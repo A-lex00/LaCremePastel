@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="615.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lecremepastel.controller.GUIController.GUIControllerShoppingCart">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="615.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerShowCustomerList">
    <children>
       <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,6 +23,6 @@
          </font>
       </Text>
       <Button layoutX="248.0" layoutY="411.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: e1680f;" text="indietro" />
-      <ListView layoutX="110.0" layoutY="98.0" prefHeight="306.0" prefWidth="342.0" />
+      <ListView fx:id="customerView" layoutX="110.0" layoutY="98.0" prefHeight="306.0" prefWidth="342.0" />
    </children>
 </AnchorPane>

@@ -7,9 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerWorkerFirstPage">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerWorkerFirstPage">
    <children>
-      <ImageView fitHeight="481.0" fitWidth="732.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>

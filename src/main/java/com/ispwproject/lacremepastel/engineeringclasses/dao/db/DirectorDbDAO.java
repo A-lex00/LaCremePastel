@@ -10,6 +10,7 @@ import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class DirectorDbDAO implements DirectorDAO{
@@ -38,5 +39,10 @@ public class DirectorDbDAO implements DirectorDAO{
             }
         }
         return false;
+    }
+
+    @Override
+    public List<String> getAllCustomer() {
+        return null;
     }
 }
