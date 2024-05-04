@@ -5,6 +5,7 @@ import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
 import com.ispwproject.lacremepastel.controller.cli.states.InitialState;
 import com.ispwproject.lacremepastel.controller.cli.states.LoginState;
 import com.ispwproject.lacremepastel.controller.cli.states.RegisterState;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 
 import java.util.logging.Logger;
 
@@ -30,7 +31,9 @@ public class StateFactory {
                 case INITIAL -> abstractState = new InitialState();
                 case LOGIN -> abstractState = new LoginState();
                 case REGISTER -> abstractState = new RegisterState();
+                default -> throw new InvalidParameterException("Invalid state: " + stateName);
             }
+            abstractState.setStateName(state);
         }catch (IllegalArgumentException e){
             Logger.getLogger(StateFactory.class.getName()).severe("Invalid state: " + stateName);
         }

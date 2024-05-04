@@ -11,8 +11,7 @@ public class CLIMessages {
     public static String landingMenu = """
             Please choose one of the following options:
             1) Login
-            2) Register
-            """;
+            2) Register""";
 
     //------------------- Login & Register Page --------------------//
     public static String usernamePrompt = "Insert Username\n";
@@ -24,8 +23,7 @@ public class CLIMessages {
             Please choose the user type:
             1) Director
             2) Worker
-            3) Customer
-            """;
+            3) Customer""";
 
     public static String cfPivaPrompt = "Insert your CF or P.IVA\n";
 
@@ -45,8 +43,7 @@ public class CLIMessages {
             Please choose one of the following options:
             1) New Order
             2) Show Your Orders
-            0) Log Out
-            """;
+            0) Log Out""";
 
 
 }

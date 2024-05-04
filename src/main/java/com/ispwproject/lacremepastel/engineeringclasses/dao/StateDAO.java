@@ -15,6 +15,8 @@ public class StateDAO {
         try(ResultSet rs = StateQuery.selectInitialState(Connector.getConnection())){
             if(rs.next()){
                 initialState = StateFactory.getInstance().createState(rs.getString("name"));
+            }else{
+                throw new IllegalStateException("Initial State not found!");
             }
         }catch(SQLException e){
             Logger.getLogger(StateDAO.class.getName()).severe(e.getMessage());

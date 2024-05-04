@@ -1,8 +1,7 @@
 package com.ispwproject.lacremepastel.controller.cli.states;
 
-import com.ispwproject.lacremepastel.controller.cli.machines.StateMachine;
-
-import java.util.List;
+import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
+import com.ispwproject.lacremepastel.controller.cli.other.CLIMessages;
 
 public class InitialState extends AbstractState{
     public InitialState() {
@@ -10,12 +9,19 @@ public class InitialState extends AbstractState{
     }
 
     @Override
-    public void entry(StateMachine contextSM) {
-        super.entry(contextSM);
+    public void entry(AbstractCLIStateMachine contextSM) {
+        String message = CLIMessages.welcome + "\n" +
+                CLIMessages.landingMenu + "\n" +
+                CLIMessages.promptExpr;
+        contextSM.setMessage(message);
+        contextSM.printMessage();
     }
 
     @Override
-    public void exit(StateMachine contextSM) {
-        super.exit(contextSM);
+    public void exit(AbstractCLIStateMachine contextSM) {
+        System.out.println("InitialState: exit");
+        if(!this.isStateAvailable(contextSM.getNextState())){
+            throw new IllegalStateException("Invalid next state: "+contextSM.getNextState());
+        }
     }
 }

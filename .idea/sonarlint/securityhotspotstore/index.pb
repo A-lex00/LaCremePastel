@@ -150,3 +150,11 @@ Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/StateFac
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+Ñ
+Tsrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/ConcreteCLI.java,7/c/7c6cf9a3f5171ec00f0324d3b2f74bf0f5990e7c
+ê
+`src/main/java/com/ispwproject/lacremepastel/controller/cli/machines/AbstractCLIStateMachine.java,d/a/da3458d3bd59c5c7f2f83a0a99861a489d44dbe8
+è
+_src/main/java/com/ispwproject/lacremepastel/controller/cli/machine/AbstractCLIStateMachine.java,3/4/3474b3e83288b46e4a970159211eb5b8a920384e
+É
+Ssrc/main/java/com/ispwproject/lacremepastel/controller/cli/machine/ConcreteCLI.java,e/4/e48b6fc607509a409dccfe4922b9b5c56d1905f6

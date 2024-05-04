@@ -12,14 +12,14 @@ public class StateQuery {
     }
 
     public static ResultSet selectInitialState(Connection conn) throws SQLException {
-        String query = "SELECT State.name FROM StateLink JOIN State WHERE StateLink.caller = 0";
+        String query = "SELECT State.name FROM StateLink JOIN State ON StateLink.callee = State.id WHERE StateLink.caller = 0";
         try(PreparedStatement ps = conn.prepareStatement(query)){
             return ps.executeQuery();
         }
     }
 
     public static ResultSet loadLinks(Connection conn, String stateName) throws SQLException {
-        String query = "SELECT StateLink.callee FROM StateLink JOIN State ON StateLink.caller = State.id WHERE State.name = ?";
+        String query = "SELECT State.name FROM State WHERE State.id IN ( SELECT StateLink.callee FROM StateLink JOIN State ON StateLink.caller = State.id WHERE State.name = ?)";
         try(PreparedStatement ps = conn.prepareStatement(query)){
             ps.setString(1, stateName);
             return ps.executeQuery();

@@ -1,11 +1,11 @@
 package com.ispwproject.lacremepastel.controller.cli.states;
 
-import com.ispwproject.lacremepastel.controller.cli.machines.StateMachine;
+import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class AbstractState {
 
@@ -36,6 +36,36 @@ public abstract class AbstractState {
         this.stateName = newName;
     }
 
-    public void entry(StateMachine contextSM){}
-    public void exit(StateMachine contextSM) throws InvalidParameterException {}
+    protected boolean isStateAvailable(AbstractState state){
+        for(AbstractState s : availableStates){
+            if(s.equals(state)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void entry(AbstractCLIStateMachine contextSM){}
+    public void exit(AbstractCLIStateMachine contextSM) throws IllegalStateException{}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractState that = (AbstractState) o;
+        return stateName == that.stateName;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(stateName);
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractState{" +
+                "availableStates=" + availableStates +
+                ", stateName=" + stateName +
+                '}';
+    }
 }
