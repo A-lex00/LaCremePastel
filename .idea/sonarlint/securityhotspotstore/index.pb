@@ -158,3 +158,5 @@ Tsrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/ConcreteCLI
 _src/main/java/com/ispwproject/lacremepastel/controller/cli/machine/AbstractCLIStateMachine.java,3/4/3474b3e83288b46e4a970159211eb5b8a920384e
 ƒ
 Ssrc/main/java/com/ispwproject/lacremepastel/controller/cli/machine/ConcreteCLI.java,e/4/e48b6fc607509a409dccfe4922b9b5c56d1905f6
+>
+src/.gitignore,9/3/93cbdd0973c9a7b59e5cef90a94300ab95fd66e5
