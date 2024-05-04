@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -7,12 +8,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="481.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerDirectorFirstPage">
+<AnchorPane maxHeight="481.0" maxWidth="629.0" minHeight="480.0" minWidth="615.0" prefHeight="480.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerDirectorFirstPage">
    <children>
-      <ImageView fitHeight="481.0" fitWidth="629.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="500.0" fitWidth="614.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-2.0">
          <image>
             <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
       </ImageView>
       <Button layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#showCustomerList" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Lista clienti" />
       <Button layoutX="217.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrder" prefHeight="33.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione ordini" />

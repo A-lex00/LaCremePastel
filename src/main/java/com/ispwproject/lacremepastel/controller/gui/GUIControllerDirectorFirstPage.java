@@ -17,7 +17,7 @@ public class GUIControllerDirectorFirstPage {
             Stage stage=(Stage) node.getScene().getWindow();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/manageProducts.fxml"));
-                stage.setScene(new Scene(root, 629, 481));
+                stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");
                 stage.show();
             } catch (Exception e) {

@@ -74,7 +74,7 @@ public class GUIControllerLoginPage {
                 if(sessionBean.getRole().equals("WORKER")){
                     root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
                 }
-                stage.setScene(new Scene(root, 629, 481));
+                stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");
                 stage.show();
             }catch(Exception e){
