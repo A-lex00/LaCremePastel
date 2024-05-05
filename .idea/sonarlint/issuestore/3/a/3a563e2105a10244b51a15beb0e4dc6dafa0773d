@@ -1,24 +1,0 @@
-
-W
-java:S1700"Rename field "order"( ‚Ÿ8Ï…˜÷è1J$d0d7a274-e760-4dda-8ca3-c4bce4ce5981
-
-java:S1450"[Remove the "customerName" field and declare it as a local variable in the relevant methods.(š£»Á8™†˜÷è1J$a0dfa880-9e8b-4366-8983-6e0330206397
-¢
-java:S1450"ZRemove the "isCompleted" field and declare it as a local variable in the relevant methods.(¸³ßëøÿÿÿÿ8š†˜÷è1J$d71df172-e0f5-40ea-adca-57096e452074
- 
-java:S1450	"XRemove the "isPending" field and declare it as a local variable in the relevant methods.(î¶é™şÿÿÿÿ8¡†˜÷è1J$04fd34f8-2322-4a9a-9435-60765e400b39
-q
-java:S1172")Remove this unused method parameter "id".(¡›Óÿÿÿÿÿ8¬†˜÷è1J$f73909c7-07fe-42e0-92b8-e4aabd1c5210
-l
-java:S1172")Remove this unused method parameter "id".(æøØ´8¯†˜÷è1J$7e0c085d-26f5-492d-8d7d-772e23f0af5e
-l
-java:S1068")Remove this unused "order" private field.( ‚Ÿ8·†˜÷è1J$61e3148b-fc34-4120-b862-81de42cda1fb
-w
-java:S1068"/Remove this unused "isCompleted" private field.(¸³ßëøÿÿÿÿ8º†˜÷è1J$b3699336-b0ef-4678-8781-01db4307ccd3
-u
-java:S1068	"-Remove this unused "isPending" private field.(î¶é™şÿÿÿÿ8½†˜÷è1J$c43fa8f7-e6fc-4119-a335-7848fbbc1637
-l
-java:S1068
-"+Remove this unused "idOrder" private field.(²ÔïûÿÿÿÿJ$319a0f13-60b3-432c-8a5a-9463e47bc245
-s
-java:S1068"0Remove this unused "customerName" private field.(š£»Á8Â†˜÷è1J$ff62123e-71be-4dba-9b5e-04bb8e494cc2
