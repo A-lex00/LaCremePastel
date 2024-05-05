@@ -10,9 +10,13 @@ public class InitialState extends AbstractState{
 
     @Override
     public void entry(AbstractCLIStateMachine contextSM) {
-        String message = CLIMessages.welcome + "\n" +
-                CLIMessages.landingMenu + "\n" +
-                CLIMessages.promptExpr;
-        contextSM.setMessage(message);
+        StringBuilder message = new StringBuilder();
+        message.append(CLIMessages.welcome);
+        message.append(CLIMessages.chooseExpr);
+        for(int i = 1; i<= this.availableStates.size(); i++){
+            message.append(i).append(") ").append(this.availableStates.get(i).stateName.toString()).append("\n");
+        }
+        message.append(CLIMessages.promptExpr);
+        contextSM.setMessage(message.toString());
     }
 }

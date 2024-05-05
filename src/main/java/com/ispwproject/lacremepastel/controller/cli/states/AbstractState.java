@@ -2,30 +2,34 @@ package com.ispwproject.lacremepastel.controller.cli.states;
 
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class AbstractState {
 
-    protected ArrayList<AbstractState> availableStates;
+    protected HashMap<Integer,AbstractState> availableStates;
     protected SupportedStates stateName;
 
     protected AbstractState() {
-        this.availableStates = new ArrayList<>();
+        this.availableStates = new HashMap<>();
     }
 
     public List<AbstractState> getAvailableStates() {
-        return availableStates.stream().toList();
+        ArrayList<AbstractState> list = new ArrayList<>();
+        for(int i = 0; i<availableStates.size(); i++){
+            AbstractState state = this.availableStates.get(i);
+            if(state != null) {
+                list.add(state);
+            }
+        }
+        return list;
     }
 
     public void addState(AbstractState state) {
-        this.availableStates.add(state);
+        this.availableStates.put(this.availableStates.size()+1,state);
     }
 
-    public void removeState(AbstractState state) {
-        this.availableStates.remove(state);
+    public void removeState(int id) {
+        this.availableStates.remove(id);
     }
 
     public String getStateName(){
@@ -36,22 +40,12 @@ public abstract class AbstractState {
         this.stateName = newName;
     }
 
-    protected boolean isStateAvailable(AbstractState state){
-        for(AbstractState s : availableStates){
-            if(s.equals(state)){
-                return true;
-            }
-        }
-        return false;
+    public AbstractState getChosenState(int choose){
+        return this.availableStates.get(choose);
     }
 
     public void entry(AbstractCLIStateMachine contextSM){}
-    public void exit(AbstractCLIStateMachine contextSM) throws IllegalStateException{
-        if(!this.isStateAvailable(contextSM.getNextState())){
-            AbstractState nextState = contextSM.getNextState();
-            throw new IllegalStateException("Invalid next state: "+nextState.stateName);
-        }
-    }
+    public void exit(AbstractCLIStateMachine contextSM){contextSM.setMessage("");}
 
     @Override
     public boolean equals(Object o) {

@@ -5,8 +5,10 @@ public class CLIMessages {
     //------------------- Miscellaneous --------------------//
     public static String promptExpr = "> ";
 
+    public static String chooseExpr = "Please choose one of the following options:\n";
+
     //------------------- Landing Page --------------------//
-    public static String welcome = "Welcome to La Créme Pastel!";
+    public static String welcome = "Welcome to La Créme Pastel!\n";
 
     public static String landingMenu = """
             Please choose one of the following options:
@@ -44,6 +46,4 @@ public class CLIMessages {
             1) New Order
             2) Show Your Orders
             0) Log Out""";
-
-
 }

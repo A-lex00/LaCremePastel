@@ -26,12 +26,4 @@ public class StateQuery {
         }
     }
 
-    public static ResultSet loadState(Connection conn, int id) throws SQLException{
-        String query = "SELECT State.name FROM State WHERE State.id = ?";
-        try(PreparedStatement ps = conn.prepareStatement(query)){
-            ps.setInt(1,id);
-            return ps.executeQuery();
-        }
-    }
-
 }

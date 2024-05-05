@@ -1,7 +1,6 @@
 package com.ispwproject.lacremepastel.controller.cli.machine;
 
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
-import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 
@@ -15,18 +14,9 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
 
     @Override
     public void transition(AbstractState newState) {
-        if(newState == null){
-            return;
-        }
-        try {
-            this.nextState = newState;
-            this.state.exit(this);
-            this.state = this.nextState;
-            this.state.entry(this);
-        }catch (InvalidParameterException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).info("Invalid input");
-        }
-        this.nextState = null;
+        this.state.exit(this);
+        this.state = newState;
+        this.state.entry(this);
     }
 
     @Override
@@ -36,13 +26,17 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
 
     @Override
     public void processInput(String input) throws InvalidParameterException{
-        StateDAO stateDAO = new StateDAO();
-        AbstractState requestedState;
+        int choose;
         try {
-            requestedState = stateDAO.loadStateInfo(Integer.parseInt(input));
-            transition(requestedState);
+            choose = Integer.parseInt(input);
+            AbstractState chosenState = this.state.getChosenState(choose);
+            if(chosenState == null){
+                throw new InvalidParameterException("Invalid input: "+input);
+            }
+            transition(chosenState);
         }catch (NumberFormatException e){
-            throw new InvalidParameterException("Invalid Input");
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).info(e.getMessage());
+            throw new InvalidParameterException("Invalid input: "+input);
         }
     }
 

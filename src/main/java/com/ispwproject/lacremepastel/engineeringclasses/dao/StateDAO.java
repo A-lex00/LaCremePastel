@@ -11,15 +11,15 @@ import java.util.logging.Logger;
 
 public class StateDAO {
 
-    public AbstractState loadInitialState(){
-        AbstractState initialState = null;
-        try(ResultSet rs = StateQuery.selectInitialState(Connector.getConnection())){
-            if(rs.next()){
+    public AbstractState loadInitialState() {
+        AbstractState initialState;
+        try (ResultSet rs = StateQuery.selectInitialState(Connector.getConnection())) {
+            if (rs.next()) {
                 initialState = StateFactory.getInstance().createState(rs.getString("name"));
-            }else{
+            } else {
                 throw new IllegalStateException("Initial State not found!");
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
             return null;
         }
@@ -27,33 +27,20 @@ public class StateDAO {
         return initialState;
     }
 
-    public void loadStateLinks(AbstractState state){
-        if(state == null){
+    public void loadStateLinks(AbstractState state) {
+        if (state == null) {
             return;
         }
-        try(ResultSet rs = StateQuery.loadLinks(Connector.getConnection(),state.getStateName())){
+        try (ResultSet rs = StateQuery.loadLinks(Connector.getConnection(), state.getStateName())) {
             AbstractState link;
-            while(rs.next()){
+            while (rs.next()) {
                 link = StateFactory.getInstance().createState(rs.getString("name"));
                 if (link != null) {
                     state.addState(link);
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
         }
     }
-
-    public AbstractState loadStateInfo(int id){
-        AbstractState loaded = null;
-        try(ResultSet rs = StateQuery.loadState(Connector.getConnection(),id)) {
-            if(rs.next()){
-                loaded = StateFactory.getInstance().createState(rs.getString("name"));
-            }
-        }catch (SQLException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
-        }
-        return loaded;
-    }
-
 }
