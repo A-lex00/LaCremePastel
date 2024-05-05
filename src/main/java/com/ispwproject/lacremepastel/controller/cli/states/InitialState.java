@@ -15,12 +15,4 @@ public class InitialState extends AbstractState{
                 CLIMessages.promptExpr;
         contextSM.setMessage(message);
     }
-
-    @Override
-    public void exit(AbstractCLIStateMachine contextSM) {
-        System.out.println("InitialState: exit");
-        if(!this.isStateAvailable(contextSM.getNextState())){
-            throw new IllegalStateException("Invalid next state: "+contextSM.getNextState());
-        }
-    }
 }

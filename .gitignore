@@ -40,3 +40,7 @@ build/
 
 ### config file ###
 src/config.properties
+
+### log files ###
+*.log
+*.log.lck

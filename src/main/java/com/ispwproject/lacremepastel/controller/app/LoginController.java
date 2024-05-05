@@ -9,6 +9,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParamet
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.SessionDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.UserDAOFactory;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
 import com.ispwproject.lacremepastel.model.Login;
 import com.ispwproject.lacremepastel.model.Register;
@@ -61,9 +62,9 @@ public class LoginController {
                 }
             }catch (IllegalArgumentException e){
                 if(register.getUserType() == null) {
-                    Logger.getLogger(LoginController.class.getName()).severe("Unsupported User Type: " + registerBean.getUserType());
+                    Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Unsupported User Type: " + registerBean.getUserType());
                 }else if(register.getRole() == null){
-                    Logger.getLogger(LoginController.class.getName()).severe("Unsupported Role: " + registerBean.getRole());
+                    Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Unsupported Role: " + registerBean.getRole());
                 }
                 return false;
             }

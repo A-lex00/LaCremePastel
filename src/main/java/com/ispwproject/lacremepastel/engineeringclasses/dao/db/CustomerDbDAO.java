@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.dao.CustomerDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.engineeringclasses.query.CustomerQuery;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Customer;
 import com.ispwproject.lacremepastel.model.Register;
@@ -34,7 +35,7 @@ public class CustomerDbDAO implements CustomerDAO {
                 );
                 return true;
             } catch (SQLException e) {
-                Logger.getLogger(CustomerDbDAO.class.getName()).severe(e.getMessage());
+                Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
                 if (e.getMessage().contains("Duplicate entry")) {
                     throw new UserAlreadyExistentException("User " + register.getUsername() + " already exists");
                 } else {

@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.dao.WorkerDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
 import com.ispwproject.lacremepastel.engineeringclasses.query.WorkerQuery;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
@@ -32,7 +33,7 @@ public class WorkerDbDAO implements WorkerDAO{
                 );
                 return true;
             } catch (SQLException e) {
-                Logger.getLogger(WorkerDbDAO.class.getName()).severe(e.getMessage());
+                Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
                 if(e.getMessage().contains("Duplicate entry")){
                     throw new UserAlreadyExistentException("User " + register.getUsername() + " already exists");
                 }else{

@@ -6,6 +6,7 @@ import com.ispwproject.lacremepastel.controller.cli.states.InitialState;
 import com.ispwproject.lacremepastel.controller.cli.states.LoginState;
 import com.ispwproject.lacremepastel.controller.cli.states.RegisterState;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 
 import java.util.logging.Logger;
 
@@ -35,7 +36,7 @@ public class StateFactory {
             }
             abstractState.setStateName(state);
         }catch (IllegalArgumentException e){
-            Logger.getLogger(StateFactory.class.getName()).severe("Invalid state: " + stateName);
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Invalid state: " + stateName);
         }
         return abstractState;
     }

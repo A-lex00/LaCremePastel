@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao.db;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.engineeringclasses.query.SessionQuery;
 import com.ispwproject.lacremepastel.model.Login;
@@ -26,7 +27,7 @@ public class SessionDbDAO implements SessionDAO {
                     );
                 }
             }catch (SQLException | IllegalArgumentException e){
-                Logger.getLogger(SessionDbDAO.class.getName()).severe(e.getMessage());
+                Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
 
             }
         }

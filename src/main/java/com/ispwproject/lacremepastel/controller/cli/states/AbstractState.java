@@ -46,7 +46,12 @@ public abstract class AbstractState {
     }
 
     public void entry(AbstractCLIStateMachine contextSM){}
-    public void exit(AbstractCLIStateMachine contextSM) throws IllegalStateException{}
+    public void exit(AbstractCLIStateMachine contextSM) throws IllegalStateException{
+        if(!this.isStateAvailable(contextSM.getNextState())){
+            AbstractState nextState = contextSM.getNextState();
+            throw new IllegalStateException("Invalid next state: "+nextState.stateName);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
