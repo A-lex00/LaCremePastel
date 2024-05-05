@@ -14,7 +14,6 @@ public class InitialState extends AbstractState{
                 CLIMessages.landingMenu + "\n" +
                 CLIMessages.promptExpr;
         contextSM.setMessage(message);
-        contextSM.printMessage();
     }
 
     @Override

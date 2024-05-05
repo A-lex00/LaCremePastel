@@ -99,10 +99,6 @@ Vsrc/main/java/com/ispwproject/lacremepastel/controller/gui/GUIControllerFirstPa
 Tsrc/main/java/com/ispwproject/lacremepastel/controller/cli/states/AbstractState.java,e/0/e072773eaa013493883aa3788e359b0bb2fb8621
 Å
 Qsrc/main/java/com/ispwproject/lacremepastel/controller/cli/other/CLIMessages.java,f/c/fc6a4ebadf175f884188912fbbf93da80858ee61
-à
-Xsrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/CLIStateMachine.java,4/1/41d3509996e8550c7f6f760fd6b496efe2007662
-Ö
-Usrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/StateMachine.java,e/7/e7fa94035de9e5a9f4d01d3b2d9860e466ddbe13
 Ä
 Psrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/dao/StateDAO.java,9/8/9824f18854bf6d564a400772435fafecdc56f117
 Ñ
@@ -150,10 +146,6 @@ Xsrc/main/java/com/ispwproject/lacremepastel/engineeringclasses/factory/StateFac
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-Ñ
-Tsrc/main/java/com/ispwproject/lacremepastel/controller/cli/machines/ConcreteCLI.java,7/c/7c6cf9a3f5171ec00f0324d3b2f74bf0f5990e7c
-ê
-`src/main/java/com/ispwproject/lacremepastel/controller/cli/machines/AbstractCLIStateMachine.java,d/a/da3458d3bd59c5c7f2f83a0a99861a489d44dbe8
 è
 _src/main/java/com/ispwproject/lacremepastel/controller/cli/machine/AbstractCLIStateMachine.java,3/4/3474b3e83288b46e4a970159211eb5b8a920384e
 É
