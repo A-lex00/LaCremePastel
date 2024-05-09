@@ -3,13 +3,16 @@ package com.ispwproject.lacremepastel.controller.cli.machine;
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ConcreteCLI extends AbstractCLIStateMachine {
 
+    private final Scanner scanner;
+
     public ConcreteCLI() {
         super();
+        this.scanner = new Scanner(System.in);
     }
 
     @Override
@@ -25,7 +28,8 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
     }
 
     @Override
-    public void processInput(String input) throws InvalidParameterException{
+    public void changeState() throws InvalidParameterException{
+        String input = readInput();
         int choose;
         try {
             choose = Integer.parseInt(input);
@@ -38,6 +42,16 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).info(e.getMessage());
             throw new InvalidParameterException("Invalid input: "+input);
         }
+    }
+
+    @Override
+    public boolean doAction() {
+        return this.state.doAction(this);
+    }
+
+    @Override
+    public String readInput(){
+        return this.scanner.nextLine();
     }
 
 }

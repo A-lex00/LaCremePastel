@@ -46,6 +46,7 @@ public abstract class AbstractState {
 
     public void entry(AbstractCLIStateMachine contextSM){}
     public void exit(AbstractCLIStateMachine contextSM){contextSM.setMessage("");}
+    public boolean doAction(AbstractCLIStateMachine contextSM){return false;}
 
     @Override
     public boolean equals(Object o) {

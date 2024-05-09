@@ -16,9 +16,13 @@ public class CLIMessages {
             2) Register""";
 
     //------------------- Login & Register Page --------------------//
-    public static String usernamePrompt = "Insert Username\n";
+    public static String authPrompt = "Insert Username or Email\n";
 
     public static String passwordPrompt = "Insert Password\n";
+
+    public static String loginFailed = "Wrong Credentials\n";
+
+    public static String loginSuccess = "Login Successful\n";
 
     //------------------- Register Page --------------------//
     public static String userTypePrompt = """

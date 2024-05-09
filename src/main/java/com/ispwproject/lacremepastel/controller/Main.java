@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -61,14 +60,14 @@ public class Main extends Application {
 
     public static void launchCLI(){
         AbstractCLIStateMachine cli = new ConcreteCLI();
-        Scanner scanner = new Scanner(System.in);
         Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
         do{
             try{
                 System.out.println("Current State: "+cli.getState().getStateName());
                 cli.printMessage();
-                String read = scanner.nextLine();
-                cli.processInput(read);
+                if(!cli.doAction()){
+                    cli.changeState();
+                }
             }catch (IllegalStateException e){
                 logger.severe(e.getMessage());
                 System.exit(1);
