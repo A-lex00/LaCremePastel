@@ -1,7 +1,9 @@
 package com.ispwproject.lacremepastel.controller.cli.states;
 
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
+import com.ispwproject.lacremepastel.controller.cli.other.CLIMessages;
 import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
+
 import java.util.*;
 
 public abstract class AbstractState {
@@ -32,6 +34,10 @@ public abstract class AbstractState {
         this.availableStates.remove(id);
     }
 
+    public AbstractState getState(int id){
+        return this.availableStates.get(id);
+    }
+
     public String getStateName(){
         return stateName.toString();
     }
@@ -46,6 +52,11 @@ public abstract class AbstractState {
 
     public void entry(AbstractCLIStateMachine contextSM){}
     public void exit(AbstractCLIStateMachine contextSM){contextSM.setMessage("");}
+
+    /**
+     * @param contextSM Concrete instance AbstractCLIStateMachine
+     * @return true if there is something to do, false otherwise
+     */
     public boolean doAction(AbstractCLIStateMachine contextSM){return false;}
 
     @Override
@@ -67,5 +78,13 @@ public abstract class AbstractState {
                 "availableStates=" + availableStates +
                 ", stateName=" + stateName +
                 '}';
+    }
+
+    public String prettifyAvailableStates(){
+        StringBuilder builder = new StringBuilder();
+        for(int i = 1; i<= this.availableStates.size(); i++){
+            builder.append(i).append(") ").append(this.availableStates.get(i).stateName.toString()).append("\n");
+        }
+        return builder.toString();
     }
 }
