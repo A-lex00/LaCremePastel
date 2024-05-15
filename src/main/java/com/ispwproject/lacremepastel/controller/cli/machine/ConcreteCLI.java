@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.controller.cli.machine;
 
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
+import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import java.util.Scanner;
@@ -10,16 +11,9 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
 
     private final Scanner scanner;
 
-    public ConcreteCLI() {
-        super();
+    public ConcreteCLI(StateDAO stateDAO) {
+        super(stateDAO);
         this.scanner = new Scanner(System.in);
-    }
-
-    @Override
-    public void transition(AbstractState newState) {
-        this.state.exit(this);
-        this.state = newState;
-        this.state.entry(this);
     }
 
     @Override

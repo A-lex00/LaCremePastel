@@ -2,6 +2,7 @@ package com.ispwproject.lacremepastel.controller;
 
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
+import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.application.Application;
@@ -61,7 +62,7 @@ public class Main extends Application {
     }
 
     public static void launchCLI(){
-        AbstractCLIStateMachine cli = new ConcreteCLI();
+        AbstractCLIStateMachine cli = new ConcreteCLI(new StateDAO());
         Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
         do{
             try{
@@ -74,7 +75,7 @@ public class Main extends Application {
                 logger.severe(e.getMessage());
                 System.exit(1);
             }catch (InvalidParameterException e){
-                System.out.println("Invalid Input\n");
+                System.out.println("Invalid Input");
             }catch (NoSuchElementException e){
                 logger.info("Stdin closed, exiting");
                 System.exit(0);

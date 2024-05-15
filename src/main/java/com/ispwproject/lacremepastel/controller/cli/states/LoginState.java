@@ -17,27 +17,28 @@ public class LoginState extends AbstractState {
         LoginController loginController = new LoginController();
         SessionBean sessionData = loginController.login(loginBean);
         if(sessionData == null){
-            contextSM.setMessage(CLIMessages.loginFailed);
+            contextSM.setMessage(CLIMessages.LOGIN_FAILED);
         }else{
-            contextSM.setMessage(CLIMessages.loginSuccess);
+            contextSM.setMessage(CLIMessages.LOGIN_SUCCESS);
             contextSM.setSessionData(sessionData);
         }
         contextSM.printMessage();
         contextSM.setMessage("");
+        contextSM.transition(this.getState(1));
         return true;
     }
 
     private LoginBean loginGather(AbstractCLIStateMachine contextSM){
         contextSM.setMessage(
-                CLIMessages.authPrompt +
-                        CLIMessages.promptExpr
+                CLIMessages.AUTH_PROMPT +
+                        CLIMessages.PROMPT_EXPR
         );
         contextSM.printMessage();
         String authString = contextSM.readInput();
 
         contextSM.setMessage(
-                CLIMessages.passwordPrompt+
-                        CLIMessages.promptExpr
+                CLIMessages.PASSWORD_PROMPT +
+                        CLIMessages.PROMPT_EXPR
         );
         contextSM.printMessage();
         String password = contextSM.readInput();
