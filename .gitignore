@@ -44,3 +44,4 @@ src/config.properties
 ### log files ###
 *.log
 *.log.lck
+file.log.1

@@ -27,6 +27,9 @@ public class GUIControllerCustomerFirstPage {
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();
+        } catch(IllegalArgumentException e){
+            System.err.println("Errore nel caricamento dei prodotti" + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
             System.err.println("Errore nel caricamento della schermata del componi Ordine!" + e.getMessage());
             e.printStackTrace();

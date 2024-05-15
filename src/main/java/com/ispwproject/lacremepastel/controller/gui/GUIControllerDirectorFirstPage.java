@@ -16,7 +16,7 @@ public class GUIControllerDirectorFirstPage {
             Node node=(Node) manageoEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/manageProducts.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/view/manageOrder.fxml"));
                 stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");
                 stage.show();

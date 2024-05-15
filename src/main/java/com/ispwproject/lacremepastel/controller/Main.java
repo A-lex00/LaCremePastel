@@ -32,7 +32,6 @@ public class Main extends Application {
         }catch (IOException | SecurityException e){
             e.fillInStackTrace();
         }
-
         String enableGUI = Configurations.getInstance().getProperty("GUI");
         if (enableGUI.equals("yes")) {
             launch(args);
@@ -46,12 +45,15 @@ public class Main extends Application {
         int count = Integer.parseInt(Configurations.getInstance().getProperty("COUNT"));
         try {
             for (; count > 0; count--) {
+                Stage stagecount= new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/firstPage.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("La Creme Pastel");
-                primaryStage.show();
+                stagecount.setScene(scene);
+                stagecount.setTitle("La Creme Pastel");
+                stagecount.show();
+                
+
             }
         } catch (Exception e) {
             System.err.println("Error during load of file FXML: " + e.getMessage());

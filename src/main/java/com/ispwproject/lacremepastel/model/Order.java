@@ -9,6 +9,8 @@ public class Order {
     private boolean isPending=true;
     private int idOrder;
     private String customerName;
+    private Worker assignedWorker;
+
 
     public void setCompleted(int id){
         this.isCompleted=true;
@@ -18,6 +20,12 @@ public class Order {
     }
    public void setCustomerName(String customer){
         this.customerName=customer;
+   }
+   public Worker getAssignedWorker(){
+        return assignedWorker;
+   }
+   public void setAssignedWorker(Worker assignedWorker){
+        this.assignedWorker=assignedWorker;
    }
 
 }
