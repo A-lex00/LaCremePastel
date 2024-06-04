@@ -8,6 +8,9 @@ public class Product {
         this.name=name;
         this.price=price;
     }
+    public Product(String name){
+        this.name=name;
+    }
 
 
     public void insertProduct(double price, String name){
