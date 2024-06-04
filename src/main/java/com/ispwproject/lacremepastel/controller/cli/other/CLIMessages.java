@@ -6,6 +6,8 @@ public class CLIMessages {
     //------------------- Miscellaneous --------------------//
     public static final String PROMPT_EXPR = "> ";
 
+    public static final String DEVELOPING = "Still in Development";
+
     public static final String CHOOSE_EXPR = "Please choose one of the following options:\n";
 
     //------------------- Landing Page --------------------//
@@ -21,6 +23,8 @@ public class CLIMessages {
     public static final String LOGIN_SUCCESS = "Login Successful\n";
 
     //------------------- Register Page --------------------//
+
+    public static final String USERNAME_PROMPT = "Insert Username\n";
 
     public static final String CF_PIVA_PROMPT = "Insert your CF or P.IVA\n";
 

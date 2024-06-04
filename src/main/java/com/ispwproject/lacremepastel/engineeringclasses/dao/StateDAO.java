@@ -31,7 +31,8 @@ public class StateDAO {
         if (state == null) {
             return;
         }
-        try (ResultSet rs = StateQuery.loadLinks(Connector.getConnection(), state.getStateName())) {
+        state.clearStateLinks();
+        try (ResultSet rs = StateQuery.loadLinks(Connector.getConnection(), state.getState())) {
             AbstractState link;
             while (rs.next()) {
                 link = StateFactory.getInstance().createState(rs.getString("name"));

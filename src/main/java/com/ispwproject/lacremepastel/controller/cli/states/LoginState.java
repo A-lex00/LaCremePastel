@@ -18,13 +18,15 @@ public class LoginState extends AbstractState {
         SessionBean sessionData = loginController.login(loginBean);
         if(sessionData == null){
             contextSM.setMessage(CLIMessages.LOGIN_FAILED);
+            contextSM.printMessage();
+            contextSM.transition(contextSM.getPrevState());
         }else{
-            contextSM.setMessage(CLIMessages.LOGIN_SUCCESS);
+            contextSM.setMessage(CLIMessages.LOGIN_SUCCESS+"\n");
             contextSM.setSessionData(sessionData);
+            contextSM.printMessage();
+            contextSM.transition(this.getState(1));
         }
-        contextSM.printMessage();
-        contextSM.setMessage("");
-        contextSM.transition(this.getState(1));
+
         return true;
     }
 

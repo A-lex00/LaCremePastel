@@ -56,7 +56,7 @@ public class LoginController {
                 if(register.getUserType() == SupportedUserTypes.CUSTOMER){
                     //Cliente
                     register.setBillingAddress(registerBean.getBillingAddress());
-                }else{
+                }else if(register.getUserType() == SupportedUserTypes.WORKER){
                     //Lavoratore
                     register.setRole(SupportedRoleTypes.valueOf(registerBean.getRole()));
                 }

@@ -30,9 +30,13 @@ public class StateFactory {
                 case LOGIN -> abstractState = new LoginState();
                 case REGISTER -> abstractState = new RegisterState();
                 case HOME -> abstractState = new HomeState();
+                case MAKE_ORDER -> abstractState = new MakeOrderState();
+                case MANAGE_ORDERS -> abstractState = new ManageOrdersState();
+                case REFUND -> abstractState = new RefundState();
+                case NOTICES -> abstractState = new NoticesState();
                 default -> throw new InvalidParameterException("Invalid state: " + stateName);
             }
-            abstractState.setStateName(state);
+            abstractState.setState(state);
         }catch (IllegalArgumentException e){
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Invalid state: " + stateName);
         }

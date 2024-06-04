@@ -26,7 +26,7 @@ public class Main extends Application {
         FileHandler fh;
         try {
             logger.setUseParentHandlers(false);
-            fh = new FileHandler("file.log", true);
+            fh = new FileHandler("file.log", false);
             fh.setFormatter(new SimpleFormatter());
             logger.addHandler(fh);
             logger.info("Run Started");
@@ -34,7 +34,7 @@ public class Main extends Application {
             e.fillInStackTrace();
         }
         String enableGUI = Configurations.getInstance().getProperty("GUI");
-        if (enableGUI.equals("yes")) {
+        if (enableGUI.equals("on")) {
             launch(args);
         } else {
             launchCLI();
@@ -66,8 +66,6 @@ public class Main extends Application {
         Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
         do{
             try{
-                System.out.println("Current State: "+cli.getState().getStateName());
-                cli.printMessage();
                 if(!cli.doAction()){
                     cli.changeState();
                 }

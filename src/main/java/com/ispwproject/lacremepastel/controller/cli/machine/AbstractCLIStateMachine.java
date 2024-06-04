@@ -31,11 +31,17 @@ public abstract class AbstractCLIStateMachine {
         return prevState;
     }
     public String getMessage(){return message;}
+
     public void setMessage(String message){this.message = message;}
+
     public boolean isRunning(){return running;}
+
     public void toggleRunning(){this.running = !this.running;}
+
     public SessionBean getSessionData(){return this.sessionData;}
+
     public void setSessionData(SessionBean sessionData){this.sessionData = sessionData;}
+
     public void transition(AbstractState nextState){
         this.state.exit(this);
         this.prevState = this.state;

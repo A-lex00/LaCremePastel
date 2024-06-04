@@ -6,28 +6,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderBean {
-    //falla vedere a Michael, serve per far autoincrementare la variabile
-    private static int idOrder;
-    private String user;
-    private List<OrderLine> currentCart;
-    public void OrderBean(){
-        this.idOrder=++idOrder;
-        this.currentCart=new ArrayList<>();
+
+    private ArrayList<OrderLine> cart;
+    private String customerName;
+
+    public OrderBean(String customerName) {
+        this.cart = new ArrayList<>();
+        this.customerName = customerName;
     }
-    public void setUser(String actualUser){
-        this.user=user;
+
+    public String getCustomerName() {
+        return customerName;
     }
-    public String getUser(){
-        return user;
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
-    public void removeProduct(OrderLine actualOrderLine){
-        currentCart.remove(actualOrderLine);
+
+    public void addLine(OrderLine orderLine){
+        this.cart.add(orderLine);
     }
-    public void addProduct(OrderLine actualorderLine){
-        this.currentCart.add(actualorderLine);
+
+    public OrderLine getLine(int index){
+        return this.cart.get(index);
     }
-    public List<OrderLine> getOrder(){
-        return currentCart;
+
+    public void deleteLine(OrderLine orderLine){
+        this.cart.remove(orderLine);
     }
 
 }

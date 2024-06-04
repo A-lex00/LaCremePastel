@@ -16,4 +16,5 @@ public class HomeState extends AbstractState{
         message.append(CLIMessages.PROMPT_EXPR);
         contextSM.setMessage(message.toString());
     }
+
 }
