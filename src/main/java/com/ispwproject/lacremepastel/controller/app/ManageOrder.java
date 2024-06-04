@@ -5,11 +5,10 @@ import com.ispwproject.lacremepastel.engineeringclasses.dao.db.OrderDbDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.NoticeFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 public class ManageOrder {
+    public void manage(){
+
+    }
     public void finalizeOrder(OrderBean orderBean){
         String value=null;
         value= Configurations.getInstance().getProperty("PERSISTENCE_TYPE");

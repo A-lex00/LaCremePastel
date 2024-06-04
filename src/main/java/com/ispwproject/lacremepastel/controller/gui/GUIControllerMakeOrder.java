@@ -1,6 +1,8 @@
 package com.ispwproject.lacremepastel.controller.gui;
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
+import com.ispwproject.lacremepastel.model.OrderLine;
+import com.ispwproject.lacremepastel.model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,15 +25,19 @@ public class GUIControllerMakeOrder  implements Initializable  {
 
         @FXML
         private ComboBox<String> productBox;
-
         private List<ProductBean> productList;
-
+        private String productName;
+        private int quantity;
         @FXML
         private TextField quantityField;
 
         @FXML
-        void addCart(ActionEvent event) {
-
+        void addCart(ActionEvent cartEvent) {
+            productName= productBox.getValue();
+            quantity=Integer.parseInt(quantityField.getText());
+            Product product=new Product(productName);
+            OrderLine orderLine=new OrderLine(product,quantity );
+      //      cart.addOrderLine(orderLine);
         }
         @FXML
         public void goBack(ActionEvent backEvent) {

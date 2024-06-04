@@ -2,22 +2,12 @@ package com.ispwproject.lacremepastel.model;
 
 public class OrderLine {
 
-    private int id;
     private Product product;
     private int amount;
 
-    public OrderLine(int id, Product product, int amount){
-        this.id = id;
+    public OrderLine(Product product, int amount){
         this.product = product;
         this.amount = amount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Product getProduct() {
