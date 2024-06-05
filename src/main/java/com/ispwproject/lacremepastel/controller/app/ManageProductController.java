@@ -54,6 +54,7 @@ public class ManageProductController {
     private List<ProductBean> processProducts(List<Product> productList) {
         //Conversione Model -> Bean
         ArrayList<ProductBean> productBeanList = new ArrayList<>();
+
         for (Product p : productList) {
             try {
                 productBeanList.add(new ProductBean(
@@ -64,6 +65,7 @@ public class ManageProductController {
                 Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
                 logger.info(e.getMessage());
                 System.err.println("Error loading product");
+
             }
         }
         return productBeanList;

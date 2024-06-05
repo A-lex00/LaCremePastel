@@ -35,8 +35,16 @@ public class OrderBean {
         this.cart.remove(orderLine);
     }
 
+
+    public ArrayList<OrderLine> getAllOrder() {
+        return this.cart;
+    }
+    public void setCart(List<OrderLine> orderLine){
+        this.cart = (ArrayList<OrderLine>) orderLine;
+    }
     public int getLength(){
         return this.cart.size();
     }
+
 
 }

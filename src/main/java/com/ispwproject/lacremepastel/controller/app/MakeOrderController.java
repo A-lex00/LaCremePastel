@@ -30,7 +30,8 @@ public class MakeOrderController {
                 orderBean.getCustomerName(),
                 true,
                 false,
-                false
+                false,
+                orderBean.getAllOrder()
         );
 
         //Salvataggio dell'ordine

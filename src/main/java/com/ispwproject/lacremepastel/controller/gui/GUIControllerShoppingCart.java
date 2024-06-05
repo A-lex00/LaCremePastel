@@ -69,6 +69,7 @@ public class GUIControllerShoppingCart implements  Initializable, Observer {
         ManageOrderController manageOrderController =new ManageOrderController();
 
 
+
     }
 
     /**

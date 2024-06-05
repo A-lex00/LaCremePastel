@@ -6,8 +6,9 @@ import com.ispwproject.lacremepastel.model.Order;
 
 import java.util.List;
 
-public class ShoppingCartController {
+/*public class ShoppingCartController {
     public List<OrderBean> retriveOrder(){
         return null;
     }
 }
+*/

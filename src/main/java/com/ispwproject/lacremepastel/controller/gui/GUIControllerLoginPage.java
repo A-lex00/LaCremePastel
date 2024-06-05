@@ -19,7 +19,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class GUIControllerLoginPage {
+
     @FXML
     private TextField authField;
     @FXML
@@ -54,7 +57,6 @@ public class GUIControllerLoginPage {
             LoginController loginController=new LoginController();
             SessionBean sessionBean = null;
             sessionBean = loginController.login(loginBean);
-
             if (sessionBean == null) {
                 // Mostra un messaggio di errore all'utente
                 System.err.println("Errore nell'accesso: Dati errati");
@@ -67,12 +69,15 @@ public class GUIControllerLoginPage {
 
                 if(sessionBean.getRole().equals("DIRECTOR")){
                     root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
+                    GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage(sessionBean);
                 }
                 if(sessionBean.getRole().equals("CUSTOMER")){
                     root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
+                    GUIControllerCustomerFirstPage guiControllerCustomerFirstPage = new GUIControllerCustomerFirstPage(sessionBean);
                 }
                 if(sessionBean.getRole().equals("WORKER")){
                     root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
+                    GUIControllerWorkerFirstPage guiControllerWorkerFirstPage = new GUIControllerWorkerFirstPage(sessionBean);
                 }
                 stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");

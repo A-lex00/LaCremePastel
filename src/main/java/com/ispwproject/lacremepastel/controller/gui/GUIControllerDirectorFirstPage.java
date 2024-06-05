@@ -1,16 +1,27 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.other.PoupopManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class GUIControllerDirectorFirstPage {
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class GUIControllerDirectorFirstPage  {
+    private SessionBean sessionBean = null;
+    @FXML
+    private Label initialLabel = null;
+    public GUIControllerDirectorFirstPage(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
+    }
         @FXML
         void manageOrder(ActionEvent manageoEvent) {
             Node node=(Node) manageoEvent.getSource();
