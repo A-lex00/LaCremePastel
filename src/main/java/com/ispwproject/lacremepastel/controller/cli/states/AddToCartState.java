@@ -3,28 +3,27 @@ package com.ispwproject.lacremepastel.controller.cli.states;
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.other.CLIMessages;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
-
 import java.util.ArrayList;
 
-public class AddProductToCartState extends AbstractState{
+public class AddToCartState extends AbstractState{
 
     @Override
     public boolean doAction(AbstractCLIStateMachine contextSM) {
-        chooseProduct(contextSM);
-        //contextSM.addProductToCart(productBean);
+        SupportedProductCategory category = productTypeGather(contextSM);
+        ProductFilterBean filter = new ProductFilterBean(category);
+        OrderLineBean orderLineBean = chooseProduct(contextSM,filter);
+        contextSM.addToCart(orderLineBean);
+        contextSM.transition(contextSM.getPrevState());
         return true;
     }
 
-    //Deve tornare un OrderLineBean
-    private void chooseProduct(AbstractCLIStateMachine contextSM){
-        SupportedProductCategory category = productTypeGather(contextSM);
+    private OrderLineBean chooseProduct(AbstractCLIStateMachine contextSM, ProductFilterBean filter){
         ManageProductController productController = new ManageProductController();
-
-        ProductFilterBean filter = new ProductFilterBean(category);
         ArrayList<ProductBean> productList;
         productList = (ArrayList<ProductBean>) productController.loadProducts(contextSM.getSessionData(),filter);
 
@@ -42,8 +41,13 @@ public class AddProductToCartState extends AbstractState{
         String amount = contextSM.readInput();
 
         try{
-            //Creare qui l'orderLineBean
-        }catch(ArrayIndexOutOfBoundsException | NumberFormatException e){}
+            return new OrderLineBean(
+                    productList.get(Integer.parseInt(productIndex)-1),
+                    Integer.parseInt(amount)
+            );
+        }catch(ArrayIndexOutOfBoundsException | NumberFormatException e){
+            throw new InvalidParameterException("Invalid input");
+        }
     }
 
     private String prettifySupportedProductCategory(){

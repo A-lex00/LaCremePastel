@@ -45,4 +45,10 @@ public class CLIMessages {
     public static final String AMOUNT_PROMPT = "Insert how many:\n";
 
     public static final String PRODUCT_PROMPT = "Please choose one of the following products:\n";
+
+    public static final String CART = "Current Cart:\n";
+
+    public static final String EMPTY_CART = "Cart is empty\n";
+
+    public static final String TOTAL = "Total Amount:";
 }

@@ -40,6 +40,6 @@ public class ProductBean {
 
     @Override
     public String toString() {
-        return productName + "\t" + price + "€\n";
+        return productName + "\t" + price + "€";
     }
 }
