@@ -1,18 +1,27 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class GUIControllerCustomerFirstPage {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class GUIControllerCustomerFirstPage  {
+    private  SessionBean sessionBean= null;
 
     @FXML
     private Label initialLabel;
+
+    public GUIControllerCustomerFirstPage(SessionBean sessionBean) {
+    }
 
     public void setWelcome(String username){
         this.initialLabel.setText("Benvenuto"+ username);

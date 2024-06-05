@@ -14,6 +14,7 @@ public class ManageProductController {
 
     public List<ProductBean> loadProducts() {
         ArrayList<ProductBean> productBeanList = new ArrayList<>();
+
         if (Configurations.getInstance().getProperty("PERSISTENCE_TYPE").equals("MARIADB")) {
             ProductDbDAO productDbDAO = new ProductDbDAO();
             List<Product> productList = productDbDAO.getAllProducts();

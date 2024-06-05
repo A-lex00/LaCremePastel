@@ -1,6 +1,8 @@
 package com.ispwproject.lacremepastel.controller.gui;
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.model.Product;
 import javafx.collections.FXCollections;
@@ -31,13 +33,15 @@ public class GUIControllerMakeOrder  implements Initializable  {
         @FXML
         private TextField quantityField;
 
+        private SessionBean sessionBean ;
+
         @FXML
         void addCart(ActionEvent cartEvent) {
-            productName= productBox.getValue();
-            quantity=Integer.parseInt(quantityField.getText());
-            Product product=new Product(productName);
-            OrderLine orderLine=new OrderLine(product,quantity );
-      //      cart.addOrderLine(orderLine);
+            productName = productBox.getValue();
+            Product product = new Product(productName);
+            quantity = Integer.parseInt(quantityField.getText());
+            OrderBean orderBean = new OrderBean(sessionBean.getUsername());
+            OrderLine orderLine = new OrderLine( product, quantity);
         }
         @FXML
         public void goBack(ActionEvent backEvent) {

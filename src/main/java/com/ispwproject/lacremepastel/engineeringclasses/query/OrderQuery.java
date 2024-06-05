@@ -16,15 +16,14 @@ import java.util.Properties;
 public class OrderQuery{
     private OrderQuery(){}
 
-    public ResultSet  createOrder( int pending, int  accepted, int closed, Connection conn, String customer, String type) throws  SQLException  {
-    String createEntryOrders = "INSERT INTO Orders ( pending, accepted, done, customer,  ordertype) VALUES (?,?, ?, ?, ?) ";
+    public static ResultSet  createSimpleOrder(Connection conn, int pending, int accepted, int closed, String customer) throws  SQLException  {
+    String createEntryOrders = "INSERT INTO Orders ( pending, accepted, done, customer) VALUES (?,?,?,?) ";
         try (PreparedStatement stmt = conn.prepareStatement(createEntryOrders, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, pending);
             stmt.setInt(2, accepted);
             stmt.setInt(3, closed);
             stmt.setString(4, customer);
-            stmt.setString(5, type);
             stmt.executeUpdate();
             return stmt.getGeneratedKeys();
         }

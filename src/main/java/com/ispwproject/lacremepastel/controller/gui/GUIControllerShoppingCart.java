@@ -3,7 +3,6 @@ package com.ispwproject.lacremepastel.controller.gui;
 import com.ispwproject.lacremepastel.controller.app.ManageOrder;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
-import com.ispwproject.lacremepastel.engineeringclasses.observer.CartObserver;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.model.OrderLine;
@@ -70,8 +69,8 @@ public class GUIControllerShoppingCart implements  Initializable, Observer {
     @Override
     public void update() {
         actualOrder=actualCart.getState();
-        ManageOrder manageOrder=new ManageOrder();
-        orderBean=manageOrder.getOrderBean(actualOrder);
+        ManageOrder manageOrder = new ManageOrder();
+
 
 
     }
