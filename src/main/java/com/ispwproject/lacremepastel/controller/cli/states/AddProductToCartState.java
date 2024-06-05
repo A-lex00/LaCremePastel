@@ -35,9 +35,15 @@ public class AddProductToCartState extends AbstractState{
         sb.append(CLIMessages.PROMPT_EXPR);
         contextSM.setMessage(sb.toString());
         contextSM.printMessage();
+        String productIndex = contextSM.readInput();
 
         contextSM.setMessage(CLIMessages.AMOUNT_PROMPT);
         contextSM.printMessage();
+        String amount = contextSM.readInput();
+
+        try{
+            //Creare qui l'orderLineBean
+        }catch(ArrayIndexOutOfBoundsException | NumberFormatException e){}
     }
 
     private String prettifySupportedProductCategory(){
