@@ -29,8 +29,6 @@ public class GUIControllerManageOrder {
 
     @FXML
     void acceptOrder(ActionEvent event) {
-        Order order=new Order();
-        order.setCompleted(orderView.getSelectionModel().getSelectedIndex());
     }
 
 

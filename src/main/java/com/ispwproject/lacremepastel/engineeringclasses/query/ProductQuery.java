@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductQuery {
     private ProductQuery(){}
     public static List<Product> getAllProduct(Connection conn){
-            String query = "SELECT * FROM  product";
+            String query = "SELECT * FROM Product";
             List<Product> productList = new ArrayList<>();
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 ResultSet resultSet = stmt.executeQuery();
@@ -26,5 +26,13 @@ public class ProductQuery {
             }catch (SQLException e) {
                 throw new RuntimeException(e);
                 }
+    }
+
+    public static ResultSet getFilteredProduct(Connection conn, String category) throws SQLException{
+        String query = "SELECT * FROM Product WHERE category = ?";
+        try(PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1, category);
+            return stmt.executeQuery();
+        }
     }
 }

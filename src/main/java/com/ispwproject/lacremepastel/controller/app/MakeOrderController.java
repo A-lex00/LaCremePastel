@@ -13,19 +13,18 @@ import java.util.logging.Logger;
 
 public class MakeOrderController {
 
-    public void saveOrder(SessionBean sessionData, OrderBean orderBean) {
-        //Check validità sessione
-        try{
-            if(!SessionManager.getInstance().checkSession(sessionData.getSid())){
-                throw new InvalidParameterException("Session expired");
-            }else if(orderBean == null){
-                throw new InvalidParameterException("");
-            }
-        }catch(SessionNotFoundException e){
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
-            logger.info(e.getMessage());
-            throw new InvalidParameterException("Invalid session data");
+    public void createOrder(SessionBean sessionData, OrderBean orderBean) {
+        //Check sessione
+        LoginController loginController = new LoginController();
+        loginController.checkLogin(sessionData);
+
+        //Check orderBean
+        if(orderBean == null){
+            throw new InvalidParameterException("OrderBean can't be null");
+        }else if(orderBean.getLength() == 0){
+            throw new InvalidParameterException("Cart is empty!");
         }
+
         //Conversione Bean -> Model
         Order order = new Order(
                 orderBean.getCustomerName(),

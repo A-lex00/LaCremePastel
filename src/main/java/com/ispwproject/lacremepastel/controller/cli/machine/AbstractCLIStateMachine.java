@@ -1,8 +1,11 @@
 package com.ispwproject.lacremepastel.controller.cli.machine;
 
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractCLIStateMachine {
 
@@ -10,10 +13,14 @@ public abstract class AbstractCLIStateMachine {
     protected AbstractState state;
     protected AbstractState prevState;
     protected boolean running;
+
     protected SessionBean sessionData;
+    //Va aggiornata con OrderLineBean
+    protected ArrayList<ProductBean> cart;
     protected StateDAO stateDAO;
 
     protected AbstractCLIStateMachine(StateDAO stateDAO){
+        cart = new ArrayList<>();
         this.stateDAO = stateDAO;
         state = this.stateDAO.loadInitialState();
         if(this.state == null){
@@ -42,6 +49,26 @@ public abstract class AbstractCLIStateMachine {
 
     public void setSessionData(SessionBean sessionData){this.sessionData = sessionData;}
 
+    public void addProductToCart(ProductBean productBean){
+        this.cart.add(productBean);
+    }
+
+    public void delProductFromCart(ProductBean productBean){
+        this.cart.remove(productBean);
+    }
+
+    public ProductBean delProductFromCart(int index){
+        return this.cart.remove(index);
+    }
+
+    public void clearCart(){
+        this.cart.clear();
+    }
+
+    public List<ProductBean> getCart(){
+        return this.cart.stream().toList();
+    }
+
     public void transition(AbstractState nextState){
         this.state.exit(this);
         this.prevState = this.state;
@@ -54,5 +81,4 @@ public abstract class AbstractCLIStateMachine {
     public abstract void changeState();
     public abstract boolean doAction();
     public abstract String readInput();
-
 }

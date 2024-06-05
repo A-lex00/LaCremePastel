@@ -35,4 +35,8 @@ public class OrderBean {
         this.cart.remove(orderLine);
     }
 
+    public int getLength(){
+        return this.cart.size();
+    }
+
 }

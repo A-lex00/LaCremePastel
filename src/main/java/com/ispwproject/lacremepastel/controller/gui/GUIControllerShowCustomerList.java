@@ -1,9 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.CustomerDAO;
-import com.ispwproject.lacremepastel.engineeringclasses.dao.db.CustomerDbDAO;
-import com.ispwproject.lacremepastel.model.Customer;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +21,7 @@ public class GUIControllerShowCustomerList implements Initializable {
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-             CustomerDAO customerDAO1=new CustomerDbDAO();
+             CustomerDAO customerDAO1=new CustomerDAO();
              this.customers=customerDAO1.getAllCustomer();
              customerView.getItems().addAll(customers);
         }

@@ -39,6 +39,10 @@ public class CLIMessages {
     public static final String ROLE_PROMPT = "Insert your role\n";
 
 
-    //------------------- HomePage --------------------//
+    //------------------- Make Order --------------------//
+    public static final String PRODUCT_CATEGORY_PROMPT = "Choose Product Category:\n";
 
+    public static final String AMOUNT_PROMPT = "Insert how many:\n";
+
+    public static final String PRODUCT_PROMPT = "Please choose one of the following products:\n";
 }

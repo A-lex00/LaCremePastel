@@ -6,8 +6,9 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.SessionDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.UserDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
-import com.ispwproject.lacremepastel.engineeringclasses.factory.SessionDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.UserDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
@@ -28,13 +29,12 @@ public class LoginController {
                     loginBean.getAuthString(),
                     loginBean.getPasswd()
             );
-            SessionDAO sessionDAO = SessionDAOFactory.getInstance().createSessionDAO();
+            SessionDAO sessionDAO = new SessionDAO();
             Session session = sessionDAO.userLogin(login);
             if(session != null){
                 SessionManager.getInstance().addSession(session);
                 ret = new SessionBean(session.getUuid(), session.getUsertype().toString());
                 ret.setUsername(session.getUsername());
-
             }
         }
         return ret;
@@ -69,12 +69,25 @@ public class LoginController {
                 return false;
             }
 
-            UserDAOFactory userDAOFactory = UserDAOFactory.getInstance();
+            UserDAOFactory userDAOFactory = new UserDAOFactory();
             UserDAO userDAO = userDAOFactory.getFactory(register.getUserType());
             userDAO.userRegister(register);
             return true;
         }
         return false;
+    }
+
+    public void checkLogin(SessionBean sessionData){
+        //Check validità sessione
+        try{
+            if(!SessionManager.getInstance().checkSession(sessionData.getSid())){
+                throw new InvalidSessionException("Session expired");
+            }
+        }catch(SessionNotFoundException e){
+            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            logger.info(e.getMessage());
+            throw new InvalidSessionException("Invalid session data");
+        }
     }
 
 }
