@@ -8,28 +8,16 @@ import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations
 import com.ispwproject.lacremepastel.other.SupportedPersistenceTypes;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
-public abstract class UserDAOFactory {
+public class UserDAOFactory {
 
-    private static UserDAOFactory instance = null;
-
-    protected UserDAOFactory(){
-
-    }
-
-    public static synchronized UserDAOFactory getInstance(){
-        if(instance == null){
-            String persistence = Configurations.getInstance().getProperty("PERSISTENCE_TYPE");
-            switch (SupportedPersistenceTypes.valueOf(persistence)){
-                case MARIADB -> instance = new UserDbFactory();
-              //  case JSON -> instance = new UserJsonFactory();
-                default -> throw new IllegalStateException("UserDAOFactory: Unsupported Persistence Type: " + persistence);
-            }
+    public UserDAO getFactory(SupportedUserTypes type){
+        UserDAO userDAO;
+        switch (type){
+            case CUSTOMER -> userDAO = new CustomerDAO();
+            case DIRECTOR -> userDAO = new DirectorDAO();
+            case WORKER -> userDAO = new WorkerDAO();
+            default -> throw new IllegalStateException("UserDAOFactory: not a valid type: "+type);
         }
-        return instance;
+        return userDAO;
     }
-
-    public abstract UserDAO getFactory(SupportedUserTypes type);
-    public abstract DirectorDAO createDirectorDAO();
-    public abstract CustomerDAO createCustomerDAO();
-    public abstract WorkerDAO createWorkerDAO();
 }

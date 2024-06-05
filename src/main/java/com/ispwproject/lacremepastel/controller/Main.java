@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMach
 import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +70,9 @@ public class Main extends Application {
                 if(!cli.doAction()){
                     cli.changeState();
                 }
+            }catch(InvalidSessionException e) {
+                logger.info(e.getMessage());
+                //Qui vorrei forzare il Logout dell'utente senza chiudere il programma
             }catch (IllegalStateException e){
                 logger.severe(e.getMessage());
                 System.exit(1);

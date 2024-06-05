@@ -72,12 +72,14 @@ public class GUIControllerMakeOrder  implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
-        ManageProductController manageProductController=new ManageProductController();
-        productList=manageProductController.loadProducts();
-        ObservableList<String> productNames = FXCollections.observableArrayList();
-        for(ProductBean product: productList) {
-            productNames.add(product.getProductName());
-        }      productBox.setItems(productNames);
-        }
+            //Nella chiamata ci va il sessionBean che non so dove ottenere da qui sorry...
+//        ManageProductController manageProductController=new ManageProductController();
+//        productList=manageProductController.loadAllProducts();
+//        ObservableList<String> productNames = FXCollections.observableArrayList();
+//        for(ProductBean product: productList) {
+//            productNames.add(product.getProductName());
+//        }
+//        productBox.setItems(productNames);
+    }
 }
 

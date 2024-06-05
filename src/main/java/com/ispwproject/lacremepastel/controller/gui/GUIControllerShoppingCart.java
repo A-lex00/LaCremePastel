@@ -1,10 +1,9 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.controller.app.ManageOrder;
+import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
-import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,13 +12,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 //Concrete Observer
@@ -69,7 +66,7 @@ public class GUIControllerShoppingCart implements  Initializable, Observer {
     @Override
     public void update() {
         actualOrder=actualCart.getState();
-        ManageOrder manageOrder = new ManageOrder();
+        ManageOrderController manageOrderController =new ManageOrderController();
 
 
 

@@ -1,22 +1,11 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
-import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.engineeringclasses.query.ProductQuery;
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
-import com.ispwproject.lacremepastel.model.Product;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductBean {
-    private List<Product> products=new ArrayList<>();
+
     private String productName;
     private double price;
-    public ProductBean() {
-        this.productName = "";
-        this.price = 0;
-    }
 
     public ProductBean(String productName,double price) throws InvalidParameterException {
         boolean isProductNameValid = productName != null;
@@ -48,11 +37,9 @@ public class ProductBean {
             this.price = price;
         }
     }
-    public List<Product> getAllProducts(){
-        return this.products;
-    }
-    public void setAllProducts(List<Product> persistenceProducts){
-        this.products=persistenceProducts;
-    }
 
+    @Override
+    public String toString() {
+        return productName + "\t" + price + "€\n";
+    }
 }

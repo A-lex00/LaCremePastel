@@ -40,6 +40,7 @@ public class GUIControllerManageOrder {
 
         OrderBean orderBean = new OrderBean(sessionBean.getUsername());
         orderBean.setCart(currentCart);
+
     }
 
 
