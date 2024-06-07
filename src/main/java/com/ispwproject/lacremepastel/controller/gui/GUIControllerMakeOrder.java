@@ -25,7 +25,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
 
     @FXML
     void addCart(ActionEvent cartEvent) {
-        //observer be implemetated here
+
     }
 
     @FXML
