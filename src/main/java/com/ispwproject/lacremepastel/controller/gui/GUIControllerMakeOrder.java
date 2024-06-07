@@ -25,7 +25,7 @@ import java.util.List;
 public class GUIControllerMakeOrder  {
 
         @FXML
-        private ComboBox<String> yo;
+        private ComboBox<String> productBox;
         private List<ProductBean> productList ;
         private String productName;
         private int quantity;
@@ -40,7 +40,7 @@ public class GUIControllerMakeOrder  {
 
         @FXML
         void addCart(ActionEvent cartEvent) {
-            productName = yo.getValue();
+            productName = productBox.getValue();
             Product product = new Product(productName);
             quantity = Integer.parseInt(quantityField.getText());
             OrderBean orderBean = new OrderBean(sessionBean.getUsername());
@@ -77,20 +77,22 @@ public class GUIControllerMakeOrder  {
 
         ManageProductController manageProductController=new ManageProductController();
         try {
+
             productList=manageProductController.getProductList(sessionBean,null);
         } catch (InvalidParameterException e) {
+
             throw new RuntimeException(e);
         }
         ObservableList<String> productNames = FXCollections.observableArrayList();
         for(ProductBean product: productList) {
             productNames.add(product.getProductName());
         }
-        System.out.println(yo);
+        System.out.println("GUIControllerMakeOrder " + productBox);
         inizioDati(productNames);
 
     }
     public void inizioDati(ObservableList<String> productNames)  {
-        yo.setItems(productNames);
+        productBox.setItems(productNames);
     }
 
 }

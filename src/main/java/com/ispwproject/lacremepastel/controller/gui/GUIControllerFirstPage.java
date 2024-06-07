@@ -21,8 +21,9 @@ public class GUIControllerFirstPage {
             stage.setTitle("La Creme Pastel");
             stage.show();
         } catch (Exception e) {
+            e.getStackTrace();
             System.err.println("Error: the loading of loginPage crashed!" + e.getMessage());
-            e.printStackTrace();
+
         }
     }
 
@@ -37,8 +38,8 @@ public class GUIControllerFirstPage {
             stage.setTitle("La Creme Pastel");
             stage.show();
         } catch (Exception e) {
+            e.getStackTrace();
             System.err.println("Errore nel caricamento della schermata di login!" + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

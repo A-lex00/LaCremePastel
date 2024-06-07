@@ -48,7 +48,7 @@ public class GUIControllerRegistrationPage {
     @FXML
     private RadioButton workerDot;
     @FXML
-    private ToggleGroup roleGroup = new ToggleGroup();
+    private final ToggleGroup roleGroup = new ToggleGroup();
     private boolean worker, director, customer;
 
     @FXML
@@ -61,8 +61,8 @@ public class GUIControllerRegistrationPage {
             stage.setTitle("La Creme Pastel");
             stage.show();
         } catch (Exception e) {
+            e.getStackTrace();
             System.err.println("Errore nel tornare indietro!");
-            e.printStackTrace();
         }
     }
 
