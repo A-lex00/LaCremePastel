@@ -2,7 +2,6 @@ package com.ispwproject.lacremepastel.controller.cli.states;
 
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.other.SupportedStates;
-
 import java.util.*;
 
 public abstract class AbstractState {
@@ -18,9 +17,9 @@ public abstract class AbstractState {
     public List<AbstractState> getAvailableStates() {
         ArrayList<AbstractState> list = new ArrayList<>();
         for(int i = 0; i<availableStates.size(); i++){
-            AbstractState state = this.availableStates.get(i);
-            if(state != null) {
-                list.add(state);
+            AbstractState availableState = this.availableStates.get(i);
+            if(availableState != null) {
+                list.add(availableState);
             }
         }
         return list;

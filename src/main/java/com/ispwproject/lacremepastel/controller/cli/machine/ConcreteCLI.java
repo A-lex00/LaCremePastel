@@ -3,9 +3,7 @@ package com.ispwproject.lacremepastel.controller.cli.machine;
 import com.ispwproject.lacremepastel.controller.cli.states.AbstractState;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class ConcreteCLI extends AbstractCLIStateMachine {
 
