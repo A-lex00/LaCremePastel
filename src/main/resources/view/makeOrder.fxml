@@ -38,7 +38,7 @@
             <Button mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Riepilogo Ordine" />
          </children>
       </HBox>
-      <TableView layoutX="79.0" layoutY="184.0" prefHeight="200.0" prefWidth="385.0">
+      <TableView fx:id="orderView" layoutX="79.0" layoutY="184.0" prefHeight="200.0" prefWidth="385.0">
         <columns>
           <TableColumn prefWidth="125.0" text="Prodotto" />
           <TableColumn prefWidth="130.0" text="Quantità" />
