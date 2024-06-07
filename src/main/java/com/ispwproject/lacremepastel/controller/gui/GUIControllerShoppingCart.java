@@ -7,7 +7,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ import java.util.List;
 
 //Concrete Observer
 public class GUIControllerShoppingCart extends AbstractGUIController implements Observer {
-
-    ObservableList<OrderLine> orderLines;
 
     /**OBSERVER */
     private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */

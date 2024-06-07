@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GUIControllerMakeOrder  extends AbstractGUIController{
@@ -20,7 +22,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
     private ListView actualCart;
 
 
-    private List<ProductBean> productList ;
+    private ArrayList<ProductBean> productList ;
 
 
     @FXML
@@ -41,9 +43,9 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
     public void configure(){
         SessionBean sessionBean = (SessionBean) this.getUserData();
         ManageProductController manageProductController = new ManageProductController();
-        this.productList = manageProductController.getProductList(sessionBean, null);
+        this.productList = (ArrayList<ProductBean>) manageProductController.getProductList(sessionBean, null);
         for(ProductBean productBean : productList){
-            productBox.getItems().add(productBean.getProductName() + "    " + productBean.getPrice() + "€" );
+            productBox.getItems().add(productBean.getProductName() + "\t" + productBean.getPrice() + "€" );
         }
     }
 }
