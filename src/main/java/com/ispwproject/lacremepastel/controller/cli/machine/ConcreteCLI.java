@@ -22,20 +22,12 @@ public class ConcreteCLI extends AbstractCLIStateMachine {
     }
 
     @Override
-    public void changeState() throws InvalidParameterException{
-        String input = readInput();
-        int choose;
-        try {
-            choose = Integer.parseInt(input);
-            AbstractState chosenState = this.state.getChosenState(choose);
-            if(chosenState == null){
-                throw new InvalidParameterException("Invalid input: "+input);
-            }
-            transition(chosenState);
-        }catch (NumberFormatException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).info(e.getMessage());
-            throw new InvalidParameterException("Invalid input: "+input);
+    public void changeState(int choose){
+        AbstractState chosenState = this.state.getChosenState(choose);
+        if(chosenState == null){
+            throw new InvalidParameterException("Invalid input: "+choose);
         }
+        transition(chosenState);
     }
 
     @Override

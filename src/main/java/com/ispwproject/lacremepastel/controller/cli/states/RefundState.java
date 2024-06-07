@@ -9,6 +9,6 @@ public class RefundState extends AbstractState{
     public void entry(AbstractCLIStateMachine contextSM) {
         contextSM.setMessage(CLIMessages.DEVELOPING+"\n");
         contextSM.printMessage();
-        contextSM.transition(contextSM.getPrevState());
+        contextSM.rewind();
     }
 }

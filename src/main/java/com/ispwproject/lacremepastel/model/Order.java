@@ -14,7 +14,15 @@ public class Order {
     private boolean closed;
     private Worker assignedWorker;
 
-    public Order(String customerName, boolean pending, boolean accepted, boolean closed, ArrayList<OrderLine> cart ){
+    public Order(String customerName, boolean pending, boolean accepted, boolean closed, List<OrderLine> cart ){
+        this.customerName = customerName;
+        this.pending = pending;
+        this.accepted = accepted;
+        this.closed = closed;
+        this.cart = new ArrayList<>(cart);
+    }
+
+    public Order(String customerName, boolean pending, boolean accepted, boolean closed){
         this.customerName = customerName;
         this.pending = pending;
         this.accepted = accepted;

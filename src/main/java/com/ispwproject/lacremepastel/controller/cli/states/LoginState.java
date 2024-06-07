@@ -19,7 +19,7 @@ public class LoginState extends AbstractState {
         if(sessionData == null){
             contextSM.setMessage(CLIMessages.LOGIN_FAILED);
             contextSM.printMessage();
-            contextSM.transition(contextSM.getPrevState());
+            contextSM.transition(contextSM.getLastState());
         }else{
             contextSM.setMessage(CLIMessages.LOGIN_SUCCESS+"\n");
             contextSM.setSessionData(sessionData);

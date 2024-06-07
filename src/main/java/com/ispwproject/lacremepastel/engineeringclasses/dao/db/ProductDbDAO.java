@@ -29,7 +29,8 @@ public class ProductDbDAO implements ProductDAO {
             while (rs.next()) {
                 String productName = rs.getString("name");
                 double price = rs.getDouble("price");
-                products.add(new Product(productName,price));
+                int id = rs.getInt("id");
+                products.add(new Product(id,productName,price));
             }
         }catch (SQLException e){
             Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));

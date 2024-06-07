@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.model.OrderLine;
@@ -34,13 +35,12 @@ public class GUIControllerManageOrder {
     private Button rejectButton;
     private SessionBean sessionBean;
 
-    private List<OrderLine> currentCart;
+    private List<OrderLineBean> currentCart;
     @FXML
     void acceptOrder(ActionEvent event) {
 
         OrderBean orderBean = new OrderBean(sessionBean.getUsername());
         orderBean.setCart(currentCart);
-
     }
 
 

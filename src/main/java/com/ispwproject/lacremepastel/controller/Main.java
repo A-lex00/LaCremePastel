@@ -54,8 +54,6 @@ public class Main extends Application {
                 stagecount.setScene(scene);
                 stagecount.setTitle("La Creme Pastel");
                 stagecount.show();
-                
-
             }
         } catch (Exception e) {
             System.err.println("Error during load of file FXML: " + e.getMessage());
@@ -68,7 +66,8 @@ public class Main extends Application {
         do{
             try{
                 if(!cli.doAction()){
-                    cli.changeState();
+                    int choose = Integer.parseInt(cli.readInput());
+                    cli.changeState(choose);
                 }
             }catch(InvalidSessionException e) {
                 logger.info(e.getMessage());
@@ -76,7 +75,7 @@ public class Main extends Application {
             }catch (IllegalStateException e){
                 logger.severe(e.getMessage());
                 System.exit(1);
-            }catch (InvalidParameterException e){
+            }catch (NumberFormatException | InvalidParameterException e){
                 System.out.println("Invalid Input");
             }catch (NoSuchElementException e){
                 logger.info("Stdin closed, exiting");

@@ -1,21 +1,28 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.model.Product;
 
 public class ProductBean {
 
+    private int id;
     private String productName;
     private double price;
 
-    public ProductBean(String productName,double price) throws InvalidParameterException {
+    public ProductBean(int id, String productName, double price) {
         boolean isProductNameValid = productName != null;
 
         if(isProductNameValid  && price >= 0){
+            this.id = id;
             this.productName = productName;
             this.price = price;
         }else{
             throw new InvalidParameterException("ProductBean: Invalid Parameters!");
         }
+    }
+
+    public ProductBean(String productName,double price) throws InvalidParameterException {
+        this(0,productName,price);
     }
 
     public String getProductName() {
@@ -36,6 +43,14 @@ public class ProductBean {
         if(price > 0){
             this.price = price;
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

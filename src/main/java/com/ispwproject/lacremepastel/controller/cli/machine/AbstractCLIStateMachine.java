@@ -11,7 +11,7 @@ public abstract class AbstractCLIStateMachine {
 
     protected String message;
     protected AbstractState state;
-    protected AbstractState prevState;
+    protected ArrayList<AbstractState> prevStates;
     protected boolean running;
 
     protected SessionBean sessionData;
@@ -20,6 +20,7 @@ public abstract class AbstractCLIStateMachine {
 
     protected AbstractCLIStateMachine(StateDAO stateDAO){
         cart = new ArrayList<>();
+        prevStates = new ArrayList<>();
         this.stateDAO = stateDAO;
         state = this.stateDAO.loadInitialState();
         if(this.state == null){
@@ -33,8 +34,8 @@ public abstract class AbstractCLIStateMachine {
     public AbstractState getState() {
         return state;
     }
-    public AbstractState getPrevState() {
-        return prevState;
+    public AbstractState getLastState() {
+        return this.prevStates.removeLast();
     }
     public String getMessage(){return message;}
 
@@ -78,14 +79,21 @@ public abstract class AbstractCLIStateMachine {
 
     public void transition(AbstractState nextState){
         this.state.exit(this);
-        this.prevState = this.state;
+        this.prevStates.add(this.state);
         this.state = nextState;
         stateDAO.loadStateLinks(this.state);
         this.state.entry(this);
     }
 
+    public void rewind(){
+        this.state.exit(this);
+        this.state = this.getLastState();
+        stateDAO.loadStateLinks(this.state);
+        this.state.entry(this);
+    }
+
     public abstract void printMessage();
-    public abstract void changeState();
+    public abstract void changeState(int choose);
     public abstract boolean doAction();
     public abstract String readInput();
 }

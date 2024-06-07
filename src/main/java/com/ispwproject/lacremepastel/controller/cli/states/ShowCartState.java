@@ -24,7 +24,7 @@ public class ShowCartState extends AbstractState{
         }
         contextSM.setMessage(sb.toString());
         contextSM.printMessage();
-        contextSM.transition(contextSM.getPrevState());
+        contextSM.rewind();
     }
 
 }

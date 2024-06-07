@@ -24,7 +24,7 @@ public class RegisterState extends AbstractState{
         }catch (UserAlreadyExistentException e){
             contextSM.setMessage("User " + registerBean.getUsername() + " already exists");
         }
-        contextSM.transition(contextSM.getPrevState());
+        contextSM.transition(contextSM.getLastState());
         return true;
     }
 
@@ -125,7 +125,7 @@ public class RegisterState extends AbstractState{
                     userType.toString()
             );
         }catch (InvalidParameterException e){
-            contextSM.transition(contextSM.getPrevState());
+            contextSM.transition(contextSM.getLastState());
             throw e;
         }
         switch (userType){

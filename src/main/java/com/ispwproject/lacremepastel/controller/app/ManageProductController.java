@@ -11,12 +11,14 @@ import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.model.ProductFilter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class ManageProductController {
 
-    public List<ProductBean> loadAllProducts(SessionBean sessionBean) {
+    public Map<Integer,ProductBean> loadAllProducts(SessionBean sessionBean) {
 
         //Check sessione
         LoginController loginController = new LoginController();
@@ -29,7 +31,7 @@ public class ManageProductController {
         return processProducts(productList);
     }
 
-    public List<ProductBean> loadProducts(SessionBean sessionBean, ProductFilterBean filter) {
+    public Map<Integer,ProductBean> loadProducts(SessionBean sessionBean, ProductFilterBean filter) {
 
         //Check sessione
         LoginController loginController = new LoginController();
@@ -51,21 +53,23 @@ public class ManageProductController {
         return processProducts(productList);
     }
 
-    private List<ProductBean> processProducts(List<Product> productList) {
+    private Map<Integer,ProductBean> processProducts(List<Product> productList) {
         //Conversione Model -> Bean
-        ArrayList<ProductBean> productBeanList = new ArrayList<>();
+        HashMap<Integer,ProductBean> productBeanList = new HashMap<>();
 
         for (Product p : productList) {
             try {
-                productBeanList.add(new ProductBean(
-                        p.getName(),
-                        p.getPrice()
+                productBeanList.put(
+                        p.getId(),
+                        new ProductBean(
+                                p.getId(),
+                                p.getName(),
+                                p.getPrice()
                 ));
             } catch (InvalidParameterException e) {
                 Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
                 logger.info(e.getMessage());
                 System.err.println("Error loading product");
-
             }
         }
         return productBeanList;

@@ -10,6 +10,8 @@ public class CLIMessages {
 
     public static final String CHOOSE_EXPR = "Please choose one of the following options:\n";
 
+    public static final String REWIND = "0) Go Back\n";
+
     //------------------- Landing Page --------------------//
     public static final String WELCOME = "Welcome to La Créme Pastel!\n";
 
@@ -51,4 +53,6 @@ public class CLIMessages {
     public static final String EMPTY_CART = "Cart is empty\n";
 
     public static final String TOTAL = "Total Amount:";
+
+    public static final String ORDER_SAVED = "Order Created and Saved\n";
 }

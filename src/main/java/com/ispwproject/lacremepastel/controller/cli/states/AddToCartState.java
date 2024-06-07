@@ -8,7 +8,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AddToCartState extends AbstractState{
 
@@ -17,35 +17,39 @@ public class AddToCartState extends AbstractState{
         SupportedProductCategory category = productTypeGather(contextSM);
         ProductFilterBean filter = new ProductFilterBean(category);
         OrderLineBean orderLineBean = chooseProduct(contextSM,filter);
-        contextSM.addToCart(orderLineBean);
-        contextSM.transition(contextSM.getPrevState());
+        if(orderLineBean.getAmount() > 0) {
+            contextSM.addToCart(orderLineBean);
+        }
+        contextSM.rewind();
         return true;
     }
 
     private OrderLineBean chooseProduct(AbstractCLIStateMachine contextSM, ProductFilterBean filter){
         ManageProductController productController = new ManageProductController();
-        ArrayList<ProductBean> productList;
-        productList = (ArrayList<ProductBean>) productController.loadProducts(contextSM.getSessionData(),filter);
+        HashMap<Integer,ProductBean> productList;
+        productList = (HashMap<Integer, ProductBean>) productController.loadProducts(contextSM.getSessionData(),filter);
 
         StringBuilder sb = new StringBuilder(CLIMessages.PRODUCT_PROMPT);
-        for(int i=1; i<=productList.size(); i++) {
-            sb.append(i).append(") ").append(productList.get(i-1)).append("\n");
+        for(ProductBean productBean : productList.values()) {
+            sb.append(productBean.getId()).append(") ");
+            sb.append(productBean.getProductName()).append("\t");
+            sb.append(productBean.getPrice()).append("€\n");
         }
-        sb.append(CLIMessages.PROMPT_EXPR);
-        contextSM.setMessage(sb.toString());
-        contextSM.printMessage();
-        String productIndex = contextSM.readInput();
-
-        contextSM.setMessage(CLIMessages.AMOUNT_PROMPT);
-        contextSM.printMessage();
-        String amount = contextSM.readInput();
-
         try{
+            sb.append(CLIMessages.PROMPT_EXPR);
+            contextSM.setMessage(sb.toString());
+            contextSM.printMessage();
+            int productId = Integer.parseInt(contextSM.readInput());
+
+            contextSM.setMessage(CLIMessages.AMOUNT_PROMPT);
+            contextSM.printMessage();
+            int amount = Integer.parseInt(contextSM.readInput());
+
             return new OrderLineBean(
-                    productList.get(Integer.parseInt(productIndex)-1),
-                    Integer.parseInt(amount)
+                    productList.get(productId),
+                    amount
             );
-        }catch(ArrayIndexOutOfBoundsException | NumberFormatException e){
+        }catch(NumberFormatException e){
             throw new InvalidParameterException("Invalid input");
         }
     }

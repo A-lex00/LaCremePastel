@@ -14,13 +14,4 @@ import java.util.List;
 public class ManageOrderController {
     public void manage(){
     }
-    public void finalizeOrder(OrderBean orderBean){
-
-            OrderDAO orderDAO= new OrderDAO();
-            Order order = new Order(orderBean.getCustomerName(), true, false,false, orderBean.getAllOrder());
-            orderDAO.saveOrder(order);
-
-        NoticeFactory noticeFactory =  new NoticeFactory();
-        noticeFactory.createdOrderNotice(orderBean.getCustomerName(),"nuovo ordine");
-    }
 }

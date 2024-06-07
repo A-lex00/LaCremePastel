@@ -36,6 +36,7 @@ public class StateFactory {
                 case NOTICES -> abstractState = new NoticesState();
                 case ADD_TO_CART -> abstractState = new AddToCartState();
                 case SHOW_CART -> abstractState = new ShowCartState();
+                case SAVE_ORDER -> abstractState = new SaveOrderState();
                 default -> throw new InvalidParameterException("Invalid state: " + stateName);
             }
             abstractState.setState(state);
