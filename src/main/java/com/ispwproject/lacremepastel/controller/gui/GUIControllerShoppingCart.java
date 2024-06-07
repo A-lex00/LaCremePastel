@@ -12,19 +12,19 @@ import java.util.List;
 //Concrete Observer
 public class GUIControllerShoppingCart extends AbstractGUIController implements Observer {
 
-        /**OBSERVER */
-        private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */
-        private List<OrderLine> actualOrder= new ArrayList<>();
+    /**OBSERVER */
+    private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */
+    private List<OrderLine> actualOrder= new ArrayList<>();
 
-        @FXML
-        void confirmOrder(ActionEvent confirmEvent) {
-            this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
-        }
-        @FXML
-        void goBack(ActionEvent backEvent) {
-            this.setupStage(backEvent,FXMLPaths.MAKE_ORDER);
-        }
-        public void setActualOrder(OrderLine order){
+    @FXML
+    void confirmOrder(ActionEvent confirmEvent) {
+        this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
+    }
+    @FXML
+    void goBack(ActionEvent backEvent) {
+        this.setupStage(backEvent,FXMLPaths.MAKE_ORDER);
+    }
+    public void setActualOrder(OrderLine order){
             actualOrder.add(order);
         }
     /**
