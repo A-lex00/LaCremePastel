@@ -63,10 +63,12 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
 
     @Override
     public void update() {
+
         System.out.println("Update Entered");
         orderView.getColumns().add(0,actualCart.getState());
         orderView.getColumns().add(1,actualCart.getState());
         orderView.getColumns().add(2, actualCart.getState());
+
     }
 }
 
