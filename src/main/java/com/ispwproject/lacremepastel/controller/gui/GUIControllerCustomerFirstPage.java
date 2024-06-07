@@ -1,61 +1,35 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import java.io.IOException;
+import java.util.logging.Logger;
 
 
-
-public class GUIControllerCustomerFirstPage  {
-
-    public GUIControllerCustomerFirstPage(){};
-    private  SessionBean sessionBean;
+public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     private Label initialLabel;
 
-
-
     @FXML
     void composeOrder(ActionEvent composeEvent) {
-        Node node=(Node) composeEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
-        try{/*
-            System.out.println("userdata" + stage.getUserData());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/makeOrder.fxml"));
-            GUIControllerMakeOrder guiControllerMakeOrder = new GUIControllerMakeOrder();
-            loader.setController(guiControllerMakeOrder);
-            Parent root = loader.getRoot();
-
-            System.out.println(" before if: " + root);
-            if(root == null) {
-                System.out.println("userdataInif" + stage.getUserData());
-                root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
-            */
-
+        try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/makeOrder.fxml"));
             AnchorPane root = loader.load();
             GUIControllerMakeOrder controller = loader.getController();
-            controller.importUserData(stage.getUserData());
-
-            Scene scene = new Scene(root, 629, 481);
-            stage.setScene(scene);
-            stage.show();
+            controller.setUserData(this.getUserData());
+            this.setupStage(composeEvent,root);
         }
         catch(IllegalArgumentException e){
             System.err.println("Errore nel caricamento dei prodotti" + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+        } catch (IOException e) {
             System.err.println("Errore nel caricamento della schermata del componi Ordine!" + e.getMessage());
-            e.printStackTrace();
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
         }
     }
 
@@ -71,20 +45,16 @@ public class GUIControllerCustomerFirstPage  {
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
-        Node node=(Node) helpEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
+        throw new UnsupportedOperationException();
     }
 
     @FXML
     void reviewOrder(ActionEvent reviewEvent) {
-        Node node=(Node) reviewEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
+        throw new UnsupportedOperationException();
     }
 
     @FXML
     void showNotice(ActionEvent noticeEvent) {
-        Node node=(Node) noticeEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
+        throw new UnsupportedOperationException();
     }
-
 }
