@@ -1,60 +1,28 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lacremepastel.model.OrderLine;
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+
 //Concrete Observer
-public class GUIControllerShoppingCart extends AbstractGUIController implements  Initializable, Observer {
+public class GUIControllerShoppingCart extends AbstractGUIController implements Observer {
 
         /**OBSERVER */
         private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */
-       // private ListView<Order> Cart=new ListView<>();
         private List<OrderLine> actualOrder= new ArrayList<>();
-        private List<OrderBean> orderBean=new ArrayList<>();
-        public GUIControllerShoppingCart() {}
 
         @FXML
         void confirmOrder(ActionEvent confirmEvent) {
-            Node node=(Node) confirmEvent.getSource();
-            Stage stage=(Stage) node.getScene().getWindow();
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
-                stage.setScene(new Scene(root, 629, 481));
-                stage.setTitle("La Creme Pastel");
-                stage.show();
-            }catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+            this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
         }
         @FXML
         void goBack(ActionEvent backEvent) {
-            Node node = (Node) backEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
-                stage.setScene(new Scene(root, 629, 481));
-                stage.setTitle("La Creme Pastel");
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            this.setupStage(backEvent,FXMLPaths.MAKE_ORDER);
         }
         public void setActualOrder(OrderLine order){
             actualOrder.add(order);
@@ -66,18 +34,5 @@ public class GUIControllerShoppingCart extends AbstractGUIController implements 
     @Override
     public void update() {
         actualOrder=actualCart.getState();
-        ManageOrderController manageOrderController =new ManageOrderController();
-
-
-
-    }
-
-    /**
-     * @param url
-     * @param resourceBundle
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
