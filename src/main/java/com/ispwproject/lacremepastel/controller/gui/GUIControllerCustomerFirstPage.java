@@ -43,7 +43,7 @@ public class GUIControllerCustomerFirstPage  {
 
             Parent root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
             GUIControllerMakeOrder guiControllerMakeOrder = new GUIControllerMakeOrder();
-            root.getParent().getScene().getWindow().
+            root.getParent().getScene().getWindow();
             guiControllerMakeOrder.inizio((SessionBean) stage.getUserData());
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");

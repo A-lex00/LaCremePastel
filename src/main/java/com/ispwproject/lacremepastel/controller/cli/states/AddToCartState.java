@@ -27,7 +27,7 @@ public class AddToCartState extends AbstractState{
     private OrderLineBean chooseProduct(AbstractCLIStateMachine contextSM, ProductFilterBean filter){
         ManageProductController productController = new ManageProductController();
         HashMap<Integer,ProductBean> productList;
-        productList = (HashMap<Integer, ProductBean>) productController.loadProducts(contextSM.getSessionData(),filter);
+        productList = (HashMap<Integer, ProductBean>) productController.getProductMap(contextSM.getSessionData(),filter);
 
         StringBuilder sb = new StringBuilder(CLIMessages.PRODUCT_PROMPT);
         for(ProductBean productBean : productList.values()) {

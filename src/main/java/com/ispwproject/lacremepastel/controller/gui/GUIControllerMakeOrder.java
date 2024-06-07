@@ -3,6 +3,7 @@ import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.model.Product;
@@ -11,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -77,8 +77,8 @@ public class GUIControllerMakeOrder  {
 
         ManageProductController manageProductController=new ManageProductController();
         try {
-            productList=manageProductController.loadAllProducts(sessionBean);
-        } catch (SessionNotFoundException e) {
+            productList=manageProductController.getProductList(sessionBean,null);
+        } catch (InvalidParameterException e) {
             throw new RuntimeException(e);
         }
         ObservableList<String> productNames = FXCollections.observableArrayList();
