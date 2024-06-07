@@ -67,7 +67,7 @@ public class GUIControllerLoginPage extends AbstractGUIController{
                 if(sessionBean.getRole().equals("DIRECTOR")){
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
                     GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage();
-                    guiControllerDirectorFirstPage.setSessionBean(sessionBean);
+
                     loader.setController(guiControllerDirectorFirstPage);
                     root = loader.getRoot();
                     if(root == null) {
@@ -77,7 +77,6 @@ public class GUIControllerLoginPage extends AbstractGUIController{
                 if(sessionBean.getRole().equals("CUSTOMER")){
                     GUIControllerCustomerFirstPage guiControllerCustomerFirstPage = new GUIControllerCustomerFirstPage();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
-                   // guiControllerCustomerFirstPage.setSessionBean(sessionBean);
                     loader.setController(guiControllerCustomerFirstPage);
                     root = loader.getRoot();
                     if(root == null) {
@@ -86,15 +85,6 @@ public class GUIControllerLoginPage extends AbstractGUIController{
                 }
                 if(sessionBean.getRole().equals("WORKER")){
                     root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
-                    /*GUIControllerWorkerFirstPage guiControllerWorkerFirstPage = new GUIControllerWorkerFirstPage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/workerFirstPage.fxml"));
-                    guiControllerWorkerFirstPage.setSessionBean(sessionBean);
-                    loader.setController(guiControllerWorkerFirstPage);
-                    System.out.println("LoginPage : " + sessionBean);
-                    root = loader.getRoot();
-                    if(root == null) {
-                        root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
-                    }*/
                 }
                 stage.setScene(new Scene(root, 615, 480));
                 stage.setUserData(sessionBean);

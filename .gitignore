@@ -45,3 +45,4 @@ src/config.properties
 *.log
 *.log.lck
 file.log.1
+src/main/java/com/ispwproject/lacremepastel/config.properties.txt

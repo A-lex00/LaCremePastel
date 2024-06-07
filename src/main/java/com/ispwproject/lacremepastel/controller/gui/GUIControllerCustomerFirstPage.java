@@ -11,9 +11,8 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     void composeOrder(ActionEvent composeEvent) {
-        this.setupStage(composeEvent,"/view/test.fxml");
+        this.setupStage(composeEvent,"/view/makeOrder.fxml");
     }
-
     @FXML
     void giveBack(ActionEvent backEvent) {
         System.out.println("Segnalazione effettuata");
@@ -31,7 +30,7 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     void reviewOrder(ActionEvent reviewEvent) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
     }
 
     @FXML

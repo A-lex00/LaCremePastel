@@ -34,6 +34,7 @@ public abstract class AbstractGUIController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
+            System.out.println("Avvop controller");
             AbstractGUIController controller = loader.getController();
             controller.setUserData(this.getUserData());
             controller.configure();
