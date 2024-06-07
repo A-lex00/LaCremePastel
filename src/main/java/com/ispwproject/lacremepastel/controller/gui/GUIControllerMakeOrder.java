@@ -25,9 +25,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
 
     @FXML
     void addCart(ActionEvent cartEvent) {
-
         //observer be implemetated here
-
     }
 
     @FXML
@@ -45,7 +43,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
         ManageProductController manageProductController = new ManageProductController();
         this.productList = manageProductController.getProductList(sessionBean, null);
         for(ProductBean productBean : productList){
-            productBox.getItems().add(productBean.getProductName());
+            productBox.getItems().add(productBean.getProductName() + "    " + productBean.getPrice() + "€" );
         }
     }
 }
