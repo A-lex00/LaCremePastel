@@ -80,6 +80,9 @@ public class LoginController {
     public void checkLogin(SessionBean sessionData){
         //Check validità sessione
         try{
+            if(sessionData == null){
+                throw  new InvalidParameterException("Session can't be null");
+            }
             if(!SessionManager.getInstance().checkSession(sessionData.getSid())){
                 throw new InvalidSessionException("Session expired");
             }

@@ -16,16 +16,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GUIControllerWorkerFirstPage {
-        private SessionBean sessionBean = null;
-        public GUIControllerWorkerFirstPage(SessionBean sessionBean) {
-            this.sessionBean = sessionBean;
-        }
+        private SessionBean sessionBean;
+
         @FXML
         private Label welcomeLabel;
 
-        public void setWelcome(String username){
-            this.welcomeLabel.setText("Benvenuto"+username);
+        public   GUIControllerWorkerFirstPage(){}
+
+        public void setSessionBean(SessionBean sessionBean) {
+        this. sessionBean = sessionBean;
         }
+
         @FXML
         public void requestHelp(ActionEvent helpEvent) {
             Node node= (Node) helpEvent.getSource();
@@ -46,4 +47,6 @@ public class GUIControllerWorkerFirstPage {
         @FXML
         public void confirmProduction(ActionEvent confirmEvent){
     }
+
+
 }

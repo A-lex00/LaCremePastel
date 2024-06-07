@@ -5,6 +5,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.ProductDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.model.Product;
@@ -16,10 +17,14 @@ import java.util.logging.Logger;
 
 public class ManageProductController {
 
-    public List<ProductBean> loadAllProducts(SessionBean sessionBean) {
+
+    public List<ProductBean> loadAllProducts(SessionBean sessionBean) throws SessionNotFoundException {
 
         //Check sessione
         LoginController loginController = new LoginController();
+        if(sessionBean == null){
+            throw  new SessionNotFoundException("Session is null");
+        }
         loginController.checkLogin(sessionBean);
 
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
@@ -29,8 +34,7 @@ public class ManageProductController {
         return processProducts(productList);
     }
 
-    public List<ProductBean> loadProducts(SessionBean sessionBean, ProductFilterBean filter) {
-
+        public List<ProductBean> loadProducts(SessionBean sessionBean, ProductFilterBean filter) {
         //Check sessione
         LoginController loginController = new LoginController();
         loginController.checkLogin(sessionBean);

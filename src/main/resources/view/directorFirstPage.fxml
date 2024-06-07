@@ -19,7 +19,7 @@
          </rotationAxis>
       </ImageView>
       <Button layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#showCustomerList" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Lista clienti" />
-      <Button layoutX="217.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrderController" prefHeight="33.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione ordini" />
+      <Button layoutX="217.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrder" prefHeight="33.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione ordini" />
       <Button layoutX="217.0" layoutY="243.0" mnemonicParsing="false" onAction="#manageProduct" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione prodotti" />
       <Button layoutX="218.0" layoutY="287.0" minHeight="0.0" mnemonicParsing="false" onAction="#manageWorkers" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione dipendenti" />
       <Label layoutX="173.0" layoutY="45.0" prefHeight="18.0" prefWidth="267.0" text="stringa di benvenuto!" />

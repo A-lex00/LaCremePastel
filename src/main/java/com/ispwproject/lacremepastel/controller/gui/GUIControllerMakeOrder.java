@@ -3,6 +3,7 @@ import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.model.Product;
 import javafx.collections.FXCollections;
@@ -19,15 +20,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class GUIControllerMakeOrder  implements Initializable  {
+public class GUIControllerMakeOrder  {
 
         @FXML
-        private ComboBox<String> productBox;
-        private List<ProductBean> productList;
+        private ComboBox<String> yo;
+        private List<ProductBean> productList ;
         private String productName;
         private int quantity;
         @FXML
@@ -35,9 +34,13 @@ public class GUIControllerMakeOrder  implements Initializable  {
 
         private SessionBean sessionBean ;
 
+
+    public GUIControllerMakeOrder() {
+    }
+
         @FXML
         void addCart(ActionEvent cartEvent) {
-            productName = productBox.getValue();
+            productName = yo.getValue();
             Product product = new Product(productName);
             quantity = Integer.parseInt(quantityField.getText());
             OrderBean orderBean = new OrderBean(sessionBean.getUsername());
@@ -70,16 +73,26 @@ public class GUIControllerMakeOrder  implements Initializable  {
             }
         }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle)  {
-            //Nella chiamata ci va il sessionBean che non so dove ottenere da qui sorry...
-//        ManageProductController manageProductController=new ManageProductController();
-//        productList=manageProductController.loadAllProducts();
-//        ObservableList<String> productNames = FXCollections.observableArrayList();
-//        for(ProductBean product: productList) {
-//            productNames.add(product.getProductName());
-//        }
-//        productBox.setItems(productNames);
+        public void inizio(SessionBean sessionBean)  {
+
+        ManageProductController manageProductController=new ManageProductController();
+        try {
+            productList=manageProductController.loadAllProducts(sessionBean);
+        } catch (SessionNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ObservableList<String> productNames = FXCollections.observableArrayList();
+        for(ProductBean product: productList) {
+            productNames.add(product.getProductName());
+        }
+        System.out.println(yo);
+        inizioDati(productNames);
+
     }
+    public void inizioDati(ObservableList<String> productNames)  {
+        yo.setItems(productNames);
+    }
+
 }
+
 

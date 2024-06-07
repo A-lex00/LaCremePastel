@@ -42,6 +42,9 @@ public class GUIControllerManageOrder {
         orderBean.setCart(currentCart);
 
     }
+    public void setSessionBean(SessionBean sessionBean){
+        this.sessionBean = sessionBean;
+    }
 
 
     @FXML

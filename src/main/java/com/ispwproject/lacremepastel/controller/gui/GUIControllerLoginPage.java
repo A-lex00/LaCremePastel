@@ -57,6 +57,7 @@ public class GUIControllerLoginPage {
             LoginController loginController=new LoginController();
             SessionBean sessionBean = null;
             sessionBean = loginController.login(loginBean);
+
             if (sessionBean == null) {
                 // Mostra un messaggio di errore all'utente
                 System.err.println("Errore nell'accesso: Dati errati");
@@ -68,19 +69,40 @@ public class GUIControllerLoginPage {
                 Parent root=null;
 
                 if(sessionBean.getRole().equals("DIRECTOR")){
-                    root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
-                    GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage(sessionBean);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
+                    GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage();
+                    guiControllerDirectorFirstPage.setSessionBean(sessionBean);
+                    loader.setController(guiControllerDirectorFirstPage);
+                    root = loader.getRoot();
+                    if(root == null) {
+                        root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
+                    }
                 }
                 if(sessionBean.getRole().equals("CUSTOMER")){
-                    root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
-                    GUIControllerCustomerFirstPage guiControllerCustomerFirstPage = new GUIControllerCustomerFirstPage(sessionBean);
+                    GUIControllerCustomerFirstPage guiControllerCustomerFirstPage = new GUIControllerCustomerFirstPage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
+                   // guiControllerCustomerFirstPage.setSessionBean(sessionBean);
+                    loader.setController(guiControllerCustomerFirstPage);
+                    root = loader.getRoot();
+                    if(root == null) {
+                        root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
+                    }
                 }
                 if(sessionBean.getRole().equals("WORKER")){
                     root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
-                    GUIControllerWorkerFirstPage guiControllerWorkerFirstPage = new GUIControllerWorkerFirstPage(sessionBean);
+                    /*GUIControllerWorkerFirstPage guiControllerWorkerFirstPage = new GUIControllerWorkerFirstPage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/workerFirstPage.fxml"));
+                    guiControllerWorkerFirstPage.setSessionBean(sessionBean);
+                    loader.setController(guiControllerWorkerFirstPage);
+                    System.out.println("LoginPage : " + sessionBean);
+                    root = loader.getRoot();
+                    if(root == null) {
+                        root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
+                    }*/
                 }
                 stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");
+                stage.setUserData(sessionBean);
                 stage.show();
             }catch(Exception e){
                 System.err.println("Errore nel go back!");
