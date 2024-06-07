@@ -4,10 +4,7 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.SessionManager;
-import com.ispwproject.lacremepastel.model.Session;
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +16,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.net.URL;
 
 public class GUIControllerLoginPage extends AbstractGUIController{
 
@@ -34,69 +30,38 @@ public class GUIControllerLoginPage extends AbstractGUIController{
 
     @FXML
     void backHome(ActionEvent homeEvent) {
-        Node node=(Node) homeEvent.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
-            stage.setScene(new Scene(root, 629, 481));
-            stage.show();
-        }catch(Exception e){
-            System.err.println("Errore nel go back!");
-            e.printStackTrace();
-
-        }
+        this.setupStage(homeEvent, FXMLPaths.FIRST_PAGE);
     }
     @FXML
     public void mainPage(ActionEvent mainPageEvent){
         String username= authField.getText();
         String password=passField.getText();
+
+        SessionBean sessionBean = null;
         try{
             LoginBean loginBean=new LoginBean(username,password);
             LoginController loginController=new LoginController();
-            SessionBean sessionBean = loginController.login(loginBean);
+            sessionBean = loginController.login(loginBean);
 
             if (sessionBean == null) {
                 // Mostra un messaggio di errore all'utente
-                System.err.println("Errore nell'accesso: Dati errati");
-                return;
+                throw new InvalidParameterException("Invalid username or password");
             }
-            Node node=(Node) mainPageEvent.getSource();
-            Stage stage=(Stage) node.getScene().getWindow();
-            try{
-                Parent root=null;
-                if(sessionBean.getRole().equals("DIRECTOR")){
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
-                    GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage();
 
-                    loader.setController(guiControllerDirectorFirstPage);
-                    root = loader.getRoot();
-                    if(root == null) {
-                        root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
-                    }
-                }
-                if(sessionBean.getRole().equals("CUSTOMER")){
-                    GUIControllerCustomerFirstPage guiControllerCustomerFirstPage = new GUIControllerCustomerFirstPage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
-                    loader.setController(guiControllerCustomerFirstPage);
-                    root = loader.getRoot();
-                    if(root == null) {
-                        root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
-                    }
-                }
-                if(sessionBean.getRole().equals("WORKER")){
-                    root = FXMLLoader.load(getClass().getResource("/view/workerFirstPage.fxml"));
-                }
-                stage.setScene(new Scene(root, 615, 480));
-                stage.setUserData(sessionBean);
-                stage.show();
-            }catch(Exception e){
-                System.err.println("Errore nel go back!");
-                e.printStackTrace();
+            this.setUserData(sessionBean);
 
+            if(sessionBean.getRole().equals("DIRECTOR")){
+                this.setupStage(mainPageEvent,FXMLPaths.DIRECTOR_HOME);
+            }else if(sessionBean.getRole().equals("CUSTOMER")){
+                this.setupStage(mainPageEvent,FXMLPaths.CUSTOMER_HOME);
+            }else if(sessionBean.getRole().equals("WORKER")){
+                this.setupStage(mainPageEvent,FXMLPaths.WORKER_HOME);
             }
+
         }catch(InvalidParameterException parameterException){
             System.err.println("Errore nell'accesso: Dati errati!");
             parameterException.fillInStackTrace();
         }
+
     }
 }

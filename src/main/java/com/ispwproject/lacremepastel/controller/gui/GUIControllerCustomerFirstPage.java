@@ -1,5 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,7 +12,7 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     void composeOrder(ActionEvent composeEvent) {
-        this.setupStage(composeEvent,"/view/makeOrder.fxml");
+        this.setupStage(composeEvent, FXMLPaths.MAKE_ORDER);
     }
     @FXML
     void giveBack(ActionEvent backEvent) {
@@ -25,16 +26,13 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
-        throw new UnsupportedOperationException();
     }
 
     @FXML
     void reviewOrder(ActionEvent reviewEvent) {
-        //throw new UnsupportedOperationException();
     }
 
     @FXML
     void showNotice(ActionEvent noticeEvent) {
-        throw new UnsupportedOperationException();
     }
 }

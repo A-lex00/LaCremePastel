@@ -20,7 +20,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
 
     @FXML
     void addCart(ActionEvent cartEvent) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
     }
 
     @FXML
