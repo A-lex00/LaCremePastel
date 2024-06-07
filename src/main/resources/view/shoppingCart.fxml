@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,13 +22,20 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <Button layoutX="110.0" layoutY="424.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="indietro" />
-      <ListView layoutX="110.0" layoutY="79.0" prefHeight="304.0" prefWidth="342.0" />
-      <Button layoutX="337.0" layoutY="424.0" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="conferma Ordine" />
+      <Button layoutX="134.0" layoutY="413.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="indietro" />
+      <Button layoutX="299.0" layoutY="413.0" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="conferma Ordine" />
       <Label layoutX="110.0" layoutY="383.0" text="Totale Carrello:">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
+      <TableView layoutX="110.0" layoutY="82.0" prefHeight="298.0" prefWidth="347.0">
+        <columns>
+          <TableColumn prefWidth="116.79998779296875" text="Prodotto" />
+          <TableColumn prefWidth="134.3999786376953" text="Quantità" />
+            <TableColumn prefWidth="95.19999999999999" text="Prezzo" />
+        </columns>
+      </TableView>
+      <Label fx:id="totatPrice" layoutX="267.0" layoutY="390.0" prefHeight="18.0" prefWidth="89.0" text="Label" />
    </children>
 </AnchorPane>
