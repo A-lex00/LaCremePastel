@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * 3) notify(): notifica un cambiamento alle classi ConcreteObserver
  * */
 public abstract class Subject {
-    /** lista di observer che si iscrivono per ricevere la notifica */
+    /**
+     * lista di observer che si iscrivono per ricevere la notifica
+     */
     private final ArrayList<Observer> observers;
     protected Subject(){
         observers= new ArrayList<>();

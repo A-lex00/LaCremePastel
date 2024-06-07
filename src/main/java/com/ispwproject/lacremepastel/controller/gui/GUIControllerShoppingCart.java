@@ -1,6 +1,9 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
+
+import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
+
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
