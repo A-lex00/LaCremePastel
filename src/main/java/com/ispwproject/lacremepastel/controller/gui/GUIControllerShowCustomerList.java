@@ -1,5 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.CustomerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GUIControllerShowCustomerList implements Initializable {
+        private SessionBean sessionBean;
         @FXML
         private ListView<String> customerView;
         private CustomerDAO customerDAO;
@@ -18,6 +20,10 @@ public class GUIControllerShowCustomerList implements Initializable {
         private String selectedCustomer;
         @FXML
         void goBack(ActionEvent event) {
+        }
+
+        public void setSessionBean(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {

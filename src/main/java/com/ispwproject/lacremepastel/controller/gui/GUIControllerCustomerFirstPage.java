@@ -4,7 +4,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,24 +15,36 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GUIControllerCustomerFirstPage  {
-    private  SessionBean sessionBean= null;
+
+    public GUIControllerCustomerFirstPage(){};
+    private  SessionBean sessionBean;
 
     @FXML
     private Label initialLabel;
 
-    public GUIControllerCustomerFirstPage(SessionBean sessionBean) {
-    }
 
-    public void setWelcome(String username){
-        this.initialLabel.setText("Benvenuto"+ username);
-    }
 
     @FXML
     void composeOrder(ActionEvent composeEvent) {
         Node node=(Node) composeEvent.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
         try {
+          /*  System.out.println("userdata" + stage.getUserData());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/makeOrder.fxml"));
+            GUIControllerMakeOrder guiControllerMakeOrder = new GUIControllerMakeOrder();
+            loader.setController(guiControllerMakeOrder);
+            Parent root = loader.getRoot();
+
+            System.out.println(" before if: " + root);
+            if(root == null) {
+                System.out.println("userdataInif" + stage.getUserData());
+                root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
+            */
+
             Parent root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
+            GUIControllerMakeOrder guiControllerMakeOrder = new GUIControllerMakeOrder();
+            root.getParent().getScene().getWindow().
+            guiControllerMakeOrder.inizio((SessionBean) stage.getUserData());
             stage.setScene(new Scene(root, 629, 481));
             stage.setTitle("La Creme Pastel");
             stage.show();

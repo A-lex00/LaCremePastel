@@ -19,15 +19,26 @@ public class GUIControllerDirectorFirstPage  {
     private SessionBean sessionBean = null;
     @FXML
     private Label initialLabel = null;
-    public GUIControllerDirectorFirstPage(SessionBean sessionBean) {
+    
+    public GUIControllerDirectorFirstPage(){};
+
+    public void setSessionBean (SessionBean sessionBean) {
         this.sessionBean = sessionBean;
     }
+
         @FXML
         void manageOrder(ActionEvent manageoEvent) {
             Node node=(Node) manageoEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/manageOrder.fxml"));
+                GUIControllerManageOrder guiControllerManagerOrder = new GUIControllerManageOrder();
+                guiControllerManagerOrder.setSessionBean(sessionBean);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/manageOrder.fxml"));
+                Parent root = loader.getRoot();
+                loader.setController(guiControllerManagerOrder);
+                if(root == null) {
+                    root = FXMLLoader.load(getClass().getResource("/view/manageOrder.fxml"));
+                }
                 stage.setScene(new Scene(root, 615, 480));
                 stage.setTitle("La Creme Pastel");
                 stage.show();
@@ -42,7 +53,14 @@ public class GUIControllerDirectorFirstPage  {
             Node node=(Node) managepEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/manageProducts.fxml"));
+                GUIControllerManageProduct guiControllerManageProduct = new GUIControllerManageProduct();
+                guiControllerManageProduct.setSessionBean(sessionBean);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/manageProduct.fxml"));
+                Parent root = loader.getRoot();
+                loader.setController(guiControllerManageProduct);
+                if(root == null) {
+                    root = FXMLLoader.load(getClass().getResource("/view/manageProduct.fxml"));
+                }
                 stage.setScene(new Scene(root, 629, 481));
                 stage.setTitle("La Creme Pastel");
                 stage.show();
@@ -56,7 +74,14 @@ public class GUIControllerDirectorFirstPage  {
             Node node=(Node) managewEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/workersList.fxml"));
+                GUIControllerManageWorker guiControllerManageWorker = new GUIControllerManageWorker();
+                guiControllerManageWorker.setSessionBean(sessionBean);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/workersList.fxml"));;
+                Parent root = loader.getRoot();
+                loader.setController(guiControllerManageWorker);
+                if(root == null) {
+                    root = FXMLLoader.load((getClass().getResource("/view/workersList.fxml")));
+                }
                 stage.setScene(new Scene(root, 629, 481));
                 stage.setTitle("La Creme Pastel");
                 stage.show();
@@ -77,7 +102,14 @@ public class GUIControllerDirectorFirstPage  {
             Node node=(Node) showEvent.getSource();
             Stage stage=(Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/customerList.fxml"));
+                GUIControllerShowCustomerList guiControllerShowCustomerList = new GUIControllerShowCustomerList();
+                guiControllerShowCustomerList.setSessionBean(sessionBean);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerList.fxml"));
+                loader.setController(guiControllerShowCustomerList);
+                Parent root = loader.getRoot();
+                if(root == null) {
+                    root = FXMLLoader.load((getClass().getResource("/view/customerList.fxml")));
+                }
                 stage.setScene(new Scene(root, 629, 481));
                 stage.setTitle("La Creme Pastel");
                 stage.show();

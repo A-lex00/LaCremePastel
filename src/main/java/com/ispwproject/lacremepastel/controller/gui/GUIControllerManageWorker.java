@@ -1,0 +1,12 @@
+package com.ispwproject.lacremepastel.controller.gui;
+
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+
+public class GUIControllerManageWorker {
+
+    private SessionBean sessionBean;
+
+    public void setSessionBean(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
+    }
+}
