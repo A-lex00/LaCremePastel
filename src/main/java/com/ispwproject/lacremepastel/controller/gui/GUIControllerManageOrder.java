@@ -3,24 +3,14 @@ package com.ispwproject.lacremepastel.controller.gui;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
-import com.ispwproject.lacremepastel.model.Order;
-import com.ispwproject.lacremepastel.model.OrderLine;
-import com.ispwproject.lacremepastel.model.Session;
-import com.ispwproject.lacremepastel.model.Worker;
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class GUIControllerManageOrder {
+public class GUIControllerManageOrder extends AbstractGUIController{
 
     @FXML
     private Button acceptButton;
@@ -33,36 +23,24 @@ public class GUIControllerManageOrder {
 
     @FXML
     private Button rejectButton;
-    private SessionBean sessionBean;
 
     private List<OrderLineBean> currentCart;
+
     @FXML
     void acceptOrder(ActionEvent event) {
-
+        SessionBean sessionBean = (SessionBean) this.getUserData();
         OrderBean orderBean = new OrderBean(sessionBean.getUsername());
         orderBean.setCart(currentCart);
     }
-    public void setSessionBean(SessionBean sessionBean){
-        this.sessionBean = sessionBean;
-    }
-
 
     @FXML
     void goBack(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/directorFirstPage.fxml"));
-            stage.setScene(new Scene(root, 615, 480));
-            stage.setTitle("La Creme Pastel");
-            stage.show();
-        } catch (Exception e) {
-            System.err.println("Errore nel caricamento della schermata della gestione degli ordini!" + e.getMessage());
-            e.printStackTrace();
-        }
+        this.setupStage(event, FXMLPaths.DIRECTOR_HOME);
     }
+
     @FXML
     void rejectOrder(ActionEvent event) {
+
     }
 
 }

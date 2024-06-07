@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,24 +16,18 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GUIControllerWorkerFirstPage {
+public class GUIControllerWorkerFirstPage extends AbstractGUIController{
         private SessionBean sessionBean;
 
         @FXML
         private Label welcomeLabel;
-
-        public   GUIControllerWorkerFirstPage(){}
-
-        public void setSessionBean(SessionBean sessionBean) {
-        this. sessionBean = sessionBean;
-        }
 
         @FXML
         public void requestHelp(ActionEvent helpEvent) {
             Node node= (Node) helpEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/helpPage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource(FXMLPaths.HELP_PAGE));
                 Stage poupopStage= new Stage();
                 poupopStage.setScene(new Scene(root, 629, 481));
                 poupopStage.setTitle("La Creme Pastel");

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 //Concrete Observer
-public class GUIControllerShoppingCart implements  Initializable, Observer {
+public class GUIControllerShoppingCart extends AbstractGUIController implements  Initializable, Observer {
 
         /**OBSERVER */
         private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */

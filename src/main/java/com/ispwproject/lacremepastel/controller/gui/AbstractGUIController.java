@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ public abstract class AbstractGUIController {
         }
     }
 
-    public void initialize(){}
+    public void configure(){}
 
     protected void setupStage(ActionEvent event, String filePath){
         if(filePath == null || event == null){
@@ -37,6 +36,7 @@ public abstract class AbstractGUIController {
             Parent parent = loader.load();
             AbstractGUIController controller = loader.getController();
             controller.setUserData(this.getUserData());
+            controller.configure();
 
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();

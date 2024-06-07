@@ -1,22 +1,9 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
-import com.ispwproject.lacremepastel.other.PoupopManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class GUIControllerDirectorFirstPage extends AbstractGUIController{
     @FXML
@@ -38,6 +25,7 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
+        throw new UnsupportedOperationException();
     }
 
     @FXML

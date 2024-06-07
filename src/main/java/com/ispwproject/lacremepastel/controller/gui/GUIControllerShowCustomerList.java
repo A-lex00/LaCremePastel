@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GUIControllerShowCustomerList implements Initializable {
+public class GUIControllerShowCustomerList extends AbstractGUIController implements Initializable {
         private SessionBean sessionBean;
         @FXML
         private ListView<String> customerView;

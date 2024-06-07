@@ -4,21 +4,12 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
-import com.ispwproject.lacremepastel.other.PoupopManager;
+import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import org.w3c.dom.Text;
-import org.w3c.dom.events.MouseEvent;
 
-import java.io.IOException;
-
-public class GUIControllerRegistrationPage {
+public class GUIControllerRegistrationPage extends AbstractGUIController{
     @FXML
     private Button backButton;
     @FXML
@@ -49,21 +40,10 @@ public class GUIControllerRegistrationPage {
     private RadioButton workerDot;
     @FXML
     private final ToggleGroup roleGroup = new ToggleGroup();
-    private boolean worker, director, customer;
 
     @FXML
     void back(ActionEvent backEvent) {
-        Node node = (Node) backEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
-            stage.setScene(new Scene(root, 629, 481));
-            stage.setTitle("La Creme Pastel");
-            stage.show();
-        } catch (Exception e) {
-            e.getStackTrace();
-            System.err.println("Errore nel tornare indietro!");
-        }
+        this.setupStage(backEvent, FXMLPaths.FIRST_PAGE);
     }
 
     @FXML
@@ -71,9 +51,8 @@ public class GUIControllerRegistrationPage {
         customerDot.setToggleGroup(roleGroup);
         directorDot.setToggleGroup(roleGroup);
         workerDot.setToggleGroup(roleGroup);
-        customer = customerDot.isSelected();
-        worker = workerDot.isSelected();
-        director = directorDot.isSelected();
+        boolean worker = workerDot.isSelected();
+        boolean director = directorDot.isSelected();
 
         if (director || worker) {
             if (director) {
@@ -101,39 +80,46 @@ public class GUIControllerRegistrationPage {
         String cfPiva = cfPivaField.getText();
         String extraInfo = null;
         try {
-            if (workerDot.isSelected()) {
-                ruolo = "WORKER";
-                extraInfo=extraField.getText();
+            if (!cnfEmail.equalsIgnoreCase(email)) {
+                throw new InvalidParameterException("Email does not match");
             }
-            else if (customerDot.isSelected()) {
-                ruolo="CUSTOMER";
-            }else if(directorDot.isSelected()){
-                ruolo="DIRECTOR";
-                extraInfo=extraField.getText();
+            if (!cnfPassword.equalsIgnoreCase(password)) {
+                throw new InvalidParameterException("Password does not match");
             }
-            if(ruolo != null){
-                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
-                LoginController loginController=new LoginController();
-                try {
-                    loginController.register(registerBean);
-                } catch (UserAlreadyExistentException e) {
-                    //Inserire qui la chiamata al banner
-                }
-            }
-                RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
-                if(workerDot.isSelected()){
-                    registerBean.setRole(extraInfo);
-                }
-                if(directorDot.isSelected()){
-                    registerBean.setBillingAddress(extraInfo);
-                }
-                LoginController loginController=new LoginController();
-                try {
-                    loginController.register(registerBean);
-                } catch (UserAlreadyExistentException e) {
-                    //Inserire qui la chiamata a banner
-                }
+        }catch (InvalidParameterException e) {
+            //Creare il banner con il messaggio
+            return;
+        }
+
+        if (workerDot.isSelected()) {
+            ruolo = "WORKER";
+            extraInfo=extraField.getText();
+        }
+        else if (customerDot.isSelected()) {
+            ruolo="CUSTOMER";
+        }else if(directorDot.isSelected()){
+            ruolo="DIRECTOR";
+            extraInfo=extraField.getText();
+        }
+        if(ruolo == null) {
+            //Chiamata al banner
+            return;
+        }
+        RegisterBean registerBean = new RegisterBean(username, cfPiva, password, name, surname, email, ruolo);
+
+        if(workerDot.isSelected()){
+            registerBean.setRole(extraInfo);
+        }
+        if(directorDot.isSelected()){
+            registerBean.setBillingAddress(extraInfo);
+        }
+
+        try {
+            LoginController loginController=new LoginController();
+            loginController.register(registerBean);
             System.out.println("Registrazione completata: Benvenuto!");
+        } catch (UserAlreadyExistentException e) {
+            //Inserire qui la chiamata a banner
         }catch(InvalidParameterException invalidParameterException){
             System.err.println("Errore nell'inserimento dei parametri");
             System.err.println(invalidParameterException.getMessage());
