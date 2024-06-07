@@ -39,18 +39,15 @@ public class GUIControllerCustomerFirstPage  {
             if(root == null) {
                 System.out.println("userdataInif" + stage.getUserData());
                 root = FXMLLoader.load(getClass().getResource("/view/makeOrder.fxml"));
-
             */
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/makeOrder.fxml"));
             AnchorPane root = loader.load();
-            GUIControllerMakeOrder guiControllerMakeOrder = new GUIControllerMakeOrder();
-            loader.setController(guiControllerMakeOrder);
-            guiControllerMakeOrder.inizio((SessionBean) stage.getUserData());
+            GUIControllerMakeOrder controller = loader.getController();
+            controller.importUserData(stage.getUserData());
 
             Scene scene = new Scene(root, 629, 481);
             stage.setScene(scene);
-            stage.setTitle("La Creme Pastel");
             stage.show();
         }
         catch(IllegalArgumentException e){
@@ -70,14 +67,12 @@ public class GUIControllerCustomerFirstPage  {
     @FXML
     void orderHistory(ActionEvent event) {
         System.out.println("Ordini passati");
-
     }
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
         Node node=(Node) helpEvent.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
-
     }
 
     @FXML

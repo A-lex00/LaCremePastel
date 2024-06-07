@@ -29,7 +29,6 @@ public class GUIControllerLoginPage {
     private Button backButton;
     @FXML
     private Button loginButton;
-
     @FXML
     private PasswordField passField;
 
@@ -38,7 +37,6 @@ public class GUIControllerLoginPage {
         Node node=(Node) homeEvent.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
         try{
-            stage.setTitle("La Creme Pastel");
             Parent root = FXMLLoader.load(getClass().getResource("/view/firstPage.fxml"));
             stage.setScene(new Scene(root, 629, 481));
             stage.show();
@@ -55,8 +53,7 @@ public class GUIControllerLoginPage {
         try{
             LoginBean loginBean=new LoginBean(username,password);
             LoginController loginController=new LoginController();
-            SessionBean sessionBean = null;
-            sessionBean = loginController.login(loginBean);
+            SessionBean sessionBean = loginController.login(loginBean);
 
             if (sessionBean == null) {
                 // Mostra un messaggio di errore all'utente
@@ -67,7 +64,6 @@ public class GUIControllerLoginPage {
             Stage stage=(Stage) node.getScene().getWindow();
             try{
                 Parent root=null;
-
                 if(sessionBean.getRole().equals("DIRECTOR")){
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customerFirstPage.fxml"));
                     GUIControllerDirectorFirstPage guiControllerDirectorFirstPage = new GUIControllerDirectorFirstPage();
@@ -101,7 +97,6 @@ public class GUIControllerLoginPage {
                     }*/
                 }
                 stage.setScene(new Scene(root, 615, 480));
-                stage.setTitle("La Creme Pastel");
                 stage.setUserData(sessionBean);
                 stage.show();
             }catch(Exception e){
@@ -109,10 +104,9 @@ public class GUIControllerLoginPage {
                 e.printStackTrace();
 
             }
-
         }catch(InvalidParameterException parameterException){
             System.err.println("Errore nell'accesso: Dati errati!");
-            System.err.println(parameterException);
+            parameterException.fillInStackTrace();
         }
     }
 }

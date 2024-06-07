@@ -20,7 +20,7 @@ public class GUIControllerDirectorFirstPage  {
     @FXML
     private Label initialLabel = null;
     
-    public GUIControllerDirectorFirstPage(){};
+    public GUIControllerDirectorFirstPage(){}
 
     public void setSessionBean (SessionBean sessionBean) {
         this.sessionBean = sessionBean;

@@ -4,7 +4,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
 import com.ispwproject.lacremepastel.model.OrderLine;
 import com.ispwproject.lacremepastel.model.Product;
 import javafx.collections.FXCollections;
@@ -20,80 +19,46 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
-public class GUIControllerMakeOrder  {
+public class GUIControllerMakeOrder  extends AbstractGUIController{
 
-        @FXML
-        private ComboBox<String> productBox;
-        private List<ProductBean> productList ;
-        private String productName;
-        private int quantity;
-        @FXML
-        private TextField quantityField;
+    @FXML
+    private ComboBox<String> productBox;
+    @FXML
+    private TextField quantityField;
 
-        private SessionBean sessionBean ;
+    private List<ProductBean> productList ;
 
-
-    public GUIControllerMakeOrder() {
+    public GUIControllerMakeOrder(){
+        System.out.println("Costruttore CHiamato");
     }
 
-        @FXML
-        void addCart(ActionEvent cartEvent) {
-            productName = productBox.getValue();
-            Product product = new Product(productName);
-            quantity = Integer.parseInt(quantityField.getText());
-            OrderBean orderBean = new OrderBean(sessionBean.getUsername());
-            OrderLine orderLine = new OrderLine( product, quantity);
-        }
-        @FXML
-        public void goBack(ActionEvent backEvent) {
-            Node node=(Node) backEvent.getSource();
-            Stage stage=(Stage) node.getScene().getWindow();
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/customerFirstPage.fxml"));
-                stage.setScene(new Scene(root, 629, 481));
-                stage.setTitle("La Creme Pastel");
-                stage.show();
-            }catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        @FXML
-        public void showShoppingCart(ActionEvent cartEvent) {
-            Node node=(Node) cartEvent.getSource();
-            Stage stage=(Stage) node.getScene().getWindow();
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/view/shoppingCart.fxml"));
-                stage.setScene(new Scene(root, 629, 481));
-                stage.setTitle("La Creme Pastel");
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        public void inizio(SessionBean sessionBean)  {
-
-        ManageProductController manageProductController=new ManageProductController();
-        try {
-
-            productList=manageProductController.getProductList(sessionBean,null);
-        } catch (InvalidParameterException e) {
-
-            throw new RuntimeException(e);
-        }
-        ObservableList<String> productNames = FXCollections.observableArrayList();
-        for(ProductBean product: productList) {
-            productNames.add(product.getProductName());
-        }
-        System.out.println("GUIControllerMakeOrder " + productBox);
-        inizioDati(productNames);
-
+    @FXML
+    void addCart(ActionEvent cartEvent) {
     }
-    public void inizioDati(ObservableList<String> productNames)  {
-        productBox.setItems(productNames);
+
+    @FXML
+    public void goBack(ActionEvent backEvent) {
+        setupStage(backEvent,"/view/customerFirstPage.fxml");
     }
+    @FXML
+    public void showShoppingCart(ActionEvent cartEvent) {
+        setupStage(cartEvent,"/view/shoppingCart.fxml");
+    }
+
+    @Override
+    public void importUserData(Object userData){
+        SessionBean sessionBean = (SessionBean) userData;
+        ManageProductController manageProductController = new ManageProductController();
+        this.productList = manageProductController.getProductList(sessionBean, null);
+        for(ProductBean productBean : productList){
+            productBox.getItems().add(productBean.getProductName());
+        }
+    }
+
+
 
 }
 
