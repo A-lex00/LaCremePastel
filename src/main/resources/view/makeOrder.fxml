@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -37,6 +38,12 @@
             <Button mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Riepilogo Ordine" />
          </children>
       </HBox>
-      <ListView fx:id="actualCart" layoutX="113.0" layoutY="170.0" prefHeight="200.0" prefWidth="337.0" />
+      <TableView layoutX="79.0" layoutY="184.0" prefHeight="200.0" prefWidth="385.0">
+        <columns>
+          <TableColumn prefWidth="125.0" text="Prodotto" />
+          <TableColumn prefWidth="130.0" text="Quantità" />
+            <TableColumn prefWidth="129.0" text="Costo" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
