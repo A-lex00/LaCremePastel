@@ -6,6 +6,7 @@ import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import java.util.List;
 
@@ -15,11 +16,17 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
     private ComboBox<String> productBox;
     @FXML
     private TextField quantityField;
+    @FXML
+    private ListView actualCart;
+
 
     private List<ProductBean> productList ;
 
+
     @FXML
     void addCart(ActionEvent cartEvent) {
+
+        //observer be implemetated here
 
     }
 
@@ -28,7 +35,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController{
         this.setupStage(backEvent, FXMLPaths.CUSTOMER_HOME);
     }
     @FXML
-    public void showShoppingCart(ActionEvent cartEvent) {
+    public void confirmOrder(ActionEvent cartEvent) {
         this.setupStage(cartEvent, FXMLPaths.SHOPPING_CART);
     }
 

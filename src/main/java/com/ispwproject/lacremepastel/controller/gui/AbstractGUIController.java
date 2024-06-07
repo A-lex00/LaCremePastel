@@ -34,7 +34,6 @@ public abstract class AbstractGUIController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
-            System.out.println("Avvop controller");
             AbstractGUIController controller = loader.getController();
             controller.setUserData(this.getUserData());
             controller.configure();
@@ -44,7 +43,8 @@ public abstract class AbstractGUIController {
             stage.setScene(new Scene(parent, 629, 481));
             stage.show();
         }catch (IOException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            //Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
