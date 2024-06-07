@@ -22,7 +22,7 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <ComboBox fx:id="yo" layoutX="67.0" layoutY="184.0" prefWidth="150.0" style="-fx-background-color: e1680f;" />
+      <ComboBox fx:id="productBox" layoutX="67.0" layoutY="184.0" prefWidth="150.0" style="-fx-background-color: e1680f;" />
       <TextField fx:id="quantityField" layoutX="232.0" layoutY="184.0" prefHeight="26.0" prefWidth="122.0" promptText="immettere quantità" />
       <Text layoutX="87.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona Prodotti">
          <font>
