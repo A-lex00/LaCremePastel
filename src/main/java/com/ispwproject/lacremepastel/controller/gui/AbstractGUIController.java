@@ -1,10 +1,16 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.logging.Logger;
 
 public abstract class AbstractGUIController {
 
@@ -22,13 +28,22 @@ public abstract class AbstractGUIController {
 
     public void initialize(){}
 
-    protected void setupStage(ActionEvent event, Pane pane){
-        if(pane == null || event == null){
+    protected void setupStage(ActionEvent event, String filePath){
+        if(filePath == null || event == null){
             return;
         }
-        Node node=(Node) event.getSource();
-        Stage stage=(Stage) node.getScene().getWindow();
-        stage.setScene(new Scene(pane, 629, 481));
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
+            Parent parent = loader.load();
+            AbstractGUIController controller = loader.getController();
+            controller.setUserData(this.getUserData());
+
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.setScene(new Scene(parent, 629, 481));
+            stage.show();
+        }catch (IOException e){
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+        }
     }
 }

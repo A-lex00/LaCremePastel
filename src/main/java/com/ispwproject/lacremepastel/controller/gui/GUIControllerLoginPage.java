@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
-public class GUIControllerLoginPage {
+public class GUIControllerLoginPage extends AbstractGUIController{
 
     @FXML
     private TextField authField;
