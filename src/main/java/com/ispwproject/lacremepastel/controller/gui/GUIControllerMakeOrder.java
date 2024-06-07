@@ -26,12 +26,13 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
     private TextField quantityField;
     @FXML
     private TableView orderView;
-    private Cart actualCart;
+    private Cart actualCart = new Cart();
     private ArrayList<ProductBean> productList ;
 
 
     @FXML
     void addCart(ActionEvent cartEvent) {
+        System.out.println("addCart");
         int index = productBox.getSelectionModel().getSelectedIndex();
         ProductBean product = productList.get(index);
         int quantity = Integer.parseInt(quantityField.getText());
@@ -57,11 +58,15 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         for(ProductBean productBean : productList){
             productBox.getItems().add(productBean.getProductName() + "\t" + productBean.getPrice() + "€" );
         }
+        actualCart.attach(this);
     }
 
     @Override
     public void update() {
-        orderView.getColumns().add()
+        System.out.println("Update Entered");
+        orderView.getColumns().add(0,actualCart.getState());
+        orderView.getColumns().add(1,actualCart.getState());
+        orderView.getColumns().add(2, actualCart.getState());
     }
 }
 

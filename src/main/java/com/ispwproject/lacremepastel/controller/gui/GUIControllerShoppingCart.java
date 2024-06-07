@@ -26,7 +26,7 @@ public class GUIControllerShoppingCart extends AbstractGUIController implements 
 
 
         @FXML
-        private ListView order ;
+        private TableView order ;
 
         /**OBSERVER */
         private Cart actualCart;        /** ISTANZA DEL MODEL OSSERVATO */
