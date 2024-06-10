@@ -13,4 +13,5 @@ module com.ispwproject.lacremepastel {
     exports com.ispwproject.lacremepastel.controller.gui to javafx.fxml;
     exports com.ispwproject.lacremepastel.controller to javafx.graphics;
     exports com.ispwproject.lacremepastel.engineeringclasses.bean to javafx.fxml;
+    exports com.ispwproject.lacremepastel.model to org.junit;
 }

@@ -1,8 +1,6 @@
 package com.ispwproject.lacremepastel.engineeringclasses.singleton;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.SessionNotFoundException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyLoggedException;
-import com.ispwproject.lacremepastel.engineeringclasses.exception.UuidAlreadyExistent;
 import com.ispwproject.lacremepastel.model.Session;
 
 import java.util.Date;
@@ -11,9 +9,7 @@ import java.util.HashMap;
 public class SessionManager {
 
     private static SessionManager instance = null;
-    private HashMap<String, Session> loggedUsers;
-    private String username;
-    private String role;
+    private final HashMap<String, Session> loggedUsers;
 
     private SessionManager(){
         loggedUsers = new HashMap<>();
@@ -27,25 +23,9 @@ public class SessionManager {
     }
 
     public void addSession(Session session){
-        if(session != null){
-            this.username= String.valueOf(loggedUsers.get(session));
-            this.role=String.valueOf(loggedUsers.get(session));
-            if(!loggedUsers.containsKey(session.getUuid())){
+        if(session != null && !loggedUsers.containsKey(session.getUuid())){
                 loggedUsers.put(session.getUuid(),session);
-            }
         }
-    }
-    public String getUsername(String uuid) {
-        if(loggedUsers.containsKey(uuid)) {
-            return loggedUsers.get(uuid).getUsername();
-        }
-        return null;
-    }
-    public String getRole(String uuid) {
-        if(loggedUsers.containsKey(uuid)) {
-            return loggedUsers.get(uuid).getRole();
-        }
-        return null;
     }
 
     public Session delSession(String uuid) throws SessionNotFoundException{

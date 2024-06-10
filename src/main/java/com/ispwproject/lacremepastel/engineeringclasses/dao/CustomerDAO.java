@@ -8,9 +8,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -46,7 +44,7 @@ public class CustomerDAO implements UserDAO {
 
     @Override
     public List<String> getAllCustomer() {
-        List<String> customerList = new ArrayList<>();
+        List<String> customerList;
         customerList=CustomerQuery.getAllCustomer(Connector.getConnection());
         return customerList;
     }

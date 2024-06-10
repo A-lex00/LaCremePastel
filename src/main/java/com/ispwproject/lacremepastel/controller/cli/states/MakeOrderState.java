@@ -19,7 +19,7 @@ public class MakeOrderState extends AbstractState{
             if(choose == 0){
                 contextSM.rewind();
             }else{
-                contextSM.changeState(choose);
+                contextSM.transition(this.getChosenState(choose));
             }
         }catch (NumberFormatException e){
             throw new InvalidParameterException("Invalid Input");
