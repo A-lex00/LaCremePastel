@@ -29,11 +29,11 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="110.0" layoutY="82.0" prefHeight="298.0" prefWidth="347.0">
+      <TableView fx:id="orderView" layoutX="107.0" layoutY="78.0" prefHeight="298.0" prefWidth="347.0">
         <columns>
-          <TableColumn prefWidth="116.79998779296875" text="Prodotto" />
-          <TableColumn prefWidth="134.3999786376953" text="Quantità" />
-            <TableColumn prefWidth="95.19999999999999" text="Prezzo" />
+          <TableColumn fx:id="productColumn" prefWidth="116.79998779296875" text="Prodotto" />
+          <TableColumn fx:id="ammountColumn" prefWidth="134.3999786376953" text="Quantità" />
+            <TableColumn fx:id="priceColumn" prefWidth="95.19999999999999" text="Prezzo" />
         </columns>
       </TableView>
       <Label fx:id="totatPrice" layoutX="267.0" layoutY="390.0" prefHeight="18.0" prefWidth="89.0" text="Label" />

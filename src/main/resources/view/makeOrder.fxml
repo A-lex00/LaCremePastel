@@ -40,9 +40,9 @@
       </HBox>
       <TableView fx:id="orderView" layoutX="79.0" layoutY="184.0" prefHeight="200.0" prefWidth="385.0">
         <columns>
-          <TableColumn prefWidth="125.0" text="Prodotto" />
-          <TableColumn prefWidth="130.0" text="Quantità" />
-            <TableColumn prefWidth="129.0" text="Costo" />
+          <TableColumn fx:id="productColumn" prefWidth="125.0" text="Prodotto" />
+          <TableColumn fx:id="quantityColumn" prefWidth="130.0" text="Quantità" />
+            <TableColumn fx:id="priceColumn" prefWidth="129.0" text="Costo" />
         </columns>
       </TableView>
    </children>
