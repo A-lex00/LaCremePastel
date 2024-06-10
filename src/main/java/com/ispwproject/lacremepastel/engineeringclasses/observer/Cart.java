@@ -1,8 +1,6 @@
 package com.ispwproject.lacremepastel.engineeringclasses.observer;
 
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
-import com.ispwproject.lacremepastel.model.Order;
-import com.ispwproject.lacremepastel.model.OrderLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.List;
 public class Cart extends  Subject{
 
     /** Stato del subject **/
-    private List<OrderLineBean> actualCart;
+    private final List<OrderLineBean> actualCart;
 
     /** Costruttore pubblico poichè ogni istanza di Cart appartiene  ad un solo utente **/
     public Cart(){
@@ -22,6 +20,7 @@ public class Cart extends  Subject{
      */
     public void addOrderLine(OrderLineBean orderLineBean){
         actualCart.add(orderLineBean);
+        System.out.println("Cart" + "orderLine aggiunto");
         notifyObservers();
     }
     public void removeOrderLine(OrderLineBean orderLineBean){
@@ -31,6 +30,7 @@ public class Cart extends  Subject{
 
     /**
      * Metodo getState() in teoria utilizzato dai subscribers una volta notificati di dover svolgere un update()
+     *
      * @return tutto il cart
      */
     public List<OrderLineBean> getState(){

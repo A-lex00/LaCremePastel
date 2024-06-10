@@ -45,7 +45,6 @@ public abstract class AbstractGUIController {
             stage.show();
         }catch (IOException e){
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
-            e.printStackTrace();
         }
     }
 }

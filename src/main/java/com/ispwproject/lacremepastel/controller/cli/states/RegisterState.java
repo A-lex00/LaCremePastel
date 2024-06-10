@@ -60,7 +60,7 @@ public class RegisterState extends AbstractState{
     private SupportedRoleTypes roleGather(AbstractCLIStateMachine contextSM){
         StringBuilder sb = new StringBuilder(CLIMessages.CHOOSE_EXPR);
         sb.append(prettifyRoleTypes()).append(CLIMessages.PROMPT_EXPR);
-        System.out.println("Messaggio Ruolo Creato");
+
         try{
             contextSM.setMessage(sb.toString());
             contextSM.printMessage();
