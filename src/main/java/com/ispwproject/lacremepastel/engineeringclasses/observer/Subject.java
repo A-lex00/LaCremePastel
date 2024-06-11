@@ -29,7 +29,6 @@ public abstract class Subject {
      */
     protected void notifyObservers(){
         for(Observer observer : observers){
-            System.out.println("Subject" + "Observer notificati");
             observer.update();
         }
     }

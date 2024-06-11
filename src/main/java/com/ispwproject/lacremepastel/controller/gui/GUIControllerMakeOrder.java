@@ -6,8 +6,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Observer;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.model.OrderLine;
-import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,10 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class GUIControllerMakeOrder  extends AbstractGUIController implements Observer {
@@ -36,12 +31,8 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
     @FXML
     private TableColumn<ProductBean, Double> priceColumn;
 
-    private final Cart actualCart;
+    private Cart actualCart;
     private ArrayList<ProductBean> productList;
-
-    public GUIControllerMakeOrder(){
-        actualCart = new Cart();
-    }
 
     @FXML
     void addCart(ActionEvent cartEvent) {
@@ -67,16 +58,24 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
 
     @FXML
     public void confirmOrder(ActionEvent cartEvent) {
+        this.setUserData("cart",actualCart);
         this.setupStage(cartEvent, FXMLPaths.SHOPPING_CART);
-        super.setUserData(actualCart);
-
-
     }
 
     @Override
     public void configure() {
         //Setup userData
-        SessionBean sessionBean = (SessionBean) this.getUserData();
+        SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
+
+        //Retrieve an existing cart (if any)
+        Cart tmp = (Cart) this.getUserData("cart");
+        System.out.println("Retrieved Cart: "+tmp);
+        if( tmp != null){
+            this.actualCart = tmp;
+            update();
+        }else{
+            actualCart = new Cart();
+        }
 
         //Loading productList
         ManageProductController manageProductController = new ManageProductController();
@@ -87,16 +86,13 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         actualCart.attach(this);
 
         //Initializing Table
-        productColumn.setCellValueFactory(new PropertyValueFactory<ProductBean,String>("productName"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<OrderLineBean,Integer>("amount"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<ProductBean,Double>("price"));
-
-
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
     @Override
     public void update() {
-        System.out.println("Update Entered");
         orderView.getItems().removeAll();
         ObservableList<OrderLineBean> list = FXCollections.observableList(actualCart.getState());
         orderView.setItems(list);

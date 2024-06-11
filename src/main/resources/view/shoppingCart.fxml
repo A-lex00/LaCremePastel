@@ -32,7 +32,7 @@
       <TableView fx:id="orderView" layoutX="107.0" layoutY="78.0" prefHeight="298.0" prefWidth="347.0">
         <columns>
           <TableColumn fx:id="productColumn" prefWidth="116.79998779296875" text="Prodotto" />
-          <TableColumn fx:id="ammountColumn" prefWidth="134.3999786376953" text="Quantità" />
+          <TableColumn fx:id="amountColumn" prefWidth="134.3999786376953" text="Quantità" />
             <TableColumn fx:id="priceColumn" prefWidth="95.19999999999999" text="Prezzo" />
         </columns>
       </TableView>

@@ -8,19 +8,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 public abstract class AbstractGUIController {
 
-    private Object userData;
+    private HashMap<String,Object> userData;
+    protected static final String SESSION_DATA = "sessionData";
 
-    public Object getUserData() {
-        return userData;
+    protected AbstractGUIController(){
+        userData = new HashMap<>();
     }
 
-    public void setUserData(Object userData) {
-        if(userData != null){
-            this.userData = userData;
+    public Object getUserData(String name) {
+        return this.userData.get(name);
+    }
+
+    public void setUserData(String name, Object userData) {
+        if(userData != null && name != null && !name.isBlank()){
+            this.userData.put(name,userData);
         }
     }
 
@@ -34,10 +40,9 @@ public abstract class AbstractGUIController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
             AbstractGUIController controller = loader.getController();
-            controller.setUserData(this.getUserData());
-            controller.configure();
+            controller.userData = this.userData;
 
-            System.out.println(this.getUserData());
+            controller.configure();
 
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();

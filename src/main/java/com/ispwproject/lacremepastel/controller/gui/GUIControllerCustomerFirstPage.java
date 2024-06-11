@@ -26,6 +26,7 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
+        System.out.println("You called for Help...\n\nBut nobody came...");
     }
 
     @FXML

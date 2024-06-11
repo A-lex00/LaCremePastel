@@ -48,7 +48,7 @@ public class GUIControllerLoginPage extends AbstractGUIController{
                 throw new InvalidParameterException("Invalid username or password");
             }
 
-            this.setUserData(sessionBean);
+            this.setUserData(SESSION_DATA,sessionBean);
 
             if(sessionBean.getRole().equals("DIRECTOR")){
                 this.setupStage(mainPageEvent,FXMLPaths.DIRECTOR_HOME);

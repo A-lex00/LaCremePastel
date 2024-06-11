@@ -28,7 +28,7 @@ public class GUIControllerManageOrder extends AbstractGUIController{
 
     @FXML
     void acceptOrder(ActionEvent event) {
-        SessionBean sessionBean = (SessionBean) this.getUserData();
+        SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
         OrderBean orderBean = new OrderBean(sessionBean.getUsername());
         orderBean.setCart(currentCart);
     }

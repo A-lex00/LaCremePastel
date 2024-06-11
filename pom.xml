@@ -72,6 +72,13 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+
   </dependencies>
 
   <build>
