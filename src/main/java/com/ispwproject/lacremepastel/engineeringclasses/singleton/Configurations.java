@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class Configurations {
     private static final String FILEPATH = "src/config.properties";
+    public static final String LOGGER_NAME = "LeCremePastel";
     private final Properties props = new Properties();
     private static Configurations instance = new Configurations();
 

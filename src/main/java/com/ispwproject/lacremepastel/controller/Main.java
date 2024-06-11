@@ -23,7 +23,7 @@ public class Main extends Application {
 
     public static void main(String[] args){
         //Setup Logger
-        Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
         FileHandler fh;
         try {
             logger.setUseParentHandlers(false);
@@ -32,7 +32,8 @@ public class Main extends Application {
             logger.addHandler(fh);
             logger.info("Run Started");
         }catch (IOException | SecurityException e){
-            e.fillInStackTrace();
+            Logger.getLogger(Main.class.getName()).severe("Can't setup Logger! Exiting");
+            System.exit(1);
         }
         String enableGUI = Configurations.getInstance().getProperty("GUI");
         if (enableGUI.equals("on")) {
@@ -47,22 +48,22 @@ public class Main extends Application {
         int count = Integer.parseInt(Configurations.getInstance().getProperty("COUNT"));
         try {
             for (; count > 0; count--) {
-                Stage stagecount= new Stage();
+                Stage stageCount= new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/firstPage.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
-                stagecount.setScene(scene);
-                stagecount.setTitle("La Creme Pastel");
-                stagecount.show();
+                stageCount.setScene(scene);
+                stageCount.setTitle("La Creme Pastel");
+                stageCount.show();
             }
         } catch (Exception e) {
-            System.err.println("Error during load of file FXML: " + e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
     }
 
     public static void launchCLI(){
         AbstractCLIStateMachine cli = new ConcreteCLI(new StateDAO());
-        Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
         do{
             try{
                 if(!cli.doAction()){
