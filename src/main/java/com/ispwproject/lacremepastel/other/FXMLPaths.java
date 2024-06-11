@@ -2,6 +2,8 @@ package com.ispwproject.lacremepastel.other;
 
 public class FXMLPaths {
 
+    private FXMLPaths(){ }
+
     public static final String MANAGE_PRODUCT = "/view/manageProduct.fxml";
 
     public static final String MANAGE_ORDER = "/view/manageOrder.fxml";
