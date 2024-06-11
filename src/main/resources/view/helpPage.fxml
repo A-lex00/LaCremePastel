@@ -11,10 +11,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="615.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lecremepastel.controller.GUIController.GUIControllerHelp">
    <children>
-      <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
-         </image>
+      <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
       </ImageView>
       <Button fx:id="inviaSegnalazione" layoutX="216.0" layoutY="415.0" mnemonicParsing="false" onAction="#sendMessage" style="-fx-background-color: e1680f;" text="Invia Segnalazione" />
       <TextArea fx:id="messageArea" layoutX="86.0" layoutY="119.0" onKeyPressed="#getText" prefHeight="286.0" prefWidth="382.0" />

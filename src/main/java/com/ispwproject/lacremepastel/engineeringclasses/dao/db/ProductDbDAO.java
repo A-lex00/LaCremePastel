@@ -1,6 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao.db;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.query.ProductQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
@@ -17,15 +18,15 @@ public class ProductDbDAO implements ProductDAO {
     @Override
     public List<Product> getAllProducts() {
         ArrayList<Product> products = new ArrayList<>();
-        try(ResultSet rs = ProductQuery.getAllProduct(Connector.getConnection())){
-            while(rs.next()){
+        try (ResultSet rs = ProductQuery.getAllProduct(Connector.getConnection())) {
+            while (rs.next()) {
                 products.add(new Product(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getDouble("price")
                 ));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
             logger.severe(e.getMessage());
         }
@@ -41,9 +42,9 @@ public class ProductDbDAO implements ProductDAO {
                 String productName = rs.getString("name");
                 double price = rs.getDouble("price");
                 int id = rs.getInt("id");
-                products.add(new Product(id,productName,price));
+                products.add(new Product(id, productName, price));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
             logger.severe(e.getMessage());
         }
@@ -51,8 +52,35 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public void addProduct(Product product) {}
+    public boolean addProduct(Product product, String name) throws RuntimeException {
+        try {
+            ProductQuery.addProduct(Connector.getConnection(), product, name);
+        } catch (SQLException e) {
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            return false;
+        }
+        return true;
+    }
 
     @Override
-    public void modifyProduct() {}
+    public boolean modifyProduct(Product product, String name) throws InvalidParameterException {
+        try {
+            ProductQuery.modifyProduct(Connector.getConnection(), product, name);
+        } catch (SQLException e) {
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            return false;
+        }
+        return  true;
+    }
+
+    @Override
+    public boolean deleteProduct(int productId, String userName) {
+        try{
+            ProductQuery.removeProduct(Connector.getConnection(),productId);
+        }catch (SQLException e){
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }

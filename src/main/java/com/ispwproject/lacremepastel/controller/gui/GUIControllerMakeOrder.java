@@ -81,7 +81,8 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         ManageProductController manageProductController = new ManageProductController();
         this.productList = (ArrayList<ProductBean>) manageProductController.getProductList(sessionBean, null);
         for (ProductBean productBean : productList) {
-            productBox.getItems().add(productBean.getProductName() + "\t" + productBean.getPrice() + "€");
+            System.out.println("GUICONTROLLERMAKEORDER  "+ productBean.getId());
+            productBox.getItems().add(productBean.getProductName() + "  " + productBean.getPrice() + "€");
         }
         actualCart.attach(this);
 

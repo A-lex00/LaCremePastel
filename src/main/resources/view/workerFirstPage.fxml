@@ -9,10 +9,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerWorkerFirstPage">
    <children>
-      <ImageView fitHeight="481.0" fitWidth="629.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
-         </image>
+      <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
       </ImageView>
       <Button layoutX="198.0" layoutY="189.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: e1680f;" text="Richiesta lista produzione" />
       <Button layoutX="198.0" layoutY="251.0" mnemonicParsing="false" onAction="#confirmProduction" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: e1680f;" text="Conferma produzione" />
