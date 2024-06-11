@@ -8,7 +8,8 @@ import javafx.scene.control.Label;
 public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
 
     @FXML
-    private Label initialLabel;
+    private Label welcomeLabel;
+
 
     @FXML
     void composeOrder(ActionEvent composeEvent) {

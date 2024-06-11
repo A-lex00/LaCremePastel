@@ -40,7 +40,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         int index = productBox.getSelectionModel().getSelectedIndex();
         ProductBean product = productList.get(index);
         try {
-            int quantity = Integer.parseInt(quantityField.getText());
+            int quantity = Integer.parseInt(quantityField.getText() );
             OrderLineBean orderLineBean = new OrderLineBean(product, quantity);
             actualCart.addOrderLine(orderLineBean);
         }catch (NumberFormatException e){

@@ -12,10 +12,10 @@
             <Image url="@../background/interfaces_material/firstPage.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="427.0" layoutY="265.0" mnemonicParsing="false" onAction="#clickLoginButton" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: e1680f;" text="Accedi" />
-      <Button layoutX="426.0" layoutY="303.0" mnemonicParsing="false" onAction="#clickRegistrationButton" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: e1680f;" text="Registrati" />
-      <AnchorPane prefHeight="208.0" prefWidth="200.0" />
-      <ImageView fitHeight="166.0" fitWidth="201.0" layoutX="402.0" layoutY="77.0">
+      <Button layoutX="413.0" layoutY="243.0" mnemonicParsing="false" onAction="#clickLoginButton" prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: e1680f;" text="Accedi" />
+      <Button layoutX="412.0" layoutY="292.0" mnemonicParsing="false" onAction="#clickRegistrationButton" prefHeight="26.0" prefWidth="152.0" style="-fx-background-color: e1680f;" text="Registrati" />
+      <AnchorPane layoutY="-2.0" prefHeight="208.0" prefWidth="200.0" />
+      <ImageView fitHeight="145.0" fitWidth="190.0" layoutX="401.0" layoutY="82.0">
          <image>
             <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
          </image>

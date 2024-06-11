@@ -10,9 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 //Concrete Observer
 public class GUIControllerShoppingCart extends AbstractGUIController  {
@@ -28,7 +30,9 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
 
     @FXML
     void confirmOrder(ActionEvent confirmEvent) {
-
+        Node node = (Node) confirmEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        this.createPopup("scemo chi legge",stage);
         this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
         Cart cart = (Cart) this.getUserData("cart");
         //recupero la sessione
@@ -55,6 +59,10 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
         ObservableList<OrderLineBean> list = FXCollections.observableList(confirmCart.getState());
         orderView.getItems().removeAll();
         orderView.setItems(list);
+        calculator();
+    }
+    protected void calculator(){
+
     }
 }
 
