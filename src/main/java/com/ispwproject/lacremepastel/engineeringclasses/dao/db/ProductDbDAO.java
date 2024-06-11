@@ -16,8 +16,19 @@ import java.util.logging.Logger;
 public class ProductDbDAO implements ProductDAO {
     @Override
     public List<Product> getAllProducts() {
-        List<Product> products;
-        products= ProductQuery.getAllProduct(Connector.getConnection());
+        ArrayList<Product> products = new ArrayList<>();
+        try(ResultSet rs = ProductQuery.getAllProduct(Connector.getConnection())){
+            while(rs.next()){
+                products.add(new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getDouble("price")
+                ));
+            }
+        }catch (SQLException e){
+            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            logger.severe(e.getMessage());
+        }
         return products;
     }
 

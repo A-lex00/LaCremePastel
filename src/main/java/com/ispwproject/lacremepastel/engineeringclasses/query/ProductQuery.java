@@ -2,6 +2,7 @@ package com.ispwproject.lacremepastel.engineeringclasses.query;
 
 import com.ispwproject.lacremepastel.model.Product;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,21 +12,11 @@ import java.util.List;
 
 public class ProductQuery {
     private ProductQuery(){}
-    public static List<Product> getAllProduct(Connection conn){
-            String query = "SELECT * FROM Product";
-            List<Product> productList = new ArrayList<>();
-            try (PreparedStatement stmt = conn.prepareStatement(query)) {
-                ResultSet resultSet = stmt.executeQuery();
-                while (resultSet.next()) {
-                    String name = resultSet.getString("name");
-                    double price = resultSet.getDouble("price");
-                    Product product=new Product(name,price);
-                    productList.add(product);
-                }
-                return productList;
-            }catch (SQLException e) {
-                throw new RuntimeException(e);
-                }
+    public static ResultSet getAllProduct(Connection conn) throws SQLException{
+        String query = "SELECT * FROM Product";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            return stmt.executeQuery();
+        }
     }
 
     public static ResultSet getFilteredProduct(Connection conn, String category) throws SQLException{
