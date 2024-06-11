@@ -57,7 +57,7 @@ public class ManageProductController {
         return productBeanList;
     }
 
-    public List<ProductBean> getProductList(SessionBean sessionBean, ProductFilterBean filter){
+    public  List<ProductBean> getProductList(SessionBean sessionBean, ProductFilterBean filter){
         this.loginCheck(sessionBean);
         ArrayList<ProductBean> converted = new ArrayList<>();
         List<Product> productList = this.loadProducts(filter);
@@ -79,6 +79,32 @@ public class ManageProductController {
         }
         return converted;
     }
+    public void  addProduct(ProductBean productBean, SessionBean sessionBean){
+        this.loginCheck(sessionBean);
+        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
+        ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
+        productDAO.addProduct(product, sessionBean.getUsername());
+    }
+    public void updateProduct(ProductBean productBean, SessionBean sessionBean){
+        this.loginCheck(sessionBean);
+        ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
+        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
+        boolean flag = productDAO.modifyProduct(product, sessionBean.getUsername());
+        if(!flag){
+            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            logger.info("Errore nell'inserimento del prodotto!");
+        }
+    }
+    public void removeProduct(ProductBean productBean, SessionBean sessionBean){
+        this.loginCheck(sessionBean);
+        ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
+        boolean flag = productDAO.deleteProduct(productBean.getId(),sessionBean.getUsername());
+        if( !flag){
+            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            logger.info("Errore nella cancellazione  del prodotto!");
+        }
+
+    }
 
     private void loginCheck(SessionBean sessionBean){
         //Check sessione
@@ -89,3 +115,4 @@ public class ManageProductController {
         loginController.checkLogin(sessionBean);
     }
 }
+//update, remove

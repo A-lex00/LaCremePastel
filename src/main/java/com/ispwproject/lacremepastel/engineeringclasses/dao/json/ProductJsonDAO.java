@@ -18,12 +18,17 @@ public class ProductJsonDAO implements ProductDAO {
     }
 
     @Override
-    public void addProduct(Product product) {
-
+    public boolean addProduct(Product product, String userName) {
+        return false;
     }
 
     @Override
-    public void modifyProduct() {
+    public boolean modifyProduct(Product product, String userName) {
+        return false;
+    }
 
+    @Override
+    public boolean deleteProduct(int productId, String userName) {
+        return false;
     }
 }

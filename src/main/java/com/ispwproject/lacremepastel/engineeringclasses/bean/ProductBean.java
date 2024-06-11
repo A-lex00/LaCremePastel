@@ -2,13 +2,30 @@ package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.model.Product;
+import com.ispwproject.lacremepastel.other.SupportedProductCategory;
+import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
 public class ProductBean {
 
     private int id;
     private String productName;
     private double price;
+    private SupportedProductCategory category;
 
+    public ProductBean(int id, String productName, double price, String category){
+        boolean isProductNameValid = productName != null;
+        if(isProductNameValid  && price >= 0){
+            this.id = id;
+            this.productName = productName;
+            this.price = price;
+            if(category != null){
+                this.category = SupportedProductCategory.valueOf(category);
+            }
+        }else{
+            throw new InvalidParameterException("ProductBean: Invalid Parameters!");
+        }
+
+    }
     public ProductBean(int id, String productName, double price) {
         boolean isProductNameValid = productName != null;
 

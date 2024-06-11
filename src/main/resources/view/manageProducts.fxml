@@ -11,29 +11,28 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="629.0" style="-fx-background-color: F5D69F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerManageProduct">
    <children>
-      <ImageView id="sfondoGenerale" fitHeight="481.0" fitWidth="629.0" layoutY="7.0">
-         <image>
-            <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
-         </image>
+      <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
       </ImageView>
-      <TextField layoutX="108.0" layoutY="153.0" prefHeight="26.0" prefWidth="150.0" promptText="inserire nome prodotto" />
+      <TextField layoutX="107.0" layoutY="152.0" onAction="#productName" prefHeight="26.0" prefWidth="150.0" promptText="inserire nome prodotto" />
       <Text layoutX="109.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE PRODOTTI">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <TextField layoutX="108.0" layoutY="255.0" promptText="prezzo" />
-      <TextField layoutX="108.0" layoutY="205.0" promptText="categoria" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="283.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+      <TextField layoutX="108.0" layoutY="212.0" onAction="#category" promptText="categoria" />
+      <TextField layoutX="108.0" layoutY="269.0" onAction="#price" promptText="prezzo" />
+      <ImageView fx:id="immage" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
          </image></ImageView>
-      <HBox layoutX="93.0" layoutY="382.0" prefHeight="37.0" prefWidth="430.0" spacing="30.0">
+      <HBox layoutX="82.0" layoutY="379.0" prefHeight="37.0" prefWidth="430.0" spacing="30.0">
          <children>
-            <Button lineSpacing="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: e1680f;" text="indietro" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="rimuovi prodotto" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="162.0" style="-fx-background-color: e1680f;" text="Conferma modifiche" />
+            <Button fx:id="backButton" lineSpacing="15.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: e1680f;" text="indietro" />
+            <Button fx:id="deleteProduct" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="rimuovi prodotto" />
+            <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirmModify" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Conferma modifiche" />
          </children>
       </HBox>
+      <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
    </children>
 </AnchorPane>

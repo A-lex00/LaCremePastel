@@ -1,7 +1,9 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.observer.Cart;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.collections.FXCollections;
@@ -26,7 +28,14 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
 
     @FXML
     void confirmOrder(ActionEvent confirmEvent) {
+
         this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
+        Cart cart = (Cart) this.getUserData("cart");
+        //recupero la sessione
+        SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
+        ManageOrderController manageOrderController = new ManageOrderController();
+        ObservableList<OrderLineBean> list = FXCollections.observableList(cart.getState());
+        manageOrderController.manage(list,sessionBean);
     }
     @FXML
     void goBack(ActionEvent backEvent) {
