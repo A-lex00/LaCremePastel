@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -11,13 +10,13 @@
 <AnchorPane maxHeight="481.0" maxWidth="629.0" minHeight="480.0" minWidth="615.0" prefHeight="480.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerDirectorFirstPage">
    <children>
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
-         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
       <Button layoutX="218.0" layoutY="155.0" mnemonicParsing="false" onAction="#showCustomerList" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Lista clienti" />
       <Button layoutX="217.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrder" prefHeight="33.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione ordini" />
       <Button layoutX="217.0" layoutY="243.0" mnemonicParsing="false" onAction="#manageProduct" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione prodotti" />
       <Button layoutX="218.0" layoutY="287.0" minHeight="0.0" mnemonicParsing="false" onAction="#manageWorkers" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: e1680f;" text="Gestione dipendenti" />
-      <Label layoutX="173.0" layoutY="45.0" prefHeight="18.0" prefWidth="267.0" text="stringa di benvenuto!" />
+      <Label fx:id="welcomeLabel" layoutX="225.0" layoutY="45.0" prefHeight="18.0" prefWidth="267.0" text="stringa di benvenuto!" />
       <Hyperlink layoutX="189.0" layoutY="421.0" onAction="#requestHelp" text="Hai bisogno di aiuto? Clicca Qui!" visited="true" />
    </children>
 </AnchorPane>

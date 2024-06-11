@@ -11,11 +11,11 @@
       <ImageView accessibleRole="TOGGLE_BUTTON" fitHeight="481.0" fitWidth="629.0" layoutX="-9.0" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <Image url="@../background/interfaces_material/firstPage.jpg" />
       </ImageView>
-      <TextField fx:id="authField" cache="true" layoutX="407.0" layoutY="227.0" prefHeight="26.0" prefWidth="179.0" promptText="inserisci l'ID utente" />
-      <PasswordField fx:id="passField" layoutX="407.0" layoutY="263.0" prefHeight="26.0" prefWidth="179.0" promptText="inserisci la tua password" />
-      <Button fx:id="loginButton" layoutX="497.0" layoutY="308.0" mnemonicParsing="false" onAction="#mainPage" style="-fx-background-color: e1680f;" text="Conferma " />
-      <Button fx:id="backButton" layoutX="417.0" layoutY="309.0" mnemonicParsing="false" onAction="#backHome" style="-fx-background-color: e1680f;" text="Indietro" />
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="397.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="authField" cache="true" layoutX="413.0" layoutY="243.0" prefHeight="26.0" prefWidth="179.0" promptText="inserisci l'ID utente" />
+      <PasswordField fx:id="passField" layoutX="412.0" layoutY="292.0" prefHeight="26.0" prefWidth="179.0" promptText="inserisci la tua password" />
+      <Button fx:id="loginButton" layoutX="497.0" layoutY="333.0" mnemonicParsing="false" onAction="#mainPage" style="-fx-background-color: e1680f;" text="Conferma " />
+      <Button fx:id="backButton" layoutX="417.0" layoutY="333.0" mnemonicParsing="false" onAction="#backHome" style="-fx-background-color: e1680f;" text="Indietro" />
+    <ImageView fitHeight="145.0" fitWidth="190.0" layoutX="401.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
     </ImageView>
 </AnchorPane>

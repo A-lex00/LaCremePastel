@@ -1,5 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +8,7 @@ import javafx.scene.control.Label;
 
 public class GUIControllerDirectorFirstPage extends AbstractGUIController{
     @FXML
-    private Label initialLabel = null;
+    private Label initialLabel ;
 
     @FXML
     void manageOrder(ActionEvent manageEvent) {
@@ -32,5 +33,6 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
     void showCustomerList(ActionEvent showEvent) {
         this.setupStage(showEvent,FXMLPaths.MANAGE_PRODUCT);
     }
+
 }
 
