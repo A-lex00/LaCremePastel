@@ -11,10 +11,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 //Concrete Observer
 public class GUIControllerShoppingCart extends AbstractGUIController  {
@@ -27,6 +30,8 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
     private TableColumn<ProductBean, Double> priceColumn;
     @FXML
     private TableColumn<OrderLineBean, Integer> amountColumn;
+    @FXML
+    private Label price;
 
     @FXML
     void confirmOrder(ActionEvent confirmEvent) {
@@ -59,10 +64,22 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
         ObservableList<OrderLineBean> list = FXCollections.observableList(confirmCart.getState());
         orderView.getItems().removeAll();
         orderView.setItems(list);
-        calculator();
+        double sum = calculator(confirmCart);
+        price.setText("Totale Ordine "+ sum + "€" );
     }
-    protected void calculator(){
-
+    protected double calculator(Cart confirmCart){
+        List<OrderLineBean> actualCart = confirmCart.getState();
+        double sum = 0.0;
+        int index = 0;
+        double unitaryPrice = 0;
+        int quantity = 0;
+        for(OrderLineBean orderLineBean : actualCart) {
+            index = actualCart.indexOf(orderLineBean);
+            unitaryPrice = actualCart.get(index).getPrice();
+            quantity = actualCart.get(index).getAmount();
+            sum += quantity * unitaryPrice;
+        }
+        return sum;
     }
 }
 

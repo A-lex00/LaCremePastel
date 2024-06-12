@@ -14,6 +14,10 @@ public class Order {
     private boolean closed;
     private Worker assignedWorker;
 
+    public Order(Integer id, String customer){
+        this.idOrder = id;
+        this.customerName = customer;
+    }
     public Order(String customerName, boolean pending, boolean accepted, boolean closed, List<OrderLine> cart ){
         this.customerName = customerName;
         this.pending = pending;
@@ -42,6 +46,12 @@ public class Order {
         //Torna una Deep Copy di cart
         return cart.stream().toList();
     }
+
+    public void setIdCustomer(int idOrder, String customerName){
+      this.idOrder =idOrder;
+      this.customerName =customerName;
+    }
+
 
     public void setCart(List<OrderLine> cart){
         this.cart = new ArrayList<>(cart);

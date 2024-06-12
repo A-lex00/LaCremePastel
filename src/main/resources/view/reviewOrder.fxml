@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -15,24 +14,18 @@
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
          <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
-      <Text layoutX="199.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARRELLO" textAlignment="CENTER">
+      <Text layoutX="128.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETTAGLI ORDINE" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
       <Button layoutX="107.0" layoutY="413.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Rifiuta Ordine" />
-      <Button layoutX="339.0" layoutY="413.0" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Accetta Ordine" />
-      <TableView fx:id="orderView" layoutX="107.0" layoutY="82.0" prefHeight="291.0" prefWidth="347.0">
+      <Button layoutX="339.0" layoutY="413.0" mnemonicParsing="false" onAction="#acceptOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Accetta Ordine" />
+      <TableView fx:id="orderView" layoutX="107.0" layoutY="82.0" prefHeight="317.0" prefWidth="347.0">
         <columns>
-          <TableColumn fx:id="productColumn" prefWidth="125.59998321533203" text="Prodotto" />
-          <TableColumn fx:id="amountColumn" prefWidth="116.79998779296875" text="Quantità" />
-            <TableColumn fx:id="priceColumn" prefWidth="104.00001831054686" text="Prezzo Unitario" />
+          <TableColumn fx:id="productColumn" prefWidth="227.99994659423828" text="Prodotto" />
+          <TableColumn fx:id="amountColumn" prefWidth="119.2000732421875" text="Quantità" />
         </columns>
       </TableView>
-      <Label fx:id="price" layoutX="140.0" layoutY="373.0" text="Label">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

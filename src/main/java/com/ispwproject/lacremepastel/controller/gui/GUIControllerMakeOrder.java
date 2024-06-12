@@ -57,9 +57,9 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
     }
 
     @FXML
-    public void confirmOrder(ActionEvent cartEvent) {
+    public void confirmOrder(ActionEvent confirmEvent) {
         this.setUserData("cart",actualCart);
-        this.setupStage(cartEvent, FXMLPaths.SHOPPING_CART);
+        this.setupStage(confirmEvent, FXMLPaths.SHOPPING_CART);
     }
 
     @Override
@@ -81,7 +81,6 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         ManageProductController manageProductController = new ManageProductController();
         this.productList = (ArrayList<ProductBean>) manageProductController.getProductList(sessionBean, null);
         for (ProductBean productBean : productList) {
-            System.out.println("GUICONTROLLERMAKEORDER  "+ productBean.getId());
             productBox.getItems().add(productBean.getProductName() + "  " + productBean.getPrice() + "€");
         }
         actualCart.attach(this);

@@ -1,13 +1,15 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao;
 
+import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.query.OrderQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Order;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class OrderDAO {
@@ -49,10 +51,25 @@ public class OrderDAO {
         }
         return false;
     }
-
+    public List<Order> getAllOrder(SessionBean sessionBean) {
+        List<Integer> allId = new ArrayList<>();
+        List<String> allCustomer = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
+        try {ResultSet rs = OrderQuery.getAllOrders(Connector.getConnection());
+            while(rs.next()){
+                Order order = new Order(rs.getInt("id"),rs.getString("customer"));
+                orders.add(order);
+            }
+        }catch(SQLException e){
+            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+        }
+        System.out.println(orders +"Orders"+ "OrderDAO");
+        return orders;
+    }
     private void cleanOnFail(Order order){
         System.err.println("Cleaning order on failed insert");
         OrderQuery.cleanOnFail(Connector.getConnection(), order.getIdOrder());
     }
+
 }
 

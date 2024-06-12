@@ -35,7 +35,7 @@ public abstract class AbstractGUIController {
         }
     }
 
-    public void configure() {
+    public void configure() throws Exception {
     }
 
     protected void createPopup(String message, Stage primaryStage) {
@@ -65,6 +65,7 @@ public abstract class AbstractGUIController {
             return;
         }
         try {
+            System.out.println("AbstractGUIControoler "+filePath);
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
             AbstractGUIController controller = loader.getController();
@@ -78,6 +79,8 @@ public abstract class AbstractGUIController {
             stage.show();
         }catch (IOException e){
             Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

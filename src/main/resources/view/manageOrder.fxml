@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,13 +13,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerManageOrder">
    <children>
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
-         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
       <HBox layoutX="87.0" layoutY="401.0" prefHeight="44.0" prefWidth="422.0" spacing="40.0">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Indietro" />
-            <Button fx:id="rejectButton" mnemonicParsing="false" onAction="#rejectOrder" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Rifiuta Ordine" />
-            <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptOrder" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Accetta Ordine" />
+            <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#showDetails" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Mostra Ordine" />
          </children>
       </HBox>
       <Text layoutX="106.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE ORDINI">
@@ -26,6 +26,11 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <ListView fx:id="orderView" layoutX="118.0" layoutY="101.0" prefHeight="272.0" prefWidth="359.0" />
+      <TableView fx:id="ordersView" layoutX="112.0" layoutY="127.0" prefHeight="218.0" prefWidth="350.0">
+         <columns>
+            <TableColumn fx:id="orderColumn" prefWidth="135.20000457763672" text="Numero Ordine" />
+            <TableColumn fx:id="customerColumn" prefWidth="249.5999755859375" text="Cliente" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

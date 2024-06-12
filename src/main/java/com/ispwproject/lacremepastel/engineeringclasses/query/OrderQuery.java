@@ -1,19 +1,9 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
-import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.model.Order;
-import com.ispwproject.lacremepastel.model.OrderLine;
-import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.other.SupportedOrderTypes;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 import java.util.logging.Logger;
 
 public class OrderQuery{
@@ -30,6 +20,13 @@ public class OrderQuery{
             stmt.setString(5,SupportedOrderTypes.SIMPLE.toString());
             stmt.executeUpdate();
             return stmt.getGeneratedKeys();
+        }
+
+    }
+    public static ResultSet getAllOrders(Connection conn) throws SQLException {
+        String query = "SELECT * FROM Orders";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            return stmt.executeQuery();
         }
     }
 
