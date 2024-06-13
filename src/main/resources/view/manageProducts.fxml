@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,8 +21,8 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <TextField fx:id="category" layoutX="108.0" layoutY="212.0" promptText="categoria" />
-      <TextField fx:id="price" layoutX="108.0" layoutY="269.0" promptText="prezzo" />
+      <TextField fx:id="category" layoutX="108.0" layoutY="241.0" promptText="categoria" />
+      <TextField fx:id="price" layoutX="108.0" layoutY="298.0" promptText="prezzo" />
       <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
@@ -34,5 +35,6 @@
          </children>
       </HBox>
       <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
+      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" prefWidth="150.0" visible="false" />
    </children>
 </AnchorPane>
