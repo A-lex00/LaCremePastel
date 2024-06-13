@@ -7,6 +7,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.model.ProductFilter;
+import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,10 +35,10 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public List<Product> getProducts(ProductFilter filter) {
+    public List<Product> getProductsByCategory(SupportedProductCategory category) {
         ArrayList<Product> products = new ArrayList<>();
         try {
-            ResultSet rs = ProductQuery.getFilteredProduct(Connector.getConnection(), filter.getCategory().toString());
+            ResultSet rs = ProductQuery.getProductByCategory(Connector.getConnection(), category.toString());
             while (rs.next()) {
                 String productName = rs.getString("name");
                 double price = rs.getDouble("price");
@@ -52,7 +53,25 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public boolean addProduct(Product product, String name) throws RuntimeException {
+    public List<Product> getProductsByName(String name) {
+        ArrayList<Product> products = new ArrayList<>();
+        try {
+            ResultSet rs = ProductQuery.getProductByCategory(Connector.getConnection(),name);
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String productName = rs.getString("name");
+                double price = rs.getDouble("price");
+                products.add(new Product(id, productName, price));
+            }
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+            logger.severe(e.getMessage());
+        }
+        return products;
+    }
+
+    @Override
+    public boolean addProduct(Product product, String name) {
         try {
             ProductQuery.addProduct(Connector.getConnection(), product, name);
         } catch (SQLException e) {
@@ -85,11 +104,10 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public Product getProduct(int productId) {
+    public Product getProductById(int productId) {
         try{
             ResultSet rs = ProductQuery.getProduct(Connector.getConnection(),productId);
             if(rs.next()){
-                System.out.println("Product DB DAO: Prodotto trovato");
                 return new Product(
                         rs.getString("name"),
                         rs.getDouble("price")
@@ -100,4 +118,6 @@ public class ProductDbDAO implements ProductDAO {
         }
         return null;
     }
+
+
 }

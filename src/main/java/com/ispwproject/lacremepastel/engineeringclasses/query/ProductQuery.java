@@ -1,14 +1,12 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
 import com.ispwproject.lacremepastel.model.Product;
+import com.ispwproject.lacremepastel.model.ProductFilter;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductQuery {
     private ProductQuery() {
@@ -21,7 +19,7 @@ public class ProductQuery {
         }
     }
 
-    public static ResultSet getFilteredProduct(Connection conn, String category) throws SQLException {
+    public static ResultSet getProductByCategory(Connection conn, String category) throws SQLException {
         String query = "SELECT * FROM Product WHERE category = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, category);
@@ -63,6 +61,14 @@ public class ProductQuery {
         String query = "SELECT * FROM Product WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, productId);
+            return stmt.executeQuery();
+        }
+    }
+
+    public static ResultSet getProductsByName(Connection conn, String name) throws SQLException{
+        String query = "SELECT * FROM Product WHERE name = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, name);
             return stmt.executeQuery();
         }
     }

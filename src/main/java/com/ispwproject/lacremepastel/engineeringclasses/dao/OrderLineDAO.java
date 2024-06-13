@@ -2,7 +2,6 @@ package com.ispwproject.lacremepastel.engineeringclasses.dao;
 
 import com.ispwproject.lacremepastel.engineeringclasses.factory.ProductDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.query.OrderLineQuery;
-import com.ispwproject.lacremepastel.engineeringclasses.query.OrderQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.OrderLine;
@@ -43,7 +42,7 @@ public class OrderLineDAO {
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         try(ResultSet rs = OrderLineQuery.getOrderLinesByOrderId(Connector.getConnection(),orderId)){
             while(rs.next()){
-                Product product = productDAO.getProduct(rs.getInt("product"));
+                Product product = productDAO.getProductById(rs.getInt("product"));
                 OrderLine orderLine = new OrderLine(
                         product,
                         rs.getInt("amount")

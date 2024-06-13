@@ -22,7 +22,7 @@
       </Text>
       <TextField fx:id="category" layoutX="108.0" layoutY="212.0" promptText="categoria" />
       <TextField fx:id="price" layoutX="108.0" layoutY="269.0" promptText="prezzo" />
-      <ImageView fx:id="immage" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
          </image></ImageView>

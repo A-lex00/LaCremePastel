@@ -3,6 +3,7 @@ package com.ispwproject.lacremepastel.engineeringclasses.dao.json;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.model.ProductFilter;
+import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 
 import java.util.List;
 
@@ -13,7 +14,12 @@ public class ProductJsonDAO implements ProductDAO {
     }
 
     @Override
-    public List<Product> getProducts(ProductFilter filter) {
+    public List<Product> getProductsByCategory(SupportedProductCategory category) {
+        return List.of();
+    }
+
+    @Override
+    public List<Product> getProductsByName(String name) {
         return List.of();
     }
 
@@ -33,7 +39,7 @@ public class ProductJsonDAO implements ProductDAO {
     }
 
     @Override
-    public Product getProduct(int productId) {
+    public Product getProductById(int productId) {
         return null;
     }
 }

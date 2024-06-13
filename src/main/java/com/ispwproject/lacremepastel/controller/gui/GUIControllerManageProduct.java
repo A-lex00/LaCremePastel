@@ -2,6 +2,7 @@ package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
@@ -10,61 +11,62 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+import java.util.List;
+
 public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
-    private Button backButton;
-
+    private TextField category;
     @FXML
-    private Button confirm;
-
+    private TextField price;
+    @FXML
+    private ImageView image;
+    @FXML
+    private Button confirmButton;
+    @FXML
+    private TextField productName;
+    @FXML
+    private Button backButton;
     @FXML
     private Button deleteProduct;
-
-    @FXML
-    private ImageView immage;
-    @FXML
-    private TextField productNameField;
-    @FXML
-    private TextField categoryField;
-    @FXML
-    private TextField priceField;
-
-
     @FXML
     private Button searchButton;
+
+    private SessionBean sessionData;
+
     @FXML
     void confirmModify(ActionEvent confirmEvent) {
-        SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
-        String name = productNameField.getText();
-        double price = Double.parseDouble(priceField.getText());
+        String name = this.productName.getText();
+        double p = Double.parseDouble(this.price.getText());
 
         ManageProductController manageProductController = new ManageProductController();
-        manageProductController.updateProduct(new ProductBean(name,price), sessionBean);
+        manageProductController.updateProduct(new ProductBean(name,p), sessionData);
 
     }
-    @FXML
-    public void searchButton(ActionEvent searchEvent){}
 
     @FXML
-    void goBack(ActionEvent backEvent) {
+    public void goBack(ActionEvent backEvent) {
         this.setupStage(backEvent, FXMLPaths.DIRECTOR_HOME);
     }
 
     @FXML
-    void deleteProduct(ActionEvent deleteEvent) {
-
+    public void deleteProduct(ActionEvent deleteEvent) {
     }
 
-    public void productName(ActionEvent event) {
-    }
-
-    public void category(ActionEvent event) {
-    }
-
-    public void price(ActionEvent event) {
-    }
-
+    @FXML
     public void searchProduct(ActionEvent event) {
+
+        String name = this.productName.getText();
+        if(name == null){
+            return;
+        }
+        ManageProductController manageProductController = new ManageProductController();
+        ProductFilterBean productFilterBean = new ProductFilterBean(name);
+        List<ProductBean> productList = manageProductController.getProductList(sessionData,productFilterBean);
+    }
+
+    @Override
+    public void configure() {
+        this.sessionData = (SessionBean) this.getUserData(SESSION_DATA);
     }
 }

@@ -8,7 +8,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParamet
 import com.ispwproject.lacremepastel.engineeringclasses.factory.ProductDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.model.Product;
-import com.ispwproject.lacremepastel.model.ProductFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,13 +18,13 @@ public class ManageProductController {
 
     private List<Product> loadProducts(ProductFilterBean filter){
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
-        List<Product> productList;
+        List<Product> productList = new ArrayList<>();
         if(filter != null){
-            productList = productDAO.getProducts(
-                    new ProductFilter(
-                            filter.getCategory()
-                    )
-            );
+            if(filter.getCategory() != null){
+                productList = productDAO.getProductsByCategory(filter.getCategory());
+            }else if(filter.getName() != null){
+                productList = productDAO.getProductsByName(filter.getName());
+            }
         }else{
             productList = productDAO.getAllProducts();
         }
@@ -73,7 +72,7 @@ public class ManageProductController {
                         )
                 );
             }catch (InvalidParameterException e){
-                Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+                Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
                 logger.info(e.getMessage());
             }
         }
@@ -91,7 +90,7 @@ public class ManageProductController {
         Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
         boolean flag = productDAO.modifyProduct(product, sessionBean.getUsername());
         if(!flag){
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nell'inserimento del prodotto!");
         }
     }
@@ -100,7 +99,7 @@ public class ManageProductController {
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         boolean flag = productDAO.deleteProduct(productBean.getId(),sessionBean.getUsername());
         if( !flag){
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");
         }
 
