@@ -27,7 +27,7 @@ public class ProductDbDAO implements ProductDAO {
                 ));
             }
         } catch (SQLException e) {
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.severe(e.getMessage());
         }
         return products;
@@ -45,7 +45,7 @@ public class ProductDbDAO implements ProductDAO {
                 products.add(new Product(id, productName, price));
             }
         } catch (SQLException e) {
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.severe(e.getMessage());
         }
         return products;
@@ -56,7 +56,7 @@ public class ProductDbDAO implements ProductDAO {
         try {
             ProductQuery.addProduct(Connector.getConnection(), product, name);
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
         }
         return true;
@@ -67,7 +67,7 @@ public class ProductDbDAO implements ProductDAO {
         try {
             ProductQuery.modifyProduct(Connector.getConnection(), product, name);
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
         }
         return  true;
@@ -78,9 +78,26 @@ public class ProductDbDAO implements ProductDAO {
         try{
             ProductQuery.removeProduct(Connector.getConnection(),productId);
         }catch (SQLException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Product getProduct(int productId) {
+        try{
+            ResultSet rs = ProductQuery.getProduct(Connector.getConnection(),productId);
+            if(rs.next()){
+                System.out.println("Product DB DAO: Prodotto trovato");
+                return new Product(
+                        rs.getString("name"),
+                        rs.getDouble("price")
+                );
+            }
+        }catch (SQLException e){
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+        }
+        return null;
     }
 }

@@ -31,7 +31,7 @@ public class MakeOrderController {
 
         //Salvataggio dell'ordine
         OrderDAO orderDAO = new OrderDAO();
-        orderDAO.saveOrder(order);
+        orderDAO.createOrder(order);
     }
 
     private Order convertBean(OrderBean orderBean) {

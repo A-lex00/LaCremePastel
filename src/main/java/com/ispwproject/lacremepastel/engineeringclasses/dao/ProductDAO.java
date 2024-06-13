@@ -11,4 +11,5 @@ public interface ProductDAO {
     boolean addProduct(Product product, String userName);
     boolean modifyProduct(Product product, String userName);
     boolean deleteProduct(int productId, String userName);
+    Product getProduct(int productId);
 }

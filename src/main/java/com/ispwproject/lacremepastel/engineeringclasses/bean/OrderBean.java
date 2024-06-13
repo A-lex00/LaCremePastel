@@ -10,17 +10,34 @@ public class OrderBean {
     private int idOrder;
 
     public OrderBean(String customerName, int idOrder ){
-        this.customerName = customerName;
-        this.idOrder = idOrder;
+        this(idOrder,customerName,null);
     }
     public OrderBean(String customerName ) {
-        this.cart = new ArrayList<>();
-        this.customerName = customerName;
+        this(0,customerName,null);
     }
 
     public OrderBean(String customerName, List<OrderLineBean> cart) {
-        this.cart = new ArrayList<>(cart);
-        this.customerName = customerName;
+        this(0,customerName,cart);
+    }
+
+    public OrderBean(int idOrder, String customerName, List<OrderLineBean> cart){
+        if(idOrder < 0){
+            this.idOrder = 0;
+        }else {
+            this.idOrder = idOrder;
+        }
+
+        if(customerName != null){
+            this.customerName = customerName;
+        }else {
+            this.customerName = "";
+        }
+
+        if(cart != null) {
+            this.cart = new ArrayList<>(cart);
+        }else{
+            this.cart = new ArrayList<>();
+        }
     }
 
     public String getCustomerName() {

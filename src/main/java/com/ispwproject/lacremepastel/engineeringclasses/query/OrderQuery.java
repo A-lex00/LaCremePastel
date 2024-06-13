@@ -1,10 +1,9 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
+import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.other.SupportedOrderTypes;
 
 import java.sql.*;
-import java.util.logging.Logger;
 
 public class OrderQuery {
     private OrderQuery() {
@@ -25,31 +24,39 @@ public class OrderQuery {
 
     }
 
-    public static ResultSet getAllOrders(Connection conn) throws SQLException {
-        String query = "SELECT * FROM Orders";
+    public static ResultSet getPendingOrders(Connection conn) throws SQLException {
+        String query = "SELECT * FROM Orders WHERE pending = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             return stmt.executeQuery();
         }
     }
 
-    public static ResultSet getOrderById(Connection conn, int id) throws SQLException {
-        String query = """
-                SELECT product.name, orderline.amount
-                FROM orderline JOIN orders ON orders.id = orderline.order
-                JOIN product ON orderline.product = product.id 
-                WHERE orderline.order = ? AND orders.pending = 1 """;
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, id);
-            return stmt.executeQuery();
 
-        }
-    }
 
     public static void cleanOnFail(Connection conn, int orderId) throws  SQLException{
         String query = "DELETE FROM Orders WHERE id = ?";
         try(PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, orderId);
             stmt.executeUpdate();
+        }
+    }
+
+    public static void updateOrder(Connection connection, Order order) throws SQLException{
+        String query = "UPDATE Orders SET pending = ?, accepted = ?, done = ? WHERE id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setInt(1,(order.isPending())?1:0);
+            stmt.setInt(2,(order.isAccepted())?1:0);
+            stmt.setInt(3,(order.isClosed()?1:0));
+            stmt.setInt(4,(order.getIdOrder()));
+            stmt.executeUpdate();
+        }
+    }
+
+    public static ResultSet getOrderById(Connection connection, int orderId) throws SQLException{
+        String query = "SELECT * FROM Orders WHERE id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setInt(1,orderId);
+            return stmt.executeQuery();
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.controller.app.MakeOrderController;
 import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
@@ -35,20 +37,18 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
 
     @FXML
     void confirmOrder(ActionEvent confirmEvent) {
-        Node node = (Node) confirmEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        GUIPopup guiPopup = new GUIPopup();
-       // guiPopup.createPopup("scemo chi legge",stage);
         this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
         Cart cart = (Cart) this.getUserData("cart");
 
         //recupero la sessione
         SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
-        ManageOrderController manageOrderController = new ManageOrderController();
-        ObservableList<OrderLineBean> list = FXCollections.observableList(cart.getState());
-        manageOrderController.manage(list,sessionBean);
 
+        OrderBean orderBean = new OrderBean(sessionBean.getUsername(),cart.getState());
+
+        MakeOrderController makeOrderController = new MakeOrderController();
+        makeOrderController.createOrder(sessionBean,orderBean);
     }
+
     @FXML
     void goBack(ActionEvent backEvent) {
         this.setupStage(backEvent,FXMLPaths.MAKE_ORDER);

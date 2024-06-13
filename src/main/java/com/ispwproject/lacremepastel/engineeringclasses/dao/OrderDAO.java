@@ -1,16 +1,11 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao;
 
-import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.query.OrderQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.model.OrderLine;
-import com.ispwproject.lacremepastel.model.Product;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,11 +13,14 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class OrderDAO {
-    public boolean saveOrder(Order order) {
+    public boolean createOrder(Order order) {
         if (order == null) {
             return false;
         }
-        int idOrder, isPending, isAccepted, isClosed;
+        int idOrder;
+        int isPending;
+        int isAccepted;
+        int isClosed;
         if (order.isPending()) {
             isPending = 1;
             isAccepted = 0;
@@ -49,24 +47,22 @@ public class OrderDAO {
                 return true;
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             orderLineDAO.cleanOnFail(order.getIdOrder());
             this.cleanOnFail(order);
         }
         return false;
     }
 
-    public List<Order> getAllOrder(SessionBean sessionBean) {
-        List<Integer> allId = new ArrayList<>();
-        List<String> allCustomer = new ArrayList<>();
+    public List<Order> getPendingOrders() {
         List<Order> orders = new ArrayList<>();
-        try (ResultSet rs = OrderQuery.getAllOrders(Connector.getConnection())){
+        try (ResultSet rs = OrderQuery.getPendingOrders(Connector.getConnection())){
             while (rs.next()) {
                 Order order = new Order(rs.getInt("id"), rs.getString("customer"));
                 orders.add(order);
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
         System.out.println(orders + "Orders" + "OrderDAO");
         return orders;
@@ -80,17 +76,36 @@ public class OrderDAO {
         }
     }
 
-    public List<OrderLine> getOrderLinesByID(int idOrder) {
-        List<OrderLine> orderLine = new ArrayList<>();
-        try (ResultSet rs = OrderQuery.getOrderById(Connector.getConnection(),idOrder)) {
-            while (rs.next()) {
-                Product product = new Product(rs.getString("name"));
-                 orderLine.add(new OrderLine(product,rs.getInt("amount")));
+    public Order getOrderById(int idOrder) {
+        Order order = null;
+        OrderLineDAO orderLineDAO = new OrderLineDAO();
+        List<OrderLine> orderLines = orderLineDAO.getOrderCartById(idOrder);
+        try {
+            ResultSet rs = OrderQuery.getOrderById(Connector.getConnection(),idOrder);
+            if (rs.next()) {
+                boolean pending = rs.getInt("pending") == 1;
+                boolean accepted = rs.getInt("accepted") == 1;
+                boolean done = rs.getInt("done") == 1;
+                String customer = rs.getString("customer");
+                order = new Order(idOrder,customer,orderLines,pending,accepted,done);
             }
         }catch (SQLException e) {
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
-        return orderLine;
+        return order;
+    }
+
+    public boolean updateOrder(Order order){
+        if(order == null){
+            return false;
+        }
+        try {
+            OrderQuery.updateOrder(Connector.getConnection(), order);
+            return true;
+        }catch (SQLException e){
+            Logger.getLogger(Configurations.LOGGER_NAME);
+            return false;
+        }
     }
 }
 

@@ -1,12 +1,9 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
-
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 public class OrderLineQuery {
 
@@ -22,13 +19,24 @@ public class OrderLineQuery {
         }
     }
 
-    public static void cleanOnFail(Connection conn, int orderId){
+    public static void cleanOnFail(Connection conn, int orderId) throws SQLException{
         String query = "DELETE FROM OrderLine WHERE `order` = ?";
         try(PreparedStatement stmt = conn.prepareStatement(query)){
             stmt.setInt(1,orderId);
             stmt.executeUpdate();
-        }catch (SQLException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
+        }
+    }
+
+    public static ResultSet getOrderLinesByOrderId(Connection conn, int orderId) throws SQLException {
+//        String query = """
+//                SELECT Product.name, OrderLine.amount
+//                FROM OrderLine JOIN Orders ON Orders.id = OrderLine.order
+//                JOIN Product ON OrderLine.product = Product.id
+//                WHERE OrderLine.order = ? AND Orders.pending = 1""";
+        String query = "SELECT OrderLine.product ,OrderLine.amount FROM OrderLine WHERE `order` = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, orderId);
+            return stmt.executeQuery();
         }
     }
 

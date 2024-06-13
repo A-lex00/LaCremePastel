@@ -58,4 +58,12 @@ public class ProductQuery {
                 stmt.setInt(1, productId);
         }
     }
+
+    public static ResultSet getProduct(Connection conn, int productId) throws SQLException{
+        String query = "SELECT * FROM Product WHERE id = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, productId);
+            return stmt.executeQuery();
+        }
+    }
 }

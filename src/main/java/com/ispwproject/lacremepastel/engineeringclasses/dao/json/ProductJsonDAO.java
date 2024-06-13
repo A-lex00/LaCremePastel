@@ -31,4 +31,9 @@ public class ProductJsonDAO implements ProductDAO {
     public boolean deleteProduct(int productId, String userName) {
         return false;
     }
+
+    @Override
+    public Product getProduct(int productId) {
+        return null;
+    }
 }

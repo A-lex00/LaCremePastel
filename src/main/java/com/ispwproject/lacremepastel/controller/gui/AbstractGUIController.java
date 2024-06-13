@@ -1,30 +1,22 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.other.FXMLPaths;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.logging.Logger;
 
 public abstract class AbstractGUIController {
 
-    private HashMap<String, Object> userData;
+    protected static final String ORDER = "order";
     protected static final String SESSION_DATA = "sessionData";
+    protected static final String ORDER_ID = "orderId";
+
+    private HashMap<String, Object> userData;
 
     protected AbstractGUIController() {
         userData = new HashMap<>();
@@ -40,7 +32,11 @@ public abstract class AbstractGUIController {
         }
     }
 
-    public void configure() throws Exception {
+    public Object deleteUserData(String name){
+        return this.userData.remove(name);
+    }
+
+    public void configure(){
     }
 
     protected void setupStage(ActionEvent event, String filePath){
@@ -60,10 +56,8 @@ public abstract class AbstractGUIController {
             Stage stage = (Stage) node.getScene().getWindow();
             stage.setScene(new Scene(parent, 629, 481));
             stage.show();
-        }catch (IOException e){
-            Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
     }
 }

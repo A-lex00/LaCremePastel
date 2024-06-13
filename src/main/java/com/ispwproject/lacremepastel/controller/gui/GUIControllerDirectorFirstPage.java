@@ -1,6 +1,5 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
-import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +25,7 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
-        throw new UnsupportedOperationException();
+
     }
 
     @FXML

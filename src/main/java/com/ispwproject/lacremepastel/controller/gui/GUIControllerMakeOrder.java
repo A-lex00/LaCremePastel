@@ -57,7 +57,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
     }
 
     @FXML
-    public void confirmOrder(ActionEvent confirmEvent) {
+    public void showDetails(ActionEvent confirmEvent) {
         this.setUserData("cart",actualCart);
         this.setupStage(confirmEvent, FXMLPaths.SHOPPING_CART);
     }

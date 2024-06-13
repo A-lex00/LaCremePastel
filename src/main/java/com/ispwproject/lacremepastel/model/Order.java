@@ -12,26 +12,25 @@ public class Order {
     private boolean pending;
     private boolean accepted;
     private boolean closed;
-    private Worker assignedWorker;
 
-    public Order(Integer id, String customer){
-        this.idOrder = id;
-        this.customerName = customer;
+    public Order (int id){
+        this(id,"",new ArrayList<>(),false,false,false);
+    }
+
+    public Order(int id, String customer){
+        this(id,customer,new ArrayList<>(),false,false,false);
     }
     public Order(String customerName, boolean pending, boolean accepted, boolean closed, List<OrderLine> cart ){
+        this(0,customerName,cart,pending,accepted,closed);
+    }
+
+    public Order(int idOrder, String customerName, List<OrderLine> cart, boolean pending, boolean accepted, boolean closed){
+        this.idOrder = idOrder;
         this.customerName = customerName;
         this.pending = pending;
         this.accepted = accepted;
         this.closed = closed;
         this.cart = new ArrayList<>(cart);
-    }
-
-    public Order(String customerName, boolean pending, boolean accepted, boolean closed){
-        this.customerName = customerName;
-        this.pending = pending;
-        this.accepted = accepted;
-        this.closed = closed;
-        this.cart = new ArrayList<>();
     }
 
     public int getIdOrder() {
@@ -99,14 +98,6 @@ public class Order {
 
     public void setClosed(boolean closed) {
         this.closed = closed;
-    }
-
-    public void setAssignedWorker(Worker assignedWorker){
-        this.assignedWorker=assignedWorker;
-    }
-
-    public Worker getAssignedWorker(){
-       return assignedWorker;
     }
 
 }

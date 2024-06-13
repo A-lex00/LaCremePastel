@@ -1,7 +1,6 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import org.w3c.dom.Text;
 
 public class GUIControllerManageProduct extends AbstractGUIController{
 
@@ -39,7 +37,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
     void confirmModify(ActionEvent confirmEvent) {
         SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
         String name = productNameField.getText();
-        Double price = Double.valueOf(priceField.getText());
+        double price = Double.parseDouble(priceField.getText());
 
         ManageProductController manageProductController = new ManageProductController();
         manageProductController.updateProduct(new ProductBean(name,price), sessionBean);
@@ -58,8 +56,15 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     }
 
+    public void productName(ActionEvent event) {
+    }
 
+    public void category(ActionEvent event) {
+    }
 
+    public void price(ActionEvent event) {
+    }
 
-
+    public void searchProduct(ActionEvent event) {
+    }
 }

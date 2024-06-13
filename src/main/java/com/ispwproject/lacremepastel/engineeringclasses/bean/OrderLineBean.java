@@ -17,9 +17,11 @@ public class OrderLineBean {
     public ProductBean getProductBean() {
         return productBean;
     }
+
     public String getProductName(){
         return this.productBean.getProductName();
     }
+
     public  double getPrice(){
         return  this.productBean.getPrice();
     }

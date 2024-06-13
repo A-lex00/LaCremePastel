@@ -4,7 +4,7 @@ public class FXMLPaths {
 
     private FXMLPaths(){  }
 
-    public static final String MANAGE_PRODUCT = "/view/manageProduct.fxml";
+    public static final String MANAGE_PRODUCT = "/view/manageProducts.fxml";
 
     public static final String MANAGE_ORDER = "/view/manageOrder.fxml";
 

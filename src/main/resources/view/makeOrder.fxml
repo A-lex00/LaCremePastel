@@ -27,7 +27,7 @@
    <HBox layoutX="100.0" layoutY="413.0" prefHeight="34.0" prefWidth="385.0" spacing="20.0">
       <children>
          <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Indietro" />
-         <Button mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Riepilogo Ordine" />
+         <Button mnemonicParsing="false" onAction="#showDetails" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Riepilogo Ordine" />
       </children>
    </HBox>
    <TableView fx:id="orderView" layoutX="79.0" layoutY="184.0" prefHeight="200.0" prefWidth="385.0">
