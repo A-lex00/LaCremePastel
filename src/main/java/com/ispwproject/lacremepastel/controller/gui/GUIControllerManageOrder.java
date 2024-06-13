@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -23,13 +24,13 @@ public class GUIControllerManageOrder extends AbstractGUIController {
     private Button backButton;
 
     @FXML
-    private TableView<Order> ordersView;
+    private TableView<OrderBean> ordersView;
 
     @FXML
-    private TableColumn<Order, Integer> orderColumn;
+    private TableColumn<OrderBean, Integer> orderColumn;
 
     @FXML
-    private TableColumn<Order, String> customerColumn;
+    private TableColumn<OrderBean, String> customerColumn;
 
     @FXML
     private Button detailsButton;
@@ -48,9 +49,17 @@ public class GUIControllerManageOrder extends AbstractGUIController {
 
     @FXML
     void showDetails() {
-        // Implement show details functionality
-    }
+        Stage stage = (Stage) super.getUserData("stage");
+       // Order selectedOrder = ordersView.getSelectionModel().getSelectedItem();
+     /*   if(selectedOrder != null){
+           Stage stage1 = (Stage) ordersView.getScene().getWindow();
+           ManageOrderController orderController = new ManageOrderController();
+           List<OrderLineBean> orderLines = orderController.ge
+           showDetails(stage,selectedOrder.getIdOrder());
 
+        }
+    }*/
+    }
     @FXML
     void goBack(ActionEvent event) {
         this.setupStage(event, FXMLPaths.DIRECTOR_HOME);
@@ -64,11 +73,12 @@ public class GUIControllerManageOrder extends AbstractGUIController {
     @Override
     public void configure() throws Exception {
         this.sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
-        ObservableList<Order> actualOrders = FXCollections.observableArrayList();
+        ObservableList<OrderBean> actualOrders = FXCollections.observableArrayList();
 
         // Initializing ManageOrderController
         ManageOrderController manageOrderController = new ManageOrderController();
-        List<Order> orderNumbers = manageOrderController.getAllOrders(sessionBean);
+        List<OrderBean> orderNumbers = manageOrderController.getAllOrders(sessionBean);
+
 
         actualOrders.setAll(orderNumbers);
         System.out.println(actualOrders + " actualOrders GUIControllerManageOrder");

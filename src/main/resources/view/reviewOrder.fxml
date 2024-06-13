@@ -19,12 +19,12 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <Button layoutX="107.0" layoutY="413.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Rifiuta Ordine" />
+      <Button layoutX="107.0" layoutY="413.0" mnemonicParsing="false" onAction="#rejectOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Rifiuta Ordine" />
       <Button layoutX="339.0" layoutY="413.0" mnemonicParsing="false" onAction="#acceptOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Accetta Ordine" />
       <TableView fx:id="orderView" layoutX="107.0" layoutY="82.0" prefHeight="317.0" prefWidth="347.0">
         <columns>
-          <TableColumn fx:id="productColumn" prefWidth="227.99994659423828" text="Prodotto" />
-          <TableColumn fx:id="amountColumn" prefWidth="119.2000732421875" text="Quantità" />
+          <TableColumn fx:id="productColumn" prefWidth="218.39997100830078" text="Prodotto" />
+          <TableColumn fx:id="amountColumn" prefWidth="129.60003662109375" text="Quantità" />
         </columns>
       </TableView>
    </children>

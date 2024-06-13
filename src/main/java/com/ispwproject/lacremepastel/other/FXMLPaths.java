@@ -26,6 +26,5 @@ public class FXMLPaths {
 
     public static final String MAKE_ORDER = "/view/makeOrder.fxml";
 
-    public static final String POUPOP = "/view/firstPage.fxml";
     public static final String SHOW_DETAILS = "/view/reviewOrder.fxml";
 }

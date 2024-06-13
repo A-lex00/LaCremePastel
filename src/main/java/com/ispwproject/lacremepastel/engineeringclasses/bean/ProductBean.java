@@ -15,8 +15,8 @@ public class ProductBean {
     public ProductBean(int id, String productName, double price, String category){
         boolean isProductNameValid = productName != null;
         if(isProductNameValid  && price >= 0){
-            this.id = id;
             this.productName = productName;
+            this.id = id;
             this.price = price;
             if(category != null){
                 this.category = SupportedProductCategory.valueOf(category);
@@ -24,22 +24,16 @@ public class ProductBean {
         }else{
             throw new InvalidParameterException("ProductBean: Invalid Parameters!");
         }
-
     }
     public ProductBean(int id, String productName, double price) {
-        boolean isProductNameValid = productName != null;
-
-        if(isProductNameValid  && price >= 0){
-            this.id = id;
-            this.productName = productName;
-            this.price = price;
-        }else{
-            throw new InvalidParameterException("ProductBean: Invalid Parameters!");
-        }
+        this(id,productName,price,null);
     }
 
     public ProductBean(String productName,double price) throws InvalidParameterException {
         this(0,productName,price);
+    }
+    public ProductBean(String productName){
+        this(0,productName,0);
     }
 
     public String getProductName() {

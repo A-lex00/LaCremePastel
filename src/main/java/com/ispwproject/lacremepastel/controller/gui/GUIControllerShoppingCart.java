@@ -37,14 +37,17 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
     void confirmOrder(ActionEvent confirmEvent) {
         Node node = (Node) confirmEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-        this.createPopup("scemo chi legge",stage);
+        GUIPopup guiPopup = new GUIPopup();
+       // guiPopup.createPopup("scemo chi legge",stage);
         this.setupStage(confirmEvent, FXMLPaths.CUSTOMER_HOME);
         Cart cart = (Cart) this.getUserData("cart");
+
         //recupero la sessione
         SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
         ManageOrderController manageOrderController = new ManageOrderController();
         ObservableList<OrderLineBean> list = FXCollections.observableList(cart.getState());
         manageOrderController.manage(list,sessionBean);
+
     }
     @FXML
     void goBack(ActionEvent backEvent) {
@@ -65,9 +68,9 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
         orderView.getItems().removeAll();
         orderView.setItems(list);
         double sum = calculator(confirmCart);
-        price.setText("Totale Ordine "+ sum + "€" );
+        price.setText("Totale Ordine: "+ sum + " €" );
     }
-    protected double calculator(Cart confirmCart){
+    private double calculator(Cart confirmCart){
         List<OrderLineBean> actualCart = confirmCart.getState();
         double sum = 0.0;
         int index = 0;

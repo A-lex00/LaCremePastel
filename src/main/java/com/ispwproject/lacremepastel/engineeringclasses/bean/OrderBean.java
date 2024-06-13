@@ -7,8 +7,13 @@ public class OrderBean {
 
     private ArrayList<OrderLineBean> cart;
     private String customerName;
+    private int idOrder;
 
-    public OrderBean(String customerName) {
+    public OrderBean(String customerName, int idOrder ){
+        this.customerName = customerName;
+        this.idOrder = idOrder;
+    }
+    public OrderBean(String customerName ) {
         this.cart = new ArrayList<>();
         this.customerName = customerName;
     }
@@ -52,4 +57,11 @@ public class OrderBean {
     }
 
 
+    public int getIdOrder() {
+        return idOrder;
+    }
+
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
+    }
 }

@@ -1,7 +1,11 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.controller.app.ManageOrderController;
+import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 public abstract class AbstractGUIController {
@@ -38,28 +43,6 @@ public abstract class AbstractGUIController {
     public void configure() throws Exception {
     }
 
-    protected void createPopup(String message, Stage primaryStage) {
-        try{
-        Stage popupStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXMLPaths.POUPOP));
-
-        Parent root = loader.getRoot();
-
-        Label label = new Label(message);
-        ((Pane) root).getChildren().add(label);
-
-        Scene scene = new Scene(root, 300, 150);
-        popupStage.setScene(scene);
-        popupStage.initModality(Modality.APPLICATION_MODAL);   //blocca l'interazione con la finestra principale fino alla chiusura del poupop
-        popupStage.initOwner(primaryStage);
-        popupStage.setTitle("Avviso");
-
-        popupStage.show();
-        popupStage.showAndWait(); //mostra il poupop e aspetta la chiusura prima di procedere con il codice successivo
-    }catch(Exception e){
-        Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
-    }
-}
     protected void setupStage(ActionEvent event, String filePath){
         if(filePath == null || event == null){
             return;
