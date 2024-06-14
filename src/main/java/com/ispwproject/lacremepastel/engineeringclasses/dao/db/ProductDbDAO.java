@@ -2,13 +2,12 @@ package com.ispwproject.lacremepastel.engineeringclasses.dao.db;
 
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.query.ProductQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Product;
-import com.ispwproject.lacremepastel.model.ProductFilter;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -97,6 +96,8 @@ public class ProductDbDAO implements ProductDAO {
     public boolean deleteProduct(int productId, String userName) {
         try{
             ProductQuery.removeProduct(Connector.getConnection(),productId);
+            PopupFactory popupFactory = new PopupFactory();
+            popupFactory.createBasePopup("Prodotto Eliminato con Successo");
         }catch (SQLException e){
             Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;

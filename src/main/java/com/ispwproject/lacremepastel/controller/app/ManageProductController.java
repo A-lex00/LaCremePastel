@@ -79,13 +79,13 @@ public class ManageProductController {
         }
         return converted;
     }
-    public void  addProduct(ProductBean productBean, SessionBean sessionBean){
+    public void addProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         productDAO.addProduct(product, sessionBean.getUsername());
     }
-    public void updateProduct(ProductBean productBean, SessionBean sessionBean){
+    public boolean updateProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
@@ -94,15 +94,17 @@ public class ManageProductController {
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nell'inserimento del prodotto!");
         }
+        return flag;
     }
-    public void removeProduct(ProductBean productBean, SessionBean sessionBean){
+    public boolean removeProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         boolean flag = productDAO.deleteProduct(productBean.getId(),sessionBean.getUsername());
-        if( !flag){
+        if(!flag){
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");
         }
+        return flag;
     }
 
     private void loginCheck(SessionBean sessionBean){

@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -39,12 +41,14 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
     void confirmModify(ActionEvent confirmEvent) {
-        String name = this.productName.getText();
-        double p = Double.parseDouble(this.price.getText());
-
+        ProductBean productBean = productBox.getSelectionModel().getSelectedItem();
+        PopupFactory popupFactory = new PopupFactory();
         ManageProductController manageProductController = new ManageProductController();
-        manageProductController.updateProduct(new ProductBean(name,p), sessionData);
-
+        if(manageProductController.updateProduct(productBean, sessionData)){
+            popupFactory.createBasePopup("Aggiornamento completato");
+        }else{
+            popupFactory.createBasePopup("Errore");
+        }
     }
 
     @FXML
@@ -54,6 +58,20 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
     public void deleteProduct(ActionEvent deleteEvent) {
+
+        Stage stage = (Stage) deleteProduct.getScene().getWindow();
+
+        ManageProductController manageProductController = new ManageProductController();
+        ProductBean productBean = productBox.getSelectionModel().getSelectedItem();
+        PopupFactory popupFactory = new PopupFactory();
+        if(manageProductController.removeProduct(productBean, sessionData)){
+            this.clearFields();
+            this.productBox.setVisible(false);
+            popupFactory.createBasePopup("Prodotto Eliminato con Successo").show(stage);
+        }else{
+            popupFactory.createBasePopup("Errore").show(stage);
+        }
+
     }
 
     @FXML
@@ -66,9 +84,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         ProductFilterBean productFilterBean = new ProductFilterBean(name);
         List<ProductBean> productList = manageProductController.getProductList(sessionData,productFilterBean);
         if(!productList.isEmpty()) {
-            productBox.getItems().clear();
-            price.clear();
-            category.clear();
+            this.clearFields();
             for (ProductBean productBean : productList) {
                 productBox.getItems().add(productBean);
             }
@@ -88,5 +104,13 @@ public class GUIControllerManageProduct extends AbstractGUIController{
             this.price.setText(String.valueOf(selected.getPrice()));
             this.productName.setText(selected.getProductName());
         }
+    }
+
+    private void clearFields(){
+        this.productBox.getSelectionModel().clearSelection();
+        this.productBox.getItems().clear();
+        this.price.clear();
+        this.category.clear();
+        this.productName.clear();
     }
 }

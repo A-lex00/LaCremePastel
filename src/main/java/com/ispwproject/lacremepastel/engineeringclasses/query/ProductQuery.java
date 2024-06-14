@@ -1,8 +1,6 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
 import com.ispwproject.lacremepastel.model.Product;
-import com.ispwproject.lacremepastel.model.ProductFilter;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,14 +11,14 @@ public class ProductQuery {
     }
 
     public static ResultSet getAllProduct(Connection conn) throws SQLException {
-        String query = "SELECT * FROM Product";
+        String query = "SELECT id,name,category,price,user FROM Product WHERE available = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             return stmt.executeQuery();
         }
     }
 
     public static ResultSet getProductByCategory(Connection conn, String category) throws SQLException {
-        String query = "SELECT * FROM Product WHERE category = ?";
+        String query = "SELECT id,name,category,price,user FROM Product WHERE category = ? AND available = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, category);
             return stmt.executeQuery();
@@ -51,14 +49,15 @@ public class ProductQuery {
     }
 
     public static void removeProduct(Connection conn, int productId) throws SQLException {
-        String query = "DELETE from Product where id = ?";
+        String query = "UPDATE Product SET available = 0 WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setInt(1, productId);
+                stmt.executeUpdate();
         }
     }
 
     public static ResultSet getProduct(Connection conn, int productId) throws SQLException{
-        String query = "SELECT * FROM Product WHERE id = ?";
+        String query = "SELECT id,name,category,price,user FROM Product WHERE id = ? AND available = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, productId);
             return stmt.executeQuery();
@@ -66,7 +65,7 @@ public class ProductQuery {
     }
 
     public static ResultSet getProductsByName(Connection conn, String name) throws SQLException{
-        String query = "SELECT * FROM Product WHERE name LIKE ?";
+        String query = "SELECT id,name,category,price,user FROM Product WHERE name LIKE ? AND available = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, "%"+name+"%");
             return stmt.executeQuery();
