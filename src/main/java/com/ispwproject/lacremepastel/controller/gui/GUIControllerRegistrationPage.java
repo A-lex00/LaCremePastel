@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.RegisterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.UserAlreadyExistentException;
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +80,7 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
         String cnfPassword = cnfPasswordField.getText();
         String cfPiva = cfPivaField.getText();
         String extraInfo = null;
+        PopupFactory popupFactory = new PopupFactory();
         try {
             if (!cnfEmail.equalsIgnoreCase(email)) {
                 throw new InvalidParameterException("Email does not match");
@@ -117,12 +119,12 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
         try {
             LoginController loginController=new LoginController();
             loginController.register(registerBean);
-            System.out.println("Registrazione completata: Benvenuto!");
+
+            popupFactory.createBasePopup("Registrazione completata: Benvenuto");
         } catch (UserAlreadyExistentException e) {
             //Inserire qui la chiamata a banner
         }catch(InvalidParameterException invalidParameterException){
-            System.err.println("Errore nell'inserimento dei parametri");
-            System.err.println(invalidParameterException.getMessage());
+            popupFactory.createBasePopup("Errore nell'inserimento dei parametri");
         }
     }
 }

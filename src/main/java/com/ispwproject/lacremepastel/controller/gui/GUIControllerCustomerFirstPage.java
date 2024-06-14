@@ -17,17 +17,17 @@ public class GUIControllerCustomerFirstPage  extends AbstractGUIController{
     }
     @FXML
     void giveBack(ActionEvent backEvent) {
-        System.out.println("Segnalazione effettuata");
+
     }
 
     @FXML
     void orderHistory(ActionEvent event) {
-        System.out.println("Ordini passati");
+
     }
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
-        System.out.println("You called for Help...\n\nBut nobody came...");
+
     }
 
     @FXML

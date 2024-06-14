@@ -4,6 +4,7 @@ import com.ispwproject.lacremepastel.controller.app.LoginController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.LoginBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +60,8 @@ public class GUIControllerLoginPage extends AbstractGUIController{
             }
 
         }catch(InvalidParameterException parameterException){
-            System.err.println("Errore nell'accesso: Dati errati!");
+            PopupFactory popupFactory = new PopupFactory();
+            popupFactory.createBasePopup("Parametri Invalidi!");
             parameterException.fillInStackTrace();
         }
 

@@ -36,7 +36,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
 
     @FXML
     void addCart(ActionEvent cartEvent) {
-        System.out.println("addCart");
+
         int index = productBox.getSelectionModel().getSelectedIndex();
         ProductBean product = productList.get(index);
         try {
@@ -69,7 +69,6 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
 
         //Retrieve an existing cart (if any)
         Cart tmp = (Cart) this.getUserData("cart");
-        System.out.println("Retrieved Cart: "+tmp);
         if( tmp != null){
             this.actualCart = tmp;
             update();

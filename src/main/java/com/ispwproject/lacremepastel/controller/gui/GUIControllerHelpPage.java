@@ -1,9 +1,11 @@
 package com.ispwproject.lacremepastel.controller.gui;
 
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotResult;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -27,16 +29,18 @@ public class GUIControllerHelpPage {
 
     @FXML
     public void getText(ActionEvent event){
+        PopupFactory popupFactory = new PopupFactory();
         try{
             String text=messageArea.getText();
         }catch(Exception e){
-            System.err.println("Impossibile ricevere il testo!");
+            popupFactory.createBasePopup("\"Impossibile ricevere il testo!\"");
         }
     }
     @FXML
     public void sendMessage(ActionEvent messageEvent){
         Node node = (Node) messageEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
+        PopupFactory popupFactory = new PopupFactory();
         try{
             Label label=new Label("Segnalazione correttamente inviata, grazie mille!");
             Scene scene=new Scene(label,300,100);
@@ -46,9 +50,9 @@ public class GUIControllerHelpPage {
 
             poupopStage.setScene(scene);
             poupopStage.showAndWait(); //mostra il poupop e aspetta la chiusura prima di procedere con il codice successivo
-            System.out.println("Segnalazione inviata correttamente");
+            popupFactory.createBasePopup("Segnalazione inviata correttamente");
         }catch (Exception e){
-            System.err.println("Impossibile inviare la segnalazione!");
+            popupFactory.createBasePopup("Impossibile inviare la segnalazione");
         }
     }
 }
