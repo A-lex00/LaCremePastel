@@ -62,12 +62,12 @@ public class ManageOrderController {
         return orderBeans;
     }
 
-    public OrderBean getOrderById(SessionBean sessionBean, int idOrder) {
+    public OrderBean getOrderById(SessionBean sessionBean, OrderBean idOrder) {
         LoginController loginController = new LoginController();
         loginController.checkLogin(sessionBean);
 
         OrderDAO orderDAO = new OrderDAO();
-        Order order = orderDAO.getOrderById(idOrder);
+        Order order = orderDAO.getOrderById(idOrder.getIdOrder());
         return this.convertModel(order);
     }
 

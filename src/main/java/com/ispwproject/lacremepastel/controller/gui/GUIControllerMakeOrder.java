@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class GUIControllerMakeOrder  extends AbstractGUIController implements Observer {
 
     @FXML
-    private ComboBox<String> productBox;
+    private ComboBox<ProductBean> productBox;
     @FXML
     private TextField quantityField;
     @FXML
@@ -58,6 +58,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
 
     @FXML
     public void showDetails(ActionEvent confirmEvent) {
+        this.actualCart.condenseContent();
         this.setUserData("cart",actualCart);
         this.setupStage(confirmEvent, FXMLPaths.SHOPPING_CART);
     }
@@ -80,9 +81,7 @@ public class GUIControllerMakeOrder  extends AbstractGUIController implements Ob
         //Loading productList
         ManageProductController manageProductController = new ManageProductController();
         this.productList = (ArrayList<ProductBean>) manageProductController.getProductList(sessionBean, null);
-        for (ProductBean productBean : productList) {
-            productBox.getItems().add(productBean.getProductName() + "  " + productBean.getPrice() + "€");
-        }
+        productBox.getItems().addAll(productList);
         actualCart.attach(this);
 
         //Initializing Table

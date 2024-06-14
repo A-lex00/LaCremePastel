@@ -23,7 +23,8 @@ public class ProductDbDAO implements ProductDAO {
                 products.add(new Product(
                         rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getDouble("price")
+                        rs.getDouble("price"),
+                        SupportedProductCategory.valueOf(rs.getString("category"))
                 ));
             }
         } catch (SQLException e) {
@@ -42,7 +43,7 @@ public class ProductDbDAO implements ProductDAO {
                 String productName = rs.getString("name");
                 double price = rs.getDouble("price");
                 int id = rs.getInt("id");
-                products.add(new Product(id, productName, price));
+                products.add(new Product(id, productName, price, category));
             }
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
@@ -97,7 +98,7 @@ public class ProductDbDAO implements ProductDAO {
         try{
             ProductQuery.removeProduct(Connector.getConnection(),productId);
             PopupFactory popupFactory = new PopupFactory();
-            popupFactory.createBasePopup("Prodotto Eliminato con Successo");
+            popupFactory.createBasePopup("Prodotto Eliminato con Successo","black");
         }catch (SQLException e){
             Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;

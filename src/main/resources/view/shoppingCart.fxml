@@ -20,8 +20,8 @@
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
-      <Button layoutX="107.0" layoutY="413.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Rifiuta Ordine" />
-      <Button layoutX="339.0" layoutY="413.0" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Accetta Ordine" />
+      <Button layoutX="107.0" layoutY="413.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Indietro" />
+      <Button layoutX="339.0" layoutY="413.0" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: e1680f;" text="Invia Ordine" />
       <TableView fx:id="orderView" layoutX="107.0" layoutY="82.0" prefHeight="291.0" prefWidth="347.0">
         <columns>
           <TableColumn fx:id="productColumn" prefWidth="125.59998321533203" text="Prodotto" />

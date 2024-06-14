@@ -46,7 +46,8 @@ public class ManageProductController {
                         new ProductBean(
                                 p.getId(),
                                 p.getName(),
-                                p.getPrice()
+                                p.getPrice(),
+                                p.getCategory().toString()
                 ));
             } catch (InvalidParameterException e) {
                 Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));

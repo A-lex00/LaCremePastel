@@ -8,7 +8,7 @@ import java.util.List;
 public class Cart extends  Subject{
 
     /** Stato del subject **/
-    private final List<OrderLineBean> actualCart;
+    private ArrayList<OrderLineBean> actualCart;
 
     /** Costruttore pubblico poichè ogni istanza di Cart appartiene  ad un solo utente **/
     public Cart(){
@@ -35,6 +35,24 @@ public class Cart extends  Subject{
      */
     public List<OrderLineBean> getState(){
         return actualCart;
+    }
+
+    public void condenseContent(){
+        ArrayList<OrderLineBean> newState = new ArrayList<>();
+        for(int i=0;i<actualCart.size();i++){
+            OrderLineBean orderLineBean = actualCart.get(i);
+            for(int j = i+1; j<actualCart.size(); j++){
+                if(orderLineBean.getProductBean().getId() == actualCart.get(j).getProductBean().getId()){
+                    int totalAmount = orderLineBean.getAmount() + actualCart.get(j).getAmount();
+                    orderLineBean.setAmount(totalAmount);
+                    actualCart.get(j).setAmount(0);
+                }
+            }
+            if(orderLineBean.getAmount() > 0) {
+                newState.add(orderLineBean);
+            }
+        }
+        this.actualCart = newState;
     }
 
 }

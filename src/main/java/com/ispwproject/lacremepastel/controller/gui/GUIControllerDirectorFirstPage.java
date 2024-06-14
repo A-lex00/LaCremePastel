@@ -20,7 +20,6 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
     }
     @FXML
     void manageWorkers(ActionEvent manageEvent) {
-        this.setupStage(manageEvent,FXMLPaths.MANAGE_PRODUCT);
     }
 
     @FXML
@@ -30,7 +29,7 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
 
     @FXML
     void showCustomerList(ActionEvent showEvent) {
-        this.setupStage(showEvent,FXMLPaths.MANAGE_PRODUCT);
+
     }
 
 }

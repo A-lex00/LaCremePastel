@@ -14,7 +14,6 @@ public abstract class AbstractGUIController {
 
     protected static final String ORDER = "order";
     protected static final String SESSION_DATA = "sessionData";
-    protected static final String ORDER_ID = "orderId";
 
     private HashMap<String, Object> userData;
 
@@ -44,7 +43,7 @@ public abstract class AbstractGUIController {
             return;
         }
         try {
-            System.out.println("AbstractGUIControoler "+filePath);
+            System.out.println("AbstractGUIController "+filePath);
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
             AbstractGUIController controller = loader.getController();

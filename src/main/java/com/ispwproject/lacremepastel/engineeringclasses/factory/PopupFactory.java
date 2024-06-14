@@ -9,14 +9,15 @@ import javafx.stage.Popup;
 
 public class PopupFactory {
 
-    public Popup createBasePopup(String message){
+    public Popup createBasePopup(String message, String color){
         Popup popup = new Popup();
-        Label lable = new Label(message);
+        Label label = new Label(message);
+        label.setStyle("-fx-text-fill: "+color);
         Button closeButton = new Button("Close");
         closeButton.setOnAction(f -> popup.hide());
 
         VBox popupContent = new VBox(10);
-        popupContent.getChildren().addAll(lable, closeButton);
+        popupContent.getChildren().addAll(label, closeButton);
         popupContent.setAlignment(Pos.CENTER);
         popupContent.setPadding(new Insets(10));
 

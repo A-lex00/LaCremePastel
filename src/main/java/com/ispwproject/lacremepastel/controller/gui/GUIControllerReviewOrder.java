@@ -43,7 +43,7 @@ public class GUIControllerReviewOrder extends AbstractGUIController{
     @Override
     public void configure(){
         ManageOrderController manageOrderController = new ManageOrderController();
-        int orderId = (Integer) this.deleteUserData(ORDER_ID);
+        OrderBean orderId = (OrderBean) this.deleteUserData(ORDER);
         SessionBean sessionBean = (SessionBean) this.getUserData(SESSION_DATA);
         OrderBean orderBean = manageOrderController.getOrderById(sessionBean,orderId);
         this.setUserData(ORDER,orderBean);

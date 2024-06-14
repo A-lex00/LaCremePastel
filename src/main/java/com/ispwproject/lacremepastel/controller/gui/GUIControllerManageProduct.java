@@ -45,9 +45,9 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         PopupFactory popupFactory = new PopupFactory();
         ManageProductController manageProductController = new ManageProductController();
         if(manageProductController.updateProduct(productBean, sessionData)){
-            popupFactory.createBasePopup("Aggiornamento completato");
+            popupFactory.createBasePopup("Aggiornamento completato","black");
         }else{
-            popupFactory.createBasePopup("Errore");
+            popupFactory.createBasePopup("Errore","red");
         }
     }
 
@@ -67,9 +67,9 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         if(manageProductController.removeProduct(productBean, sessionData)){
             this.clearFields();
             this.productBox.setVisible(false);
-            popupFactory.createBasePopup("Prodotto Eliminato con Successo").show(stage);
+            popupFactory.createBasePopup("Prodotto Eliminato con Successo","black").show(stage);
         }else{
-            popupFactory.createBasePopup("Errore").show(stage);
+            popupFactory.createBasePopup("Errore","red").show(stage);
         }
 
     }

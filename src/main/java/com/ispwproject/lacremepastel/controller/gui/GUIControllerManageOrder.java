@@ -63,7 +63,7 @@ public class GUIControllerManageOrder extends AbstractGUIController {
     public void showDetails(ActionEvent event) {
         try {
             int index = ordersView.getSelectionModel().getSelectedIndex();
-            this.setUserData(ORDER_ID, orders.get(index).getIdOrder());
+            this.setUserData(ORDER, orders.get(index));
             this.setupStage(event,FXMLPaths.SHOW_DETAILS);
         }catch (IndexOutOfBoundsException e){
             Logger.getLogger(Configurations.LOGGER_NAME).warning(e.getMessage());

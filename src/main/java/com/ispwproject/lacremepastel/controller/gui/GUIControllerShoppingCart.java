@@ -68,8 +68,9 @@ public class GUIControllerShoppingCart extends AbstractGUIController  {
         orderView.getItems().removeAll();
         orderView.setItems(list);
         double sum = calculator(confirmCart);
-        price.setText("Totale Ordine: "+ sum + " €" );
+        price.setText(String.format("Totale Ordine: %.2f €", sum));
     }
+
     private double calculator(Cart confirmCart){
         List<OrderLineBean> actualCart = confirmCart.getState();
         double sum = 0.0;
