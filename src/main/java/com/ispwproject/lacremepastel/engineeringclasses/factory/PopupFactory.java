@@ -9,6 +9,10 @@ import javafx.stage.Popup;
 
 public class PopupFactory {
 
+    public Popup createBasePopup(String message) {
+        return createBasePopup(message,"black");
+    }
+
     public Popup createBasePopup(String message, String color){
         Popup popup = new Popup();
         Label label = new Label(message);

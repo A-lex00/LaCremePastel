@@ -28,15 +28,6 @@ public class GUIControllerHelpPage {
     }
 
     @FXML
-    public void getText(ActionEvent event){
-        PopupFactory popupFactory = new PopupFactory();
-        try{
-            String text=messageArea.getText();
-        }catch(Exception e){
-            popupFactory.createBasePopup("\"Impossibile ricevere il testo!\"");
-        }
-    }
-    @FXML
     public void sendMessage(ActionEvent messageEvent){
         Node node = (Node) messageEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -50,9 +41,9 @@ public class GUIControllerHelpPage {
 
             poupopStage.setScene(scene);
             poupopStage.showAndWait(); //mostra il poupop e aspetta la chiusura prima di procedere con il codice successivo
-            popupFactory.createBasePopup("Segnalazione inviata correttamente");
+            popupFactory.createBasePopup("Segnalazione inviata correttamente").show(stage);
         }catch (Exception e){
-            popupFactory.createBasePopup("Impossibile inviare la segnalazione");
+            popupFactory.createBasePopup("Impossibile inviare la segnalazione").show(stage);
         }
     }
 }

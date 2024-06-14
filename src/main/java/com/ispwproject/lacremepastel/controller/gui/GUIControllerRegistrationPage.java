@@ -8,7 +8,9 @@ import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class GUIControllerRegistrationPage extends AbstractGUIController{
     @FXML
@@ -69,7 +71,7 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
     }
 
     @FXML
-    public void confirm(ActionEvent confirmButton) {
+    public void confirm(ActionEvent confirmEvent) {
         String ruolo=null;
         String name = firstNameField.getText();
         String surname = surnameField.getText();
@@ -116,15 +118,17 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
             registerBean.setBillingAddress(extraInfo);
         }
 
+        Node node = (Node) confirmEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
         try {
             LoginController loginController=new LoginController();
             loginController.register(registerBean);
 
-            popupFactory.createBasePopup("Registrazione completata: Benvenuto");
+            popupFactory.createBasePopup("Registrazione completata: Benvenuto").show(stage);
         } catch (UserAlreadyExistentException e) {
-            //Inserire qui la chiamata a banner
+            popupFactory.createBasePopup("Credenziali già in uso").show(stage);
         }catch(InvalidParameterException invalidParameterException){
-            popupFactory.createBasePopup("Errore nell'inserimento dei parametri");
+            popupFactory.createBasePopup("Errore nell'inserimento dei parametri").show(stage);
         }
     }
 }

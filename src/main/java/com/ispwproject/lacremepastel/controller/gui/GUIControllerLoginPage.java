@@ -61,7 +61,8 @@ public class GUIControllerLoginPage extends AbstractGUIController{
 
         }catch(InvalidParameterException parameterException){
             PopupFactory popupFactory = new PopupFactory();
-            popupFactory.createBasePopup("Parametri Invalidi!");
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            popupFactory.createBasePopup("Parametri Invalidi!").show(stage);
             parameterException.fillInStackTrace();
         }
 
