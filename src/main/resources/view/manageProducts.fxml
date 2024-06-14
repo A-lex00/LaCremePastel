@@ -35,6 +35,6 @@
          </children>
       </HBox>
       <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
-      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" prefWidth="150.0" visible="false" />
+      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" prefWidth="150.0" onAction="#oracolo" visible="false" />
    </children>
 </AnchorPane>

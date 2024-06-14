@@ -64,8 +64,16 @@ public class ProductBean {
         this.id = id;
     }
 
+    public SupportedProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(SupportedProductCategory category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return productName + "\t" + price + "€";
+        return id+") "+productName + "\t" + price + "€";
     }
 }

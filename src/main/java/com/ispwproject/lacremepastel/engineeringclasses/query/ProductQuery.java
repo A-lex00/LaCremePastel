@@ -66,9 +66,9 @@ public class ProductQuery {
     }
 
     public static ResultSet getProductsByName(Connection conn, String name) throws SQLException{
-        String query = "SELECT * FROM Product WHERE name = ?";
+        String query = "SELECT * FROM Product WHERE name LIKE ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, name);
+            stmt.setString(1, "%"+name+"%");
             return stmt.executeQuery();
         }
     }

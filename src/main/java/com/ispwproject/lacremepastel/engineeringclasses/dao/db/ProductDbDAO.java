@@ -56,12 +56,13 @@ public class ProductDbDAO implements ProductDAO {
     public List<Product> getProductsByName(String name) {
         ArrayList<Product> products = new ArrayList<>();
         try {
-            ResultSet rs = ProductQuery.getProductByCategory(Connector.getConnection(),name);
+            ResultSet rs = ProductQuery.getProductsByName(Connector.getConnection(),name);
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String productName = rs.getString("name");
                 double price = rs.getDouble("price");
-                products.add(new Product(id, productName, price));
+                SupportedProductCategory category = SupportedProductCategory.valueOf(rs.getString("category"));
+                products.add(new Product(id, productName, price,category));
             }
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);

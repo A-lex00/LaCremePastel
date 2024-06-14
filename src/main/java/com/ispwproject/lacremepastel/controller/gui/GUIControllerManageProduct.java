@@ -8,6 +8,7 @@ import com.ispwproject.lacremepastel.other.FXMLPaths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class GUIControllerManageProduct extends AbstractGUIController{
 
+    @FXML
+    private ComboBox<ProductBean> productBox;
     @FXML
     private TextField category;
     @FXML
@@ -55,7 +58,6 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
     public void searchProduct(ActionEvent event) {
-
         String name = this.productName.getText();
         if(name == null){
             return;
@@ -63,10 +65,28 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         ManageProductController manageProductController = new ManageProductController();
         ProductFilterBean productFilterBean = new ProductFilterBean(name);
         List<ProductBean> productList = manageProductController.getProductList(sessionData,productFilterBean);
+        if(!productList.isEmpty()) {
+            productBox.getItems().clear();
+            price.clear();
+            category.clear();
+            for (ProductBean productBean : productList) {
+                productBox.getItems().add(productBean);
+            }
+            productBox.setVisible(true);
+        }
     }
 
     @Override
     public void configure() {
         this.sessionData = (SessionBean) this.getUserData(SESSION_DATA);
+    }
+
+    public void oracolo(ActionEvent event) {
+        ProductBean selected = productBox.getSelectionModel().getSelectedItem();
+        if(selected != null) {
+            this.category.setText(selected.getCategory().toString());
+            this.price.setText(String.valueOf(selected.getPrice()));
+            this.productName.setText(selected.getProductName());
+        }
     }
 }

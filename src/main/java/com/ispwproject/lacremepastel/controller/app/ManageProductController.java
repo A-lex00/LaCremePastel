@@ -68,7 +68,8 @@ public class ManageProductController {
                         new ProductBean(
                                 p.getId(),
                                 p.getName(),
-                                p.getPrice()
+                                p.getPrice(),
+                                p.getCategory().toString()
                         )
                 );
             }catch (InvalidParameterException e){
@@ -102,7 +103,6 @@ public class ManageProductController {
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");
         }
-
     }
 
     private void loginCheck(SessionBean sessionBean){
