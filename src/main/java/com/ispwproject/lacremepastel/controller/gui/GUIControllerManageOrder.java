@@ -50,7 +50,7 @@ public class GUIControllerManageOrder extends AbstractGUIController {
         this.orders = manageOrderController.getPendingOrders(sessionBean);
 
         actualOrders.setAll(orders);
-        System.out.println(actualOrders + " actualOrders GUIControllerManageOrder");
+
 
         // Initializing Table
         customerColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCustomerName()));

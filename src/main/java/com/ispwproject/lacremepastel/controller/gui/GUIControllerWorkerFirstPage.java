@@ -35,8 +35,7 @@ public class GUIControllerWorkerFirstPage extends AbstractGUIController{
                 poupopStage.initOwner(stage);
                 poupopStage.show();
             }catch(Exception e){
-                System.err.println("Errore nel caricamento del FXML");
-                e.printStackTrace();
+
             }
         }
         @FXML

@@ -43,7 +43,6 @@ public abstract class AbstractGUIController {
             return;
         }
         try {
-            System.out.println("AbstractGUIController "+filePath);
             FXMLLoader loader = new FXMLLoader(getClass().getResource(filePath));
             Parent parent = loader.load();
             AbstractGUIController controller = loader.getController();
