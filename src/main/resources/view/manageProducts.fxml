@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,26 +16,32 @@
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
          <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
-      <TextField fx:id="productName" layoutX="107.0" layoutY="152.0" prefHeight="26.0" prefWidth="150.0" promptText="inserire nome prodotto" />
-      <Text layoutX="109.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE PRODOTTI">
+      <TextField fx:id="productName" layoutX="107.0" layoutY="152.0" prefHeight="25.6" prefWidth="149.6" promptText="inserire nome prodotto" />
+      <Text fill="#694225" layoutX="109.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE PRODOTTI">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>
       </Text>
       <TextField fx:id="category" layoutX="108.0" layoutY="241.0" promptText="categoria" />
-      <TextField fx:id="price" layoutX="108.0" layoutY="298.0" promptText="prezzo" />
+      <TextField fx:id="price" layoutX="108.0" layoutY="297.0" promptText="prezzo" />
       <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../background/interfaces_material/logoFinaleColoratoA.png" />
          </image></ImageView>
-      <HBox layoutX="82.0" layoutY="379.0" prefHeight="37.0" prefWidth="430.0" spacing="30.0">
+      <HBox layoutX="108.0" layoutY="379.0" prefHeight="37.0" prefWidth="430.0" spacing="85.0">
          <children>
-            <Button fx:id="backButton" lineSpacing="15.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: e1680f;" text="indietro" />
-            <Button fx:id="deleteProduct" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="rimuovi prodotto" />
+            <Button fx:id="removeButton" lineSpacing="15.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Rimuovi prodotto" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Aggiungi prodotto" />
+         </children>
+      </HBox>
+      <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
+      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" onAction="#oracolo" prefHeight="25.6" prefWidth="149.6" visible="false" />
+      <HBox layoutX="109.0" layoutY="417.0" prefHeight="54.0" prefWidth="439.0" spacing="85.0">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="indietro" />
             <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirmModify" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Conferma modifiche" />
          </children>
       </HBox>
-      <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
-      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" prefWidth="150.0" onAction="#oracolo" visible="false" />
+      <Label layoutX="261.0" layoutY="301.0" text="€" />
    </children>
 </AnchorPane>

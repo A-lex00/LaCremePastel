@@ -15,7 +15,7 @@
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
          <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
-      <Text layoutX="199.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARRELLO" textAlignment="CENTER">
+      <Text fill="#694225" layoutX="199.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARRELLO" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>
@@ -29,7 +29,7 @@
             <TableColumn fx:id="priceColumn" prefWidth="104.00001831054686" text="Prezzo Unitario" />
         </columns>
       </TableView>
-      <Label fx:id="price" layoutX="140.0" layoutY="373.0" text="Label">
+      <Label fx:id="price" layoutX="140.0" layoutY="373.0" text="Label" textFill="#694225">
          <font>
             <Font size="25.0" />
          </font>

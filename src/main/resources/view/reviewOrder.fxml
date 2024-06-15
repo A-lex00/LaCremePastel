@@ -14,7 +14,7 @@
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
          <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
-      <Text layoutX="128.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETTAGLI ORDINE" textAlignment="CENTER">
+      <Text fill="#694225" layoutX="128.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETTAGLI ORDINE" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>

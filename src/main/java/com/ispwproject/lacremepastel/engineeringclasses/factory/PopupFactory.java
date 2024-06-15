@@ -24,6 +24,7 @@ public class PopupFactory {
         popupContent.getChildren().addAll(label, closeButton);
         popupContent.setAlignment(Pos.CENTER);
         popupContent.setPadding(new Insets(10));
+        
 
         popup.getContent().add(popupContent);
         return popup;

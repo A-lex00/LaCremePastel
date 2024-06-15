@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lecremepastel.controller.GUIController.GUIControllerManagerOrder">
    <children>
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
-         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
       <HBox layoutX="87.0" layoutY="401.0" prefHeight="44.0" prefWidth="422.0" spacing="40.0">
          <children>
@@ -21,9 +21,9 @@
             <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#showNotice" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Leggi notifica" />
          </children>
       </HBox>
-      <Text layoutX="162.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMUNICAZIONI">
+      <Text fill="#694225" layoutX="162.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COMUNICAZIONI">
          <font>
-            <Font name="System Bold Italic" size="33.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Text>
       <ListView fx:id="orderView" layoutX="118.0" layoutY="101.0" onEditStart="#loadOrder" prefHeight="272.0" prefWidth="359.0" />

@@ -21,7 +21,7 @@
             <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#showDetails" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: e1680f;" text="Mostra Ordine" />
          </children>
       </HBox>
-      <Text layoutX="106.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE ORDINI">
+      <Text fill="#694225" layoutX="106.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIONE ORDINI">
          <font>
             <Font name="System Bold Italic" size="33.0" />
          </font>
