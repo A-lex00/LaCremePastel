@@ -82,6 +82,7 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
         String cnfPassword = cnfPasswordField.getText();
         String cfPiva = cfPivaField.getText();
         String extraInfo = null;
+
         PopupFactory popupFactory = new PopupFactory();
         try {
             if (!cnfEmail.equalsIgnoreCase(email)) {
@@ -91,7 +92,9 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
                 throw new InvalidParameterException("Password does not match");
             }
         }catch (InvalidParameterException e) {
-            //Creare il banner con il messaggio
+            Node node = (Node) confirmEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            popupFactory.createBasePopup(e.getMessage(),"red").show(stage);
             return;
         }
 

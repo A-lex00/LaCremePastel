@@ -89,7 +89,7 @@ public class ManageProductController {
     public boolean updateProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
-        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
+        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice(), productBean.getCategory());
         boolean flag = productDAO.modifyProduct(product, sessionBean.getUsername());
         if(!flag){
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);

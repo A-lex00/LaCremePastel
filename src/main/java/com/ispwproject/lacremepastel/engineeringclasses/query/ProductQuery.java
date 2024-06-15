@@ -38,12 +38,13 @@ public class ProductQuery {
     }
 
     public static void modifyProduct(Connection conn, Product product, String name) throws SQLException {
-        String query = "UPDATE Product SET name = ?, price = ?, user = ? WHERE id = ?";
+        String query = "UPDATE Product SET name = ?, category = ?, price = ?, user = ? WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
-            stmt.setDouble(2, product.getPrice());
-            stmt.setString(3, name);
-            stmt.setInt(4, product.getId());
+            stmt.setString(2, product.getCategory().toString());
+            stmt.setDouble(3, product.getPrice());
+            stmt.setString(4, name);
+            stmt.setInt(5, product.getId());
             stmt.executeUpdate();
         }
     }

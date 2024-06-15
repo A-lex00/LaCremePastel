@@ -5,6 +5,7 @@ import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
+import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

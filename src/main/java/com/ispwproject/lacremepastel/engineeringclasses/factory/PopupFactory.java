@@ -15,8 +15,10 @@ public class PopupFactory {
 
     public Popup createBasePopup(String message, String color){
         Popup popup = new Popup();
+
         Label label = new Label(message);
         label.setStyle("-fx-text-fill: "+color);
+
         Button closeButton = new Button("Close");
         closeButton.setOnAction(f -> popup.hide());
 
@@ -24,6 +26,7 @@ public class PopupFactory {
         popupContent.getChildren().addAll(label, closeButton);
         popupContent.setAlignment(Pos.CENTER);
         popupContent.setPadding(new Insets(10));
+        popupContent.setStyle("-fx-background-color: #F5D69F; -fx-background-radius: 10; -fx-border-color: #000000; -fx-border-radius: 10");
 
         popup.getContent().add(popupContent);
         return popup;

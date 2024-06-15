@@ -83,9 +83,9 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public boolean modifyProduct(Product product, String name) throws InvalidParameterException {
+    public boolean modifyProduct(Product product, String userName) throws InvalidParameterException {
         try {
-            ProductQuery.modifyProduct(Connector.getConnection(), product, name);
+            ProductQuery.modifyProduct(Connector.getConnection(), product, userName);
         } catch (SQLException e) {
             Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
