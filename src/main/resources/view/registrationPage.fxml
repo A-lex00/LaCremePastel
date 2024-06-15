@@ -18,9 +18,9 @@
             <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
          </image>
       </ImageView>
-      <Text layoutX="53.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrazione La Crème Pastel" textAlignment="CENTER">
+      <Text fill="#694225" layoutX="159.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRAZIONE" textAlignment="CENTER">
          <font>
-            <Font size="33.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Text>
       <TextField fx:id="firstNameField" layoutX="107.0" layoutY="124.0" promptText="Inserisci il tuo nome" />

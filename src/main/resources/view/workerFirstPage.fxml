@@ -6,15 +6,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.lacremepastel.controller.gui.GUIControllerWorkerFirstPage">
    <children>
       <ImageView fitHeight="496.0" fitWidth="629.0" preserveRatio="true">
-         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg"/>
+         <Image url="@../background/interfaces_material/sfondoRegistrazione.jpg" />
       </ImageView>
       <Button layoutX="198.0" layoutY="189.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: e1680f;" text="Richiesta lista produzione" />
       <Button layoutX="198.0" layoutY="251.0" mnemonicParsing="false" onAction="#confirmProduction" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: e1680f;" text="Conferma produzione" />
-      <Label fx:id="welcomeLabel" layoutX="215.0" layoutY="63.0" text="stringa di benvenuto!" />
-      <Hyperlink layoutX="181.0" layoutY="421.0" onAction="#requestHelp" text="Hai bisogno di aiuto? Clicca qui!" visited="true" />
+      <Label fx:id="welcomeLabel" layoutX="96.0" layoutY="57.0" text="HOMEPAGE LAVORATORE" textFill="#694225">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+      <Hyperlink layoutX="181.0" layoutY="421.0" onAction="#requestHelp" text="Hai bisogno di aiuto? Clicca qui!" textFill="#694225" visited="true" />
    </children>
 </AnchorPane>
