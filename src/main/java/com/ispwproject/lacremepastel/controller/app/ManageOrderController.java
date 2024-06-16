@@ -79,7 +79,9 @@ public class ManageOrderController {
             ProductBean productBean = new ProductBean(
                     orderLine.getProduct().getId(),
                     orderLine.getProduct().getName(),
-                    orderLine.getProduct().getPrice()
+                    orderLine.getProduct().getPrice(),
+                    orderLine.getProduct().getCategory().toString(),
+                    orderLine.getProduct().getOwner()
             );
             OrderLineBean orderLineBean = new OrderLineBean(productBean,orderLine.getAmount());
             convertedCart.add(orderLineBean);

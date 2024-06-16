@@ -35,7 +35,7 @@
          </children>
       </HBox>
       <Button fx:id="searchButton" layoutX="312.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Trova Prodotto" />
-      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" onAction="#oracolo" prefHeight="25.6" prefWidth="149.6" visible="false" />
+      <ComboBox fx:id="productBox" layoutX="108.0" layoutY="198.0" onAction="#infoSpreader" prefHeight="25.6" prefWidth="149.6" visible="false" />
       <HBox layoutX="109.0" layoutY="417.0" prefHeight="54.0" prefWidth="439.0" spacing="85.0">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="indietro" />

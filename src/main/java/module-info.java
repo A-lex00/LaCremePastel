@@ -6,6 +6,7 @@ module com.ispwproject.lacremepastel {
     requires jbcrypt;
     requires org.apache.commons.validator;
     requires org.checkerframework.checker.qual;
+    requires org.apache.commons.logging;
 
 
     opens com.ispwproject.lacremepastel.model to com.google.gson;

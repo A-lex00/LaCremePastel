@@ -7,15 +7,16 @@ public class Product {
     private String name;
     private int id;
     private SupportedProductCategory category;
+    private String owner;
 
-    public Product(int id, String name, double price, SupportedProductCategory category){
+    public Product(int id, String name, double price, SupportedProductCategory category, String owner){
         this.id = id;
         this.name = name;
         this.price = price;
         this.category = category;
+        this.owner = owner;
     }
-
-
+    
     public Product(int id, String name, double price) {
         this.id = id;
         this.name = name;
@@ -56,5 +57,13 @@ public class Product {
 
     public void setCategory(SupportedProductCategory category) {
         this.category = category;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

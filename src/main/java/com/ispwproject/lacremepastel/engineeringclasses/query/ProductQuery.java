@@ -25,25 +25,25 @@ public class ProductQuery {
         }
     }
 
-    public static void addProduct(Connection conn, Product product, String name) throws SQLException {
+    public static void addProduct(Connection conn, Product product) throws SQLException {
         String query = "INSERT INTO Product (id,name, category, price, user) VALUES (?,?,?,?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, product.getId());
             stmt.setString(2, product.getName());
             stmt.setString(3, String.valueOf(product.getCategory()));
             stmt.setDouble(4, product.getPrice());
-            stmt.setString(5, name);
+            stmt.setString(5, product.getOwner());
             stmt.executeUpdate();
         }
     }
 
-    public static void modifyProduct(Connection conn, Product product, String name) throws SQLException {
+    public static void modifyProduct(Connection conn, Product product) throws SQLException {
         String query = "UPDATE Product SET name = ?, category = ?, price = ?, user = ? WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, product.getName());
             stmt.setString(2, product.getCategory().toString());
             stmt.setDouble(3, product.getPrice());
-            stmt.setString(4, name);
+            stmt.setString(4, product.getOwner());
             stmt.setInt(5, product.getId());
             stmt.executeUpdate();
         }

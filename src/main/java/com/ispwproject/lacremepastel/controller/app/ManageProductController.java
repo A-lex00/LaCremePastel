@@ -47,7 +47,8 @@ public class ManageProductController {
                                 p.getId(),
                                 p.getName(),
                                 p.getPrice(),
-                                p.getCategory().toString()
+                                p.getCategory().toString(),
+                                p.getOwner()
                 ));
             } catch (InvalidParameterException e) {
                 Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
@@ -70,7 +71,8 @@ public class ManageProductController {
                                 p.getId(),
                                 p.getName(),
                                 p.getPrice(),
-                                p.getCategory().toString()
+                                p.getCategory().toString(),
+                                p.getOwner()
                         )
                 );
             }catch (InvalidParameterException e){
@@ -82,15 +84,17 @@ public class ManageProductController {
     }
     public void addProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
-        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice());
+        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice(), productBean.getCategory(), productBean.getOwner());
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
-        productDAO.addProduct(product, sessionBean.getUsername());
+        productDAO.addProduct(product);
     }
     public boolean updateProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
-        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice(), productBean.getCategory());
-        boolean flag = productDAO.modifyProduct(product, sessionBean.getUsername());
+        productBean.setOwner(sessionBean.getUsername());
+        Product product = new Product(productBean.getId(), productBean.getProductName(), productBean.getPrice(), productBean.getCategory(), productBean.getOwner());
+        product.setOwner(sessionBean.getUsername());
+        boolean flag = productDAO.modifyProduct(product);
         if(!flag){
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nell'inserimento del prodotto!");
@@ -100,7 +104,8 @@ public class ManageProductController {
     public boolean removeProduct(ProductBean productBean, SessionBean sessionBean){
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
-        boolean flag = productDAO.deleteProduct(productBean.getId(),sessionBean.getUsername());
+        productBean.setOwner(sessionBean.getUsername());
+        boolean flag = productDAO.deleteProduct(productBean.getId(), sessionBean.getUsername());
         if(!flag){
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");
@@ -117,4 +122,3 @@ public class ManageProductController {
         loginController.checkLogin(sessionBean);
     }
 }
-//update, remove

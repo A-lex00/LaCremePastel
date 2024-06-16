@@ -19,23 +19,17 @@ import java.util.List;
 public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
+    private Button removeButton;
+    @FXML
     private ComboBox<ProductBean> productBox;
     @FXML
     private TextField category;
     @FXML
     private TextField price;
     @FXML
-    private ImageView image;
-    @FXML
     private Button confirmButton;
     @FXML
     private TextField productName;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button deleteProduct;
-    @FXML
-    private Button searchButton;
 
     private SessionBean sessionData;
 
@@ -48,6 +42,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
             productBean.setProductName(this.productName.getText());
             productBean.setCategory(SupportedProductCategory.valueOf(this.category.getText()));
             productBean.setPrice(Double.parseDouble(this.price.getText()));
+            productBean.setOwner(this.sessionData.getUsername());
         }catch (Exception ignored){
             popupFactory.createBasePopup("Parametri non validi","red").show(confirmButton.getScene().getWindow());
             this.clearFields();
@@ -70,7 +65,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
     @FXML
     public void deleteProduct() {
 
-        Stage stage = (Stage) deleteProduct.getScene().getWindow();
+        Stage stage = (Stage) removeButton.getScene().getWindow();
 
         ManageProductController manageProductController = new ManageProductController();
         ProductBean productBean = productBox.getSelectionModel().getSelectedItem();
@@ -87,20 +82,13 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     @FXML
     public void searchProduct() {
-        String name = this.productName.getText();
-        if(name == null){
-            return;
-        }
+        String pName = this.productName.getText();
+        ProductFilterBean productFilterBean = new ProductFilterBean(pName);
         ManageProductController manageProductController = new ManageProductController();
-        ProductFilterBean productFilterBean = new ProductFilterBean(name);
-        List<ProductBean> productList = manageProductController.getProductList(sessionData,productFilterBean);
-        if(!productList.isEmpty()) {
-            this.clearFields();
-            for (ProductBean productBean : productList) {
-                productBox.getItems().add(productBean);
-            }
-            productBox.setVisible(true);
-        }
+        List<ProductBean> productList = manageProductController.getProductList(this.sessionData,productFilterBean);
+        this.productBox.getItems().setAll(productList);
+        this.productBox.setPromptText("Risultato Ricerca");
+        this.productBox.setVisible(true);
     }
 
     @Override
@@ -108,7 +96,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         this.sessionData = (SessionBean) this.getUserData(SESSION_DATA);
     }
 
-    public void oracolo() {
+    public void infoSpreader() {
         ProductBean selected = productBox.getSelectionModel().getSelectedItem();
         if(selected != null) {
             this.category.setText(selected.getCategory().toString());
@@ -119,10 +107,28 @@ public class GUIControllerManageProduct extends AbstractGUIController{
 
     private void clearFields(){
         this.productBox.getSelectionModel().clearSelection();
-        this.productBox.getItems().clear();
+        this.productBox.getItems().setAll();
         this.price.clear();
         this.category.clear();
-        this.productName.clear();
         productBox.setVisible(false);
+    }
+
+    public void addProduct() {
+        ProductBean productBean;
+        ManageProductController manageProductController = new ManageProductController();
+        PopupFactory popupFactory = new PopupFactory();
+        try {
+            productBean = new ProductBean(
+                    this.productName.getText(),
+                    Double.parseDouble(this.price.getText()),
+                    this.category.getText(),
+                    this.sessionData.getUsername()
+            );
+            manageProductController.addProduct(productBean, this.sessionData);
+            this.clearFields();
+            popupFactory.createBasePopup("Inserimento completato!").show(confirmButton.getScene().getWindow());
+        }catch (Exception ignored){
+            popupFactory.createBasePopup("Parametri non validi!","red").show(confirmButton.getScene().getWindow());
+        }
     }
 }

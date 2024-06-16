@@ -1,9 +1,7 @@
 package com.ispwproject.lacremepastel.engineeringclasses.bean;
 
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
-import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
 public class ProductBean {
 
@@ -11,29 +9,27 @@ public class ProductBean {
     private String productName;
     private double price;
     private SupportedProductCategory category;
+    private String owner;
 
-    public ProductBean(int id, String productName, double price, String category){
+    public ProductBean(int id, String productName, double price, String category, String owner) {
         boolean isProductNameValid = productName != null;
-        if(isProductNameValid  && price >= 0){
+        boolean isPriceValid = price > 0;
+        boolean isCategoryValid = category != null && !category.isBlank();
+        boolean isOwnerValid = owner != null && !owner.isBlank();
+
+        if(isProductNameValid && isPriceValid && isCategoryValid && isOwnerValid){
             this.productName = productName;
             this.id = id;
             this.price = price;
-            if(category != null){
-                this.category = SupportedProductCategory.valueOf(category);
-            }
+            this.category = SupportedProductCategory.valueOf(category);
+            this.owner = owner;
         }else{
             throw new InvalidParameterException("ProductBean: Invalid Parameters!");
         }
     }
-    public ProductBean(int id, String productName, double price) {
-        this(id,productName,price,null);
-    }
 
-    public ProductBean(String productName,double price) throws InvalidParameterException {
-        this(0,productName,price);
-    }
-    public ProductBean(String productName){
-        this(0,productName,0);
+    public ProductBean(String productName, double price, String category, String owner) {
+        this(0, productName, price, category, owner);
     }
 
     public String getProductName() {
@@ -70,6 +66,14 @@ public class ProductBean {
 
     public void setCategory(SupportedProductCategory category) {
         this.category = category;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Override

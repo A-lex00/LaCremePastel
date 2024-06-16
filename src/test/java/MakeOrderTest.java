@@ -25,7 +25,7 @@ public class MakeOrderTest {
         OrderBean orderBean = null;
         try {
             ProductBean productBean = new ProductBean(
-                    0, "dummy", 1
+                    0, "dummy", 1, "SAVORY", "dummy"
             );
             OrderLineBean orderLineBean = new OrderLineBean(productBean, 1);
             List<OrderLineBean> cart = new ArrayList<>();

@@ -5,13 +5,13 @@ import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
-import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.File;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.logging.FileHandler;
@@ -35,6 +35,17 @@ public class Main extends Application {
             Logger.getLogger(Main.class.getName()).severe("Can't setup Logger! Exiting");
             System.exit(1);
         }
+
+        //Setup Json Data Directory
+        String jsonPath = Configurations.getInstance().getProperty("PATH_USERDATA");
+        String persistence = Configurations.getInstance().getProperty("PERSISTENCE_TYPE");
+        if(persistence.equals("JSON")){
+            File file = new File(jsonPath);
+            if(!file.exists()){
+                file.mkdir();
+            }
+        }
+
         String enableGUI = Configurations.getInstance().getProperty("GUI");
         if (enableGUI.equals("on")) {
             launch(args);
