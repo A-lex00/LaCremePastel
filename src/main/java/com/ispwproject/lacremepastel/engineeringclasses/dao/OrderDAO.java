@@ -46,7 +46,7 @@ public class OrderDAO {
                 return true;
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             orderLineDAO.cleanOnFail(order.getIdOrder());
             this.cleanOnFail(order);
         }
@@ -61,7 +61,7 @@ public class OrderDAO {
                 orders.add(order);
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
         return orders;
     }
@@ -70,7 +70,7 @@ public class OrderDAO {
         try {
             OrderQuery.cleanOnFail(Connector.getConnection(), order.getIdOrder());
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ public class OrderDAO {
                 order = new Order(idOrder,customer,orderLines,pending,accepted,done);
             }
         }catch (SQLException e) {
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
         return order;
     }
@@ -101,7 +101,7 @@ public class OrderDAO {
             OrderQuery.updateOrder(Connector.getConnection(), order);
             return true;
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LoggerName);
+            Logger.getLogger(Configurations.LOGGER_NAME);
             return false;
         }
     }

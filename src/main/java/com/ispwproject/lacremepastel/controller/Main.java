@@ -24,7 +24,7 @@ public class Main extends Application {
     public static void main(String[] args){
 
         //Setup Logger
-        Logger logger = Logger.getLogger(Configurations.LoggerName);
+        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
         FileHandler fh;
         try {
             logger.setUseParentHandlers(false);
@@ -86,13 +86,13 @@ public class Main extends Application {
                 stageCount.show();
             }
         } catch (Exception e) {
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
     }
 
     public static void launchCLI(){
         AbstractCLIStateMachine cli = new ConcreteCLI(new StateDAO());
-        Logger logger = Logger.getLogger(Configurations.LoggerName);
+        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
         do{
             try{
                 if(!cli.doAction()){

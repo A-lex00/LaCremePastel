@@ -130,7 +130,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
             this.clearFields();
             popupFactory.createBasePopup("Inserimento completato!").show(confirmButton.getScene().getWindow());
         }catch (Exception e){
-            Logger.getLogger(Configurations.LoggerName).severe(e.getLocalizedMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getLocalizedMessage());
             popupFactory.createBasePopup("Parametri non validi!","red").show(confirmButton.getScene().getWindow());
         }
     }

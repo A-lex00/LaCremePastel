@@ -26,7 +26,7 @@ public class ProductJsonDAO implements ProductDAO {
         File directory = new File(pathUserdata);
         File[] files = directory.listFiles();
         if(files == null){
-            Logger.getLogger(Configurations.LoggerName).severe("Can't open JsonData Directory!");
+            Logger.getLogger(Configurations.LOGGER_NAME).severe("Can't open JsonData Directory!");
             return new ArrayList<>();
         }
         ArrayList<Product> products = new ArrayList<>();
@@ -111,7 +111,7 @@ public class ProductJsonDAO implements ProductDAO {
             String jsonStr = Files.readString(file.toPath());
             gson.fromJson(jsonStr, Product.class);
         }catch (IOException e){
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
         return null;
     }
@@ -127,7 +127,7 @@ public class ProductJsonDAO implements ProductDAO {
             );
             return true;
         }catch (IOException e){
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
         }
     }
@@ -138,7 +138,7 @@ public class ProductJsonDAO implements ProductDAO {
             try(BufferedReader reader = new BufferedReader(new FileReader(lastId))){
                 return Integer.parseInt(reader.readLine())+1;
             }catch (IOException e){
-                Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             }
             return -1;
         }
@@ -150,7 +150,7 @@ public class ProductJsonDAO implements ProductDAO {
                 writer.write(String.valueOf(id));
                 writer.flush();
             } catch (IOException e) {
-                Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             }
         }
     }

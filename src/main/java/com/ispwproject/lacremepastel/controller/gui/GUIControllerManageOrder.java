@@ -66,7 +66,7 @@ public class GUIControllerManageOrder extends AbstractGUIController {
             this.setUserData(ORDER, orders.get(index));
             this.setupStage(event,FXMLPaths.SHOW_DETAILS);
         }catch (IndexOutOfBoundsException e){
-            Logger.getLogger(Configurations.LoggerName).warning(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).warning(e.getMessage());
         }
     }
 }

@@ -29,7 +29,7 @@ public class DirectorDAO implements UserDAO{
                 );
                 return true;
             }catch (SQLException e) {
-                Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
                 if(e.getMessage().contains("Duplicate entry")) {
                     throw new UserAlreadyExistentException("User " + register.getUsername() + " already exists");
                 }else{

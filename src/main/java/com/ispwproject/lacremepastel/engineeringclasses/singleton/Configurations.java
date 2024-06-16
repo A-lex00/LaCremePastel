@@ -6,21 +6,21 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class Configurations {
-    private static final String filePath = "src/config.properties";
-    public static final String LoggerName = "LeCremePastel";
+    private static final String FILE_PATH = "src/config.properties";
+    public static final String LOGGER_NAME = "LeCremePastel";
 
     private final Properties props = new Properties();
     private static Configurations instance = null;
 
     private Configurations(){
-        try(FileInputStream propsInput = new FileInputStream(filePath)){
+        try(FileInputStream propsInput = new FileInputStream(FILE_PATH)){
             props.load(propsInput);
         } catch (IOException e) {
-            Logger.getLogger(LoggerName).severe(e.getMessage());
+            Logger.getLogger(LOGGER_NAME).severe(e.getMessage());
         }
     }
 
-    public synchronized static Configurations getInstance(){
+    public static synchronized Configurations getInstance(){
         if(instance == null) {
             instance = new Configurations();
         }

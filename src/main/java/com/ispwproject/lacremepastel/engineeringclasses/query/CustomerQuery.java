@@ -1,10 +1,13 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class CustomerQuery {
 
@@ -37,9 +40,10 @@ public class CustomerQuery {
                 String surname = resultSet.getString("surname");
                 customerList.add(name + "   " + surname);
             }
-        return customerList;
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
+        return customerList;
     }
 }

@@ -57,7 +57,7 @@ public abstract class AbstractGUIController {
             stage.setScene(new Scene(parent, 629, 481));
             stage.show();
         } catch (Exception e) {
-            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
     }
 

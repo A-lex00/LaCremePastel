@@ -77,7 +77,7 @@ public class ManageProductController {
                         )
                 );
             }catch (InvalidParameterException e){
-                Logger logger = Logger.getLogger(Configurations.LoggerName);
+                Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
                 logger.info(e.getMessage());
             }
         }
@@ -97,7 +97,7 @@ public class ManageProductController {
         product.setOwner(sessionBean.getUsername());
         boolean flag = productDAO.modifyProduct(product);
         if(!flag){
-            Logger logger = Logger.getLogger(Configurations.LoggerName);
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nell'inserimento del prodotto!");
         }
         return flag;
@@ -108,7 +108,7 @@ public class ManageProductController {
         productBean.setOwner(sessionBean.getUsername());
         boolean flag = productDAO.deleteProduct(productBean.getId());
         if(!flag){
-            Logger logger = Logger.getLogger(Configurations.LoggerName);
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");
         }
         return flag;

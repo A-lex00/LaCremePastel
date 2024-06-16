@@ -62,9 +62,9 @@ public class LoginController {
                 }
             }catch (IllegalArgumentException e){
                 if(register.getUserType() == null) {
-                    Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Unsupported User Type: " + registerBean.getUserType());
+                    Logger.getLogger(Configurations.LOGGER_NAME).severe("Unsupported User Type: " + registerBean.getUserType());
                 }else if(register.getRole() == null){
-                    Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe("Unsupported Role: " + registerBean.getRole());
+                    Logger.getLogger(Configurations.LOGGER_NAME).severe("Unsupported Role: " + registerBean.getRole());
                 }
                 return false;
             }
@@ -87,7 +87,7 @@ public class LoginController {
                 throw new InvalidSessionException("Session expired");
             }
         }catch(SessionNotFoundException e){
-            Logger logger = Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME"));
+            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info(e.getMessage());
             throw new InvalidSessionException("Invalid session data");
         }
