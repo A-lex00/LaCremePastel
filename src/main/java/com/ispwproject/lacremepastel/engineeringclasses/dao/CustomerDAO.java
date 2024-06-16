@@ -6,29 +6,24 @@ import com.ispwproject.lacremepastel.engineeringclasses.query.CustomerQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
-import org.mindrot.jbcrypt.BCrypt;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-public class CustomerDAO implements UserDAO {
+public class CustomerDAO extends UserDAO {
 
     @Override
-    public boolean userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
+    public void userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
+        super.userRegister(register);
         if (register != null) {
             try {
-                CustomerQuery.addCustomer(
+                CustomerQuery.saveAdditionalInfo(
                         Connector.getConnection(),
-                        register.getUsername(),
-                        BCrypt.hashpw(register.getPasswd(), BCrypt.gensalt()),
                         register.getFirstname(),
                         register.getLastname(),
-                        register.getEmail(),
                         register.getCfPiva(),
                         register.getBillingAddress(),
-                        SupportedUserTypes.CUSTOMER.toString()
+                        register.getUsername()
                 );
-                return true;
             } catch (SQLException e) {
                 Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
                 if (e.getMessage().contains("Duplicate entry")) {
@@ -38,7 +33,6 @@ public class CustomerDAO implements UserDAO {
                 }
             }
         }
-        return false;
     }
 }
 

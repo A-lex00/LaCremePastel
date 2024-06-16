@@ -6,28 +6,22 @@ import com.ispwproject.lacremepastel.engineeringclasses.query.WorkerQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
-import org.mindrot.jbcrypt.BCrypt;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-public class WorkerDAO implements UserDAO{
+public class WorkerDAO extends UserDAO{
     @Override
-    public boolean userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
+    public void userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
         if(register != null){
             try{
-                WorkerQuery.addWorker(
+                WorkerQuery.saveAdditionalInfo(
                         Connector.getConnection(),
-                        register.getUsername(),
-                        BCrypt.hashpw(register.getPasswd(), BCrypt.gensalt()),
                         register.getFirstname(),
                         register.getLastname(),
-                        register.getEmail(),
                         register.getCfPiva(),
                         register.getRole().toString(),
-                        SupportedUserTypes.WORKER.toString()
+                        register.getUsername()
                 );
-                return true;
             } catch (SQLException e) {
                 Logger.getLogger(Configurations.getInstance().getProperty("LOGGER_NAME")).severe(e.getMessage());
                 if(e.getMessage().contains("Duplicate entry")){
@@ -37,6 +31,5 @@ public class WorkerDAO implements UserDAO{
                 }
             }
         }
-        return false;
     }
 }

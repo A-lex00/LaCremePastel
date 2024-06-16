@@ -6,28 +6,23 @@ import com.ispwproject.lacremepastel.engineeringclasses.query.DirectorQuery;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
-import com.ispwproject.lacremepastel.other.SupportedUserTypes;
-import org.mindrot.jbcrypt.BCrypt;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-public class DirectorDAO implements UserDAO{
+public class DirectorDAO extends UserDAO{
 
     @Override
-    public boolean userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
+    public void userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException {
+        super.userRegister(register);
         if(register != null) {
             try{
-                DirectorQuery.addDirector(
+                DirectorQuery.saveAdditionalInfo(
                         Connector.getConnection(),
-                        register.getUsername(),
-                        BCrypt.hashpw(register.getPasswd(),BCrypt.gensalt()),
                         register.getFirstname(),
                         register.getLastname(),
-                        register.getEmail(),
                         register.getCfPiva(),
-                        SupportedUserTypes.DIRECTOR.toString()
+                        register.getUsername()
                 );
-                return true;
             }catch (SQLException e) {
                 Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
                 if(e.getMessage().contains("Duplicate entry")) {
@@ -37,6 +32,5 @@ public class DirectorDAO implements UserDAO{
                 }
             }
         }
-        return false;
     }
 }

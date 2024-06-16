@@ -1,49 +1,22 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Logger;
 
-public class CustomerQuery {
+public class CustomerQuery{
 
-    private CustomerQuery() {
+    private CustomerQuery(){
     }
 
-    public static void addCustomer(Connection conn, String username, String passwd, String firstname, String lastname, String email, String cfPiva, String billingAddress, String userType) throws SQLException {
-        String query = "INSERT INTO User(username, password, firstname, lastname, email, billingAddress, `cf-piva`, userType) VALUES (?,?,?,?,?,?,?,?);";
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setString(2, passwd);
-            stmt.setString(3, firstname);
-            stmt.setString(4, lastname);
-            stmt.setString(5, email);
-            stmt.setString(6, billingAddress);
-            stmt.setString(7, cfPiva);
-            stmt.setString(8, userType);
-            stmt.executeUpdate();
+    public static void saveAdditionalInfo(Connection conn, String firstname, String lastname, String cfPiva, String billingAddress, String username) throws SQLException{
+        String query = "UPDATE User SET firstname = ?, lastname = ?, `cf-piva` = ?, billingAddress = ? WHERE username = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1,firstname);
+            stmt.setString(2,lastname);
+            stmt.setString(3,cfPiva);
+            stmt.setString(4,billingAddress);
+            stmt.setString(5,username);
         }
-    }
-
-    public static List<String> getAllCustomer(Connection conn) {
-        String query = "SELECT username, cf-piva, password, firstname, lastname, email, billingAddress, role FROM User WHERE usertype = ?";
-        List<String> customerList = null;
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, "CUSTOMER");
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-                String name = resultSet.getString("firstname");
-                String surname = resultSet.getString("surname");
-                customerList.add(name + "   " + surname);
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
-        }
-        return customerList;
     }
 }
