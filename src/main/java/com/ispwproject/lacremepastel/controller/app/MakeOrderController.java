@@ -41,7 +41,9 @@ public class MakeOrderController {
             Product p = new Product(
                     orderLineBean.getProductBean().getId(),
                     orderLineBean.getProductBean().getProductName(),
-                    orderLineBean.getProductBean().getPrice()
+                    orderLineBean.getProductBean().getPrice(),
+                    orderLineBean.getProductBean().getCategory(),
+                    orderLineBean.getProductBean().getOwner()
             );
             OrderLine o = new OrderLine(
                     p,

@@ -78,7 +78,7 @@ public class ProductDbDAO implements ProductDAO {
     }
 
     @Override
-    public boolean deleteProduct(int productId, String userName) {
+    public boolean deleteProduct(int productId) {
         try{
             ProductQuery.removeProduct(Connector.getConnection(),productId);
             PopupFactory popupFactory = new PopupFactory();

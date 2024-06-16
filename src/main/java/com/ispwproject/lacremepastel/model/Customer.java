@@ -1,7 +1,5 @@
 package com.ispwproject.lacremepastel.model;
 
-import java.util.List;
-
 public class Customer extends User{
 
     private String billingAddress;

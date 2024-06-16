@@ -5,8 +5,8 @@ import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMach
 import com.ispwproject.lacremepastel.controller.cli.other.CLIMessages;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.OrderLineBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
+import com.ispwproject.lacremepastel.other.ProductFilter;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ public class AddToCartState extends AbstractState{
     @Override
     public boolean doAction(AbstractCLIStateMachine contextSM) {
         SupportedProductCategory category = productTypeGather(contextSM);
-        ProductFilterBean filter = new ProductFilterBean(category);
+        ProductFilter filter = new ProductFilter(category);
         OrderLineBean orderLineBean = chooseProduct(contextSM,filter);
         if(orderLineBean.getAmount() > 0) {
             contextSM.addToCart(orderLineBean);
@@ -24,7 +24,7 @@ public class AddToCartState extends AbstractState{
         return true;
     }
 
-    private OrderLineBean chooseProduct(AbstractCLIStateMachine contextSM, ProductFilterBean filter){
+    private OrderLineBean chooseProduct(AbstractCLIStateMachine contextSM, ProductFilter filter){
         ManageProductController productController = new ManageProductController();
         HashMap<Integer,ProductBean> productList;
         productList = (HashMap<Integer, ProductBean>) productController.getProductMap(contextSM.getSessionData(),filter);

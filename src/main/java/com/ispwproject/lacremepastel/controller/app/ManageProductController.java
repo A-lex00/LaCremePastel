@@ -1,13 +1,14 @@
 package com.ispwproject.lacremepastel.controller.app;
 
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.ProductDAOFactory;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.model.Product;
+import com.ispwproject.lacremepastel.other.ProductFilter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 
 public class ManageProductController {
 
-    private List<Product> loadProducts(ProductFilterBean filter){
+    private List<Product> loadProducts(ProductFilter filter){
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         List<Product> productList = new ArrayList<>();
         if(filter != null){
@@ -31,7 +32,7 @@ public class ManageProductController {
         return productList;
     }
 
-    public Map<Integer,ProductBean> getProductMap(SessionBean sessionBean, ProductFilterBean filter) {
+    public Map<Integer,ProductBean> getProductMap(SessionBean sessionBean, ProductFilter filter) {
 
         this.loginCheck(sessionBean);
 
@@ -58,7 +59,7 @@ public class ManageProductController {
         return productBeanList;
     }
 
-    public  List<ProductBean> getProductList(SessionBean sessionBean, ProductFilterBean filter){
+    public  List<ProductBean> getProductList(SessionBean sessionBean, ProductFilter filter){
         this.loginCheck(sessionBean);
         ArrayList<ProductBean> converted = new ArrayList<>();
         List<Product> productList = this.loadProducts(filter);
@@ -105,7 +106,7 @@ public class ManageProductController {
         this.loginCheck(sessionBean);
         ProductDAO productDAO = ProductDAOFactory.getInstance().createProductDAO();
         productBean.setOwner(sessionBean.getUsername());
-        boolean flag = productDAO.deleteProduct(productBean.getId(), sessionBean.getUsername());
+        boolean flag = productDAO.deleteProduct(productBean.getId());
         if(!flag){
             Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
             logger.info("Errore nella cancellazione  del prodotto!");

@@ -1,22 +1,29 @@
 package com.ispwproject.lacremepastel.engineeringclasses.dao.json;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.ProductDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.model.Product;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import org.apache.commons.io.FilenameUtils;
+import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class ProductJsonDAO implements ProductDAO {
+
+    private final String PATH_USERDATA = Configurations.getInstance().getProperty("PATH_USERDATA");
+    private final String FILENAME_PATTERN = Configurations.getInstance().getProperty("FILENAME_PATTERN");
+    private final String LAST_ID_PATH = Configurations.getInstance().getProperty("LAST_ID_PATH");
+    private final File lastId = Paths.get(PATH_USERDATA,LAST_ID_PATH).toFile();
+
     @Override
     public List<Product> getAllProducts() {
-        File directory = new File(Configurations.getInstance().getProperty("PATH_USERDATA"));
+        File directory = new File(PATH_USERDATA);
         File[] files = directory.listFiles();
         if(files == null){
             Logger.getLogger(Configurations.LOGGER_NAME).severe("Can't open JsonData Directory!");
@@ -24,6 +31,9 @@ public class ProductJsonDAO implements ProductDAO {
         }
         ArrayList<Product> products = new ArrayList<>();
         for(File file : files) {
+            if(!FilenameUtils.getExtension(file.getName()).equalsIgnoreCase("json")){
+                continue;
+            }
             Product product = this.loadFromFile(file);
             if(product != null) {
                 products.add(product);
@@ -34,61 +44,115 @@ public class ProductJsonDAO implements ProductDAO {
 
     @Override
     public List<Product> getProductsByCategory(SupportedProductCategory category) {
-        return List.of();
+        List<Product> products = this.getAllProducts();
+        ArrayList<Product> found = new ArrayList<>();
+        for(Product p : products){
+            if(p.getCategory() == category){
+                found.add(p);
+            }
+        }
+        return found;
     }
 
     @Override
     public List<Product> getProductsByName(String name) {
-        return List.of();
+        List<Product> products = this.getAllProducts();
+        ArrayList<Product> found = new ArrayList<>();
+        for(Product p : products){
+            if(p.getName().toLowerCase().contains(name.toLowerCase())){
+                found.add(p);
+            }
+        }
+        return found;
     }
 
     @Override
     public boolean addProduct(Product product) {
-        return this.writeToFile(product);
+        int id = this.getNextProductId();
+        product.setId(id);
+        if(this.writeToFile(product)){
+            this.saveCurrentProductId(id);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
     public boolean modifyProduct(Product product) {
+        String filename = String.format(FILENAME_PATTERN,product.getId());
+        if(FilenameUtils.directoryContains(PATH_USERDATA,filename)){
+            return this.writeToFile(product);
+        }
         return false;
     }
 
     @Override
-    public boolean deleteProduct(int productId, String username) {
+    public boolean deleteProduct(int productId) {
+        String filename = String.format(FILENAME_PATTERN,productId);
+        if(FilenameUtils.directoryContains(PATH_USERDATA,filename)){
+            Product p = loadFromFile(new File(filename));
+            assert p != null;
+            p.setVisible(false);
+            return this.writeToFile(p);
+        }
         return false;
     }
 
     @Override
     public Product getProductById(int productId) {
-        return null;
+        String filename = String.format(FILENAME_PATTERN,productId);
+        return loadFromFile(Paths.get(PATH_USERDATA,filename).toFile());
     }
 
     private Product loadFromFile(File file){
-        try {
-            String jsonStr = new String(Files.readAllBytes(file.toPath()));
-            Gson gson = new Gson();
-            return gson.fromJson(jsonStr, Product.class);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try{
+            String jsonStr = Files.readString(file.toPath());
+            System.out.println(jsonStr);
+            gson.fromJson(jsonStr, Product.class);
         }catch (IOException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).warning(e.getMessage());
-            return null;
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
         }
+        return null;
     }
 
     private boolean writeToFile(Product product){
-        Gson gson = new Gson();
-        String jsonStr = gson.toJson(product, Product.class);
-        String fileName = String.format("%d_%s.json",product.getId(),product.getName());
-        File file = new File(fileName);
-        if(file.exists()){
-            return false;
-        }
-        try(FileWriter writer = new FileWriter(file)){
-            writer.write(jsonStr);
-            writer.flush();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try{
+            Paths.get(PATH_USERDATA,String.format(FILENAME_PATTERN,product.getId()));
+            String jsonStr = gson.toJson(product, Product.class);
+            Files.writeString(
+                    Paths.get(PATH_USERDATA,String.format(FILENAME_PATTERN,product.getId())),
+                    jsonStr
+            );
             return true;
-        } catch (IOException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).warning(e.getMessage());
+        }catch (IOException e){
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
             return false;
         }
     }
 
+
+    private int getNextProductId(){
+        synchronized (lastId){
+            try(BufferedReader reader = new BufferedReader(new FileReader(lastId))){
+                return Integer.parseInt(reader.readLine())+1;
+            }catch (IOException e){
+                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            }
+            return -1;
+        }
+    }
+
+    private void saveCurrentProductId(int id){
+        synchronized (lastId) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(lastId))) {
+                writer.write(String.valueOf(id));
+                writer.flush();
+            } catch (IOException e) {
+                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            }
+        }
+    }
 }

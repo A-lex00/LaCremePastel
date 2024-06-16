@@ -11,6 +11,6 @@ public interface ProductDAO {
     List<Product> getProductsByName(String name);
     boolean addProduct(Product product);
     boolean modifyProduct(Product product);
-    boolean deleteProduct(int productId, String username);
+    boolean deleteProduct(int productId);
     Product getProductById(int productId);
 }

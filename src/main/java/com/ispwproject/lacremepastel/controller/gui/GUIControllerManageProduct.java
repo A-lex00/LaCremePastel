@@ -2,19 +2,20 @@ package com.ispwproject.lacremepastel.controller.gui;
 
 import com.ispwproject.lacremepastel.controller.app.ManageProductController;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductBean;
-import com.ispwproject.lacremepastel.engineeringclasses.bean.ProductFilterBean;
 import com.ispwproject.lacremepastel.engineeringclasses.bean.SessionBean;
 import com.ispwproject.lacremepastel.engineeringclasses.factory.PopupFactory;
+import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
 import com.ispwproject.lacremepastel.other.FXMLPaths;
+import com.ispwproject.lacremepastel.other.ProductFilter;
 import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class GUIControllerManageProduct extends AbstractGUIController{
 
@@ -83,17 +84,17 @@ public class GUIControllerManageProduct extends AbstractGUIController{
     @FXML
     public void searchProduct() {
         String pName = this.productName.getText();
-        ProductFilterBean productFilterBean = new ProductFilterBean(pName);
+        ProductFilter productFilterBean = new ProductFilter(pName);
         ManageProductController manageProductController = new ManageProductController();
         List<ProductBean> productList = manageProductController.getProductList(this.sessionData,productFilterBean);
         this.productBox.getItems().setAll(productList);
-        this.productBox.setPromptText("Risultato Ricerca");
         this.productBox.setVisible(true);
     }
 
     @Override
     public void configure() {
         this.sessionData = (SessionBean) this.getUserData(SESSION_DATA);
+        this.productBox.setPromptText("Risultato Ricerca");
     }
 
     public void infoSpreader() {
@@ -110,6 +111,7 @@ public class GUIControllerManageProduct extends AbstractGUIController{
         this.productBox.getItems().setAll();
         this.price.clear();
         this.category.clear();
+        this.productBox.setPromptText("Risultato Ricerca");
         productBox.setVisible(false);
     }
 
@@ -127,7 +129,8 @@ public class GUIControllerManageProduct extends AbstractGUIController{
             manageProductController.addProduct(productBean, this.sessionData);
             this.clearFields();
             popupFactory.createBasePopup("Inserimento completato!").show(confirmButton.getScene().getWindow());
-        }catch (Exception ignored){
+        }catch (Exception e){
+            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getLocalizedMessage());
             popupFactory.createBasePopup("Parametri non validi!","red").show(confirmButton.getScene().getWindow());
         }
     }

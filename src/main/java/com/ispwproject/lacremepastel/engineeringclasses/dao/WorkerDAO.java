@@ -42,10 +42,4 @@ public class WorkerDAO implements UserDAO{
         }
         return false;
     }
-
-    @Override
-    public List<String> getAllCustomer() {
-        List<String> customerList = new ArrayList<>();
-        return customerList;
-    }
 }

@@ -1,18 +1,24 @@
 package com.ispwproject.lacremepastel.controller;
 
+import com.google.gson.Gson;
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
+import com.ispwproject.lacremepastel.engineeringclasses.dao.json.ProductJsonDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
+import com.ispwproject.lacremepastel.model.Product;
+import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -22,6 +28,7 @@ import java.util.logging.SimpleFormatter;
 public class Main extends Application {
 
     public static void main(String[] args){
+
         //Setup Logger
         Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
         FileHandler fh;
@@ -39,11 +46,28 @@ public class Main extends Application {
         //Setup Json Data Directory
         String jsonPath = Configurations.getInstance().getProperty("PATH_USERDATA");
         String persistence = Configurations.getInstance().getProperty("PERSISTENCE_TYPE");
+        String lastIdPath = Configurations.getInstance().getProperty("LAST_ID_PATH");
         if(persistence.equals("JSON")){
-            File file = new File(jsonPath);
-            if(!file.exists()){
-                file.mkdir();
+            File dir = new File(jsonPath);
+            if(!dir.exists()) {
+                dir.mkdir();
             }
+            File lastId = Paths.get(jsonPath, lastIdPath).toFile();
+            if(!lastId.exists()) {
+                try {
+                    if(!lastId.createNewFile()){
+                        logger.severe("Can't create new Last Id file! Exiting...");
+                        System.exit(3);
+                    }
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(lastId));
+                    writer.write("0");
+                    writer.flush();
+                }catch (IOException e){
+                    logger.severe(e.getMessage());
+                    System.exit(3);
+                }
+            }
+
         }
 
         String enableGUI = Configurations.getInstance().getProperty("GUI");

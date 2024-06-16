@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface UserDAO {
     boolean userRegister(Register register) throws UserAlreadyExistentException, InvalidParameterException;
-    List<String> getAllCustomer();
 }

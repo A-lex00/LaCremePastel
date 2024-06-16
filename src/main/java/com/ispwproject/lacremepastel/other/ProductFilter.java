@@ -1,6 +1,4 @@
-package com.ispwproject.lacremepastel.model;
-
-import com.ispwproject.lacremepastel.other.SupportedProductCategory;
+package com.ispwproject.lacremepastel.other;
 
 public class ProductFilter {
     SupportedProductCategory category;
