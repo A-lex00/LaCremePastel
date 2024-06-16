@@ -56,10 +56,12 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
         workerDot.setToggleGroup(roleGroup);
         boolean worker = workerDot.isSelected();
         boolean director = directorDot.isSelected();
+        boolean customer = customerDot.isSelected();
 
-        if (director || worker) {
+        if (customer || worker) {
             if (director) {
-                extraField.setPromptText("Inserisci la tassazione");
+                extraField.setPromptText(" Indirizzo di fatturazione");
+                extraField.setVisible(true);
             }
             if (worker) {
                 extraField.setPromptText("Inserisci il tuo ruolo");
@@ -100,13 +102,14 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
 
         if (workerDot.isSelected()) {
             ruolo = "WORKER";
-            extraInfo=extraField.getText();
+            extraInfo = extraField.getText();
         }
         else if (customerDot.isSelected()) {
             ruolo="CUSTOMER";
+            extraInfo = extraField.getText();
         }else if(directorDot.isSelected()){
-            ruolo="DIRECTOR";
-            extraInfo=extraField.getText();
+            ruolo = "DIRECTOR";
+            extraInfo = extraField.getText();
         }
         if(ruolo == null) {
             //Chiamata al banner
@@ -117,9 +120,10 @@ public class GUIControllerRegistrationPage extends AbstractGUIController{
         if(workerDot.isSelected()){
             registerBean.setRole(extraInfo);
         }
-        if(directorDot.isSelected()){
+        if(customerDot.isSelected()){
             registerBean.setBillingAddress(extraInfo);
         }
+
 
         Node node = (Node) confirmEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
