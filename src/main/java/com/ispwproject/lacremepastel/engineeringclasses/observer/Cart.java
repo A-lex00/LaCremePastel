@@ -20,7 +20,6 @@ public class Cart extends  Subject{
      */
     public void addOrderLine(OrderLineBean orderLineBean){
         actualCart.add(orderLineBean);
-        System.out.println("Cart" + "orderLine aggiunto");
         notifyObservers();
     }
     public void removeOrderLine(OrderLineBean orderLineBean){

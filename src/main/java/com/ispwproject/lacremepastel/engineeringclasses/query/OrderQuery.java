@@ -25,7 +25,7 @@ public class OrderQuery {
     }
 
     public static ResultSet getPendingOrders(Connection conn) throws SQLException {
-        String query = "SELECT * FROM Orders WHERE pending = 1";
+        String query = "SELECT id, content, pending, accepted, done, customer, ordertype FROM Orders WHERE pending = 1";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             return stmt.executeQuery();
         }
@@ -53,7 +53,7 @@ public class OrderQuery {
     }
 
     public static ResultSet getOrderById(Connection connection, int orderId) throws SQLException{
-        String query = "SELECT * FROM Orders WHERE id = ?";
+        String query = "SELECT id, content, pending, accepted, done, customer, ordertype FROM Orders WHERE id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(query)){
             stmt.setInt(1,orderId);
             return stmt.executeQuery();

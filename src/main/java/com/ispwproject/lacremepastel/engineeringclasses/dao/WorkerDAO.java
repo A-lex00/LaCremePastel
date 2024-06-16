@@ -8,10 +8,7 @@ import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Register;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class WorkerDAO implements UserDAO{

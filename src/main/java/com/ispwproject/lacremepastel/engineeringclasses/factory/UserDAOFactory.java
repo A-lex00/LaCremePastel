@@ -4,8 +4,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.dao.CustomerDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.DirectorDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.UserDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.WorkerDAO;
-import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.other.SupportedPersistenceTypes;
 import com.ispwproject.lacremepastel.other.SupportedUserTypes;
 
 public class UserDAOFactory {

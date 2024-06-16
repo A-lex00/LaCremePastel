@@ -5,7 +5,6 @@ import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Connector;
 import com.ispwproject.lacremepastel.model.Order;
 import com.ispwproject.lacremepastel.model.OrderLine;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class OrderDAO {
                 return true;
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             orderLineDAO.cleanOnFail(order.getIdOrder());
             this.cleanOnFail(order);
         }
@@ -62,9 +61,8 @@ public class OrderDAO {
                 orders.add(order);
             }
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
-        System.out.println(orders + "Orders" + "OrderDAO");
         return orders;
     }
 
@@ -72,7 +70,7 @@ public class OrderDAO {
         try {
             OrderQuery.cleanOnFail(Connector.getConnection(), order.getIdOrder());
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
     }
 
@@ -90,7 +88,7 @@ public class OrderDAO {
                 order = new Order(idOrder,customer,orderLines,pending,accepted,done);
             }
         }catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
         return order;
     }
@@ -103,7 +101,7 @@ public class OrderDAO {
             OrderQuery.updateOrder(Connector.getConnection(), order);
             return true;
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME);
+            Logger.getLogger(Configurations.LoggerName);
             return false;
         }
     }

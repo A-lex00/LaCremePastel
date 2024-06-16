@@ -1,14 +1,10 @@
 package com.ispwproject.lacremepastel.engineeringclasses.query;
 
-import com.ispwproject.lacremepastel.model.Customer;
-import com.ispwproject.lacremepastel.model.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 
 public class CustomerQuery {
 
@@ -31,7 +27,7 @@ public class CustomerQuery {
     }
 
     public static List<String> getAllCustomer(Connection conn) {
-        String query = "SELECT * FROM  user WHERE usertype = ?";
+        String query = "SELECT username, cf-piva, password, firstname, lastname, email, billingAddress, role FROM User WHERE usertype = ?";
         List<String> customerList = null;
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, "CUSTOMER");

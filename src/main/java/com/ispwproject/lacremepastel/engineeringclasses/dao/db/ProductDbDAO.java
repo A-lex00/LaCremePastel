@@ -23,7 +23,7 @@ public class ProductDbDAO implements ProductDAO {
             ResultSet rs = ProductQuery.getAllProduct(Connector.getConnection());
             products = processResultSet(rs);
         } catch (SQLException e) {
-            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+            Logger logger = Logger.getLogger(Configurations.LoggerName);
             logger.severe(e.getMessage());
         }
         return products;
@@ -36,7 +36,7 @@ public class ProductDbDAO implements ProductDAO {
             ResultSet rs = ProductQuery.getProductByCategory(Connector.getConnection(), category.toString());
             products = processResultSet(rs);
         } catch (SQLException e) {
-            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+            Logger logger = Logger.getLogger(Configurations.LoggerName);
             logger.severe(e.getMessage());
         }
         return products;
@@ -49,7 +49,7 @@ public class ProductDbDAO implements ProductDAO {
             ResultSet rs = ProductQuery.getProductsByName(Connector.getConnection(),name);
             products = processResultSet(rs);
         } catch (SQLException e) {
-            Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+            Logger logger = Logger.getLogger(Configurations.LoggerName);
             logger.severe(e.getMessage());
         }
         return products;
@@ -60,7 +60,7 @@ public class ProductDbDAO implements ProductDAO {
         try {
             ProductQuery.addProduct(Connector.getConnection(), product);
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             return false;
         }
         return true;
@@ -71,7 +71,7 @@ public class ProductDbDAO implements ProductDAO {
         try {
             ProductQuery.modifyProduct(Connector.getConnection(), product);
         } catch (SQLException e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             return false;
         }
         return  true;
@@ -84,7 +84,7 @@ public class ProductDbDAO implements ProductDAO {
             PopupFactory popupFactory = new PopupFactory();
             popupFactory.createBasePopup("Prodotto Eliminato con Successo","black");
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             return false;
         }
         return true;
@@ -104,7 +104,7 @@ public class ProductDbDAO implements ProductDAO {
                 );
             }
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
         return null;
     }

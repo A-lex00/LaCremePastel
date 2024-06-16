@@ -1,23 +1,17 @@
 package com.ispwproject.lacremepastel.controller;
 
-import com.google.gson.Gson;
 import com.ispwproject.lacremepastel.controller.cli.machine.AbstractCLIStateMachine;
 import com.ispwproject.lacremepastel.controller.cli.machine.ConcreteCLI;
 import com.ispwproject.lacremepastel.engineeringclasses.dao.StateDAO;
-import com.ispwproject.lacremepastel.engineeringclasses.dao.json.ProductJsonDAO;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidParameterException;
 import com.ispwproject.lacremepastel.engineeringclasses.exception.InvalidSessionException;
 import com.ispwproject.lacremepastel.engineeringclasses.singleton.Configurations;
-import com.ispwproject.lacremepastel.model.Product;
-import com.ispwproject.lacremepastel.other.SupportedProductCategory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.logging.FileHandler;
@@ -30,7 +24,7 @@ public class Main extends Application {
     public static void main(String[] args){
 
         //Setup Logger
-        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+        Logger logger = Logger.getLogger(Configurations.LoggerName);
         FileHandler fh;
         try {
             logger.setUseParentHandlers(false);
@@ -92,13 +86,13 @@ public class Main extends Application {
                 stageCount.show();
             }
         } catch (Exception e) {
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
     }
 
     public static void launchCLI(){
         AbstractCLIStateMachine cli = new ConcreteCLI(new StateDAO());
-        Logger logger = Logger.getLogger(Configurations.LOGGER_NAME);
+        Logger logger = Logger.getLogger(Configurations.LoggerName);
         do{
             try{
                 if(!cli.doAction()){

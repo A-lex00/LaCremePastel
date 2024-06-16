@@ -28,11 +28,6 @@ public class OrderLineQuery {
     }
 
     public static ResultSet getOrderLinesByOrderId(Connection conn, int orderId) throws SQLException {
-//        String query = """
-//                SELECT Product.name, OrderLine.amount
-//                FROM OrderLine JOIN Orders ON Orders.id = OrderLine.order
-//                JOIN Product ON OrderLine.product = Product.id
-//                WHERE OrderLine.order = ? AND Orders.pending = 1""";
         String query = "SELECT OrderLine.product ,OrderLine.amount FROM OrderLine WHERE `order` = ?";
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, orderId);

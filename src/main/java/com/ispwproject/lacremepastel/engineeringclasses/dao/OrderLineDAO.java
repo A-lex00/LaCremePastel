@@ -33,7 +33,7 @@ public class OrderLineDAO {
         try {
             OrderLineQuery.cleanOnFail(Connector.getConnection(), orderId);
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
     }
 
@@ -50,7 +50,7 @@ public class OrderLineDAO {
                 orderLines.add(orderLine);
             }
         }catch (SQLException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
         return orderLines;
     }

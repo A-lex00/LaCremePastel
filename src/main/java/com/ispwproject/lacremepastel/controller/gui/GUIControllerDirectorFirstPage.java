@@ -20,16 +20,17 @@ public class GUIControllerDirectorFirstPage extends AbstractGUIController{
     }
     @FXML
     void manageWorkers(ActionEvent manageEvent) {
+        this.displayFeaturePopup(manageEvent);
     }
 
     @FXML
     void requestHelp(ActionEvent helpEvent) {
-
+        this.displayFeaturePopup(helpEvent);
     }
 
     @FXML
     void showCustomerList(ActionEvent showEvent) {
-
+        this.displayFeaturePopup(showEvent);
     }
 
 }

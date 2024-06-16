@@ -16,17 +16,17 @@ import java.util.logging.Logger;
 
 public class ProductJsonDAO implements ProductDAO {
 
-    private final String PATH_USERDATA = Configurations.getInstance().getProperty("PATH_USERDATA");
-    private final String FILENAME_PATTERN = Configurations.getInstance().getProperty("FILENAME_PATTERN");
-    private final String LAST_ID_PATH = Configurations.getInstance().getProperty("LAST_ID_PATH");
-    private final File lastId = Paths.get(PATH_USERDATA,LAST_ID_PATH).toFile();
+    private final String pathUserdata = Configurations.getInstance().getProperty("PATH_USERDATA");
+    private final String filenamePattern = Configurations.getInstance().getProperty("FILENAME_PATTERN");
+    private final String lastIdPath = Configurations.getInstance().getProperty("LAST_ID_PATH");
+    private final File lastId = Paths.get(pathUserdata, lastIdPath).toFile();
 
     @Override
     public List<Product> getAllProducts() {
-        File directory = new File(PATH_USERDATA);
+        File directory = new File(pathUserdata);
         File[] files = directory.listFiles();
         if(files == null){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe("Can't open JsonData Directory!");
+            Logger.getLogger(Configurations.LoggerName).severe("Can't open JsonData Directory!");
             return new ArrayList<>();
         }
         ArrayList<Product> products = new ArrayList<>();
@@ -80,8 +80,8 @@ public class ProductJsonDAO implements ProductDAO {
 
     @Override
     public boolean modifyProduct(Product product) {
-        String filename = String.format(FILENAME_PATTERN,product.getId());
-        if(FilenameUtils.directoryContains(PATH_USERDATA,filename)){
+        String filename = String.format(filenamePattern,product.getId());
+        if(FilenameUtils.directoryContains(pathUserdata,filename)){
             return this.writeToFile(product);
         }
         return false;
@@ -89,8 +89,8 @@ public class ProductJsonDAO implements ProductDAO {
 
     @Override
     public boolean deleteProduct(int productId) {
-        String filename = String.format(FILENAME_PATTERN,productId);
-        if(FilenameUtils.directoryContains(PATH_USERDATA,filename)){
+        String filename = String.format(filenamePattern,productId);
+        if(FilenameUtils.directoryContains(pathUserdata,filename)){
             Product p = loadFromFile(new File(filename));
             assert p != null;
             p.setVisible(false);
@@ -101,18 +101,17 @@ public class ProductJsonDAO implements ProductDAO {
 
     @Override
     public Product getProductById(int productId) {
-        String filename = String.format(FILENAME_PATTERN,productId);
-        return loadFromFile(Paths.get(PATH_USERDATA,filename).toFile());
+        String filename = String.format(filenamePattern,productId);
+        return loadFromFile(Paths.get(pathUserdata,filename).toFile());
     }
 
     private Product loadFromFile(File file){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try{
             String jsonStr = Files.readString(file.toPath());
-            System.out.println(jsonStr);
             gson.fromJson(jsonStr, Product.class);
         }catch (IOException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
         }
         return null;
     }
@@ -120,15 +119,15 @@ public class ProductJsonDAO implements ProductDAO {
     private boolean writeToFile(Product product){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try{
-            Paths.get(PATH_USERDATA,String.format(FILENAME_PATTERN,product.getId()));
+            Paths.get(pathUserdata,String.format(filenamePattern,product.getId()));
             String jsonStr = gson.toJson(product, Product.class);
             Files.writeString(
-                    Paths.get(PATH_USERDATA,String.format(FILENAME_PATTERN,product.getId())),
+                    Paths.get(pathUserdata,String.format(filenamePattern,product.getId())),
                     jsonStr
             );
             return true;
         }catch (IOException e){
-            Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+            Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             return false;
         }
     }
@@ -139,7 +138,7 @@ public class ProductJsonDAO implements ProductDAO {
             try(BufferedReader reader = new BufferedReader(new FileReader(lastId))){
                 return Integer.parseInt(reader.readLine())+1;
             }catch (IOException e){
-                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+                Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             }
             return -1;
         }
@@ -151,7 +150,7 @@ public class ProductJsonDAO implements ProductDAO {
                 writer.write(String.valueOf(id));
                 writer.flush();
             } catch (IOException e) {
-                Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
+                Logger.getLogger(Configurations.LoggerName).severe(e.getMessage());
             }
         }
     }
