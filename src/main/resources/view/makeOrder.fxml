@@ -28,7 +28,7 @@
          <Button mnemonicParsing="false" onAction="#addCart" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Aggiungi al carrello" />
       </children>
    </HBox>
-   <HBox alignment="TOP_CENTER" layoutX="69.0" layoutY="406.0" prefHeight="34.0" prefWidth="407.0" spacing="20.0">
+   <HBox alignment="TOP_CENTER" layoutX="69.0" layoutY="406.0" prefHeight="34.0" prefWidth="407.0" spacing="147.0">
       <children>
          <Button mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Indietro" />
          <Button mnemonicParsing="false" onAction="#showDetails" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: e1680f;" text="Riepilogo Ordine" />
