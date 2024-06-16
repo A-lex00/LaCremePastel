@@ -25,4 +25,12 @@ module com.ispwproject.lacremepastel {
     exports com.ispwproject.lacremepastel.controller;
     opens com.ispwproject.lacremepastel.controller to javafx.graphics;
 
+    exports com.ispwproject.lacremepastel.engineeringclasses.dao;
+    exports com.ispwproject.lacremepastel.engineeringclasses.exception;
+    exports com.ispwproject.lacremepastel.engineeringclasses.singleton;
+    exports com.ispwproject.lacremepastel.engineeringclasses.query;
+    exports com.ispwproject.lacremepastel.engineeringclasses.factory;
+    exports com.ispwproject.lacremepastel.engineeringclasses.observer;
+    exports com.ispwproject.lacremepastel.controller.app;
+
 }

@@ -64,8 +64,6 @@ public class MakeOrderTest {
                 () -> controller.createOrder(sessionBean,emptyCart)
         );
         Assert.assertEquals("Cart is empty!", exception.getMessage());
-
-
     }
 
     /**

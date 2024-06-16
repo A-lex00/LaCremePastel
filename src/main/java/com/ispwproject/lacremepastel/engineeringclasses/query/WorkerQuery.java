@@ -16,6 +16,7 @@ public class WorkerQuery {
             stmt.setString(3,cfPiva);
             stmt.setString(4,role);
             stmt.setString(5,username);
+            stmt.executeUpdate();
         }
     }
 

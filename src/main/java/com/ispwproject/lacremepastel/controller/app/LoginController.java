@@ -61,6 +61,7 @@ public class LoginController {
                     register.setRole(SupportedRoleTypes.valueOf(registerBean.getRole()));
                 }
             }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
                 if(register.getUserType() == null) {
                     Logger.getLogger(Configurations.LOGGER_NAME).severe("Unsupported User Type: " + registerBean.getUserType());
                 }else if(register.getRole() == null){

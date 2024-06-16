@@ -26,7 +26,7 @@ public abstract class UserDAO {
             } catch (SQLException e) {
                 Logger.getLogger(Configurations.LOGGER_NAME).severe(e.getMessage());
                 if(e.getMessage().contains("Duplicate entry")){
-                    throw new UserAlreadyExistentException("User " + register.getUsername() + " already exists");
+                    throw new UserAlreadyExistentException("Username " + register.getUsername() + " already exists");
                 }else{
                     throw new InvalidParameterException("Invalid Parameters");
                 }

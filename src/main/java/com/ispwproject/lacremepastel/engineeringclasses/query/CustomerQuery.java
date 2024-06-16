@@ -17,6 +17,7 @@ public class CustomerQuery{
             stmt.setString(3,cfPiva);
             stmt.setString(4,billingAddress);
             stmt.setString(5,username);
+            stmt.executeUpdate();
         }
     }
 }

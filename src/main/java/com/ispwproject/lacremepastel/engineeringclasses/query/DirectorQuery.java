@@ -15,6 +15,7 @@ public class DirectorQuery {
             stmt.setString(2,lastname);
             stmt.setString(3,cfPiva);
             stmt.setString(4,username);
+            stmt.executeUpdate();
         }
     }
 
