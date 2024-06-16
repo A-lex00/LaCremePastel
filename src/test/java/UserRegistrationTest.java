@@ -34,7 +34,7 @@ public class UserRegistrationTest {
         String invalidCF = "aosjfabo";
         int res = 0;
         try {
-            RegisterBean registerBean = new RegisterBean(
+            new RegisterBean(
                     "Dummy", invalidCF, "1234",
                     "Dummy", "Dummy", "si@si.it",
                     "DIRECTOR"
